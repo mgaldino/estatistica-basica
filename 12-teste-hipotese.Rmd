@@ -8,10 +8,19 @@
 - Entender erros do tipo I e tipo II
 - Calcular o poder de um teste
 - Conhecer as críticas ao uso mecânico de p-valores
+- Conectar o resultado formal do teste com a narrativa do paper
 
 ## A lógica do teste de hipótese
 
 ## Hipótese nula e alternativa
+
+### A nula no teste versus a alternativa no paper {#nula-vs-paper}
+
+Um ponto que gera confusão recorrente: o teste de hipóteses é formulado em termos da hipótese nula ($H_0$: "não há efeito"), mas papers são escritos em torno da hipótese alternativa ("proponho que X causa Y"). Essa assimetria é intencional — o teste é conservador por design, exigindo evidência forte para rejeitar o status quo.
+
+Na prática, isso significa que: (1) rejeitar $H_0$ dá suporte à narrativa do paper, mas não *prova* a teoria — apenas mostra que os dados são inconsistentes com "nenhum efeito"; (2) *não* rejeitar $H_0$ não significa que a teoria está errada — pode significar que a amostra é pequena demais (baixo poder) ou que o efeito é menor do que o esperado; (3) a força do argumento no paper vem menos do p-valor isolado e mais da capacidade de *descartar explicações alternativas* (ver Capítulo \@ref(redacao), seção \@ref(descoberta-narrativa)).
+
+Este ponto será retomado com mais detalhe no capítulo sobre redação acadêmica. Aqui o importante é entender a mecânica: o teste opera sobre a nula, mas o pesquisador pensa sobre a alternativa.
 
 ## Estatística de teste
 

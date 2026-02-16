@@ -8,16 +8,35 @@
 - Distinguir variáveis dependentes e independentes
 - Entender a relação entre teorias, conceitos e mensuração
 - Conhecer os tipos de variáveis (categóricas, ordinais, contínuas)
+- Diferenciar frame teórico de perguntas empíricas
+- Compreender o papel de postulados comportamentais em teorias de Ciência Política
+- Avaliar quando e por que construir tipologias
 
 ## O que é pesquisa quantitativa?
 
 ## Teorias e hipóteses
+
+### Postulados comportamentais em Ciência Política
+
+Em Ciência Política, teorias tipicamente envolvem postulados sobre como agentes — pessoas, partidos, instituições, estados — se comportam. Um modelo de competição eleitoral, por exemplo, postula que candidatos buscam maximizar votos; uma teoria de relações internacionais postula que estados buscam segurança. Esses postulados comportamentais são o motor das teorias: deles derivam previsões empíricas testáveis. O capítulo deve deixar claro que toda teoria quantitativa em CP repousa sobre alguma premissa desse tipo, explícita ou implícita, e que identificá-la é o primeiro passo para avaliar a teoria.
+
+### Frame teórico versus perguntas empíricas
+
+Motivação: alunos frequentemente confundem "enquadramento teórico" com "pergunta de pesquisa", ou acham que basta ter uma teoria para ter uma pergunta. Aqui se mostra que o frame teórico é o conjunto de conceitos abstratos e relações postuladas (ex.: "competição política reduz corrupção"), enquanto a pergunta empírica traduz isso em algo testável com dados (ex.: "municípios com eleições mais competitivas apresentam menos irregularidades em licitações?"). Essa distinção conecta diretamente com a próxima seção — conceitos são do frame teórico, variáveis são da pergunta empírica.
 
 ## Variáveis
 
 ### Tipos de variáveis
 
 ### Operacionalização de conceitos
+
+Da teoria aos dados: conceitos abstratos (democracia, corrupção, polarização) precisam ser traduzidos em variáveis mensuráveis. Discutir como o mesmo conceito pode ter múltiplas operacionalizações, cada uma capturando uma faceta diferente, e como a escolha de operacionalização afeta os resultados. Exemplos: "democracia" medida pelo Polity IV vs. V-Dem vs. classificação binária de Cheibub et al.
+
+### Tipologias: o que são, quando usar e quando evitar {#tipologias}
+
+Tipologias organizam variação qualitativa em categorias analiticamente úteis (ex.: regimes políticos de Linz, tipos de Estado de bem-estar de Esping-Andersen). Uma boa tipologia tem dimensões claras e teoricamente motivadas, categorias mutuamente exclusivas e coletivamente exaustivas, e utilidade empírica — isto é, os tipos se comportam de forma diferente em relação a algum outcome de interesse.
+
+Por que não sair construindo tipologias? Porque tipologias sem fundamentação teórica viram exercícios taxonômicos estéreis. O critério deve ser: a tipologia ajuda a organizar a variação de forma que gere hipóteses testáveis ou ilumine mecanismos? Se não, ela é apenas uma tabela bonita. Discutir a diferença entre tipologias como ponto de partida (para gerar hipóteses) e tipologias como ponto de chegada (resultado de análise empírica, como análise de clusters).
 
 ## Mensuração
 

@@ -7,6 +7,8 @@
 - Distinguir desenhos experimentais e observacionais
 - Entender validade interna e externa
 - Conhecer as principais ameaças à inferência causal
+- Diferenciar tratamento de manipulação em estudos observacionais
+- Compreender scope conditions e seu papel na teoria
 
 ## O que é um desenho de pesquisa?
 
@@ -15,6 +17,14 @@
 ### Questão de pesquisa
 
 ### Hipóteses
+
+### Scope conditions {#scope}
+
+Toda teoria tem condições de contorno — as *scope conditions* — que delimitam quando e onde ela se aplica. A teoria do eleitor mediano, por exemplo, pressupõe eleições com dois candidatos e preferências unidimensionais; fora dessas condições, suas previsões não se sustentam.
+
+Scope conditions não são uma fraqueza da teoria; são parte constitutiva dela. Uma teoria que se pretende universal ("vale para qualquer país, qualquer época") quase sempre é vaga demais para ser testável. Boas scope conditions fazem três coisas: (1) delimitam a população de casos à qual a teoria se aplica, (2) especificam as condições sob as quais o mecanismo opera, e (3) permitem distinguir falha legítima da teoria de aplicação fora do escopo.
+
+Na prática, scope conditions conectam-se diretamente com o desenho de pesquisa: elas determinam a população de referência (quais casos incluir na amostra), as variáveis de controle relevantes e os limites da generalização dos resultados.
 
 ## Unidade de análise
 
@@ -25,6 +35,14 @@
 ### Estudos experimentais
 
 ### Estudos observacionais
+
+### Tratamento versus manipulação {#tratamento-manipulacao}
+
+Em um experimento, "tratamento" e "manipulação" coincidem: o pesquisador designa aleatoriamente quem recebe o tratamento. Em estudos observacionais, essa distinção é crucial. O "tratamento" é a variável cujo efeito causal queremos estimar (ex.: adotar o voto eletrônico), mas não há manipulação — ninguém designou aleatoriamente quais municípios adotaram a tecnologia.
+
+Isso tem duas consequências práticas. Primeira: em estudos observacionais, a "atribuição" ao tratamento é determinada por fatores que podem estar correlacionados com o outcome, gerando viés de seleção. Segunda: nem toda variável de interesse faz sentido como "tratamento". Perguntar "qual o efeito causal de ser uma democracia?" exige imaginar o que significaria *manipular* o regime de um país — o que revela a dificuldade (e, para alguns, a impossibilidade) de certas perguntas causais com variáveis que não são manipuláveis.
+
+Discutir a distinção de Holland ("no causation without manipulation") e as críticas a ela, mostrando que mesmo variáveis não-manipuláveis podem ser estudadas causalmente com o desenho adequado (ex.: instrumentos, choques exógenos).
 
 ### Estudos transversais e longitudinais
 

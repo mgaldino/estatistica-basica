@@ -9,6 +9,17 @@
 - Calcular probabilidades usando regras básicas
 - Entender probabilidade condicional e independência
 - Aplicar o Teorema de Bayes
+- Compreender a ideia de processo gerador de dados (DGP) probabilístico
+
+## Por que estudar probabilidade? O Processo Gerador de Dados {#dgp}
+
+Antes de entrar na maquinaria formal, vale a motivação: por que um cientista político precisa de probabilidade?
+
+A resposta é que os dados que observamos são o resultado de um *processo gerador de dados* (DGP, do inglês *data generating process*) que tem componentes sistemáticos e aleatórios. Quando dizemos que "a renda média dos eleitores de um partido é R$ 3.500", esse número é o resultado de um processo que envolve quem escolheu votar naquele partido (componente sistemático — renda influencia voto) e variação individual imprevisível (componente aleatório — nem todos com a mesma renda votam igual).
+
+Modelar o DGP como probabilístico não significa dizer que o mundo é aleatório. Significa reconhecer que: (1) não observamos todas as variáveis relevantes, (2) há variação individual irredutível, e (3) o processo de amostragem introduz incerteza. A probabilidade é a linguagem para formalizar essa incerteza.
+
+Toda a inferência estatística que veremos nos capítulos seguintes repousa sobre essa ideia: postulamos um modelo probabilístico para o DGP, observamos uma realização (os dados), e usamos a teoria de probabilidade para fazer afirmações sobre o processo que gerou os dados. Sem essa base, testes de hipótese e intervalos de confiança são receitas sem fundamento.
 
 ## Experimentos aleatórios e espaço amostral
 

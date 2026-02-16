@@ -6,6 +6,7 @@
 - Desenvolver habilidades de leitura crítica de papers
 - Escrever de forma clara e objetiva
 - Construir argumentos com evidências
+- Entender como conectar o processo de análise (centrado na nula) com a narrativa do paper (centrada na alternativa)
 
 ## Como ler um paper acadêmico
 
@@ -20,6 +21,22 @@
 ### Resultados
 
 ### Conclusão
+
+## Descoberta versus narrativa: da hipótese nula ao paper {#descoberta-narrativa}
+
+O processo de análise estatística e o processo de escrita de um paper seguem lógicas diferentes, e confundi-las é uma das maiores fontes de erro para pesquisadores iniciantes.
+
+**Na análise**, trabalhamos no framework do teste de hipóteses: formulamos uma hipótese nula (tipicamente "não há efeito"), coletamos dados e verificamos se a evidência é suficiente para rejeitá-la. O foco está na nula.
+
+**No paper**, a narrativa é construída em torno da hipótese alternativa — a teoria que o pesquisador quer defender. O artigo diz "proponho que X causa Y" e apresenta evidência a favor. Ninguém escreve um paper dizendo "não rejeitei a hipótese nula de que nada acontece".
+
+Como conectar essas duas lógicas? Primeiro, separar claramente o processo de *descoberta* (exploração dos dados, análise) do processo de *comunicação* (escrita do paper). Segundo, entender que não rejeitar a nula não invalida o paper — pode ser um resultado informativo se o estudo tinha poder suficiente para detectar um efeito relevante.
+
+### A importância de "rule out" explicações alternativas
+
+Uma narrativa empírica sólida não se limita a mostrar evidência *a favor* da hipótese preferida. Ela precisa também mostrar que as explicações alternativas mais plausíveis *não* dão conta dos dados. Isso é o que se chama de *ruling out* alternativas.
+
+Na prática, isso significa: (1) identificar as principais explicações rivais para o padrão observado, (2) derivar previsões empíricas que distinguam a sua teoria das rivais, e (3) mostrar que os dados são consistentes com a sua teoria mas não com as alternativas. Esse exercício fortalece enormemente a credibilidade do argumento — e é o que separa um paper descritivo de um paper com contribuição causal ou teórica.
 
 ## Dicas de escrita acadêmica
 
