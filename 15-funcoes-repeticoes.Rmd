@@ -1,0 +1,34 @@
+# Funções e Repetições em R {#funcoes}
+
+## Objetivos do capítulo {-}
+
+- Escrever funções próprias em R
+- Usar estruturas de repetição (loops e família `apply`/`map`)
+- Aplicar simulação como ferramenta de aprendizado estatístico
+- Automatizar tarefas repetitivas de análise de dados
+
+## Por que escrever funções?
+
+## Anatomia de uma função em R
+
+### Argumentos e valores de retorno
+
+### Escopo de variáveis
+
+## Estruturas de repetição
+
+### Loops `for`
+
+### A família `apply`
+
+### `purrr::map()`
+
+## Simulação como ferramenta de aprendizado
+
+### Simulando o lançamento de dados
+
+### Simulando distribuições amostrais
+
+### Simulando o poder de um teste
+
+## Exercícios

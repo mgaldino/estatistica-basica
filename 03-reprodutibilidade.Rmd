@@ -1,0 +1,40 @@
+# Reprodutibilidade: Git, R Markdown e LaTeX {#reprodutibilidade}
+
+## Objetivos do capítulo {-}
+
+- Entender por que reprodutibilidade importa na pesquisa científica
+- Usar Git e GitHub para controle de versão
+- Produzir relatórios reproduzíveis com R Markdown
+- Conhecer o básico de LaTeX para fórmulas e documentos acadêmicos
+
+## Por que reprodutibilidade?
+
+## Controle de versão com Git
+
+### O que é Git?
+
+### Instalação e configuração
+
+### Comandos essenciais
+
+### GitHub: repositórios remotos
+
+## R Markdown
+
+### Estrutura de um documento `.Rmd`
+
+### Texto formatado com Markdown
+
+### Chunks de código R
+
+### Gerando relatórios (PDF e HTML)
+
+## LaTeX: o essencial
+
+### Fórmulas matemáticas
+
+### Referências cruzadas
+
+## Organizando um projeto de pesquisa
+
+## Exercícios

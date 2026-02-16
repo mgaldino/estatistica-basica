@@ -1,0 +1,31 @@
+# (PART) Probabilidade {-}
+
+# Probabilidade I: Fundamentos {#prob1}
+
+## Objetivos do capítulo {-}
+
+- Compreender os conceitos de experimento aleatório, espaço amostral e eventos
+- Conhecer os axiomas de probabilidade (Kolmogorov)
+- Calcular probabilidades usando regras básicas
+- Entender probabilidade condicional e independência
+- Aplicar o Teorema de Bayes
+
+## Experimentos aleatórios e espaço amostral
+
+## Eventos
+
+## Axiomas de probabilidade
+
+## Regras de probabilidade
+
+### Regra da adição
+
+### Regra da multiplicação
+
+## Probabilidade condicional
+
+## Independência
+
+## Teorema de Bayes
+
+## Exercícios

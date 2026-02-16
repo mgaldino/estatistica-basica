@@ -1,0 +1,37 @@
+# Probabilidade II: Variáveis Aleatórias e Distribuições {#prob2}
+
+## Objetivos do capítulo {-}
+
+- Compreender o conceito de variável aleatória (discreta e contínua)
+- Conhecer as principais distribuições de probabilidade
+- Calcular valor esperado e variância de variáveis aleatórias
+- Entender a Lei dos Grandes Números e o Teorema Central do Limite
+- Simular distribuições em R
+
+## Variáveis aleatórias
+
+### Variáveis aleatórias discretas
+
+### Variáveis aleatórias contínuas
+
+## Valor esperado e variância
+
+## Distribuições discretas
+
+### Bernoulli
+
+### Binomial
+
+## Distribuições contínuas
+
+### Distribuição Normal
+
+### Distribuição Normal Padrão
+
+## Lei dos Grandes Números
+
+## Teorema Central do Limite
+
+### Simulação do TCL em R
+
+## Exercícios

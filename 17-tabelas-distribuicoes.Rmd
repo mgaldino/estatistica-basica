@@ -1,0 +1,7 @@
+# Tabelas de Distribuições {#tabelas}
+
+## Distribuição Normal Padrão
+
+## Distribuição t de Student
+
+## Distribuição Qui-Quadrado

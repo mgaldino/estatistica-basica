@@ -1,0 +1,30 @@
+# Intervalo de Confiança {#ic}
+
+## Objetivos do capítulo {-}
+
+- Construir e interpretar intervalos de confiança
+- Entender a relação entre IC e testes de hipótese
+- Calcular IC para médias e proporções
+- Compreender o papel do tamanho da amostra na precisão
+
+## O que é um intervalo de confiança?
+
+## Construção de intervalos de confiança
+
+### IC para a média (variância conhecida)
+
+### IC para a média (variância desconhecida): distribuição t
+
+### IC para proporções
+
+## Interpretação correta (e erros comuns)
+
+## Margem de erro
+
+## Relação com testes de hipótese
+
+## Tamanho da amostra e precisão
+
+## IC em R
+
+## Exercícios

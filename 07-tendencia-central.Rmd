@@ -1,0 +1,40 @@
+# Medidas de Tendência Central e Variabilidade {#descritiva}
+
+## Objetivos do capítulo {-}
+
+- Calcular e interpretar medidas de tendência central (média, mediana, moda)
+- Calcular e interpretar medidas de variabilidade (variância, desvio-padrão, amplitude interquartílica)
+- Construir e interpretar visualizações (histogramas, boxplots)
+- Aplicar essas medidas a dados reais em R
+
+## Medidas de tendência central
+
+### Média
+
+### Mediana
+
+### Moda
+
+### Quando usar cada medida?
+
+## Medidas de variabilidade
+
+### Amplitude
+
+### Variância
+
+### Desvio-padrão
+
+### Amplitude interquartílica (IQR)
+
+## Visualização de distribuições
+
+### Histogramas
+
+### Boxplots
+
+### Gráficos de densidade
+
+## Dados assimétricos e outliers
+
+## Exercícios

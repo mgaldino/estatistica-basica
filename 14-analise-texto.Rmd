@@ -1,0 +1,36 @@
+# (PART) Tópicos Aplicados {-}
+
+# Análise de Texto {#texto}
+
+## Objetivos do capítulo {-}
+
+- Compreender o paradigma *text-as-data* em Ciência Política
+- Realizar pré-processamento de textos (tokenização, remoção de stopwords, stemming)
+- Calcular frequências de termos e criar nuvens de palavras
+- Analisar dados textuais reais (discursos políticos, legislação)
+
+## Text-as-data em Ciência Política
+
+## Pré-processamento de textos
+
+### Tokenização
+
+### Stopwords
+
+### Stemming e lematização
+
+## Frequência de termos
+
+### Matriz documento-termo
+
+### TF-IDF
+
+## Visualização de textos
+
+### Nuvens de palavras
+
+### Frequências ao longo do tempo
+
+## Exemplo aplicado: discursos no plenário
+
+## Exercícios

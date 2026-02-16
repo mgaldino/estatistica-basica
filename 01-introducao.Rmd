@@ -1,0 +1,26 @@
+# (PART) Fundamentos e Ferramentas {-}
+
+# Introdução: O que é pesquisa quantitativa? {#intro}
+
+## Objetivos do capítulo {-}
+
+- Compreender o que caracteriza a pesquisa quantitativa em Ciências Sociais
+- Distinguir variáveis dependentes e independentes
+- Entender a relação entre teorias, conceitos e mensuração
+- Conhecer os tipos de variáveis (categóricas, ordinais, contínuas)
+
+## O que é pesquisa quantitativa?
+
+## Teorias e hipóteses
+
+## Variáveis
+
+### Tipos de variáveis
+
+### Operacionalização de conceitos
+
+## Mensuração
+
+### Validade e confiabilidade
+
+## Exercícios

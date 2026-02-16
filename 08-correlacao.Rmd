@@ -1,0 +1,39 @@
+# Correlação e Associação {#correlacao}
+
+## Objetivos do capítulo {-}
+
+- Compreender o conceito de covariância e correlação
+- Calcular e interpretar o coeficiente de correlação de Pearson
+- Analisar associação entre variáveis categóricas (tabelas de contingência, qui-quadrado)
+- Entender por que correlação não implica causalidade
+- Visualizar relações entre variáveis com scatterplots
+
+## Covariância
+
+## Correlação de Pearson
+
+### Cálculo
+
+### Interpretação
+
+### Limitações
+
+## Associação entre variáveis categóricas
+
+### Tabelas de contingência
+
+### O teste qui-quadrado
+
+## Visualização
+
+### Scatterplots
+
+### Matrizes de correlação
+
+## Correlação não é causalidade
+
+### Variáveis confundidoras
+
+### Exemplos clássicos
+
+## Exercícios

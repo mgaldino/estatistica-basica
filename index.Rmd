@@ -1,0 +1,42 @@
+---
+title: "Estatística Básica para Ciências Sociais"
+author: "Manoel Galdino"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [references.bib]
+biblio-style: apalike
+link-citations: yes
+description: "Material didático para os cursos de Métodos Quantitativos e Técnicas em Ciência Política I (pós-graduação) e Métodos III (graduação) do Departamento de Ciência Política da USP."
+---
+
+# Prefácio {-}
+
+Este livro reúne as notas de aula do curso de Métodos Quantitativos e Técnicas em Ciência Política I (FLS 5028), oferecido conjuntamente para a graduação e a pós-graduação do Departamento de Ciência Política da Universidade de São Paulo.
+
+O objetivo é apresentar as bases conceituais e práticas de pesquisa quantitativa em Ciências Sociais, com foco em Ciência Política. O livro cobre desde os fundamentos do desenho de pesquisa e ferramentas computacionais até estatística descritiva, probabilidade e inferência estatística.
+
+Todo o material utiliza a linguagem R para exemplos e exercícios, e pressupõe que o leitor irá acompanhar os capítulos com o computador à mão, reproduzindo e experimentando com o código apresentado.
+
+## Como usar este livro {-}
+
+O livro está organizado em cinco partes:
+
+- **Parte I — Fundamentos e Ferramentas**: introduz os conceitos básicos de pesquisa quantitativa, a linguagem R e as práticas de reprodutibilidade que serão usadas ao longo de todo o curso.
+- **Parte II — Estatística Descritiva**: cobre amostragem, medidas descritivas e correlação.
+- **Parte III — Probabilidade**: apresenta os fundamentos probabilísticos necessários para a inferência estatística.
+- **Parte IV — Inferência Estatística**: trata de estimação, testes de hipótese e intervalos de confiança.
+- **Parte V — Tópicos Aplicados**: apresenta aplicações como análise de texto e programação em R.
+
+## Pré-requisitos {-}
+
+Não é necessário conhecimento prévio de estatística ou programação. O Capítulo 2 oferece uma introdução ao R e ao RStudio, e o Capítulo 3 aborda as ferramentas de reprodutibilidade que serão utilizadas.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center"
+)
+```

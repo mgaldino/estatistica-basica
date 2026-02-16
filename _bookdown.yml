@@ -1,0 +1,8 @@
+book_filename: "stat-basica"
+output_dir: docs
+delete_merged_file: true
+edit: https://github.com/mgaldino/stat-basica/edit/main/%s
+view: https://github.com/mgaldino/stat-basica/blob/main/%s
+language:
+  ui:
+    chapter_name: "Capítulo "

@@ -1,0 +1,26 @@
+# Redação Acadêmica {#redacao}
+
+## Objetivos do capítulo {-}
+
+- Conhecer a estrutura de um artigo científico
+- Desenvolver habilidades de leitura crítica de papers
+- Escrever de forma clara e objetiva
+- Construir argumentos com evidências
+
+## Como ler um paper acadêmico
+
+## Estrutura de um artigo científico
+
+### Introdução
+
+### Revisão de literatura
+
+### Metodologia
+
+### Resultados
+
+### Conclusão
+
+## Dicas de escrita acadêmica
+
+## Exercícios

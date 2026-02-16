@@ -1,0 +1,33 @@
+# Desenho de Pesquisa {#desenho}
+
+## Objetivos do capítulo {-}
+
+- Compreender os elementos de um desenho de pesquisa
+- Formular questões de pesquisa e hipóteses testáveis
+- Distinguir desenhos experimentais e observacionais
+- Entender validade interna e externa
+- Conhecer as principais ameaças à inferência causal
+
+## O que é um desenho de pesquisa?
+
+## Da pergunta à hipótese
+
+### Questão de pesquisa
+
+### Hipóteses
+
+## Unidade de análise
+
+## Validade interna e externa
+
+## Desenhos de pesquisa
+
+### Estudos experimentais
+
+### Estudos observacionais
+
+### Estudos transversais e longitudinais
+
+## Causalidade: uma introdução
+
+## Exercícios

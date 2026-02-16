@@ -1,0 +1,35 @@
+# Introdução ao R e RStudio {#r-intro}
+
+## Objetivos do capítulo {-}
+
+- Instalar e configurar o R e o RStudio
+- Compreender a interface do RStudio
+- Trabalhar com objetos, vetores e data frames
+- Importar dados e realizar operações básicas
+- Conhecer o tidyverse
+
+## O que é o R?
+
+## Instalação do R e RStudio
+
+## A interface do RStudio
+
+## R como calculadora
+
+## Objetos e tipos de dados
+
+### Vetores
+
+### Data frames
+
+## Importando dados
+
+## Introdução ao tidyverse
+
+### O operador pipe (`|>`)
+
+### Manipulação com `dplyr`
+
+### Visualização com `ggplot2`
+
+## Exercícios

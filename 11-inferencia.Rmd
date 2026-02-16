@@ -1,0 +1,36 @@
+# (PART) Inferência Estatística {-}
+
+# Inferência Estatística: da Amostra à População {#inferencia}
+
+## Objetivos do capítulo {-}
+
+- Compreender a lógica da inferência estatística
+- Distinguir parâmetro, estimador e estimativa
+- Entender a distribuição amostral e o erro padrão
+- Conhecer propriedades desejáveis de estimadores (viés, consistência, eficiência)
+
+## A lógica da inferência
+
+## Parâmetros e estimadores
+
+### O que é um parâmetro?
+
+### O que é um estimador?
+
+### Estimativa pontual
+
+## Distribuição amostral
+
+### Simulando distribuições amostrais em R
+
+## Erro padrão
+
+## Propriedades dos estimadores
+
+### Viés
+
+### Consistência
+
+### Eficiência
+
+## Exercícios

@@ -1,0 +1,42 @@
+# Teste de Hipóteses e Poder do Teste {#teste}
+
+## Objetivos do capítulo {-}
+
+- Compreender a lógica dos testes de hipótese
+- Formular hipóteses nula e alternativa
+- Calcular e interpretar o p-valor
+- Entender erros do tipo I e tipo II
+- Calcular o poder de um teste
+- Conhecer as críticas ao uso mecânico de p-valores
+
+## A lógica do teste de hipótese
+
+## Hipótese nula e alternativa
+
+## Estatística de teste
+
+## O p-valor
+
+### Cálculo
+
+### Interpretação (e erros comuns)
+
+## Erros do Tipo I e Tipo II
+
+## Poder do teste
+
+### Fatores que afetam o poder
+
+### Tamanho do efeito
+
+## Testes para médias
+
+### Teste t para uma amostra
+
+### Teste t para duas amostras
+
+## Testes para proporções
+
+## Críticas ao uso de p-valores
+
+## Exercícios

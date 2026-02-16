@@ -1,0 +1,30 @@
+# (PART) Estatística Descritiva {-}
+
+# Amostragem {#amostragem}
+
+## Objetivos do capítulo {-}
+
+- Distinguir população e amostra
+- Conhecer os principais tipos de amostragem
+- Entender o viés de seleção e suas consequências
+- Aplicar conceitos de amostragem a exemplos reais (pesquisas eleitorais, surveys)
+
+## População e amostra
+
+## Tipos de amostragem
+
+### Amostragem aleatória simples
+
+### Amostragem estratificada
+
+### Amostragem por conglomerados
+
+### Amostragem por conveniência
+
+## Viés de seleção
+
+## Tamanho da amostra
+
+## Exemplo: pesquisas eleitorais no Brasil
+
+## Exercícios
