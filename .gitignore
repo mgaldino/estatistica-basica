@@ -49,4 +49,5 @@ po/*~
 rsconnect/
 
 # Intermediate knitr figure files (output goes to docs/)
-stat-basica_files/
+# Ignorar apenas na raiz, não dentro de docs/
+/stat-basica_files/
