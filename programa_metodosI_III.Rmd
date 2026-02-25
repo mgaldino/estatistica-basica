@@ -1,0 +1,93 @@
+---
+title: "Programa do Curso - FLS 5028"
+author: "Manoel"
+date: "2025-12-08"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Dados do Curso
+
+Curso: Métodos Quantitativos e Técnicas em Ciência Política I
+
+E-mail: mgaldino@usp.br
+
+Sala do professor: 2081
+
+# Objetivo
+
+O curso tem por objetivo ensinar as bases conceituais e práticas de um desenho de pesquisa quantitativa em Ciências Sociais, com foco em Ciência Política. Para tanto, apresenta os elementos que compõe uma investigação empírica, como a construção da questão de pesquisa, a elaboração conceitual e a mensuração de variáveis, a concepção de causalidade subjacente à grande parte da pesquisa quantitativa contemporânea e, principalmente, métodos e técnicas básicas de pesquisa quantitativa. Foco especial é concedido à aplicação prática na análise de dados, por meio do uso em laboratório de softwares estatísticos.
+
+Desta forma, a disciplina busca desenvolver habilidades, capacidades e criatividade para avaliação de trabalhos científicos e para a elaboração de trabalhos próprios, por meio de seleção de estratégias metodológicas apropriadas. O público-alvo são tanto alunos e alunas de graduação quanto de pós-graduação, com aplicação de ênfases diferenciadas para cada nível tanto em conteúdo quanto em avaliações.
+
+# Agenda Preliminar
+
+Aulas às quartas-feiras, início em 25/02/2026, com suspensão apenas na Semana Santa (30/03 a 04/04), quando não haverá aula no dia 01/04/2026.
+
+| Aula | Data       | Conteúdo                                                                 |
+|------|------------|--------------------------------------------------------------------------|
+| 1    | 25/02/2026 | Introdução: Variáveis, Teorias e Conceitos                              |
+| 2    | 04/03/2026 | Desenho de Pesquisa                                                     |
+| 3    | 11/03/2026 | Redação Acadêmica                                                       |
+| 4    | 18/03/2026 | Amostragem                                                              |
+| 5    | 25/03/2026 | Medidas de Tendência Central e Variabilidade                            |
+|      | 01/04/2026 | **Sem aula (Semana Santa / recesso USP)**                               |
+| 6    | 08/04/2026 | Probabilidade I                                                         |
+| 7    | 15/04/2026 | Probabilidade II                                                        |
+| 8    | 22/04/2026 | Correlação                                                              |
+| 9    | 29/04/2026 | Inferência Estatística                                                  |
+| 10   | 06/05/2026 | Teste de hipótese e Poder do teste                                      |
+| 11   | 13/05/2026 | Intervalo de Confiança                                                  |
+| 12   | 20/05/2026 | Produzindo relatórios reproduzíveis com Git e LaTeX                     |
+| 13   | 27/05/2026 | Análise de Texto                                                        |
+| 14   | 03/06/2026 | Funções e Repetições                                                    |
+| 15   | 10/06/2026 | Revisão                                                                 |
+| 16   | 17/06/2026 | Prova                                                                   |
+
+# Avaliação
+
+## Exercícios - 30% da nota
+
+Quase semanalmente haverá uma lista de exercício, a ser entregue na semana seguinte. Os exercícios não precisam estar corretos, mas deverão ser entregues demonstrando esforço em tentar resolver as questões. 
+
+A nota dos exercícios será computada contabilizando quantas listas cada aluno entregou -- demonstrando esforço. Se todas as listas foram entregues, a nota é 10. Se 90%, a nota é 9 e assim por diante.
+
+## Prova - 40% da nota
+
+Ao final do curso, haerá uma prova final, que será integralmente composta de uma selação dos exercícios feitos em casa. Isso significa que se todos os exercícios forem feitos, não haverá surpresa na prova.
+
+## Trabalho final - 30% da nota
+
+O curso também contará com um trabalho final, em que será avaliado fundamentalmente a compreensão de utilização do R para processar e analisar dados.
+
+## Nota Final
+
+A nota final do curso é o resultado de uma média entre os exercícios, a prova e o trabalho final, com pesos de 30%, 40% e 30%, respectivamente.
+
+
+# Referências
+
+Agresti, Alan; Finlay, Barbara (2012). Métodos Estatísticos para as Ciências Sociais. Porto Alegre: Penso.
+Angrist, Joshua; Pischke, Jörn-Steffen. (2015). Mastering ‘Metrics: The Path from Cause to Effect. Princeton: Princeton University Press.
+Booth, W. C., Colomb, G. G., & Williams, J. M. (2009). The craft of research. University of Chicago press.
+Brady, Henry E.; Collier, David (org.) (2010) Rethinking Social Inquiry: diverse tools, shared standards. New York: Rowman &amp; Littlefield Pub.
+Bussab, Wilton e Morettin, Pedro A. (2010) Estatística Básica. 6 ed. São Paulo: Saraiva.
+Casella, George e Berger, Roger (2010). Inferência Estatística. São Paulo: Cengage Learning.
+CEBRAP (2016). Métodos de pesquisa em Ciências Sociais: Bloco Quantitativo. Sesc São Paulo/CEBRAP.
+Della Porta, Donatella; Keating, Michael (org.) (2008) Approaches and Methodologies in the Social Sciences: A Pluralist Perspective. Cambridge University Press.
+Gelman, Andrew; Hill, Jennifer; Vehtari, Aki (2021). Regression and Other Stories. Cambridge University Press.
+Gerring, John (2012). Social Science Methodology: A Unified Framework. Cambridge University Press.
+Goertz, Gary (2006). Social Science Concepts – A User’s Guide. Princeton University Press.
+Goertz, Gary; Mahoney, James. (2012) A Tale of Two Cultures: Qualitative and Quantitative Research in the Social Sciences. Princeton University Press.
+Kellstedt, Paul M. e Whitten, Guy D. (2015) Fundamentos da Pesquisa em Ciência Política. São Paulo: Blucher.
+King, Gary, Robert O. Keohane, e Sidney Verba (1994). Designing Social Inquiry: Scientific Inference in Qualitative Research. Princeton, N.J.: Princeton University Press. Ou King, Gary, Keohane, Robert, e Verba, Sidney (2009). El Diseño de la Investigación Social. 3 ed. Madrid: Alianza.
+Moore, Will H.; Siegel, David A (2013). A Mathematics Course for Political and Social Research. Princeton, Princeton University Press.
+Morgan, Stephen; Winship, Christopher. (2007) Counterfactuals and Causal Inference: Methods and Principles for Social Research. Cambridge: Cambridge University Press.
+Seawright, Jason (2016). Multi-Method Social Science Combining Qualitative and Quantitative Tools. Cambridge University Press.
+Silva, Glauco Peres. (2018) Desenho de pesquisa. Brasília: Enap.
+Wickham, Hadley; Cetinkaya-Rundel, Mine; Grolemund, Garrett (2023). R for Data Science: Import, Tidy, Transform, Visualize, and Model Data. O&#39;Reilly Media. Ou Wickham, Hadley;
+Cetinkaya-Rundel, Mine; Grolemund, Garrett (2023). R para Ciência de Dados. O&#39;Reilly Media.
+

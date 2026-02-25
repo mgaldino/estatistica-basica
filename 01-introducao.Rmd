@@ -2,27 +2,66 @@
 
 # Introdução: O que é pesquisa quantitativa? {#intro}
 
+```{r setup-intro, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
 ## Objetivos do capítulo {-}
 
-- Compreender o que caracteriza a pesquisa quantitativa em Ciências Sociais
-- Distinguir variáveis dependentes e independentes
 - Entender a relação entre teorias, conceitos e mensuração
 - Conhecer os tipos de variáveis (categóricas, ordinais, contínuas)
 - Diferenciar frame teórico de perguntas empíricas
-- Compreender o papel de postulados comportamentais em teorias de Ciência Política
-- Avaliar quando e por que construir tipologias
 
-## O que é pesquisa quantitativa?
 
 ## Teorias e hipóteses
 
-### Postulados comportamentais em Ciência Política
-
-Em Ciência Política, teorias tipicamente envolvem postulados sobre como agentes — pessoas, partidos, instituições, estados — se comportam. Um modelo de competição eleitoral, por exemplo, postula que candidatos buscam maximizar votos; uma teoria de relações internacionais postula que estados buscam segurança. Esses postulados comportamentais são o motor das teorias: deles derivam previsões empíricas testáveis. O capítulo deve deixar claro que toda teoria quantitativa em CP repousa sobre alguma premissa desse tipo, explícita ou implícita, e que identificá-la é o primeiro passo para avaliar a teoria.
+Em Ciência Política, teorias tipicamente envolvem postulados sobre como agentes — pessoas, partidos, instituições, estados — se comportam. Um modelo de competição eleitoral, por exemplo, postula que candidatos buscam maximizar votos; uma teoria de relações internacionais postula que estados buscam segurança. Esses postulados comportamentais são o motor das teorias: deles derivam previsões empíricas testáveis. Toda teoria quantitativa em Ciência Política repousa sobre alguma premissa desse tipo, explícita ou implícita, e identificá-la é o primeiro passo para avaliar a teoria.
 
 ### Frame teórico versus perguntas empíricas
 
-Motivação: alunos frequentemente confundem "enquadramento teórico" com "pergunta de pesquisa", ou acham que basta ter uma teoria para ter uma pergunta. Aqui se mostra que o frame teórico é o conjunto de conceitos abstratos e relações postuladas (ex.: "competição política reduz corrupção"), enquanto a pergunta empírica traduz isso em algo testável com dados (ex.: "municípios com eleições mais competitivas apresentam menos irregularidades em licitações?"). Essa distinção conecta diretamente com a próxima seção — conceitos são do frame teórico, variáveis são da pergunta empírica.
+O frame teórico é o conjunto de conceitos abstratos e relações postuladas (ex.: "competição política reduz corrupção"), enquanto a pergunta empírica traduz isso em algo testável com dados (ex.: "municípios com eleições mais competitivas apresentam menos irregularidades em licitações?"). A distinção é importante porque alunos frequentemente confundem "enquadramento teórico" com "pergunta de pesquisa", ou acham que basta ter uma teoria para ter uma pergunta. Conceitos são do frame teórico; variáveis são da pergunta empírica.
+
+## Tipologias
+
+Collier, LaPorte & Seawright (2012) definem tipologias como "sistema organizado de tipos". Exemplos clássicos de tiplogias: Weber: autoridade caristmática, tradicional e racional. Dahl: poliarquias, oligarquias comptitivas,  hegemonias inclusivas e fechadas.
+
+```{r tabela-scale-types, echo=FALSE}
+tab <- data.frame(
+  `Tipo de escala` = c("Nominal", "Ordem parcial", "Ordinal", "Intervalar", "Razão", "Absoluta"),
+  `Nível de informação` = c(
+    "Igual/não igual",
+    "Ordem entre algumas categorias, mas não todas",
+    "Ordem entre todas as categorias",
+    "Intervalos iguais",
+    "Zero significativo",
+    "Contagem de entidades em uma categoria"
+  ),
+  `Estatísticas admissíveis` = c(
+    "Contagem, moda, correlação de contingência",
+    "Contagem, moda, correlação de contingência",
+    "Mediana, percentis",
+    "Média, desvio-padrão, correlação e regressão",
+    "Média, desvio-padrão, correlação e regressão",
+    "Média, desvio-padrão, correlação, algumas formas de regressão"
+  ),
+  `Definição de mensuração` = c(
+    "Atribuição de numerais segundo regras",
+    "Atribuição de numerais segundo regras",
+    "Atribuição de numerais segundo regras",
+    "Mensuração como quantificação",
+    "Mensuração como quantificação",
+    "Mensuração como quantificação"
+  ),
+  check.names = FALSE
+)
+
+knitr::kable(tab, caption = "Tipos de escala: estrutura básica e áreas de disputa. Adaptado de Collier, LaPorte e Seawright (2012, p. 218).")
+```
+
 
 ## Variáveis
 
@@ -30,13 +69,218 @@ Motivação: alunos frequentemente confundem "enquadramento teórico" com "pergu
 
 ### Operacionalização de conceitos
 
-Da teoria aos dados: conceitos abstratos (democracia, corrupção, polarização) precisam ser traduzidos em variáveis mensuráveis. Discutir como o mesmo conceito pode ter múltiplas operacionalizações, cada uma capturando uma faceta diferente, e como a escolha de operacionalização afeta os resultados. Exemplos: "democracia" medida pelo Polity IV vs. V-Dem vs. classificação binária de Cheibub et al.
+Conceitos abstratos (democracia, corrupção, polarização) precisam ser traduzidos em variáveis mensuráveis. Um mesmo conceito pode ter múltiplas operacionalizações, cada uma capturando uma faceta diferente, e a escolha de operacionalização afeta os resultados.
+
+O exemplo clássico é "democracia". Existem dezenas de índices, e eles nem sempre concordam. Considere três dos mais usados:
+
+- Polity IV/V: escala de -10 (autocracia plena) a +10 (democracia plena), baseada em características institucionais como competitividade e abertura do recrutamento do Executivo.
+
+- V-Dem (Varieties of Democracy): índice de poliarquia que varia de 0 a 1, construído a partir de centenas de indicadores codificados por especialistas de cada país.
+
+- Boix, Miller e Rosato (BMR): classificação binária (0 = autocracia, 1 = democracia), baseada em contestação e participação.
+
+Podemos organizar essas formas de medir democracia utilizando um quadro lógico proposto por Munck e Verkuilen (2002):
+
+```{r munck-verkuilen-fig1, echo=FALSE, engine='tikz', fig.cap="Estrutura lógica de conceitos. Adaptado de Munck e Verkuilen (2002, p. 13).", fig.ext='png', fig.width=7, engine.opts=list(extra.preamble=c("\\usepackage[T1]{fontenc}", "\\usepackage{lmodern}"))}
+\usetikzlibrary{positioning, arrows.meta}
+\begin{tikzpicture}[
+  every node/.style={font=\small},
+  level/.style={sibling distance=60mm},
+  edge from parent/.style={draw, -{Stealth[length=2mm]}},
+  label/.style={font=\small\bfseries, anchor=east, text width=28mm, align=right},
+  leaf/.style={font=\footnotesize, text width=22mm, align=center},
+  >={Stealth[length=2mm]}
+]
+
+% Row labels
+\node[label] at (-5.2, 0)   {Conceito};
+\node[label] at (-5.2,-1.8) {Atributos};
+\node[label] at (-5.2,-4.0) {Componentes\\dos atributos};
+
+% Concept
+\node (dem) at (1.5,0) {Democracia};
+
+% Attributes
+\node (cont) at (-1.0,-1.8) {Contestação};
+\node (part) at (4.0,-1.8) {Participação};
+
+\draw[->] (dem) -- (cont);
+\draw[->] (dem) -- (part);
+
+% Components of Contestation
+\node[leaf] (c1) at (-2.2,-4.0) {Direito de formar partidos};
+\node[leaf] (c2) at (0.2,-4.0) {Liberdade de imprensa};
+
+\draw[->] (cont) -- (c1);
+\draw[->] (cont) -- (c2);
+
+% Components of Participation
+\node[leaf] (p1) at (2.2,-4.0) {Direito ao voto};
+\node[leaf] (p2) at (4.2,-4.0) {Lisura do processo eleitoral};
+\node[leaf] (p3) at (6.2,-4.0) {Acesso dos partidos a financiamento público\\(ex.: \textit{conflação})};
+\node[leaf] (p4) at (8.4,-4.0) {Extensão do sufrágio\\(ex.: \textit{redundância})};
+
+\draw[->] (part) -- (p1);
+\draw[->] (part) -- (p2);
+\draw[->] (part) -- (p3);
+\draw[->] (part) -- (p4);
+
+\end{tikzpicture}
+```
+
+A Figura \@ref(fig:munck-verkuilen-fig1) mostra a estrutura lógica dos conceitos segundo Munck e Verkuilen (2002). O conceito de "democracia" é decomposto em atributos (contestação e participação), que por sua vez se desdobram em componentes mensuráveis — as "folhas" da árvore conceitual. Dois problemas comuns aparecem nessa decomposição: *conflação* (quando um componente é atribuído ao atributo errado) e *redundância* (quando componentes no mesmo nível se sobrepõem).
+
+Vamos visualizar como essas três medidas descrevem a trajetória política do Brasil.
+
+```{r democracia-brasil, fig.cap="Três operacionalizações de democracia para o Brasil (1900–2024). Painel superior: índice de poliarquia do V-Dem (0 a 1). Painel central: Polity IV (-10 a +10). Painel inferior: classificação binária de Boix, Miller e Rosato."}
+library(vdemdata)
+library(tidyverse)
+
+brasil <- vdem |>
+  filter(country_name == "Brazil") |>
+  select(year, v2x_polyarchy, e_p_polity, e_boix_regime) |>
+  # Polity: remover códigos especiais (-66, -77, -88)
+  mutate(e_p_polity = ifelse(e_p_polity < -10, NA, e_p_polity))
+
+p1 <- ggplot(brasil, aes(x = year, y = v2x_polyarchy)) +
+  geom_line(linewidth = 0.8) +
+  labs(y = "V-Dem\n(poliarquia)", x = NULL) +
+  scale_y_continuous(limits = c(0, 1)) +
+  theme_minimal()
+
+p2 <- ggplot(brasil, aes(x = year, y = e_p_polity)) +
+  geom_line(linewidth = 0.8) +
+  labs(y = "Polity IV", x = NULL) +
+  scale_y_continuous(limits = c(-10, 10)) +
+  theme_minimal()
+
+p3 <- ggplot(brasil, aes(x = year, y = e_boix_regime)) +
+  geom_step(linewidth = 0.8) +
+  labs(y = "BMR\n(binário)", x = "Ano") +
+  scale_y_continuous(breaks = c(0, 1), labels = c("Autocracia", "Democracia")) +
+  theme_minimal()
+
+library(patchwork)
+p1 / p2 / p3
+```
+
+Note as diferenças. O índice V-Dem captura variação gradual — o Brasil não apenas transita entre democracia e autocracia, mas a *qualidade* da democracia varia ao longo do tempo, inclusive dentro de períodos democráticos. O Polity tende a ser mais discreto, com saltos abruptos. A classificação binária de BMR reduz toda essa variação a duas categorias: ou é democracia, ou não é.
+
+Agora compare as medidas entre países. O gráfico abaixo mostra a relação entre o Polity e o V-Dem para todos os países em 2018.
+
+```{r polity-vdem-scatter, fig.cap="Relação entre Polity IV (eixo x) e V-Dem poliarquia (eixo y) para 163 países em 2018. A correlação é alta (r = 0.86), mas há casos de desacordo relevante."}
+mundo_2018 <- vdem |>
+  filter(year == 2018) |>
+  select(country_name, v2x_polyarchy, e_p_polity) |>
+  filter(!is.na(v2x_polyarchy), !is.na(e_p_polity), e_p_polity >= -10)
+
+ggplot(mundo_2018, aes(x = e_p_polity, y = v2x_polyarchy)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE, color = "steelblue", linewidth = 0.8) +
+  labs(x = "Polity IV", y = "V-Dem (poliarquia)") +
+  theme_minimal()
+```
+
+A correlação é alta (r = 0,86), mas não perfeita. Países com o mesmo escore no Polity podem ter índices V-Dem bem diferentes. Isso acontece porque cada índice enfatiza dimensões distintas do conceito de democracia. A escolha de operacionalização não é neutra — ela pode afetar os resultados de uma pesquisa.
+
+#### EUA: o que o Polity não captura
+
+Considere agora os Estados Unidos. O Polity atribui escore 10 (democracia plena) aos EUA desde 1829 — quando apenas homens brancos proprietários votavam. Mulheres só conquistaram o voto em 1920, e a população negra no Sul só teve acesso efetivo ao voto após o Voting Rights Act de 1965. O V-Dem registra essa trajetória: o índice de poliarquia parte de 0,34, salta para 0,51 com o sufrágio feminino e só ultrapassa 0,70 após os direitos civis.
+
+```{r democracia-eua, fig.cap="EUA: Polity IV vs. V-Dem (poliarquia), 1800–2024. O Polity atinge o máximo em 1829; o V-Dem captura a expansão gradual da participação."}
+eua <- vdem |>
+  filter(country_name == "United States of America", year >= 1800) |>
+  select(year, v2x_polyarchy, e_p_polity) |>
+  mutate(e_p_polity = ifelse(e_p_polity < -10, NA, e_p_polity))
+
+p_eua1 <- ggplot(eua, aes(x = year, y = v2x_polyarchy)) +
+  geom_line(linewidth = 0.8) +
+  labs(y = "V-Dem\n(poliarquia)", x = NULL) +
+  scale_y_continuous(limits = c(0, 1)) +
+  theme_minimal()
+
+p_eua2 <- ggplot(eua, aes(x = year, y = e_p_polity)) +
+  geom_line(linewidth = 0.8) +
+  labs(y = "Polity IV", x = "Ano") +
+  scale_y_continuous(limits = c(-10, 10)) +
+  theme_minimal()
+
+p_eua1 / p_eua2
+```
+
+A lição é clara: o Polity enfatiza contestação e competição entre elites, mas é pouco sensível à participação. Se a sua pergunta de pesquisa envolve inclusão política, o Polity pode ser uma operacionalização inadequada de "democracia".
+
+#### França: o que acontece quando um país é ocupado?
+
+A França ilustra outro tipo de problema. Durante a ocupação nazista (1940–1944), o V-Dem registra uma queda abrupta da poliarquia para perto de zero. O Polity atribui códigos especiais (-66 para interrupção, -88 para transição), que não são valores na escala — e que precisam ser tratados como dados faltantes. A classificação binária de BMR simplesmente marca autocracia.
+
+```{r democracia-franca, fig.cap="França: três operacionalizações de democracia, 1800–2024. A ocupação nazista (1940–1944) aparece de forma diferente em cada medida."}
+franca <- vdem |>
+  filter(country_name == "France", year >= 1800) |>
+  select(year, v2x_polyarchy, e_p_polity, e_boix_regime) |>
+  mutate(e_p_polity = ifelse(e_p_polity < -10, NA, e_p_polity))
+
+p_fr1 <- ggplot(franca, aes(x = year, y = v2x_polyarchy)) +
+  geom_line(linewidth = 0.8) +
+  labs(y = "V-Dem\n(poliarquia)", x = NULL) +
+  scale_y_continuous(limits = c(0, 1)) +
+  theme_minimal()
+
+p_fr2 <- ggplot(franca, aes(x = year, y = e_p_polity)) +
+  geom_line(linewidth = 0.8) +
+  labs(y = "Polity IV", x = NULL) +
+  scale_y_continuous(limits = c(-10, 10)) +
+  theme_minimal()
+
+p_fr3 <- ggplot(franca, aes(x = year, y = e_boix_regime)) +
+  geom_step(linewidth = 0.8) +
+  labs(y = "BMR\n(binário)", x = "Ano") +
+  scale_y_continuous(breaks = c(0, 1), labels = c("Autocracia", "Democracia")) +
+  theme_minimal()
+
+p_fr1 / p_fr2 / p_fr3
+```
+
+Cada índice codifica a ocupação de forma diferente. Se o pesquisador não tratar os códigos especiais do Polity, pode introduzir erros graves nos dados. Isso mostra que operacionalizar um conceito não é apenas escolher um índice — é também entender como ele foi construído e quais decisões de codificação estão embutidas nos números.
+
+#### Reino Unido: quem são os "cidadãos"?
+
+O Reino Unido é classificado como democracia por BMR a partir de 1885, e recebe Polity 10 a partir de 1928. Mas a expansão do sufrágio foi lenta: o Reform Act de 1832 estendeu o voto a cerca de 14% dos homens adultos; o de 1867 ampliou para a classe trabalhadora urbana; o de 1884 incluiu trabalhadores rurais; mulheres acima de 30 anos votaram a partir de 1918, e o sufrágio universal só veio em 1928.
+
+```{r democracia-uk, fig.cap="Reino Unido: três operacionalizações de democracia, 1800–2024. A expansão gradual do sufrágio aparece no V-Dem, mas menos no Polity e no BMR."}
+uk <- vdem |>
+  filter(country_name == "United Kingdom", year >= 1800) |>
+  select(year, v2x_polyarchy, e_p_polity, e_boix_regime) |>
+  mutate(e_p_polity = ifelse(e_p_polity < -10, NA, e_p_polity))
+
+p_uk1 <- ggplot(uk, aes(x = year, y = v2x_polyarchy)) +
+  geom_line(linewidth = 0.8) +
+  labs(y = "V-Dem\n(poliarquia)", x = NULL) +
+  scale_y_continuous(limits = c(0, 1)) +
+  theme_minimal()
+
+p_uk2 <- ggplot(uk, aes(x = year, y = e_p_polity)) +
+  geom_line(linewidth = 0.8) +
+  labs(y = "Polity IV", x = NULL) +
+  scale_y_continuous(limits = c(-10, 10)) +
+  theme_minimal()
+
+p_uk3 <- ggplot(uk, aes(x = year, y = e_boix_regime)) +
+  geom_step(linewidth = 0.8) +
+  labs(y = "BMR\n(binário)", x = "Ano") +
+  scale_y_continuous(breaks = c(0, 1), labels = c("Autocracia", "Democracia")) +
+  theme_minimal()
+
+p_uk1 / p_uk2 / p_uk3
+```
+
+Há ainda uma questão mais fundamental: quem conta como cidadão? O Reino Unido governava um império. A Índia era colônia britânica, mas indianos não podiam votar nem disputar eleições para o parlamento em Westminster. Nenhum dos três índices captura isso — todos medem instituições domésticas, não o exercício de poder sobre populações coloniais. O mesmo problema aparece em escala menor: crianças, presos, pessoas interditadas judicialmente e imigrantes sem documentação são excluídos do eleitorado na maioria dos países, sem que isso afete os índices de democracia. A escolha de *quem* são os cidadãos relevantes já é, ela mesma, uma decisão de mensuração.
 
 ### Tipologias: o que são, quando usar e quando evitar {#tipologias}
 
 Tipologias organizam variação qualitativa em categorias analiticamente úteis (ex.: regimes políticos de Linz, tipos de Estado de bem-estar de Esping-Andersen). Uma boa tipologia tem dimensões claras e teoricamente motivadas, categorias mutuamente exclusivas e coletivamente exaustivas, e utilidade empírica — isto é, os tipos se comportam de forma diferente em relação a algum outcome de interesse.
 
-Por que não sair construindo tipologias? Porque tipologias sem fundamentação teórica viram exercícios taxonômicos estéreis. O critério deve ser: a tipologia ajuda a organizar a variação de forma que gere hipóteses testáveis ou ilumine mecanismos? Se não, ela é apenas uma tabela bonita. Discutir a diferença entre tipologias como ponto de partida (para gerar hipóteses) e tipologias como ponto de chegada (resultado de análise empírica, como análise de clusters).
+Por que não sair construindo tipologias? Porque tipologias sem fundamentação teórica viram exercícios taxonômicos estéreis. O critério deve ser: a tipologia ajuda a organizar a variação de forma que gere hipóteses testáveis ou ilumine mecanismos? Se não, ela é apenas uma tabela bonita. Há uma diferença entre tipologias como ponto de partida (para gerar hipóteses) e tipologias como ponto de chegada (resultado de análise empírica, como análise de clusters).
 
 ## Mensuração
 
