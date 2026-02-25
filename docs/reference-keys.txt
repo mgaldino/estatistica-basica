@@ -230,12 +230,3 @@ tabelas
 distribuição-normal-padrão-1
 distribuição-t-de-student
 distribuição-qui-quadrado
-dados-do-curso
-objetivo
-agenda-preliminar
-avaliação
-exercícios---30-da-nota
-prova---40-da-nota
-trabalho-final---30-da-nota
-nota-final
-referências

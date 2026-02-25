@@ -1,6 +1,25 @@
 book_filename: "stat-basica"
 output_dir: docs
 delete_merged_file: true
+rmd_files:
+  - index.Rmd
+  - 01-introducao.Rmd
+  - 02-R-e-RStudio.Rmd
+  - 03-reprodutibilidade.Rmd
+  - 04-desenho-pesquisa.Rmd
+  - 05-redacao-academica.Rmd
+  - 06-amostragem.Rmd
+  - 07-tendencia-central.Rmd
+  - 08-correlacao.Rmd
+  - 09-probabilidade-I.Rmd
+  - 10-probabilidade-II.Rmd
+  - 11-inferencia.Rmd
+  - 12-teste-hipotese.Rmd
+  - 13-intervalo-confianca.Rmd
+  - 14-analise-texto.Rmd
+  - 15-funcoes-repeticoes.Rmd
+  - 16-apendice-matematica.Rmd
+  - 17-tabelas-distribuicoes.Rmd
 edit: https://github.com/mgaldino/stat-basica/edit/main/%s
 view: https://github.com/mgaldino/stat-basica/blob/main/%s
 language:
