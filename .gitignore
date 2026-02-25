@@ -47,3 +47,6 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# Intermediate knitr figure files (output goes to docs/)
+stat-basica_files/

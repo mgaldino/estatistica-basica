@@ -1,5 +1,5 @@
 ---
-title: "Programa do Curso - FLS 5028"
+title: "Programa do Curso - FLS 5028/FLP 0406"
 author: "Manoel"
 date: "2025-12-08"
 output: pdf_document
@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Dados do Curso
 
-Curso: Métodos Quantitativos e Técnicas em Ciência Política I
+Curso: Métodos Quantitativos e Técnicas em Ciência Política I (Pós) e Métodos e Técnicas de Pesquisa em Ciência Política (Métodos III - Graduação)
 
 E-mail: mgaldino@usp.br
 

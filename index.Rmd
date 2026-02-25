@@ -32,7 +32,7 @@ O livro está organizado em cinco partes:
 
 Não é necessário conhecimento prévio de estatística ou programação. O Capítulo 2 oferece uma introdução ao R e ao RStudio, e o Capítulo 3 aborda as ferramentas de reprodutibilidade que serão utilizadas.
 
-```{r setup, include=FALSE}
+```{r setup-index, include=FALSE}
 knitr::opts_chunk$set(
   echo = TRUE,
   message = FALSE,

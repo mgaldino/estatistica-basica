@@ -8,6 +8,10 @@ knitr::opts_chunk$set(
   message = FALSE,
   warning = FALSE
 )
+
+# Preamble para chunks tikz (fontes Latin Modern)
+options(tikzDocumentDeclaration = "\\documentclass{article}")
+tikz_preamble <- c("\\usepackage[T1]{fontenc}", "\\usepackage{lmodern}")
 ```
 
 ## Objetivos do capítulo {-}
@@ -25,7 +29,7 @@ Em Ciência Política, teorias tipicamente envolvem postulados sobre como agente
 
 O frame teórico é o conjunto de conceitos abstratos e relações postuladas (ex.: "competição política reduz corrupção"), enquanto a pergunta empírica traduz isso em algo testável com dados (ex.: "municípios com eleições mais competitivas apresentam menos irregularidades em licitações?"). A distinção é importante porque alunos frequentemente confundem "enquadramento teórico" com "pergunta de pesquisa", ou acham que basta ter uma teoria para ter uma pergunta. Conceitos são do frame teórico; variáveis são da pergunta empírica.
 
-## Tipologias
+## Tipologias A
 
 Collier, LaPorte & Seawright (2012) definem tipologias como "sistema organizado de tipos". Exemplos clássicos de tiplogias: Weber: autoridade caristmática, tradicional e racional. Dahl: poliarquias, oligarquias comptitivas,  hegemonias inclusivas e fechadas.
 
@@ -127,6 +131,8 @@ Podemos organizar essas formas de medir democracia utilizando um quadro lógico 
 
 \end{tikzpicture}
 ```
+
+
 
 A Figura \@ref(fig:munck-verkuilen-fig1) mostra a estrutura lógica dos conceitos segundo Munck e Verkuilen (2002). O conceito de "democracia" é decomposto em atributos (contestação e participação), que por sua vez se desdobram em componentes mensuráveis — as "folhas" da árvore conceitual. Dois problemas comuns aparecem nessa decomposição: *conflação* (quando um componente é atribuído ao atributo errado) e *redundância* (quando componentes no mesmo nível se sobrepõem).
 
