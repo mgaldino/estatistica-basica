@@ -59,6 +59,20 @@ Dentro da pesquisa explicativa, @toshkov2016 identifica três objetivos distinto
 
 ## Da pergunta à hipótese
 
+### Objetivo geral, objetivos específicos e pergunta de pesquisa
+
+Antes de tudo, é importante distinguir três elementos que aparecem em projetos de pesquisa e que frequentemente são confundidos:
+
+**Objetivo geral** — É a meta ampla do trabalho: o que você quer alcançar. Geralmente começa com um verbo no infinitivo e declara uma *intenção*. Exemplo: "Investigar o efeito de desastres naturais na accountability eleitoral de incumbentes."
+
+**Objetivos específicos** — São os desdobramentos operacionais do objetivo geral: as etapas concretas que, somadas, permitem alcançá-lo. Exemplo: (1) "Mapear a ocorrência de desastres naturais nos municípios brasileiros entre 2004 e 2020"; (2) "Estimar o efeito causal dos desastres na votação dos prefeitos incumbentes"; (3) "Comparar os efeitos entre municípios com diferentes níveis de capacidade estatal."
+
+**Pergunta de pesquisa** — É a *interrogação* que a pesquisa responde. Diferente dos objetivos (que são declarações de intenção), a pergunta é uma questão aberta cuja resposta é desconhecida *a priori*. Exemplo: "Desastres naturais reduzem a votação de prefeitos incumbentes?"
+
+A relação entre eles é hierárquica: o objetivo geral define o propósito da investigação; os objetivos específicos operacionalizam esse propósito em etapas; e a pergunta de pesquisa formula o problema como uma interrogação cuja resposta organiza todo o argumento.
+
+Na prática acadêmica em ciência política, a **pergunta de pesquisa** é o elemento central — é ela que organiza o argumento, determina a estratégia empírica e define a contribuição. Objetivos gerais e específicos são mais comuns em projetos de pesquisa, dissertações e teses (especialmente por exigência formal de programas de pós-graduação e agências de fomento), mas artigos publicados em revistas internacionais raramente os declaram explicitamente. O que aparece no artigo é a pergunta e a **tese** — a resposta provisória à pergunta, que será defendida ao longo do trabalho.
+
 ### Questão de pesquisa
 
 A questão de pesquisa é o ponto de partida de qualquer investigação. Uma boa pergunta de pesquisa deve ser [@toshkov2016; @samii2023; @nikolov2023]:
@@ -288,6 +302,115 @@ Além de estimar *que* X causa Y (o efeito causal), frequentemente queremos sabe
 
 Um erro comum é tratar co-ocorrência temporal como evidência de mecanismo. Se X acontece, depois M acontece, depois Y acontece, isso não prova que M é o mecanismo — outros fatores contemporâneos podem ser responsáveis. Evidência de mecanismo requer mostrar que: (a) o mediador proposto de fato responde ao tratamento, (b) o mediador de fato afeta o resultado, e (c) fontes alternativas do mediador foram descartadas.
 
+## Desenho de projetos de políticas públicas {#policy}
+
+As seções anteriores trataram do desenho de *pesquisa* — investigações cujo objetivo é produzir conhecimento. Mas cientistas políticos também trabalham com o desenho de *projetos de políticas públicas* (*policy*) — intervenções cujo objetivo é resolver um problema do mundo real. Embora compartilhem ferramentas, as duas atividades têm lógicas distintas.
+
+### O puzzle em policy
+
+Na pesquisa acadêmica, o ponto de partida é um **puzzle intelectual**: um fenômeno que a teoria existente não explica. Em projetos de policy, o ponto de partida é um **problema prático**: uma situação indesejável que se quer mudar. A proposta não é uma hipótese a ser testada, mas uma **intervenção** a ser implementada.
+
+Compare:
+
+- **Pesquisa**: "Por que a evasão escolar é maior em municípios com menor renda per capita?" → hipótese → teste empírico → contribuição ao conhecimento.
+- **Policy**: "A evasão escolar no município X é de 15%, o dobro da média estadual." → diagnóstico → intervenção (programa de bolsas, busca ativa) → avaliação de resultados.
+
+Na pesquisa, o sucesso é medido pela qualidade da evidência e da contribuição teórica. Em policy, o sucesso é medido pela **mudança no problema** que a intervenção produziu.
+
+### Teoria da mudança
+
+Antes de detalhar as atividades de um projeto, é preciso explicitar a **teoria da mudança** (*theory of change*): a narrativa lógica que conecta o problema diagnosticado à mudança desejada, passando pelas ações propostas. A teoria da mudança responde à pergunta: "por que acreditamos que *estas* atividades vão produzir *aqueles* resultados?"
+
+Uma teoria da mudança não é um modelo causal formal, mas sim uma explicitação das **suposições** que sustentam o projeto. Por exemplo, um programa de busca ativa escolar assume que: (1) as famílias não estão matriculando os filhos por falta de informação ou acesso, não por decisão consciente; (2) o contato direto com assistentes sociais pode remover essas barreiras; (3) a matrícula levará à frequência escolar efetiva. Se qualquer uma dessas suposições estiver errada, o programa pode entregar todos os seus produtos (visitas realizadas) sem alcançar nenhum resultado (redução da evasão).
+
+Explicitar a teoria da mudança é valioso por três razões [@worldbank2012]:
+
+1. **Força clareza**: obriga a equipe a articular *por que* o projeto deve funcionar, não apenas *o que* ele fará.
+2. **Identifica suposições críticas**: cada elo da cadeia depende de suposições que podem ser testadas e monitoradas. Se uma suposição falha, o projeto pode ser ajustado antes de desperdiçar recursos.
+3. **Permite avaliação**: sem uma teoria da mudança, é impossível saber se o projeto falhou porque a teoria estava errada ou porque a implementação foi ruim.
+
+### A cadeia de resultados: insumos, atividades, produtos, resultados e impacto
+
+A teoria da mudança se operacionaliza em uma **cadeia de resultados** (*results chain*) que conecta o que o projeto faz ao problema que ele pretende resolver [@worldbank2012; @gertler2016]. Os elos dessa cadeia são:
+
+**Insumos (*inputs*)** — Os recursos necessários para executar o projeto: dinheiro, pessoal, equipamentos, tempo. Exemplo: R$ 500 mil do orçamento municipal, 10 assistentes sociais, 3 veículos.
+
+**Atividades (*activities*)** — As ações concretas realizadas pelo projeto. Exemplo: visitas domiciliares a famílias de alunos evadidos, reuniões com diretores de escola, oferta de reforço escolar.
+
+**Produtos (*outputs*)** — Os entregáveis diretos e mensuráveis das atividades. Exemplo: 200 famílias visitadas, 15 reuniões realizadas, 50 alunos matriculados no reforço. Produtos são inteiramente sob controle do projeto — se a equipe fez as visitas, o produto foi entregue, independentemente de qualquer efeito posterior.
+
+**Resultados (*outcomes*)** — As mudanças de comportamento, conhecimento ou condição que o projeto visa produzir na população-alvo. Exemplo: redução da taxa de evasão de 15% para 10%, aumento da frequência escolar. Resultados dependem não apenas do projeto, mas também da resposta dos beneficiários — já não estão inteiramente sob controle da equipe.
+
+**Impacto (*impact*)** — A mudança de longo prazo na condição social que o projeto contribui para alcançar. Exemplo: aumento da escolaridade média e da renda futura dos jovens do município. Impacto envolve atribuição causal — a pergunta "essa mudança foi causada pelo projeto ou teria ocorrido de qualquer forma?" — e por isso é o elo mais difícil de medir.
+
+A distinção entre produtos e resultados é crucial e frequentemente confundida. Um programa que distribui 10.000 livros didáticos (produto) não necessariamente melhora o aprendizado (resultado). Um programa que realiza 500 consultas médicas (produto) não necessariamente reduz a mortalidade infantil (resultado). **Entregar produtos é condição necessária, mas não suficiente, para alcançar resultados.**
+
+### Objetivos SMART
+
+Em projetos de policy, os objetivos devem ser **SMART** — um acrônimo que sintetiza cinco critérios:
+
+- **S — Específico (*Specific*)**: O objetivo deve dizer exatamente *o que* será alcançado, *para quem* e *onde*. "Melhorar a educação" não é específico. "Reduzir a taxa de evasão escolar entre alunos do ensino fundamental no município de Caruaru" é específico.
+
+- **M — Mensurável (*Measurable*)**: Deve ser possível medir se o objetivo foi alcançado. Isso exige um **indicador** claro. "Melhorar a qualidade do ensino" não é mensurável sem definir o que conta como qualidade. "Aumentar a nota média no IDEB em 0,5 pontos" é mensurável.
+
+- **A — Alcançável (*Achievable*)**: O objetivo deve ser realista dados os recursos, o prazo e o contexto. Um projeto municipal com orçamento de R$ 100 mil não pode se propor a eliminar a pobreza no estado.
+
+- **R — Relevante (*Relevant*)**: O objetivo deve estar conectado ao problema diagnosticado. Se o problema é evasão escolar, o objetivo deve tratar de evasão, não de merenda (a menos que haja evidência de que merenda afeta evasão).
+
+- **T — Temporal (*Time-bound*)**: O objetivo deve ter um prazo definido. "Reduzir a evasão" não tem prazo. "Reduzir a evasão em 5 pontos percentuais até dezembro de 2027" tem prazo.
+
+Compare:
+
+- **Objetivo não-SMART**: "Combater a violência urbana."
+- **Objetivo SMART**: "Reduzir o número de homicídios no bairro da Liberdade, em Salvador, em 20% em relação a 2025, até dezembro de 2027."
+
+### Indicadores e metas
+
+Um **indicador** é uma medida observável que permite acompanhar o progresso em direção ao objetivo. Bons indicadores são:
+
+- **Válidos**: medem o que pretendem medir. A taxa de registro de boletins de ocorrência é um indicador imperfeito de criminalidade, porque mudanças na taxa podem refletir mudanças na propensão a registrar ocorrências, não na criminalidade real.
+- **Confiáveis**: produzem a mesma medida quando aplicados nas mesmas condições.
+- **Disponíveis**: podem ser obtidos com custo e prazo razoáveis.
+
+Para exemplos de indicadores por área temática (educação, saúde, governança, gênero, transparência, entre outros), uma referência útil é o site BetterEvaluation (https://www.betterevaluation.org), que organiza catálogos de indicadores qualitativos e quantitativos por setor, voltados para organizações da sociedade civil e formuladores de políticas.
+
+Uma **meta** é o valor numérico que se espera alcançar para cada indicador em um prazo definido. Exemplo: indicador = taxa de evasão escolar; meta = reduzir de 15% para 10% até dezembro de 2027.
+
+Todo projeto de policy deve especificar indicadores e metas para cada nível da cadeia de resultados:
+
+| Nível | Exemplo de indicador | Exemplo de meta |
+|-------|---------------------|-----------------|
+| Produto | N° de famílias visitadas | 200 famílias até junho de 2027 |
+| Resultado | Taxa de evasão escolar | Redução de 15% para 10% até dez/2027 |
+| Impacto | Escolaridade média dos jovens | Aumento de 0,5 ano até 2030 |
+
+### Avaliação: monitoramento, avaliação de resultados e avaliação de impacto
+
+Uma vez implementado o projeto, como saber se ele funcionou? Existem três níveis de avaliação, com graus crescentes de ambição:
+
+**Monitoramento** — Acompanha se as atividades estão sendo executadas e os produtos estão sendo entregues conforme planejado. Responde à pergunta: "estamos fazendo o que dissemos que faríamos?" É o nível mais básico e deve ser contínuo. Se o projeto previa 200 visitas domiciliares e fez apenas 50, o monitoramento detecta o problema antes que seja tarde.
+
+**Avaliação de resultados** — Verifica se os resultados esperados estão ocorrendo. Responde à pergunta: "a situação mudou?" Compara indicadores antes e depois da intervenção. Exemplo: a taxa de evasão caiu de 15% para 10% após o programa. Avaliação de resultados é necessária, mas insuficiente para atribuir a mudança ao projeto — a evasão pode ter caído por outros motivos (melhora econômica, outra política simultânea).
+
+**Avaliação de impacto** — Estima o **efeito causal** da intervenção [@gertler2016]. Responde à pergunta mais difícil: "a mudança *foi causada* pelo projeto, ou teria ocorrido de qualquer forma?" Para responder a essa pergunta, é preciso construir um **contrafactual** — o que teria acontecido na ausência do projeto. Aqui, os métodos discutidos nas seções anteriores (experimentos, diferenças-em-diferenças, regressão descontínua) se aplicam diretamente.
+
+A diferença entre avaliação de resultados e avaliação de impacto é exatamente a diferença entre correlação e causalidade discutida nas seções anteriores. Observar que a evasão caiu após o programa (avaliação de resultados) não é o mesmo que demonstrar que o programa *causou* a queda (avaliação de impacto). Para isso, é preciso um grupo de comparação adequado — idealmente, municípios semelhantes que não receberam o programa.
+
+### Pesquisa acadêmica vs. projetos de policy: síntese das diferenças
+
+| Dimensão | Pesquisa acadêmica | Projeto de policy |
+|----------|-------------------|-------------------|
+| Ponto de partida | Puzzle intelectual | Problema prático |
+| Proposta | Hipótese | Intervenção |
+| Objetivo | Contribuir para o conhecimento | Mudar uma realidade |
+| Critério de sucesso | Qualidade da evidência e contribuição teórica | Mudança no problema (resultado e impacto) |
+| Generalidade | Busca conclusões generalizáveis | Foco em contexto específico |
+| Objetivos | Pergunta de pesquisa | Objetivos SMART |
+| Medida de progresso | Resultados estatísticos | Indicadores e metas |
+| Avaliação | Validade interna e externa | Monitoramento, avaliação de resultados e impacto |
+
+Apesar das diferenças, as duas atividades se complementam. Bons projetos de policy se baseiam em evidência produzida por pesquisa. E avaliações de impacto rigorosas são, elas mesmas, pesquisas — com desenhos de pesquisa, estratégias de identificação e testes de hipóteses.
+
 ## Erros comuns em desenho de pesquisa
 
 A experiência de revisão de artigos de pesquisa revela padrões recorrentes de erros. Conhecê-los ajuda a evitá-los.
@@ -374,3 +497,9 @@ O leitor deve saber sua conclusão principal *no primeiro parágrafo*. Não cons
    c. Um desenho de pesquisa que permitiria distinguir entre as duas
 
 5. Leia o abstract de um artigo recente de uma revista de ciência política. Identifique: a questão de pesquisa, a hipótese (implícita ou explícita), a estratégia de identificação, e a contribuição reivindicada. Avalie se as afirmações estão calibradas à evidência apresentada.
+
+6. Considere o seguinte problema: "A taxa de mortalidade materna no estado do Maranhão é o dobro da média nacional." Desenhe um projeto de policy para enfrentar esse problema:
+   a. Formule um objetivo SMART.
+   b. Descreva a cadeia de resultados (atividades → produtos → resultados → impacto).
+   c. Proponha pelo menos um indicador e uma meta para cada nível da cadeia.
+   d. Explique a diferença entre avaliar se o programa "funcionou" (avaliação de resultados) e avaliar se o programa *causou* a melhora (avaliação de impacto). Que desenho de pesquisa você usaria para a avaliação de impacto?

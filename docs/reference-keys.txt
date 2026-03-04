@@ -78,6 +78,7 @@ pesquisa-normativa-vs.-positiva
 pesquisa-descritiva-preditiva-e-explicativa
 geração-teste-e-aplicação-de-teoria
 da-pergunta-à-hipótese
+objetivo-geral-objetivos-específicos-e-pergunta-de-pesquisa
 questão-de-pesquisa
 formulando-a-pergunta-no-nível-correto-de-generalidade
 como-encontrar-uma-boa-pergunta
@@ -107,6 +108,14 @@ causalidade-uma-introdução
 a-abordagem-dos-resultados-potenciais
 causalidade-e-correlação
 mecanismos-causais
+policy
+o-puzzle-em-policy
+teoria-da-mudança
+a-cadeia-de-resultados-insumos-atividades-produtos-resultados-e-impacto
+objetivos-smart
+indicadores-e-metas
+avaliação-monitoramento-avaliação-de-resultados-e-avaliação-de-impacto
+pesquisa-acadêmica-vs.-projetos-de-policy-síntese-das-diferenças
 erros-comuns-em-desenho-de-pesquisa
 escolher-o-método-antes-da-pergunta
 confundir-descrição-com-explicação
