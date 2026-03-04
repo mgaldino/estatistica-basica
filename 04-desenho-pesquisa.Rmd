@@ -2,21 +2,117 @@
 
 ## Objetivos do capítulo {-}
 
-- Compreender os elementos de um desenho de pesquisa
-- Formular questões de pesquisa e hipóteses testáveis
+- Compreender o que é um desenho de pesquisa e por que ele importa
+- Distinguir tipos de pesquisa: normativa vs. positiva, descritiva vs. explicativa
+- Formular boas questões de pesquisa e hipóteses testáveis
+- Compreender a estrutura lógica de um argumento de pesquisa
 - Distinguir desenhos experimentais e observacionais
 - Entender validade interna e externa
 - Conhecer as principais ameaças à inferência causal
-- Diferenciar tratamento de manipulação em estudos observacionais
-- Compreender scope conditions e seu papel na teoria
+- Reconhecer erros comuns em desenhos de pesquisa
 
 ## O que é um desenho de pesquisa?
+
+Um desenho de pesquisa é o plano que conecta uma pergunta a uma resposta. Ele especifica: (1) qual é a pergunta, (2) que tipo de evidência responderia a essa pergunta, (3) como essa evidência será obtida, e (4) como ela será analisada. Sem um desenho de pesquisa, temos apenas dados — e dados, sozinhos, não são evidência, porque admitem múltiplas interpretações [@edmans2025].
+
+Pense em um desenho de pesquisa como a planta de um edifício. Assim como não faz sentido comprar tijolos antes de saber quantos andares o prédio terá, não faz sentido coletar dados antes de saber que pergunta queremos responder e que comparações faremos para respondê-la.
+
+O desenho de pesquisa é anterior à análise estatística. Os métodos estatísticos são ferramentas para extrair informação dos dados, mas a credibilidade da inferência depende de como os dados foram gerados e coletados — isto é, do desenho. Um teste estatístico sofisticado não compensa um desenho fraco.
+
+## Tipos de pesquisa
+
+Antes de formular uma pergunta de pesquisa, é preciso saber que *tipo* de pesquisa estamos fazendo. Diferentes tipos de pesquisa exigem diferentes desenhos, métodos e critérios de avaliação. A taxonomia a seguir é baseada em @toshkov2016 (Capítulo 2).
+
+### Pesquisa normativa vs. positiva
+
+A distinção mais fundamental é entre pesquisa **normativa** e pesquisa **positiva**.
+
+- **Pesquisa normativa** pergunta o que *deveria ser*: Qual é o melhor sistema eleitoral para representação de minorias? É justo que democracias intervenham em outros países? Essas questões envolvem valores e julgamentos éticos, e são respondidas por argumentação filosófica, não por análise de dados.
+
+- **Pesquisa positiva** pergunta o que *é*: Democracias entram em guerra entre si? Transferências condicionais de renda reduzem a pobreza? Essas questões tratam de fatos e relações causais, e podem ser confrontadas com evidência empírica.
+
+Essa distinção importa porque elementos normativos frequentemente se infiltram em pesquisas positivas sem que o pesquisador perceba. Palavras como "ótimo", "adequado", "racional" e "justo" em perguntas de pesquisa são sinais de alerta: elas podem estar contrabandeando pressupostos normativos para dentro de uma investigação empírica. Na pesquisa positiva, devemos substituí-las por formulações puramente descritivas.
+
+### Pesquisa descritiva, preditiva e explicativa
+
+Dentro da pesquisa positiva empírica, podemos distinguir três objetivos:
+
+**Pesquisa descritiva** — Descreve o mundo como ele é. Descrição científica vai além de simplesmente listar fatos: ela classifica observações em categorias, faz inferências de amostras para populações e descobre associações. A afirmação "democracias tendem a não entrar em guerra entre si" é descritiva — identifica uma associação sem afirmar causalidade.
+
+Boa pesquisa descritiva é extremamente valiosa e não deve ser menosprezada. Muitas das descobertas mais importantes da ciência política são, em essência, descritivas: a paz democrática, a vantagem do incumbente, a polarização partidária. Sem boa descrição, não há o que explicar.
+
+**Pesquisa preditiva** — Projeta informações do presente para o futuro. Previsão é qualitativamente diferente de explicação: modelos preditivos podem funcionar muito bem sem qualquer modelo causal (como os modelos de previsão eleitoral de Nate Silver). Por outro lado, boas teorias causais nem sempre geram boas previsões, porque os fatores causais podem ser difíceis de medir em tempo real.
+
+**Pesquisa explicativa** — Identifica as causas dos fenômenos. Busca responder "por quê?" (efeitos causais) e "como?" (mecanismos causais). A pesquisa explicativa é frequentemente considerada o objetivo mais ambicioso, pois oferece a possibilidade de intervenção: se sabemos que X causa Y, podemos manipular X para alterar Y.
+
+### Geração, teste e aplicação de teoria
+
+Dentro da pesquisa explicativa, @toshkov2016 identifica três objetivos distintos:
+
+**Geração de teoria** — Parte de observações empíricas e constrói proposições teóricas. Métodos típicos: estudos de caso aprofundados, comparações de poucos casos, análise exploratória. Importante: uma teoria gerada indutivamente permanece uma "ideia intrigante" até ser testada contra novos dados.
+
+**Teste de teoria** — Parte de proposições abstratas e as confronta com dados empíricos. A refutação é mais informativa que a confirmação (falsificacionismo popperiano). Métodos típicos: experimentos, análises quantitativas de grande N, estudos comparados.
+
+**Aplicação de teoria** — Usa uma teoria existente para explicar um caso específico. É o objetivo mais restrito: contribui pouco para a teoria em si, mas pode ser valioso para entender eventos particulares.
+
+**Princípio fundamental**: A escolha do objetivo — gerar, testar ou aplicar teoria — deve vir *antes* da escolha do desenho e do método. O objetivo determina o que é um desenho apropriado: experimentos são ineficientes para gerar teoria; estudos de caso únicos geralmente são inadequados para testar teoria.
 
 ## Da pergunta à hipótese
 
 ### Questão de pesquisa
 
+A questão de pesquisa é o ponto de partida de qualquer investigação. Uma boa pergunta de pesquisa deve ser [@toshkov2016; @samii2023; @nikolov2023]:
+
+1. **Tratável**: deve ser respondível, em princípio, com evidência disponível ou coletável.
+2. **Relevante**: a resposta deve importar — seja para a teoria, seja para decisões práticas.
+3. **Contestada**: deve haver incerteza genuína. Perguntas com respostas óbvias desperdiçam esforço.
+4. **Original**: deve dizer algo que a literatura ainda não estabeleceu.
+5. **Aberta**: não deve conter a resposta embutida na própria formulação.
+6. **Precisa**: deve ser formulada em termos gerais o suficiente para transcender o caso particular, mas específicos o bastante para ser testável.
+
+#### Formulando a pergunta no nível correto de generalidade
+
+Um erro extremamente comum em ciência política — identificado repetidamente em pareceres de revistas acadêmicas — é formular a pergunta no nível do caso específico, quando ela deveria estar no nível do fenômeno geral. A lógica é simples: o *caso* é o terreno de teste, não a pergunta em si.
+
+Compare:
+
+- **Formulação ruim**: "Qual é o efeito das enchentes no RS na reeleição?"
+- **Formulação boa**: "Qual é o efeito de desastres naturais na accountability eleitoral de incumbentes?"
+
+- **Formulação ruim**: "O que aconteceu com a política externa do Brasil quando a China se tornou o maior parceiro comercial em 2009?"
+- **Formulação boa**: "Reversões discretas de ranking comercial — quando uma potência emergente substitui a potência hegemônica como principal parceiro — produzem realinhamento de política externa além do que o crescimento contínuo do comércio prevê?"
+
+O teste diagnóstico é: leia sua pergunta isoladamente. Se ela menciona um nome de país, um ano ou uma relação bilateral específica, provavelmente está formulada no nível errado. Uma boa pergunta é falsificável por qualquer caso relevante, não apenas pelo seu.
+
+#### Como encontrar uma boa pergunta
+
+@toshkov2016 sugere cinco caminhos:
+
+1. **Grandes problemas sociais**: desigualdade, polarização, corrupção. Cuidado: são muito pesquisados e normativamente carregados.
+2. **Eventos e notícias atuais**: mas exigem atenção sustentada além do ciclo de notícias.
+3. **Padrões empíricos**: regularidades observadas que pedem explicação.
+4. **Quebra-cabeças (*puzzles*)**: eventos ou padrões que *não* se encaixam na teoria existente. Este é o caminho mais produtivo: um puzzle só existe em relação ao conhecimento existente, o que automaticamente conecta sua pesquisa à literatura.
+5. **Replicação e extensão**: subestimado, mas frequentemente revela erros ou abre novos contextos.
+
 ### Hipóteses
+
+Uma hipótese é uma resposta provisória à questão de pesquisa. Boas hipóteses são:
+
+- **Direcionais**: especificam a direção do efeito esperado (positivo ou negativo), não apenas que "existe um efeito".
+- **Derivadas de teoria**: conectam-se logicamente a um mecanismo causal explícito. "É uma questão empírica" não é uma hipótese — é uma confissão de que não se tem teoria.
+- **Falsificáveis**: deve ser possível especificar que evidência as refutaria.
+- **Discriminantes**: devem distinguir sua teoria das alternativas. Uma hipótese consistente com todas as teorias concorrentes não testa nada.
+
+Compare:
+
+- **Hipótese fraca**: "Status importa para política externa."
+- **Hipótese forte**: "Uma reversão discreta de ranking na hierarquia comercial de um país produz uma redução na distância de política externa em direção à potência emergente, além do efeito gradual da acumulação comercial."
+
+A hipótese forte nomeia a variável manipulada (reversão de ranking), o resultado (distância de política externa), a direção (redução), e a classe de comparação (efeito gradual).
+
+#### O teste de Bayes
+
+Um critério útil para avaliar se uma hipótese é interessante é o **teste de atualização bayesiana** [@edmans2025]: após ler o resultado, o leitor atualiza significativamente suas crenças? Se a hipótese é tão esperada que qualquer pessoa informada já acreditava nela, a contribuição é mínima. Se o resultado é genuinamente surpreendente — ou contradiz uma suposição amplamente aceita — a contribuição é grande.
 
 ### Scope conditions {#scope}
 
@@ -26,15 +122,127 @@ Scope conditions não são uma fraqueza da teoria; são parte constitutiva dela.
 
 Na prática, scope conditions conectam-se diretamente com o desenho de pesquisa: elas determinam a população de referência (quais casos incluir na amostra), as variáveis de controle relevantes e os limites da generalização dos resultados.
 
+**Princípio importante**: scope conditions devem ser derivadas da *teoria*, antes de olhar os resultados, não derivadas dos *resultados*. Se você encontra um efeito apenas quando restringe a amostra a um subgrupo específico, e essa restrição não foi teorizada previamente, o resultado parece *data mining* — uma busca por especificações favoráveis. Se a restrição foi prevista pela teoria, o resultado confirma uma predição.
+
+## A estrutura de um argumento de pesquisa
+
+Todo trabalho de pesquisa é, fundamentalmente, um argumento: uma afirmação apoiada por razões e evidências, dirigida a um leitor que pode ter objeções. @booth2009 (Capítulo 7) identifica cinco elementos que todo argumento de pesquisa deve conter:
+
+### 1. Afirmação (*claim*)
+
+O ponto principal — a resposta à pergunta de pesquisa. Em uma tese ou artigo, é a conclusão central.
+
+### 2. Razões (*reasons*)
+
+Declarações que dão ao leitor motivo para aceitar a afirmação. Razões se conectam à afirmação pela palavra "porque". Uma afirmação tipicamente requer múltiplas razões.
+
+### 3. Evidência (*evidence*)
+
+Evidência é diferente de razões. Razões são geradas pela mente (argumentos); evidência é encontrada "lá fora" — dados que o leitor pode, em princípio, observar ou verificar. A relação é: AFIRMAÇÃO → porque RAZÃO → baseada em EVIDÊNCIA.
+
+### 4. Ressalvas e respostas (*acknowledgment and response*)
+
+Um pesquisador responsável deve antecipar as objeções e alternativas do leitor e respondê-las diretamente. Nenhum argumento está completo sem reconhecer limitações e responder a contra-argumentos. Isso não é opcional — leitores cuidadosos não aceitarão uma afirmação baseada apenas na perspectiva do autor.
+
+### 5. Garantia (*warrant*)
+
+Um princípio geral que justifica a conexão entre uma razão particular e uma afirmação particular. Quando o leitor pode aceitar a verdade da razão mas questionar sua *relevância* para a afirmação, uma garantia é necessária. Na pesquisa empírica, a garantia frequentemente corresponde à suposição teórica que conecta a evidência à conclusão — a chamada **estratégia de identificação**.
+
+### O argumento como um todo
+
+```
+AFIRMAÇÃO ← porque ← RAZÃO ← baseada em ← EVIDÊNCIA
+                        ↑
+                    GARANTIA (princípio geral que conecta razão à afirmação)
+                        ↓
+        RESSALVAS E RESPOSTAS (objeções antecipadas e respondidas)
+```
+
+Argumentos complexos empilham essa estrutura: cada razão pode exigir sua própria evidência e garantia, e cada ressalva pode gerar sub-argumentos.
+
+A **credibilidade** do pesquisador (o *ethos*) é construída pela completude do argumento. Um pesquisador que considera questões de todos os lados, apoia afirmações com evidência aceita e responde cuidadosamente a contra-argumentos constrói reputação de integridade intelectual — o que se torna, ele próprio, um elemento implícito do argumento.
+
+## Contribuição: por que sua pesquisa importa
+
+Não basta ter uma pergunta interessante e um desenho adequado: é preciso convencer o leitor de que a pesquisa contribui para o conhecimento existente. Uma contribuição pode vir de [@edmans2025; @nikolov2023]:
+
+- Um **resultado novo**: algo que a literatura ainda não havia demonstrado.
+- Uma **estratégia de identificação nova**: uma forma mais credível de estimar um efeito já estudado.
+- Um **mecanismo novo**: explicar *por que* um efeito ocorre, quando a literatura já sabe *que* ele ocorre.
+- Uma **generalização**: demonstrar que um resultado se sustenta em outros contextos.
+- Um **desafio a uma suposição aceita**: mostrar que algo que "todos sabem" está errado.
+
+### O teste da "célula vazia"
+
+Uma armadilha comum é o chamado "research by matrix" [@edmans2025]: o pesquisador encontra uma célula vazia na matriz "X × Y" da literatura e assume que preenchê-la é automaticamente uma contribuição. Mas a célula pode estar vazia porque ninguém achou interessante preenchê-la. A pergunta correta não é "isso já foi feito?" mas sim "por que isso importa?".
+
+### Posicionando a contribuição na literatura
+
+A forma mais eficaz de posicionar uma contribuição não é dizer "ninguém estudou X", mas sim "todos que estudaram questões relacionadas compartilham uma suposição Y — e nós mostramos que essa suposição é incorreta para a classe Z de eventos". Essa formulação engaja a literatura existente em vez de descartá-la como incompleta.
+
 ## Unidade de análise
 
+A unidade de análise é *quem* ou *o quê* está sendo estudado. É a entidade sobre a qual fazemos afirmações. Em ciência política, as unidades de análise mais comuns são:
+
+- **Indivíduos**: eleitores, legisladores, cidadãos.
+- **Grupos**: partidos, coalizões, organizações.
+- **Unidades geográficas**: municípios, estados, países.
+- **Eventos**: eleições, conflitos, votações legislativas.
+- **Textos**: discursos, leis, notícias.
+
+A escolha da unidade de análise tem consequências diretas para o desenho:
+
+1. Determina a **população** sobre a qual se quer generalizar.
+2. Define o **nível** no qual variáveis são medidas.
+3. Afeta os **erros-padrão** e a inferência estatística (dados agrupados em clusters, por exemplo, exigem tratamento específico).
+
+Um erro frequente é a **falácia ecológica**: inferir sobre indivíduos a partir de dados agregados. Se estados com mais armas têm mais homicídios, não podemos concluir que indivíduos com armas cometem mais homicídios — o efeito pode operar em outro nível.
+
 ## Validade interna e externa
+
+### Validade interna
+
+Validade interna é a confiança de que a relação observada entre tratamento e resultado é *causal*, e não um artefato de confundidores, viés de seleção ou causalidade reversa. É a pergunta: "neste estudo, com estes dados, podemos acreditar que X causou Y?"
+
+As principais ameaças à validade interna são:
+
+- **Confundidores (variáveis omitidas)**: uma terceira variável que causa tanto X quanto Y, criando uma associação espúria. Exemplo: países mais ricos são mais democráticos e têm melhor saúde — a riqueza confunde a relação entre democracia e saúde.
+- **Causalidade reversa**: Y causa X, não o contrário. Exemplo: maior gasto militar causa conflito, ou conflito causa maior gasto militar?
+- **Viés de seleção**: as unidades que recebem o "tratamento" são sistematicamente diferentes das que não recebem. Exemplo: municípios que adotam voto eletrônico são diferentes (mais urbanos, mais ricos) dos que não adotam.
+- **Viés de colisão (*collider bias*)**: incluir uma variável que é *causada* tanto pelo tratamento quanto pelo resultado pode criar uma associação espúria entre eles, mesmo na ausência de qualquer relação causal.
+
+### Validade externa
+
+Validade externa é a possibilidade de generalizar os resultados para outras populações, contextos e momentos. É a pergunta: "o que descobrimos aqui vale também em outros lugares e tempos?"
+
+Existe uma tensão frequente entre validade interna e externa. Experimentos de laboratório, por exemplo, têm alta validade interna (o pesquisador controla a atribuição do tratamento), mas podem ter baixa validade externa (o comportamento no laboratório pode diferir do mundo real). Estudos observacionais com dados de muitos países podem ter alta validade externa, mas frequentemente enfrentam problemas de validade interna (é difícil isolar o efeito causal).
+
+**Princípio**: validade interna é pré-requisito para validade externa. Se não podemos confiar que o efeito encontrado é causal nos dados analisados, não faz sentido perguntar se ele se generaliza.
 
 ## Desenhos de pesquisa
 
 ### Estudos experimentais
 
+O experimento é o padrão-ouro para inferência causal. Sua lógica é simples: o pesquisador designa *aleatoriamente* quem recebe o tratamento (grupo de tratamento) e quem não recebe (grupo de controle). A aleatorização garante que os dois grupos sejam, em expectativa, idênticos em todas as características — observadas e não observadas — exceto pelo tratamento. Portanto, qualquer diferença no resultado pode ser atribuída ao tratamento.
+
+Tipos comuns de experimentos em ciência política:
+
+- **Experimentos de laboratório**: realizados em ambiente controlado (sala de aula, laboratório). Alta validade interna, mas ambiente artificial.
+- **Experimentos de survey**: tratamento é uma variação no questionário (vinhetas, framing). Permitem testar mecanismos cognitivos e de atitude.
+- **Experimentos de campo**: tratamento é implementado no mundo real (campanha de informação, programa de incentivo). Combinam validade interna e externa, mas são caros e logisticamente complexos.
+
 ### Estudos observacionais
+
+Na maioria das questões em ciência política, não é possível realizar experimentos: não podemos aleatorizar regimes políticos, guerras ou crises econômicas. Estudos observacionais analisam dados gerados pelo mundo sem intervenção do pesquisador.
+
+O desafio central é que, sem aleatorização, a "atribuição" ao tratamento é determinada por fatores que podem estar correlacionados com o resultado, gerando viés. Para lidar com isso, pesquisadores usam **estratégias de identificação** — desenhos que exploram alguma fonte de variação "quase-aleatória":
+
+- **Diferenças-em-diferenças (DiD)**: compara a mudança no resultado antes e depois do tratamento entre o grupo tratado e um grupo de controle.
+- **Regressão descontínua (RDD)**: explora um limiar (cutoff) que determina quem recebe o tratamento, comparando unidades logo acima e logo abaixo do limiar.
+- **Variáveis instrumentais (IV)**: usa uma variável que afeta o resultado *apenas* através do tratamento.
+- **Pareamento (*matching*)**: constrói um grupo de controle que se assemelha ao grupo tratado em características observáveis.
+
+Cada estratégia repousa sobre suposições específicas. A credibilidade do estudo depende de quão defensáveis são essas suposições.
 
 ### Tratamento versus manipulação {#tratamento-manipulacao}
 
@@ -42,10 +250,127 @@ Em um experimento, "tratamento" e "manipulação" coincidem: o pesquisador desig
 
 Isso tem duas consequências práticas. Primeira: em estudos observacionais, a "atribuição" ao tratamento é determinada por fatores que podem estar correlacionados com o outcome, gerando viés de seleção. Segunda: nem toda variável de interesse faz sentido como "tratamento". Perguntar "qual o efeito causal de ser uma democracia?" exige imaginar o que significaria *manipular* o regime de um país — o que revela a dificuldade (e, para alguns, a impossibilidade) de certas perguntas causais com variáveis que não são manipuláveis.
 
-Discutir a distinção de Holland ("no causation without manipulation") e as críticas a ela, mostrando que mesmo variáveis não-manipuláveis podem ser estudadas causalmente com o desenho adequado (ex.: instrumentos, choques exógenos).
+Holland formulou o princípio de que "não há causalidade sem manipulação" (*no causation without manipulation*). Essa posição, embora controversa, é útil como exercício mental: se você não consegue imaginar *como* sua variável independente poderia ser manipulada, isso revela que a pergunta causal pode ser mal definida. Pesquisadores contornam essa restrição buscando fontes de variação exógena — choques, instrumentos, descontinuidades — que *aproximam* uma manipulação.
 
 ### Estudos transversais e longitudinais
 
+- **Estudos transversais (*cross-sectional*)**: observam múltiplas unidades em um único ponto no tempo. Permitem comparações entre unidades, mas não controlam por fatores fixos no tempo.
+- **Estudos longitudinais (*panel data*)**: observam as mesmas unidades ao longo do tempo. Permitem controlar por características fixas de cada unidade (efeitos fixos) e observar mudanças.
+- **Séries temporais**: observam uma única unidade ao longo de muitos períodos.
+
+Dados em painel são geralmente preferíveis porque permitem estratégias de identificação mais credíveis (como diferenças-em-diferenças), mas exigem suposições adicionais (como tendências paralelas).
+
 ## Causalidade: uma introdução
 
+A noção de causalidade é central para a pesquisa explicativa. Mas o que significa dizer que "X causa Y"? Existem diferentes frameworks:
+
+### A abordagem dos resultados potenciais
+
+A abordagem mais influente na ciência política quantitativa é o **modelo de resultados potenciais** (Rubin, 1974; Holland, 1986). A ideia é: para cada unidade $i$, existem dois resultados potenciais — $Y_i(1)$, o resultado se a unidade receber o tratamento, e $Y_i(0)$, o resultado se não receber. O **efeito causal** do tratamento para a unidade $i$ é:
+
+$$\tau_i = Y_i(1) - Y_i(0)$$
+
+O problema fundamental da inferência causal é que nunca observamos ambos os resultados potenciais para a mesma unidade. Cada unidade está no grupo de tratamento *ou* no grupo de controle, nunca em ambos. O desenho de pesquisa é precisamente o conjunto de escolhas que nos permite *estimar* o efeito causal apesar de nunca observá-lo diretamente.
+
+### Causalidade e correlação
+
+A famosa advertência "correlação não é causalidade" é essencial. Duas variáveis podem estar correlacionadas por três razões:
+
+1. **X causa Y**: a relação é causal na direção hipotetizada.
+2. **Y causa X**: causalidade reversa.
+3. **Z causa tanto X quanto Y**: confundimento.
+
+Apenas no caso 1 a correlação reflete a relação causal de interesse. O desenho de pesquisa é o que nos permite distinguir entre essas três possibilidades.
+
+### Mecanismos causais
+
+Além de estimar *que* X causa Y (o efeito causal), frequentemente queremos saber *por que* — isto é, qual é o **mecanismo** pelo qual o efeito opera. Identificar mecanismos é mais difícil do que estimar efeitos totais e exige evidência adicional.
+
+Um erro comum é tratar co-ocorrência temporal como evidência de mecanismo. Se X acontece, depois M acontece, depois Y acontece, isso não prova que M é o mecanismo — outros fatores contemporâneos podem ser responsáveis. Evidência de mecanismo requer mostrar que: (a) o mediador proposto de fato responde ao tratamento, (b) o mediador de fato afeta o resultado, e (c) fontes alternativas do mediador foram descartadas.
+
+## Erros comuns em desenho de pesquisa
+
+A experiência de revisão de artigos de pesquisa revela padrões recorrentes de erros. Conhecê-los ajuda a evitá-los.
+
+### 1. Escolher o método antes da pergunta
+
+Muitos pesquisadores começam com um método ("vou fazer um RDD") em vez de uma pergunta. O método deve ser escolhido porque é o mais adequado para responder a uma pergunta específica, dada a estrutura dos dados disponíveis — não porque é o mais prestigioso ou o que o pesquisador domina [@toshkov2016; @samii2023].
+
+### 2. Confundir descrição com explicação
+
+Mostrar que duas variáveis estão correlacionadas é descrição, não explicação. Afirmar causalidade exige uma estratégia de identificação explícita. Muitos artigos apresentam correlações como se fossem efeitos causais, sem defender as suposições que tornariam essa interpretação legítima [@samii2023].
+
+### 3. Motivar um problema e depois mostrar que ele é irrelevante
+
+Se você motiva seu artigo argumentando que o viés X é um perigo real, e depois seus resultados mostram que o viés é negligível na prática, há uma tensão. Isso não invalida o trabalho, mas exige que você discuta a tensão explicitamente: o valor pode estar justamente em mostrar que o problema é menor do que se pensava, ou em fornecer uma ferramenta para detectar os raros casos em que ele é grande.
+
+### 4. Usar o caso gerador da teoria como teste da teoria
+
+Se o caso brasileiro motivou sua teoria, ele não pode simultaneamente servir como teste independente dela. O teste deve vir de dados ou casos *novos*. Quando isso não é possível, seja explícito sobre qual análise gera a teoria e qual a testa.
+
+### 5. Derivar scope conditions dos resultados
+
+Se a restrição da amostra que produz resultados significativos não foi teorizada antes de olhar os dados, o resultado é vulnerável à acusação de *data mining*. Scope conditions devem ser derivadas da teoria e declaradas antes dos resultados.
+
+### 6. Afirmar mais do que a evidência sustenta
+
+Calibre suas afirmações ao tipo de evidência que você tem. Evidência correlacional sustenta "consistente com", não "demonstra". Evidência de um único caso sustenta "sugere", não "confirma". Mecanismos não identificados causalmente justificam "sugestivo", não "evidência direta". A regra: a afirmação mais forte no artigo deve ser sustentável pelo elo mais fraco da cadeia de evidências [@nikolov2023].
+
+### 7. Confundir significância estatística com importância substantiva
+
+Um resultado pode ser estatisticamente significativo mas substantivamente irrelevante (um efeito de 0,001% com N enorme), ou substantivamente importante mas estatisticamente insignificante (um efeito grande em uma amostra pequena). Sempre discuta o *tamanho* do efeito e o que ele significa em termos práticos, não apenas o p-valor [@samii2023; @nikolov2023].
+
+### 8. Ignorar explicações alternativas
+
+Todo argumento de pesquisa deve antecipar e responder às explicações alternativas mais plausíveis [@booth2009]. Listar apenas sua explicação preferida sem considerar rivais enfraquece dramaticamente a credibilidade do trabalho. As melhores pesquisas desenham testes que *discriminam* entre explicações concorrentes.
+
+## Escrevendo sobre seu desenho de pesquisa
+
+Uma boa pesquisa mal comunicada é uma pesquisa desperdiçada. Algumas orientações para escrever sobre seu desenho de pesquisa [@nikolov2023; @booth2009]:
+
+### A introdução é tudo
+
+Na ciência política empírica, leitores — incluindo pareceristas — decidem se vão ler o artigo inteiro com base na introdução. Uma boa introdução deve:
+
+1. **Abrir com um *puzzle***: um caso ou observação que cria um problema intelectual.
+2. **Identificar a lacuna**: o que a literatura existente não sabe.
+3. **Apresentar a tese**: sua resposta provisória, de forma assertiva e específica.
+4. **Resumir a estratégia empírica**: como você responde à pergunta.
+5. **Antecipar os resultados principais**: com números concretos.
+6. **Explicitar a contribuição**: o que muda no que sabíamos.
+
+### Bottom Line Up Front (BLUF)
+
+O leitor deve saber sua conclusão principal *no primeiro parágrafo*. Não construa suspense em direção à conclusão — declare-a imediatamente e depois justifique-a. Isso não é spoiler: é respeito pelo tempo do leitor.
+
+### Precisão de linguagem
+
+- Não diga "afeta resultados políticos" — *quais* resultados? Em *qual* direção?
+- Não diga "implicações para a teoria democrática e formuladores de políticas" — *quais* implicações específicas?
+- Sempre traduza tamanhos de efeito em termos concretos: "uma redução de 7 pontos percentuais nos votos" é informativo; "um efeito estatisticamente significativo" não é.
+
 ## Exercícios
+
+1. Classifique as seguintes questões como normativas ou positivas, e como descritivas, preditivas ou explicativas:
+   a. "Qual é o melhor sistema eleitoral para o Brasil?"
+   b. "Países mais desiguais têm mais conflitos?"
+   c. "O Bolsa Família reduz a pobreza?"
+   d. "Quem vai vencer a próxima eleição presidencial?"
+   e. "É justo que democracias intervenham em outros países?"
+
+2. Reformule as seguintes perguntas para que estejam no nível correto de generalidade:
+   a. "Por que Bolsonaro perdeu em 2022?"
+   b. "O que aconteceu com a economia do Brasil durante a pandemia?"
+   c. "Por que o PT perdeu a classe média?"
+
+3. Para cada uma das perguntas abaixo, identifique: a unidade de análise, uma potencial variável independente, uma potencial variável dependente, e pelo menos um confundidor plausível:
+   a. "Campanhas de porta em porta aumentam o comparecimento eleitoral?"
+   b. "Países democráticos crescem mais rápido?"
+   c. "Notícias falsas afetam o voto?"
+
+4. Considere a afirmação: "Municípios que adotaram voto eletrônico tiveram menos votos nulos." Proponha:
+   a. Uma explicação causal
+   b. Uma explicação por viés de seleção
+   c. Um desenho de pesquisa que permitiria distinguir entre as duas
+
+5. Leia o abstract de um artigo recente de uma revista de ciência política. Identifique: a questão de pesquisa, a hipótese (implícita ou explícita), a estratégia de identificação, e a contribuição reivindicada. Avalie se as afirmações estão calibradas à evidência apresentada.
