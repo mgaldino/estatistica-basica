@@ -3,12 +3,15 @@
 ## Objetivos do capítulo {-}
 
 - Compreender o que é um desenho de pesquisa e por que ele importa
+- Conhecer duas visões sobre o que organiza a pesquisa: puzzles vs. problemas
 - Distinguir tipos de pesquisa: normativa vs. positiva, descritiva vs. explicativa
+- Compreender os três estágios de um programa de pesquisa orientado a problemas
 - Formular boas questões de pesquisa e hipóteses testáveis
 - Compreender a estrutura lógica de um argumento de pesquisa
 - Distinguir desenhos experimentais e observacionais
 - Entender validade interna e externa
 - Conhecer as principais ameaças à inferência causal
+- Conectar pesquisa acadêmica e projetos de políticas públicas
 - Reconhecer erros comuns em desenhos de pesquisa
 
 ## O que é um desenho de pesquisa?
@@ -19,13 +22,23 @@ Pense em um desenho de pesquisa como a planta de um edifício. Assim como não f
 
 O desenho de pesquisa é anterior à análise estatística. Os métodos estatísticos são ferramentas para extrair informação dos dados, mas a credibilidade da inferência depende de como os dados foram gerados e coletados — isto é, do desenho. Um teste estatístico sofisticado não compensa um desenho fraco.
 
+### Duas visões: puzzles e problemas
+
+Mas o que dá *origem* a uma pesquisa? Existem duas visões concorrentes sobre o que organiza um programa de pesquisa, e é útil conhecer ambas desde o início.
+
+A **visão tradicional** — representada por manuais como @king1994 e @toshkov2016 — parte de um **puzzle intelectual**: um fenômeno que a teoria existente não explica, ou uma lacuna na literatura. Por que democracias não entram em guerra entre si? Por que plataformas partidárias não convergem para o centro, como Downs previu? O motor da pesquisa é a curiosidade teórica.
+
+A **visão de pesquisa como resolução de problemas** (*problem solving*), proposta por @samii2023, parte de um **problema**: algo que está normativamente errado no mundo. Desigualdade racial no acesso ao voto. Erosão de direitos trabalhistas. Sub-representação feminina na política. O motor da pesquisa é o compromisso com a melhoria do mundo.
+
+Essas visões não são mutuamente excludentes — muitas pesquisas combinam elementos de ambas. Mas elas orientam escolhas diferentes: o que conta como uma boa pergunta, que mecanismos são prioritários, e qual é o objetivo final da investigação. Ao longo deste capítulo, apresentaremos ambas e mostraremos onde convergem e onde divergem.
+
 ## Tipos de pesquisa
 
-Antes de formular uma pergunta de pesquisa, é preciso saber que *tipo* de pesquisa estamos fazendo. Diferentes tipos de pesquisa exigem diferentes desenhos, métodos e critérios de avaliação. A taxonomia a seguir é baseada em @toshkov2016 (Capítulo 2).
+Antes de formular uma pergunta de pesquisa, é preciso saber que *tipo* de pesquisa estamos fazendo. Diferentes tipos de pesquisa exigem diferentes desenhos, métodos e critérios de avaliação.
 
-### Pesquisa normativa vs. positiva
+### Pesquisa normativa vs. positiva: a visão tradicional
 
-A distinção mais fundamental é entre pesquisa **normativa** e pesquisa **positiva**.
+A taxonomia tradicional [@toshkov2016] estabelece como distinção mais fundamental a separação entre pesquisa **normativa** e pesquisa **positiva**.
 
 - **Pesquisa normativa** pergunta o que *deveria ser*: Qual é o melhor sistema eleitoral para representação de minorias? É justo que democracias intervenham em outros países? Essas questões envolvem valores e julgamentos éticos, e são respondidas por argumentação filosófica, não por análise de dados.
 
@@ -33,9 +46,19 @@ A distinção mais fundamental é entre pesquisa **normativa** e pesquisa **posi
 
 Essa distinção importa porque elementos normativos frequentemente se infiltram em pesquisas positivas sem que o pesquisador perceba. Palavras como "ótimo", "adequado", "racional" e "justo" em perguntas de pesquisa são sinais de alerta: elas podem estar contrabandeando pressupostos normativos para dentro de uma investigação empírica. Na pesquisa positiva, devemos substituí-las por formulações puramente descritivas.
 
+### A crítica de Samii: o normativo como ponto de partida
+
+@samii2023 oferece um contraponto importante a essa separação. Para ele, a distinção normativa/positiva é útil *dentro* de um programa de pesquisa — as etapas empíricas não fazem julgamentos de valor —, mas é enganosa *no nível do programa como um todo*. A própria escolha do que estudar já é normativamente orientada.
+
+Samii define um "problema" como "um padrão empírico observado que viola princípios normativos" (*"something that is normatively wrong in the world"*). Não existe definição de problema que seja normativamente neutra: dizer que "a desigualdade racial no acesso ao voto é um problema" requer um compromisso prévio com o princípio de igualdade cívica. Esse compromisso normativo não contamina a pesquisa empírica — ele a *motiva*.
+
+Isso diferencia a ciência política da economia clássica de uma maneira importante. A economia frequentemente usa o critério de eficiência de Pareto, que não exige defender intervenções que beneficiem um grupo em detrimento de outro. Já a ciência política trabalha com critérios como *igualdade cívica*, que explicitamente motivam intervenções para melhorar a posição de alguns indivíduos em relação a outros — e é isso que torna algo "político" [@samii2023].
+
+O ponto prático para o estudante é: não finja que sua escolha de tema é neutra. Reconheça os compromissos normativos que motivam sua pesquisa. Isso não a torna menos científica — torna-a mais honesta. E, como Samii observa, é "muito raro que teóricos políticos normativos e pesquisadores empíricos conversem diretamente para definir problemas do mundo real" — uma lacuna que prejudica ambos os lados.
+
 ### Pesquisa descritiva, preditiva e explicativa
 
-Dentro da pesquisa positiva empírica, podemos distinguir três objetivos:
+Dentro da pesquisa positiva empírica, podemos distinguir três objetivos [@toshkov2016]:
 
 **Pesquisa descritiva** — Descreve o mundo como ele é. Descrição científica vai além de simplesmente listar fatos: ela classifica observações em categorias, faz inferências de amostras para populações e descobre associações. A afirmação "democracias tendem a não entrar em guerra entre si" é descritiva — identifica uma associação sem afirmar causalidade.
 
@@ -57,6 +80,24 @@ Dentro da pesquisa explicativa, @toshkov2016 identifica três objetivos distinto
 
 **Princípio fundamental**: A escolha do objetivo — gerar, testar ou aplicar teoria — deve vir *antes* da escolha do desenho e do método. O objetivo determina o que é um desenho apropriado: experimentos são ineficientes para gerar teoria; estudos de caso únicos geralmente são inadequados para testar teoria.
 
+### Os três estágios de um programa de pesquisa orientado a problemas
+
+A taxonomia de Toshkov organiza a pesquisa por *tipo* (descritiva, explicativa etc.). @samii2023 propõe uma organização complementar por *estágio*, voltada para programas de pesquisa que buscam resolver problemas do mundo real. Os três estágios são sequenciais: cada um depende do anterior.
+
+**Estágio 1 — Estabelecer o problema.** O trabalho aqui é primariamente *descritivo*, mas guiado por um compromisso normativo. Duas tarefas simultâneas: (a) argumentar normativamente que um certo padrão empírico *seria* um problema, e (b) demonstrar empiricamente que esse padrão *de fato existe* e tem escopo ou severidade significativos. Isso envolve mensuração, construção de dados, diagnóstico de vieses na descrição, e visualização convincente de tendências.
+
+Samii dá um exemplo revelador: se restrições ao voto são impostas a um grupo minoritário, os números brutos de comparecimento podem não revelar a gravidade do problema, porque os eleitores se contramobilizam para manter o comparecimento. As medidas corretas do problema são o tempo e esforço gastos para votar — não apenas se o voto ocorreu.
+
+**Estágio 2 — Estabelecer mecanismos.** Identificar, observacional e causalmente, que mecanismos *perpetuam* o problema. A inovação de Samii aqui é o critério de priorização: o mecanismo mais importante não é necessariamente o que explica a maior parte da variação, mas sim o que é **passível de intervenção**. Se a sub-representação feminina se deve tanto a socialização ao longo da vida quanto a barreiras institucionais à candidatura, o segundo mecanismo é mais *útil* — porque é mais fácil de intervir sobre ele.
+
+Neste estágio, o pesquisador usa teoria (jogos, comportamental) para propor mecanismos, representa-os como grafos causais direcionados (DAGs), e emprega estratégias de identificação observacionais (DiD, RDD, IV, matching) para estimar a força das relações causais propostas. A relação entre teoria e empiria é *iterativa*: anomalias empíricas motivam revisão teórica; previsões teóricas geram testes empíricos. Teoria *normativa* motiva o programa; teoria *positiva* propõe os mecanismos.
+
+**Estágio 3 — Testar intervenções.** Desenhar e executar testes de intervenções que rompam os mecanismos identificados no Estágio 2, com o objetivo de mitigar o problema. O trabalho aqui é *causal-intervencionista*. Idealmente, usa-se um experimento de campo (RCT); quando isso não é possível, desenhos quase-experimentais são a segunda melhor opção. A epistemologia subjacente é pragmatista: como coloca Hacking (1983), "o conhecimento se confirma quando é utilizável para gerar resultados desejados."
+
+Os resultados medidos no Estágio 3 devem, idealmente, corresponder aos mesmos indicadores usados no Estágio 1 para diagnosticar o problema — fechando o ciclo.
+
+**Por que os três estágios importam**: a formação em métodos quantitativos tipicamente se concentra no Estágio 2 (inferência causal observacional), tratando-o como o todo da pesquisa empírica. A abordagem de Samii argumenta que metodologia descritiva (Estágio 1) e metodologia intervencionista (Estágio 3) são igualmente essenciais — e que as três abordagens são complementares, não concorrentes.
+
 ## Da pergunta à hipótese
 
 ### Objetivo geral, objetivos específicos e pergunta de pesquisa
@@ -75,7 +116,7 @@ Na prática acadêmica em ciência política, a **pergunta de pesquisa** é o el
 
 ### Questão de pesquisa
 
-A questão de pesquisa é o ponto de partida de qualquer investigação. Uma boa pergunta de pesquisa deve ser [@toshkov2016; @samii2023; @nikolov2023]:
+A questão de pesquisa é o ponto de partida de qualquer investigação. Uma boa pergunta de pesquisa deve ser [@toshkov2016; @nikolov2023]:
 
 1. **Tratável**: deve ser respondível, em princípio, com evidência disponível ou coletável.
 2. **Relevante**: a resposta deve importar — seja para a teoria, seja para decisões práticas.
@@ -105,8 +146,12 @@ O teste diagnóstico é: leia sua pergunta isoladamente. Se ela menciona um nome
 1. **Grandes problemas sociais**: desigualdade, polarização, corrupção. Cuidado: são muito pesquisados e normativamente carregados.
 2. **Eventos e notícias atuais**: mas exigem atenção sustentada além do ciclo de notícias.
 3. **Padrões empíricos**: regularidades observadas que pedem explicação.
-4. **Quebra-cabeças (*puzzles*)**: eventos ou padrões que *não* se encaixam na teoria existente. Este é o caminho mais produtivo: um puzzle só existe em relação ao conhecimento existente, o que automaticamente conecta sua pesquisa à literatura.
+4. **Quebra-cabeças (*puzzles*)**: eventos ou padrões que *não* se encaixam na teoria existente. Este é o caminho mais produtivo na visão tradicional: um puzzle só existe em relação ao conhecimento existente, o que automaticamente conecta sua pesquisa à literatura.
 5. **Replicação e extensão**: subestimado, mas frequentemente revela erros ou abre novos contextos.
+
+Na perspectiva de @samii2023, há um sexto caminho — e, para ele, o mais importante:
+
+6. **Problemas do mundo real**: padrões empíricos que violam princípios normativos e pedem não apenas explicação, mas intervenção. Desigualdade no acesso ao voto, erosão de direitos, sub-representação política de grupos. Aqui, a pesquisa começa pelo diagnóstico do problema (Estágio 1) e avança para os mecanismos e intervenções.
 
 ### Hipóteses
 
@@ -140,7 +185,7 @@ Na prática, scope conditions conectam-se diretamente com o desenho de pesquisa:
 
 ## A estrutura de um argumento de pesquisa
 
-Todo trabalho de pesquisa é, fundamentalmente, um argumento: uma afirmação apoiada por razões e evidências, dirigida a um leitor que pode ter objeções. @booth2009 (Capítulo 7) identifica cinco elementos que todo argumento de pesquisa deve conter:
+Todo trabalho de pesquisa é, fundamentalmente, um argumento: uma afirmação apoiada por razões e evidências, dirigida a um leitor que pode ter objeções. @booth2009 (Capítulo 7) identificam cinco elementos que todo argumento de pesquisa deve conter:
 
 ### 1. Afirmação (*claim*)
 
@@ -176,6 +221,10 @@ Argumentos complexos empilham essa estrutura: cada razão pode exigir sua própr
 
 A **credibilidade** do pesquisador (o *ethos*) é construída pela completude do argumento. Um pesquisador que considera questões de todos os lados, apoia afirmações com evidência aceita e responde cuidadosamente a contra-argumentos constrói reputação de integridade intelectual — o que se torna, ele próprio, um elemento implícito do argumento.
 
+### A pesquisa como ato de persuasão
+
+@samii2023 acrescenta uma dimensão a esse quadro: a pesquisa é um ato *social* de persuasão. Ele usa deliberadamente o termo "persuasivo" ao definir cada estágio do programa de pesquisa: uma definição *persuasiva* do problema, evidência *persuasiva* sobre mecanismos, testes *persuasivos* de intervenções. Pesquisa orientada a problemas opera como um apelo para que atenção e recursos sejam direcionados a melhorar o mundo — e isso requer convencer céticos, tanto os que duvidam que o problema existe quanto os que duvidam que ele importa.
+
 ## Contribuição: por que sua pesquisa importa
 
 Não basta ter uma pergunta interessante e um desenho adequado: é preciso convencer o leitor de que a pesquisa contribui para o conhecimento existente. Uma contribuição pode vir de [@edmans2025; @nikolov2023]:
@@ -185,6 +234,10 @@ Não basta ter uma pergunta interessante e um desenho adequado: é preciso conve
 - Um **mecanismo novo**: explicar *por que* um efeito ocorre, quando a literatura já sabe *que* ele ocorre.
 - Uma **generalização**: demonstrar que um resultado se sustenta em outros contextos.
 - Um **desafio a uma suposição aceita**: mostrar que algo que "todos sabem" está errado.
+
+Na perspectiva de @samii2023, há um tipo adicional de contribuição:
+
+- Uma **intervenção eficaz**: demonstrar que uma intervenção mitiga o problema identificado. Aqui, a contribuição não é apenas ao conhecimento, mas ao mundo.
 
 ### O teste da "célula vazia"
 
@@ -245,18 +298,28 @@ Tipos comuns de experimentos em ciência política:
 - **Experimentos de survey**: tratamento é uma variação no questionário (vinhetas, framing). Permitem testar mecanismos cognitivos e de atitude.
 - **Experimentos de campo**: tratamento é implementado no mundo real (campanha de informação, programa de incentivo). Combinam validade interna e externa, mas são caros e logisticamente complexos.
 
+#### A ética dos experimentos de campo
+
+@samii2023 levanta uma questão ética importante sobre experimentos de campo: quando o experimento afeta genuinamente a vida das pessoas, o pesquisador tem a "obrigação ética de que o experimento opere com a intenção primária de tentar mitigar problemas do mundo real, em vez de simplesmente usar a vida de outras pessoas para fins de investigação acadêmica."
+
+Considere um exemplo concreto. Suponha que a teoria preveja que distância social entre grupos majoritários e minoritários reduz o apoio a direitos de minorias. Uma abordagem de *teste de teoria* poderia aleatorizar um aumento de distância social e medir se o apoio a direitos cai. Isso é eticamente problemático: empurra os participantes para um estado contrafactual que não queremos criar, e se os efeitos persistirem, o experimento piora o problema real.
+
+A abordagem de *resolução de problemas* é diferente: primeiro, estabeleça observacionalmente que distância social é um fator real; depois, desenhe uma intervenção que *reduza* a distância social e teste se isso *melhora* o apoio a direitos. O grupo de controle é o mundo real; o contrafactual é um mundo onde o problema foi atenuado.
+
 ### Estudos observacionais
 
 Na maioria das questões em ciência política, não é possível realizar experimentos: não podemos aleatorizar regimes políticos, guerras ou crises econômicas. Estudos observacionais analisam dados gerados pelo mundo sem intervenção do pesquisador.
 
-O desafio central é que, sem aleatorização, a "atribuição" ao tratamento é determinada por fatores que podem estar correlacionados com o resultado, gerando viés. Para lidar com isso, pesquisadores usam **estratégias de identificação** — desenhos que exploram alguma fonte de variação "quase-aleatória":
+O desafio central é que, sem aleatorização, a "atribuição" ao tratamento é determinada por fatores que podem estar correlacionados com o resultado, gerando viés. Para lidar com isso, pesquisadores usam **estratégias de identificação** — desenhos que exploram alguma fonte de variação "quase-aleatória" [@samii2023]:
 
 - **Diferenças-em-diferenças (DiD)**: compara a mudança no resultado antes e depois do tratamento entre o grupo tratado e um grupo de controle.
 - **Regressão descontínua (RDD)**: explora um limiar (cutoff) que determina quem recebe o tratamento, comparando unidades logo acima e logo abaixo do limiar.
 - **Variáveis instrumentais (IV)**: usa uma variável que afeta o resultado *apenas* através do tratamento.
 - **Pareamento (*matching*)**: constrói um grupo de controle que se assemelha ao grupo tratado em características observáveis.
 
-Cada estratégia repousa sobre suposições específicas. A credibilidade do estudo depende de quão defensáveis são essas suposições.
+Cada estratégia repousa sobre suposições específicas. A credibilidade do estudo depende de quão defensáveis são essas suposições. E como @samii2023 enfatiza, a teoria deve guiar a escolha da estratégia de identificação: não é possível escolher um método sem antes ter clareza sobre o mecanismo teórico que se acredita estar operando.
+
+Na perspectiva de resolução de problemas, o padrão epistêmico no Estágio 2 é o que Samii chama de **inferência à melhor explicação**: como análises observacionais sempre envolvem ambiguidade sobre a identificação causal, o objetivo é avaliar a *plausibilidade* global de uma explicação mecanística — não provar definitivamente uma cadeia causal.
 
 ### Tratamento versus manipulação {#tratamento-manipulacao}
 
@@ -284,7 +347,7 @@ A abordagem mais influente na ciência política quantitativa é o **modelo de r
 
 $$\tau_i = Y_i(1) - Y_i(0)$$
 
-O problema fundamental da inferência causal é que nunca observamos ambos os resultados potenciais para a mesma unidade. Cada unidade está no grupo de tratamento *ou* no grupo de controle, nunca em ambos. O desenho de pesquisa é precisamente o conjunto de escolhas que nos permite *estimar* o efeito causal apesar de nunca observá-lo diretamente.
+O problema fundamental da inferência causal é que nunca observamos ambos os resultados potenciais para a mesma unidade. Cada unidade está no grupo de tratamento *ou* no grupo de controle, nunca em ambos. O desenho de pesquisa é precisamente o conjunto de escolhas que nos permite *estimar* o efeito causal apesar de nunca observá-lo diretamente [@samii2023].
 
 ### Causalidade e correlação
 
@@ -302,20 +365,19 @@ Além de estimar *que* X causa Y (o efeito causal), frequentemente queremos sabe
 
 Um erro comum é tratar co-ocorrência temporal como evidência de mecanismo. Se X acontece, depois M acontece, depois Y acontece, isso não prova que M é o mecanismo — outros fatores contemporâneos podem ser responsáveis. Evidência de mecanismo requer mostrar que: (a) o mediador proposto de fato responde ao tratamento, (b) o mediador de fato afeta o resultado, e (c) fontes alternativas do mediador foram descartadas.
 
+@samii2023 acrescenta um critério de priorização: dado que o objetivo final é resolver problemas, o mecanismo mais valioso não é necessariamente o que explica mais variação, mas sim o que é **passível de intervenção**. Descobertas que identificam mecanismos sobre os quais é possível agir são mais valiosas do que descobertas que identificam mecanismos profundos mas imutáveis — porque permitem avançar ao Estágio 3 (testar intervenções).
+
 ## Desenho de projetos de políticas públicas {#policy}
 
-As seções anteriores trataram do desenho de *pesquisa* — investigações cujo objetivo é produzir conhecimento. Mas cientistas políticos também trabalham com o desenho de *projetos de políticas públicas* (*policy*) — intervenções cujo objetivo é resolver um problema do mundo real. Embora compartilhem ferramentas, as duas atividades têm lógicas distintas.
+### Pesquisa e policy: atividades separadas ou estágios de um mesmo programa?
 
-### O puzzle em policy
+A visão convencional trata pesquisa acadêmica e projetos de políticas públicas como atividades distintas com lógicas próprias. Na pesquisa, o ponto de partida é um puzzle intelectual e o objetivo é contribuir para o conhecimento. Em policy, o ponto de partida é um problema prático e o objetivo é mudar uma realidade.
 
-Na pesquisa acadêmica, o ponto de partida é um **puzzle intelectual**: um fenômeno que a teoria existente não explica. Em projetos de policy, o ponto de partida é um **problema prático**: uma situação indesejável que se quer mudar. A proposta não é uma hipótese a ser testada, mas uma **intervenção** a ser implementada.
+@samii2023 desafia essa separação. Na sua abordagem, pesquisa e policy são *estágios de um mesmo programa*: o Estágio 1 diagnostica o problema (descritivo), o Estágio 2 identifica os mecanismos que o perpetuam (causal-observacional), e o Estágio 3 testa intervenções para mitigá-lo (causal-intervencionista). A avaliação de impacto — tipicamente vista como uma atividade de policy — é, nessa ótica, o *culminar* da pesquisa.
 
-Compare:
+Na prática, ambas as visões capturam algo importante. A visão convencional reconhece que pesquisa básica (sem aplicação prática imediata) tem valor intrínseco. A visão de Samii reconhece que a fronteira entre pesquisa e policy é mais porosa do que a maioria dos manuais sugere. Um bom cientista político deve ser capaz de operar em ambos os registros.
 
-- **Pesquisa**: "Por que a evasão escolar é maior em municípios com menor renda per capita?" → hipótese → teste empírico → contribuição ao conhecimento.
-- **Policy**: "A evasão escolar no município X é de 15%, o dobro da média estadual." → diagnóstico → intervenção (programa de bolsas, busca ativa) → avaliação de resultados.
-
-Na pesquisa, o sucesso é medido pela qualidade da evidência e da contribuição teórica. Em policy, o sucesso é medido pela **mudança no problema** que a intervenção produziu.
+As seções a seguir apresentam os elementos específicos do desenho de projetos de policy, usando a linguagem e as ferramentas do campo — mas o leitor deve notar como esses elementos mapeiam nos três estágios de Samii.
 
 ### Teoria da mudança
 
@@ -328,6 +390,8 @@ Explicitar a teoria da mudança é valioso por três razões [@worldbank2012]:
 1. **Força clareza**: obriga a equipe a articular *por que* o projeto deve funcionar, não apenas *o que* ele fará.
 2. **Identifica suposições críticas**: cada elo da cadeia depende de suposições que podem ser testadas e monitoradas. Se uma suposição falha, o projeto pode ser ajustado antes de desperdiçar recursos.
 3. **Permite avaliação**: sem uma teoria da mudança, é impossível saber se o projeto falhou porque a teoria estava errada ou porque a implementação foi ruim.
+
+Na linguagem de Samii, a teoria da mudança de um projeto de policy corresponde ao trabalho dos Estágios 1 e 2: o diagnóstico do problema e a identificação do mecanismo que a intervenção pretende romper.
 
 ### A cadeia de resultados: insumos, atividades, produtos, resultados e impacto
 
@@ -392,24 +456,20 @@ Uma vez implementado o projeto, como saber se ele funcionou? Existem três níve
 
 **Avaliação de resultados** — Verifica se os resultados esperados estão ocorrendo. Responde à pergunta: "a situação mudou?" Compara indicadores antes e depois da intervenção. Exemplo: a taxa de evasão caiu de 15% para 10% após o programa. Avaliação de resultados é necessária, mas insuficiente para atribuir a mudança ao projeto — a evasão pode ter caído por outros motivos (melhora econômica, outra política simultânea).
 
-**Avaliação de impacto** — Estima o **efeito causal** da intervenção [@gertler2016]. Responde à pergunta mais difícil: "a mudança *foi causada* pelo projeto, ou teria ocorrido de qualquer forma?" Para responder a essa pergunta, é preciso construir um **contrafactual** — o que teria acontecido na ausência do projeto. Aqui, os métodos discutidos nas seções anteriores (experimentos, diferenças-em-diferenças, regressão descontínua) se aplicam diretamente.
+**Avaliação de impacto** — Estima o **efeito causal** da intervenção [@gertler2016]. Responde à pergunta mais difícil: "a mudança *foi causada* pelo projeto, ou teria ocorrido de qualquer forma?" Para responder a essa pergunta, é preciso construir um **contrafactual** — o que teria acontecido na ausência do projeto. Aqui, os métodos discutidos nas seções anteriores (experimentos, diferenças-em-diferenças, regressão descontínua) se aplicam diretamente. Na linguagem de Samii, a avaliação de impacto é o Estágio 3 do programa de pesquisa.
 
 A diferença entre avaliação de resultados e avaliação de impacto é exatamente a diferença entre correlação e causalidade discutida nas seções anteriores. Observar que a evasão caiu após o programa (avaliação de resultados) não é o mesmo que demonstrar que o programa *causou* a queda (avaliação de impacto). Para isso, é preciso um grupo de comparação adequado — idealmente, municípios semelhantes que não receberam o programa.
 
-### Pesquisa acadêmica vs. projetos de policy: síntese das diferenças
+### Pesquisa acadêmica vs. projetos de policy: síntese
 
-| Dimensão | Pesquisa acadêmica | Projeto de policy |
-|----------|-------------------|-------------------|
-| Ponto de partida | Puzzle intelectual | Problema prático |
-| Proposta | Hipótese | Intervenção |
-| Objetivo | Contribuir para o conhecimento | Mudar uma realidade |
-| Critério de sucesso | Qualidade da evidência e contribuição teórica | Mudança no problema (resultado e impacto) |
-| Generalidade | Busca conclusões generalizáveis | Foco em contexto específico |
-| Objetivos | Pergunta de pesquisa | Objetivos SMART |
-| Medida de progresso | Resultados estatísticos | Indicadores e metas |
-| Avaliação | Validade interna e externa | Monitoramento, avaliação de resultados e impacto |
-
-Apesar das diferenças, as duas atividades se complementam. Bons projetos de policy se baseiam em evidência produzida por pesquisa. E avaliações de impacto rigorosas são, elas mesmas, pesquisas — com desenhos de pesquisa, estratégias de identificação e testes de hipóteses.
+| Dimensão | Visão tradicional: pesquisa acadêmica | Visão tradicional: projeto de policy | Visão Samii: programa integrado |
+|----------|--------------------------------------|--------------------------------------|-------------------------------|
+| Ponto de partida | Puzzle intelectual | Problema prático | Problema normativamente definido |
+| Proposta | Hipótese | Intervenção | Hipótese → intervenção (sequencial) |
+| Objetivo | Contribuir para o conhecimento | Mudar uma realidade | Ambos: conhecimento *a serviço* da mudança |
+| Critério de sucesso | Atualização bayesiana das crenças do leitor | Mudança no problema (resultado e impacto) | Intervenção que mitiga o problema |
+| Generalidade | Busca conclusões generalizáveis | Foco em contexto específico | Do caso particular à intervenção escalável |
+| Avaliação | Validade interna e externa | Monitoramento + avaliação de impacto | Os três estágios como avaliação progressiva |
 
 ## Erros comuns em desenho de pesquisa
 
@@ -421,7 +481,7 @@ Muitos pesquisadores começam com um método ("vou fazer um RDD") em vez de uma 
 
 ### 2. Confundir descrição com explicação
 
-Mostrar que duas variáveis estão correlacionadas é descrição, não explicação. Afirmar causalidade exige uma estratégia de identificação explícita. Muitos artigos apresentam correlações como se fossem efeitos causais, sem defender as suposições que tornariam essa interpretação legítima [@samii2023].
+Mostrar que duas variáveis estão correlacionadas é descrição, não explicação. Afirmar causalidade exige uma estratégia de identificação explícita. Muitos artigos apresentam correlações como se fossem efeitos causais, sem defender as suposições que tornariam essa interpretação legítima. @samii2023 nota que até mesmo a pesquisa descritiva (Estágio 1) pode envolver problemas sutis de identificação: dados administrativos podem mascarar vieses sistemáticos que só um framework causal consegue diagnosticar.
 
 ### 3. Motivar um problema e depois mostrar que ele é irrelevante
 
@@ -441,11 +501,15 @@ Calibre suas afirmações ao tipo de evidência que você tem. Evidência correl
 
 ### 7. Confundir significância estatística com importância substantiva
 
-Um resultado pode ser estatisticamente significativo mas substantivamente irrelevante (um efeito de 0,001% com N enorme), ou substantivamente importante mas estatisticamente insignificante (um efeito grande em uma amostra pequena). Sempre discuta o *tamanho* do efeito e o que ele significa em termos práticos, não apenas o p-valor [@samii2023; @nikolov2023].
+Um resultado pode ser estatisticamente significativo mas substantivamente irrelevante (um efeito de 0,001% com N enorme), ou substantivamente importante mas estatisticamente insignificante (um efeito grande em uma amostra pequena). Sempre discuta o *tamanho* do efeito e o que ele significa em termos práticos, não apenas o p-valor [@nikolov2023].
 
 ### 8. Ignorar explicações alternativas
 
 Todo argumento de pesquisa deve antecipar e responder às explicações alternativas mais plausíveis [@booth2009]. Listar apenas sua explicação preferida sem considerar rivais enfraquece dramaticamente a credibilidade do trabalho. As melhores pesquisas desenham testes que *discriminam* entre explicações concorrentes.
+
+### 9. Tratar a escolha do tema como normativamente neutra
+
+Como @samii2023 argumenta, a escolha do que estudar já envolve compromissos normativos. Fingir neutralidade pode levar a pesquisas que são tecnicamente sofisticadas mas socialmente irrelevantes — ou, pior, que reforçam *status quo* ao tratar como "natural" o que é, na verdade, um problema que merece atenção.
 
 ## Escrevendo sobre seu desenho de pesquisa
 
@@ -455,7 +519,7 @@ Uma boa pesquisa mal comunicada é uma pesquisa desperdiçada. Algumas orientaç
 
 Na ciência política empírica, leitores — incluindo pareceristas — decidem se vão ler o artigo inteiro com base na introdução. Uma boa introdução deve:
 
-1. **Abrir com um *puzzle***: um caso ou observação que cria um problema intelectual.
+1. **Abrir com um *puzzle* ou problema**: um caso ou observação que cria uma necessidade intelectual ou prática.
 2. **Identificar a lacuna**: o que a literatura existente não sabe.
 3. **Apresentar a tese**: sua resposta provisória, de forma assertiva e específica.
 4. **Resumir a estratégia empírica**: como você responde à pergunta.
@@ -503,3 +567,8 @@ O leitor deve saber sua conclusão principal *no primeiro parágrafo*. Não cons
    b. Descreva a cadeia de resultados (atividades → produtos → resultados → impacto).
    c. Proponha pelo menos um indicador e uma meta para cada nível da cadeia.
    d. Explique a diferença entre avaliar se o programa "funcionou" (avaliação de resultados) e avaliar se o programa *causou* a melhora (avaliação de impacto). Que desenho de pesquisa você usaria para a avaliação de impacto?
+
+7. Considere o problema da sub-representação feminina na política brasileira. Usando o framework dos três estágios de @samii2023:
+   a. Como você estabeleceria o problema (Estágio 1)? Que dados descritivos seriam necessários?
+   b. Que mecanismos poderiam perpetuar o problema (Estágio 2)? Qual deles seria mais passível de intervenção?
+   c. Proponha uma intervenção testável (Estágio 3). Como você desenharia o teste?

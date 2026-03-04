@@ -73,10 +73,13 @@ organizando-um-projeto-de-pesquisa
 exercícios-2
 desenho
 o-que-é-um-desenho-de-pesquisa
+duas-visões-puzzles-e-problemas
 tipos-de-pesquisa
-pesquisa-normativa-vs.-positiva
+pesquisa-normativa-vs.-positiva-a-visão-tradicional
+a-crítica-de-samii-o-normativo-como-ponto-de-partida
 pesquisa-descritiva-preditiva-e-explicativa
 geração-teste-e-aplicação-de-teoria
+os-três-estágios-de-um-programa-de-pesquisa-orientado-a-problemas
 da-pergunta-à-hipótese
 objetivo-geral-objetivos-específicos-e-pergunta-de-pesquisa
 questão-de-pesquisa
@@ -92,6 +95,7 @@ evidência-evidence
 ressalvas-e-respostas-acknowledgment-and-response
 garantia-warrant
 o-argumento-como-um-todo
+a-pesquisa-como-ato-de-persuasão
 contribuição-por-que-sua-pesquisa-importa
 o-teste-da-célula-vazia
 posicionando-a-contribuição-na-literatura
@@ -101,6 +105,7 @@ validade-interna
 validade-externa
 desenhos-de-pesquisa
 estudos-experimentais
+a-ética-dos-experimentos-de-campo
 estudos-observacionais
 tratamento-manipulacao
 estudos-transversais-e-longitudinais
@@ -109,13 +114,13 @@ a-abordagem-dos-resultados-potenciais
 causalidade-e-correlação
 mecanismos-causais
 policy
-o-puzzle-em-policy
+pesquisa-e-policy-atividades-separadas-ou-estágios-de-um-mesmo-programa
 teoria-da-mudança
 a-cadeia-de-resultados-insumos-atividades-produtos-resultados-e-impacto
 objetivos-smart
 indicadores-e-metas
 avaliação-monitoramento-avaliação-de-resultados-e-avaliação-de-impacto
-pesquisa-acadêmica-vs.-projetos-de-policy-síntese-das-diferenças
+pesquisa-acadêmica-vs.-projetos-de-policy-síntese
 erros-comuns-em-desenho-de-pesquisa
 escolher-o-método-antes-da-pergunta
 confundir-descrição-com-explicação
@@ -125,6 +130,7 @@ derivar-scope-conditions-dos-resultados
 afirmar-mais-do-que-a-evidência-sustenta
 confundir-significância-estatística-com-importância-substantiva
 ignorar-explicações-alternativas
+tratar-a-escolha-do-tema-como-normativamente-neutra
 escrevendo-sobre-seu-desenho-de-pesquisa
 a-introdução-é-tudo
 bottom-line-up-front-bluf
