@@ -314,139 +314,40 @@ pib_cid %>%
   ggtitle("PIB per capita municipal")
 ```
 
-## GitHub e controle de versão
-
-### O que é Git e GitHub?
-
-**Git** é um sistema de controle de versão que permite rastrear mudanças nos seus arquivos ao longo do tempo. Pense nele como um "histórico de alterações" muito poderoso para seus projetos.
-
-**GitHub** é uma plataforma online que hospeda repositórios Git, permitindo colaboração, backup na nuvem e compartilhamento de código.
-
-Para cientistas sociais, usar Git e GitHub é importante por diversas razões:
-
-- **Reprodutibilidade**: qualquer pessoa pode acessar seu código e dados e reproduzir suas análises.
-- **Backup**: seu trabalho fica salvo na nuvem.
-- **Colaboração**: permite trabalhar em equipe de forma organizada.
-- **Portfólio**: seus projetos ficam visíveis para a comunidade acadêmica e profissional.
-
-### Criando uma conta no GitHub
-
-Acesse https://github.com e crie uma conta gratuita. Use seu e-mail institucional se possível, pois isso dá acesso a benefícios educacionais (GitHub Education).
-
-### Instalando o Git
-
-Antes de conectar o RStudio ao GitHub, é preciso ter o Git instalado no computador.
-
-- **Windows**: Baixe em https://git-scm.com/download/win e instale com as opções padrão.
-- **Mac**: Abra o Terminal e digite `git --version`. Se não estiver instalado, o sistema oferecerá a instalação automática (via Xcode Command Line Tools). Alternativamente, baixe em https://git-scm.com/download/mac.
-- **Linux**: Use o gerenciador de pacotes da sua distribuição. Por exemplo, no Ubuntu: `sudo apt install git`.
-
-### Configuração inicial do Git
-
-Após instalar o Git, abra o Terminal (ou o terminal do RStudio, na aba "Terminal") e configure seu nome e e-mail:
-
-```bash
-git config --global user.name "Seu Nome"
-git config --global user.email "seu.email@exemplo.com"
-```
-
-Use o mesmo e-mail que cadastrou no GitHub.
-
-### Conectando o RStudio ao GitHub
-
-#### Passo 1: Instalar o pacote `usethis`
-
-No console do RStudio, execute:
-
-```r
-install.packages("usethis")
-```
-
-#### Passo 2: Criar um token de acesso pessoal (PAT)
-
-O GitHub não aceita mais senha para autenticação via Git. É necessário criar um token de acesso pessoal. No console do RStudio, execute:
-
-```r
-usethis::create_github_token()
-```
-
-Isso abrirá o navegador na página de criação de token do GitHub. Dê um nome descritivo ao token (por exemplo, "RStudio") e clique em "Generate token". **Copie o token gerado** — ele não será mostrado novamente.
-
-#### Passo 3: Armazenar o token no RStudio
-
-No console do RStudio, execute:
-
-```r
-install.packages("gitcreds")
-gitcreds::gitcreds_set()
-```
-
-Quando solicitado, cole o token que você copiou no passo anterior.
-
-#### Passo 4: Verificar a configuração
-
-Para confirmar que tudo está funcionando, execute:
-
-```r
-usethis::git_sitrep()
-```
-
-Você deve ver informações sobre seu nome, e-mail e o token de acesso configurado.
-
-### Criando um projeto com controle de versão
-
-#### Opção A: Criar um novo repositório no GitHub e clonar
-
-1. No GitHub, clique em "New repository".
-2. Dê um nome ao repositório (por exemplo, "meu-projeto-estatistica").
-3. Marque "Add a README file".
-4. Clique em "Create repository".
-5. Copie a URL do repositório (botão verde "Code").
-6. No RStudio, vá em **File > New Project > Version Control > Git**.
-7. Cole a URL do repositório e escolha a pasta onde o projeto será salvo.
-8. Clique em "Create Project".
-
-#### Opção B: Transformar um projeto existente do RStudio em repositório Git
-
-1. No RStudio, abra o projeto existente.
-2. No console, execute:
-
-```r
-usethis::use_git()
-```
-
-3. Confirme a criação do repositório Git. O RStudio reiniciará.
-4. Depois, para conectar ao GitHub:
-
-```r
-usethis::use_github()
-```
-
-Isso criará automaticamente um repositório no GitHub e fará a conexão.
-
-### Fluxo básico de trabalho com Git no RStudio
-
-Após configurar o projeto, a aba **Git** aparecerá no painel superior direito do RStudio. O fluxo básico de trabalho é:
-
-1. **Modificar arquivos**: edite seus scripts normalmente.
-2. **Stage (preparar)**: na aba Git, marque a caixa ao lado dos arquivos que deseja salvar.
-3. **Commit (registrar)**: clique em "Commit", escreva uma mensagem descrevendo as alterações e clique em "Commit".
-4. **Push (enviar)**: clique na seta verde para cima ("Push") para enviar as alterações para o GitHub.
-5. **Pull (receber)**: clique na seta azul para baixo ("Pull") para receber alterações do GitHub (útil quando trabalhando em equipe).
-
-### Boas práticas
-
-- Faça commits frequentes com mensagens claras (por exemplo: "Adiciona análise descritiva do PIB municipal").
-- Sempre faça Pull antes de começar a trabalhar, para garantir que está com a versão mais recente.
-- Não coloque dados sensíveis ou muito grandes no GitHub. Use um arquivo `.gitignore` para excluí-los.
-
 ## Exercícios
 
-1. Instale o R e o RStudio no seu computador.
-2. Crie um script R que:
-   a. Crie um vetor com as idades de 5 colegas.
-   b. Calcule a média das idades.
-   c. Crie um data.frame com o nome e a idade de cada colega.
-3. Importe o arquivo de PIB municipal e descubra qual é o município com o maior PIB total.
-4. Faça um gráfico de dispersão (scatterplot) com o PIB total no eixo y e o PIB per capita no eixo x.
-5. Crie uma conta no GitHub, conecte ao RStudio, crie um repositório e faça commit e push do script criado nos exercícios anteriores.
+### Importação de dados
+
+1. **(Fácil)** Importe o arquivo `dados/municipios_virgula.csv` usando `read.csv()`. Quantos municípios há no banco? Quais são as colunas?
+
+2. **(Fácil)** Tente importar o arquivo `dados/municipios_pontovirgula.csv` usando `read.csv()` (sem argumentos adicionais). O que acontece? Por que dá erro? Agora importe corretamente usando `read.csv2()` com o argumento `fileEncoding = "latin1"`. Explique a diferença entre `read.csv()` e `read.csv2()`.
+
+3. **(Médio)** Importe o arquivo `dados/eleicoes_2022.csv`. Verifique se o município "Pau D'Arco" foi importado corretamente. Dica: use `filter()` para buscar o município e verifique se o nome aparece completo.
+
+4. **(Médio)** Importe o arquivo `dados/idh_municipios.csv`. Este arquivo usa ponto e vírgula como separador e está codificado em latin1. Importe-o corretamente e verifique se as colunas numéricas (como `idh_2010`) são de fato numéricas (use `str()` ou `class()`).
+
+5. **(Difícil)** Tente importar o arquivo `dados/idh_municipios.csv` de três formas diferentes: (a) `read.csv()` sem argumentos extras; (b) `read.csv2()` sem `fileEncoding`; (c) `read.csv2()` com `fileEncoding = "latin1"`. Para cada tentativa, verifique: a importação funciona sem erro? Os nomes dos municípios com acento aparecem corretamente? As colunas numéricas são numéricas? Explique o que deu errado em cada caso.
+
+### Data wrangling com dplyr
+
+6. **(Fácil)** Usando o banco `municipios_virgula.csv`, encontre o município com o maior IDH e o município com o menor IDH.
+
+7. **(Fácil)** Usando o banco `municipios_virgula.csv`, calcule a população total (soma) e a população média dos municípios.
+
+8. **(Médio)** Usando o banco `eleicoes_2022.csv`, calcule o total de votos de cada candidato considerando todos os municípios. Ordene o resultado do mais votado para o menos votado (dica: `arrange(desc(...))`).
+
+9. **(Médio)** Usando o banco `idh_municipios.csv` (importado corretamente), calcule o IDH médio por região do Brasil. Qual região tem o maior IDH médio? E o menor?
+
+10. **(Médio)** Usando o banco `eleicoes_2022.csv`, crie uma nova coluna chamada `vencedor` que indica, para cada município, o candidato com o maior percentual de votos. Dica: agrupe por município, filtre a linha com o maior percentual (`slice_max()`), e selecione as colunas relevantes.
+
+11. **(Difícil)** Usando o banco `idh_municipios.csv`, crie uma nova variável chamada `categoria_idh` que classifica os municípios em: "Muito Alto" (IDH >= 0.8), "Alto" (0.7 <= IDH < 0.8), "Médio" (0.55 <= IDH < 0.7) e "Baixo" (IDH < 0.55). Use `mutate()` com `case_when()`. Quantos municípios há em cada categoria?
+
+12. **(Difícil)** Usando o banco `idh_municipios.csv`, calcule, para cada região, qual é a dimensão do IDH (educação, longevidade ou renda) que tem a maior média e qual tem a menor média. Dica: use `group_by()`, `summarise()` e depois `pivot_longer()` para facilitar a comparação.
+
+### Visualização com ggplot2
+
+13. **(Fácil)** Usando o banco `municipios_virgula.csv`, faça um gráfico de barras (`geom_col()`) mostrando a população de cada município. Ordene as barras da maior para a menor população (dica: use `reorder()`).
+
+14. **(Médio)** Usando o banco `idh_municipios.csv`, faça um gráfico de dispersão (`geom_point()`) com o IDH de educação no eixo x e o IDH de renda no eixo y. Pinte os pontos por região (`color = regiao`). Adicione rótulos nos eixos e um título informativo.
+
+15. **(Difícil)** Usando o banco `eleicoes_2022.csv`, faça um gráfico de barras empilhadas (`geom_col()`) que mostre, para cada município, a proporção de votos de cada candidato. Use `y = votos` e `fill = candidato` para empilhar as barras, e `position = "fill"` para normalizar em proporções. Adicione `coord_flip()` para facilitar a leitura dos nomes dos municípios.

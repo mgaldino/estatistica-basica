@@ -1,40 +1,383 @@
-# Reprodutibilidade: Git, R Markdown e LaTeX {#reprodutibilidade}
+# Reprodutibilidade: Git, R Markdown e Workflow {#reprodutibilidade}
+
+```{r setup-cap3, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, dpi=96)
+```
 
 ## Objetivos do capítulo {-}
 
 - Entender por que reprodutibilidade importa na pesquisa científica
 - Usar Git e GitHub para controle de versão
 - Produzir relatórios reproduzíveis com R Markdown
-- Conhecer o básico de LaTeX para fórmulas e documentos acadêmicos
+- Organizar o workflow de um projeto de pesquisa
+- Conhecer o uso de agentes de IA no fluxo de trabalho acadêmico
 
 ## Por que reprodutibilidade?
 
-## Controle de versão com Git
+Em um projeto de pesquisa, a menor parte do tempo é gasta fazendo a análise dos dados propriamente dita. A maior parte é investida na preparação dos dados e na comunicação dos resultados. Como Przeworski afirmou: *"This is the job: you rewrite, and you rewrite, and you rewrite."*
 
-### O que é Git?
+A reprodutibilidade é a capacidade de outra pessoa (ou você mesmo, meses depois) refazer toda a análise a partir dos dados e do código original, chegando aos mesmos resultados. Isso é fundamental por várias razões:
 
-### Instalação e configuração
+1. **Credibilidade científica**: resultados reproduzíveis são mais confiáveis. A crise de replicação em diversas áreas (psicologia, economia, medicina) mostrou que muitos achados publicados não se sustentam quando replicados.
 
-### Comandos essenciais
+2. **Transparência**: o leitor (e os pareceristas) podem verificar cada passo da análise. Isso reduz erros e aumenta a confiança nos resultados.
 
-### GitHub: repositórios remotos
+3. **Eficiência pessoal**: quando seu projeto está bem organizado e documentado, você consegue retomar o trabalho rapidamente, mesmo após semanas sem mexer nele.
+
+4. **Colaboração**: projetos reproduzíveis facilitam o trabalho em equipe, pois qualquer coautor pode entender e executar a análise.
+
+Para garantir reprodutibilidade, três ferramentas são essenciais: **Git** (controle de versão), **R Markdown** (integração de código e texto) e um **workflow organizado** (estrutura de pastas e scripts). Vamos abordar cada uma.
+
+## Controle de versão com Git e GitHub
+
+### O que é Git e GitHub?
+
+**Git** é um sistema de controle de versão que permite rastrear mudanças nos seus arquivos ao longo do tempo. Pense nele como um "histórico de alterações" muito poderoso para seus projetos.
+
+**GitHub** é uma plataforma online que hospeda repositórios Git, permitindo colaboração, backup na nuvem e compartilhamento de código.
+
+Para cientistas sociais, usar Git e GitHub é importante por diversas razões:
+
+- **Reprodutibilidade**: qualquer pessoa pode acessar seu código e dados e reproduzir suas análises.
+- **Backup**: seu trabalho fica salvo na nuvem.
+- **Colaboração**: permite trabalhar em equipe de forma organizada.
+- **Portfólio**: seus projetos ficam visíveis para a comunidade acadêmica e profissional.
+
+### Criando uma conta no GitHub
+
+Acesse https://github.com e crie uma conta gratuita. Use seu e-mail institucional se possível, pois isso dá acesso a benefícios educacionais (GitHub Education).
+
+### Instalando o Git
+
+Antes de conectar o RStudio ao GitHub, é preciso ter o Git instalado no computador.
+
+- **Windows**: Baixe em https://git-scm.com/download/win e instale com as opções padrão.
+- **Mac**: Abra o Terminal e digite `git --version`. Se não estiver instalado, o sistema oferecerá a instalação automática (via Xcode Command Line Tools). Alternativamente, baixe em https://git-scm.com/download/mac.
+- **Linux**: Use o gerenciador de pacotes da sua distribuição. Por exemplo, no Ubuntu: `sudo apt install git`.
+
+### Configuração inicial do Git
+
+Após instalar o Git, abra o Terminal (ou o terminal do RStudio, na aba "Terminal") e configure seu nome e e-mail:
+
+```bash
+git config --global user.name "Seu Nome"
+git config --global user.email "seu.email@exemplo.com"
+```
+
+Use o mesmo e-mail que cadastrou no GitHub.
+
+### Conectando o RStudio ao GitHub
+
+#### Passo 1: Instalar o pacote `usethis`
+
+No console do RStudio, execute:
+
+```r
+install.packages("usethis")
+```
+
+#### Passo 2: Criar um token de acesso pessoal (PAT)
+
+O GitHub não aceita mais senha para autenticação via Git. É necessário criar um token de acesso pessoal. No console do RStudio, execute:
+
+```r
+usethis::create_github_token()
+```
+
+Isso abrirá o navegador na página de criação de token do GitHub. Dê um nome descritivo ao token (por exemplo, "RStudio") e clique em "Generate token". **Copie o token gerado** — ele não será mostrado novamente.
+
+#### Passo 3: Armazenar o token no RStudio
+
+No console do RStudio, execute:
+
+```r
+install.packages("gitcreds")
+gitcreds::gitcreds_set()
+```
+
+Quando solicitado, cole o token que você copiou no passo anterior.
+
+#### Passo 4: Verificar a configuração
+
+Para confirmar que tudo está funcionando, execute:
+
+```r
+usethis::git_sitrep()
+```
+
+Você deve ver informações sobre seu nome, e-mail e o token de acesso configurado.
+
+### Criando um projeto com controle de versão
+
+#### Opção A: Criar um novo repositório no GitHub e clonar
+
+1. No GitHub, clique em "New repository".
+2. Dê um nome ao repositório (por exemplo, "meu-projeto-estatistica").
+3. Marque "Add a README file".
+4. Clique em "Create repository".
+5. Copie a URL do repositório (botão verde "Code").
+6. No RStudio, vá em **File > New Project > Version Control > Git**.
+7. Cole a URL do repositório e escolha a pasta onde o projeto será salvo.
+8. Clique em "Create Project".
+
+#### Opção B: Transformar um projeto existente do RStudio em repositório Git
+
+1. No RStudio, abra o projeto existente.
+2. No console, execute:
+
+```r
+usethis::use_git()
+```
+
+3. Confirme a criação do repositório Git. O RStudio reiniciará.
+4. Depois, para conectar ao GitHub:
+
+```r
+usethis::use_github()
+```
+
+Isso criará automaticamente um repositório no GitHub e fará a conexão.
+
+### Fluxo básico de trabalho com Git no RStudio
+
+Após configurar o projeto, a aba **Git** aparecerá no painel superior direito do RStudio. O fluxo básico de trabalho é:
+
+1. **Modificar arquivos**: edite seus scripts normalmente.
+2. **Stage (preparar)**: na aba Git, marque a caixa ao lado dos arquivos que deseja salvar.
+3. **Commit (registrar)**: clique em "Commit", escreva uma mensagem descrevendo as alterações e clique em "Commit".
+4. **Push (enviar)**: clique na seta verde para cima ("Push") para enviar as alterações para o GitHub.
+5. **Pull (receber)**: clique na seta azul para baixo ("Pull") para receber alterações do GitHub (útil quando trabalhando em equipe).
+
+### Boas práticas com Git
+
+- Faça commits frequentes com mensagens claras (por exemplo: "Adiciona análise descritiva do PIB municipal").
+- Sempre faça Pull antes de começar a trabalhar, para garantir que está com a versão mais recente.
+- Não coloque dados sensíveis ou muito grandes no GitHub. Use um arquivo `.gitignore` para excluí-los.
 
 ## R Markdown
 
+### O que é R Markdown?
+
+R Markdown é um formato de documento que permite integrar código R, resultados e texto formatado em um único arquivo. Isso elimina a inconsistência entre a análise e o relatório: quando os dados mudam, basta recompilar o documento e todos os resultados são atualizados automaticamente.
+
+Um arquivo R Markdown tem extensão `.Rmd` e pode ser convertido (renderizado) em diversos formatos: HTML, PDF, Word, apresentações e até livros (como este que você está lendo, feito com `bookdown`).
+
 ### Estrutura de um documento `.Rmd`
 
-### Texto formatado com Markdown
+Todo arquivo `.Rmd` tem três componentes:
 
-### Chunks de código R
+**1. Cabeçalho YAML** (entre `---`): define metadados como título, autor, data e formato de saída.
 
-### Gerando relatórios (PDF e HTML)
+```yaml
+---
+title: "Minha Análise"
+author: "Seu Nome"
+date: "2025-03-05"
+output: html_document
+---
+```
 
-## LaTeX: o essencial
+**2. Texto formatado com Markdown**: o corpo do documento usa a sintaxe Markdown para formatação.
 
-### Fórmulas matemáticas
+| Sintaxe | Resultado |
+|---------|-----------|
+| `**negrito**` | **negrito** |
+| `*itálico*` | *itálico* |
+| `# Título` | Título nível 1 |
+| `## Subtítulo` | Título nível 2 |
+| `- item` | Lista com marcadores |
+| `1. item` | Lista numerada |
+| `[texto](url)` | Link |
 
-### Referências cruzadas
+**3. Chunks de código R**: blocos de código que são executados quando o documento é renderizado.
 
-## Organizando um projeto de pesquisa
+Um chunk é delimitado por três crases e `{r}`:
+
+````markdown
+`r ''````{r nome-do-chunk}
+# código R aqui
+mean(c(1, 2, 3, 4, 5))
+```
+````
+
+#### Opções de chunk
+
+Cada chunk pode ter opções que controlam o comportamento:
+
+- `echo = TRUE/FALSE`: mostrar ou esconder o código no documento final.
+- `eval = TRUE/FALSE`: executar ou não o código.
+- `message = FALSE`: suprimir mensagens.
+- `warning = FALSE`: suprimir avisos.
+- `fig.width`, `fig.height`: dimensões de figuras.
+- `cache = TRUE`: salvar resultados em cache (útil para código demorado).
+
+Exemplo:
+
+````markdown
+`r ''````{r grafico-pib, echo=FALSE, fig.width=8, fig.height=5}
+library(ggplot2)
+ggplot(data, aes(x = pib, y = idh)) + geom_point()
+```
+````
+
+### Gerando relatórios
+
+Para renderizar o documento, clique no botão **Knit** no RStudio ou execute no console:
+
+```r
+rmarkdown::render("meu_relatorio.Rmd")
+```
+
+Os formatos mais comuns de saída são:
+
+- `html_document`: página web (mais flexível, recomendado para começar).
+- `pdf_document`: PDF (requer LaTeX instalado).
+- `word_document`: arquivo Word.
+
+### Fórmulas matemáticas com LaTeX
+
+Dentro do R Markdown, é possível incluir fórmulas matemáticas usando a sintaxe LaTeX. Para fórmulas inline, use `$...$`. Para fórmulas em destaque, use `$$...$$`.
+
+Exemplos:
+
+- Inline: `$\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$` gera $\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$
+- Em destaque:
+
+```
+$$\sigma^2 = \frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^2$$
+```
+
+$$\sigma^2 = \frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^2$$
+
+Alguns comandos LaTeX úteis:
+
+| Comando | Resultado |
+|---------|-----------|
+| `\frac{a}{b}` | $\frac{a}{b}$ |
+| `\sqrt{x}` | $\sqrt{x}$ |
+| `\sum_{i=1}^{n}` | $\sum_{i=1}^{n}$ |
+| `\bar{x}` | $\bar{x}$ |
+| `\hat{\beta}` | $\hat{\beta}$ |
+| `\alpha, \beta, \mu, \sigma` | $\alpha, \beta, \mu, \sigma$ |
+| `\leq, \geq, \neq` | $\leq, \geq, \neq$ |
+
+## Organizando o workflow de um projeto
+
+### Por que organizar?
+
+Um projeto de pesquisa envolve dados, scripts de limpeza, scripts de análise, figuras, tabelas e o texto do paper. Sem uma organização clara, é muito fácil perder o controle de qual script gerou qual resultado, ou qual versão dos dados foi usada na análise final. Um bom workflow garante que qualquer pessoa — incluindo você no futuro — consiga reproduzir toda a análise.
+
+### Estrutura de pastas
+
+A convenção recomendada é separar os arquivos por função:
+
+```text
+meu-projeto/
+├── raw_data/          # dados originais, NUNCA modificados
+├── transformed_data/  # dados limpos, prontos para análise
+├── scripts/           # código R (01_clean.R, 02_analysis.R etc.)
+├── outputs/           # tabelas, figuras, modelos exportados
+├── paper/             # texto em RMarkdown
+├── README.md          # instruções de reprodução
+└── .gitignore         # arquivos que o Git deve ignorar
+```
+
+**Regra de ouro**: os dados originais na pasta `raw_data/` nunca devem ser modificados. Toda limpeza e transformação é feita por script, e os resultados vão para `transformed_data/`. Isso garante que sempre é possível refazer a limpeza do zero.
+
+### Pipeline de análise
+
+A ordem dos scripts deve refletir o fluxo lógico do projeto:
+
+1. `01_clean.R` — importa os dados brutos e gera os dados limpos.
+2. `02_analysis.R` — roda os modelos estatísticos.
+3. `03_figures.R` — gera figuras e tabelas.
+4. `04_paper.Rmd` — integra resultados e texto no documento final.
+
+Duas abordagens para executar o pipeline:
+
+- **Pipeline pragmático**: rodar cada script manualmente, na ordem. Simples e funcional para projetos menores.
+- **Pipeline automatizado**: usar pacotes como `targets` ou ferramentas como `make` para documentar as dependências entre scripts e executar tudo automaticamente. Mais robusto para projetos grandes.
+
+### Replication package
+
+Quando seu paper estiver pronto para submissão, monte um **replication package** — o conjunto de materiais necessários para reproduzir toda a análise. Um bom replication package contém:
+
+1. **README.md**: título do paper, instruções de reprodução (versão do R, pacotes necessários, ordem dos scripts) e descrição das bases de dados (com links para fontes públicas quando possível).
+2. **Dados**: os dados utilizados (ou instruções de acesso, quando não podem ser compartilhados).
+3. **Scripts**: todos os scripts de análise.
+4. **Paper**: o arquivo do texto (`.Rmd` + PDF).
+
+Uma boa prática é incluir `sessionInfo()` no final de cada script, para registrar as versões exatas de R e dos pacotes utilizados.
+
+Repositórios de dados como o **Harvard Dataverse** são o padrão em ciência política para depositar replication packages. Eles geram um DOI (identificador permanente) para o seu material, garantindo preservação e facilitando citação. No Brasil, existe o **Scielo Data** como alternativa.
+
+### Escrevendo com RMarkdown e referências bibliográficas
+
+A principal vantagem de escrever o paper em RMarkdown é que os resultados da análise estão diretamente integrados ao texto. Se você corrige um erro nos dados ou muda uma especificação do modelo, basta recompilar o documento — todas as tabelas e figuras são atualizadas automaticamente. Isso elimina o problema clássico de inconsistências entre o que está no script e o que está no paper.
+
+Para gerenciar referências bibliográficas, exporte sua biblioteca do **Zotero** (ou outro gerenciador) em formato `.bib` e cite no texto com `[@autor_ano]`. O R Markdown gera a bibliografia formatada automaticamente.
+
+## Agentes de IA no fluxo de trabalho acadêmico
+
+### O que são agentes de IA?
+
+Modelos de linguagem (LLMs), como o ChatGPT e o Claude, são sistemas de inteligência artificial treinados para compreender e gerar texto. Quando esses modelos são equipados com ferramentas — como a capacidade de ler e editar arquivos, executar código, fazer buscas na web — eles se tornam **agentes de IA**: sistemas capazes de executar tarefas complexas de forma autônoma ou semi-autônoma.
+
+Para pesquisadores, agentes de IA são particularmente úteis porque podem auxiliar em diversas etapas do trabalho acadêmico:
+
+- **Análise de dados**: escrever e executar código em R ou Python, gerar tabelas e figuras.
+- **Escrita e revisão**: redigir seções de texto, revisar gramática, verificar consistência de argumentos.
+- **Revisão de literatura**: buscar e sintetizar artigos relevantes.
+- **Depuração de código**: identificar e corrigir erros em scripts.
+
+### Como agentes podem ajudar na pesquisa
+
+Um exemplo concreto: ferramentas como o **Claude Code** funcionam como um ambiente de trabalho para pesquisa acadêmica. Nesse tipo de sistema, agentes especializados podem ser configurados para tarefas específicas:
+
+- **Análise de dados em R**: um agente que conhece `tidyverse`, `fixest`, `modelsummary` e pode escrever, executar e revisar scripts de análise completos.
+- **Revisão de paper**: um agente que simula o papel de um parecerista (*referee*), avaliando contribuição, execução e exposição de um manuscrito.
+- **Compilação de documentos**: um agente que renderiza R Markdown e faz o deploy do documento.
+
+O fluxo geral de trabalho com agentes segue um padrão:
+
+1. **Planejar**: descrever a tarefa que se deseja realizar.
+2. **Delegar**: o agente executa a tarefa (escreve código, edita texto, gera figuras).
+3. **Revisar**: o pesquisador verifica os resultados e fornece feedback.
+4. **Iterar**: o agente refina o trabalho com base no feedback.
+
+### Limites e cuidados
+
+É importante tratar agentes de IA como assistentes, não como substitutos do pesquisador. Alguns cuidados fundamentais:
+
+- **Verificação**: sempre verifique os resultados produzidos pelo agente. LLMs podem gerar código com erros sutis ou texto com afirmações incorretas ("alucinações").
+- **Compreensão**: não use código que você não entende. O agente pode gerar uma análise complexa, mas você precisa saber explicar e defender cada escolha metodológica.
+- **Transparência**: se usar agentes de IA no seu trabalho, seja transparente sobre isso. Muitas revistas e programas de pós-graduação já possuem políticas sobre o uso de IA.
+- **Reprodutibilidade**: o uso de agentes não substitui a necessidade de documentar o workflow. Ao contrário, torna ainda mais importante ter scripts organizados e um replication package, pois o processo de geração do código precisa ser rastreável.
 
 ## Exercícios
+
+### Git e GitHub
+
+1. **(Fácil)** Crie uma conta no GitHub (se ainda não tiver). Configure o Git no seu computador com seu nome e e-mail usando o terminal.
+
+2. **(Fácil)** No GitHub, crie um novo repositório chamado "exercicio-stat-basica". Clone o repositório no RStudio usando **File > New Project > Version Control > Git**.
+
+3. **(Médio)** No projeto clonado, crie um arquivo `analise.R` com qualquer código R simples. Faça o ciclo completo: stage, commit (com uma mensagem descritiva) e push. Verifique no GitHub se o arquivo apareceu.
+
+4. **(Médio)** Modifique o arquivo `analise.R`, adicionando mais linhas de código. Faça um novo commit e push. No GitHub, explore o histórico de commits para ver as diferenças entre as versões.
+
+### R Markdown
+
+5. **(Fácil)** Crie um novo arquivo R Markdown no RStudio (**File > New File > R Markdown**). Escolha o formato HTML. Clique em "Knit" sem fazer alterações e observe o documento gerado.
+
+6. **(Médio)** No arquivo `.Rmd` criado, adicione: (a) um parágrafo com texto em **negrito** e *itálico*; (b) uma lista numerada; (c) um chunk de código R que calcule a média de um vetor qualquer. Renderize o documento.
+
+7. **(Médio)** Crie um documento R Markdown que importe o banco `dados/pib_cid.RDS`, apresente uma tabela com as 10 primeiras linhas (usando `kable()`) e um gráfico de sua escolha. Use a opção `echo = FALSE` nos chunks para esconder o código no documento final.
+
+8. **(Difícil)** Crie um documento R Markdown com formato PDF (requer LaTeX instalado) que inclua: (a) uma fórmula da média aritmética usando LaTeX; (b) um chunk que calcule a média do PIB per capita dos municípios; (c) uma referência inline ao resultado (usando `` `r ` ``). O documento deve mostrar a fórmula, o código e o resultado integrados.
+
+### Workflow
+
+9. **(Médio)** Crie a estrutura de pastas de um projeto de pesquisa seguindo a convenção apresentada neste capítulo (`raw_data/`, `transformed_data/`, `scripts/`, `outputs/`, `paper/`). Dentro de `scripts/`, crie dois arquivos vazios: `01_clean.R` e `02_analysis.R`. Inicialize o projeto como repositório Git e faça o primeiro commit.
+
+10. **(Difícil)** Monte um mini replication package: (a) coloque um arquivo CSV na pasta `raw_data/`; (b) em `01_clean.R`, importe os dados, faça alguma transformação simples (filtro, criação de variável) e salve o resultado em `transformed_data/`; (c) em `02_analysis.R`, carregue os dados transformados e gere uma tabela ou gráfico, salvando em `outputs/`; (d) escreva um `README.md` com instruções de reprodução. Faça commit e push de tudo para o GitHub.

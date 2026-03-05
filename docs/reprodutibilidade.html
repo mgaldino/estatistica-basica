@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 3 Reprodutibilidade: Git, R Markdown e LaTeX | Estatística Básica para Ciências Sociais</title>
+  <title>Capítulo 3 Reprodutibilidade: Git, R Markdown e Workflow | Estatística Básica para Ciências Sociais</title>
   <meta name="description" content="Material didático para os cursos de Métodos Quantitativos e Técnicas em Ciência Política I (pós-graduação) e Métodos III (graduação) do Departamento de Ciência Política da USP." />
   <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 3 Reprodutibilidade: Git, R Markdown e LaTeX | Estatística Básica para Ciências Sociais" />
+  <meta property="og:title" content="Capítulo 3 Reprodutibilidade: Git, R Markdown e Workflow | Estatística Básica para Ciências Sociais" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Material didático para os cursos de Métodos Quantitativos e Técnicas em Ciência Política I (pós-graduação) e Métodos III (graduação) do Departamento de Ciência Política da USP." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 3 Reprodutibilidade: Git, R Markdown e LaTeX | Estatística Básica para Ciências Sociais" />
+  <meta name="twitter:title" content="Capítulo 3 Reprodutibilidade: Git, R Markdown e Workflow | Estatística Básica para Ciências Sociais" />
   
   <meta name="twitter:description" content="Material didático para os cursos de Métodos Quantitativos e Técnicas em Ciência Política I (pós-graduação) e Métodos III (graduação) do Departamento de Ciência Política da USP." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Manoel Galdino" />
 
 
-<meta name="date" content="2026-03-04" />
+<meta name="date" content="2026-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -215,44 +215,55 @@ div.csl-indent {
 <li class="chapter" data-level="2.7" data-path="r-intro.html"><a href="r-intro.html#importando-dados"><i class="fa fa-check"></i><b>2.7</b> Importando dados</a></li>
 <li class="chapter" data-level="2.8" data-path="r-intro.html"><a href="r-intro.html#data-wrangling"><i class="fa fa-check"></i><b>2.8</b> Data wrangling</a></li>
 <li class="chapter" data-level="2.9" data-path="03-reprodutibilidade.html"><a href="#visualiza%C3%A7%C3%A3o"><i class="fa fa-check"></i><b>2.9</b> Visualização</a></li>
-<li class="chapter" data-level="2.10" data-path="03-reprodutibilidade.html"><a href="#github-e-controle-de-vers%C3%A3o"><i class="fa fa-check"></i><b>2.10</b> GitHub e controle de versão</a>
+<li class="chapter" data-level="2.10" data-path="03-reprodutibilidade.html"><a href="#exerc%C3%ADcios-1"><i class="fa fa-check"></i><b>2.10</b> Exercícios</a>
 <ul>
-<li class="chapter" data-level="2.10.1" data-path="03-reprodutibilidade.html"><a href="#o-que-%C3%A9-git-e-github"><i class="fa fa-check"></i><b>2.10.1</b> O que é Git e GitHub?</a></li>
-<li class="chapter" data-level="2.10.2" data-path="r-intro.html"><a href="r-intro.html#criando-uma-conta-no-github"><i class="fa fa-check"></i><b>2.10.2</b> Criando uma conta no GitHub</a></li>
-<li class="chapter" data-level="2.10.3" data-path="r-intro.html"><a href="r-intro.html#instalando-o-git"><i class="fa fa-check"></i><b>2.10.3</b> Instalando o Git</a></li>
-<li class="chapter" data-level="2.10.4" data-path="03-reprodutibilidade.html"><a href="#configura%C3%A7%C3%A3o-inicial-do-git"><i class="fa fa-check"></i><b>2.10.4</b> Configuração inicial do Git</a></li>
-<li class="chapter" data-level="2.10.5" data-path="r-intro.html"><a href="r-intro.html#conectando-o-rstudio-ao-github"><i class="fa fa-check"></i><b>2.10.5</b> Conectando o RStudio ao GitHub</a></li>
-<li class="chapter" data-level="2.10.6" data-path="03-reprodutibilidade.html"><a href="#criando-um-projeto-com-controle-de-vers%C3%A3o"><i class="fa fa-check"></i><b>2.10.6</b> Criando um projeto com controle de versão</a></li>
-<li class="chapter" data-level="2.10.7" data-path="03-reprodutibilidade.html"><a href="#fluxo-b%C3%A1sico-de-trabalho-com-git-no-rstudio"><i class="fa fa-check"></i><b>2.10.7</b> Fluxo básico de trabalho com Git no RStudio</a></li>
-<li class="chapter" data-level="2.10.8" data-path="03-reprodutibilidade.html"><a href="#boas-pr%C3%A1ticas"><i class="fa fa-check"></i><b>2.10.8</b> Boas práticas</a></li>
+<li class="chapter" data-level="2.10.1" data-path="03-reprodutibilidade.html"><a href="#importa%C3%A7%C3%A3o-de-dados"><i class="fa fa-check"></i><b>2.10.1</b> Importação de dados</a></li>
+<li class="chapter" data-level="2.10.2" data-path="r-intro.html"><a href="r-intro.html#data-wrangling-com-dplyr"><i class="fa fa-check"></i><b>2.10.2</b> Data wrangling com dplyr</a></li>
+<li class="chapter" data-level="2.10.3" data-path="03-reprodutibilidade.html"><a href="#visualiza%C3%A7%C3%A3o-com-ggplot2"><i class="fa fa-check"></i><b>2.10.3</b> Visualização com ggplot2</a></li>
 </ul></li>
-<li class="chapter" data-level="2.11" data-path="03-reprodutibilidade.html"><a href="#exerc%C3%ADcios-1"><i class="fa fa-check"></i><b>2.11</b> Exercícios</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html"><i class="fa fa-check"></i><b>3</b> Reprodutibilidade: Git, R Markdown e LaTeX</a>
+<li class="chapter" data-level="3" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html"><i class="fa fa-check"></i><b>3</b> Reprodutibilidade: Git, R Markdown e Workflow</a>
 <ul>
 <li class="chapter" data-level="" data-path=""><a href="#objetivos-do-cap%C3%ADtulo-1"><i class="fa fa-check"></i>Objetivos do capítulo</a></li>
 <li class="chapter" data-level="3.1" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#por-que-reprodutibilidade"><i class="fa fa-check"></i><b>3.1</b> Por que reprodutibilidade?</a></li>
-<li class="chapter" data-level="3.2" data-path="03-reprodutibilidade.html"><a href="#controle-de-vers%C3%A3o-com-git"><i class="fa fa-check"></i><b>3.2</b> Controle de versão com Git</a>
+<li class="chapter" data-level="3.2" data-path="03-reprodutibilidade.html"><a href="#controle-de-vers%C3%A3o-com-git-e-github"><i class="fa fa-check"></i><b>3.2</b> Controle de versão com Git e GitHub</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="03-reprodutibilidade.html"><a href="#o-que-%C3%A9-git"><i class="fa fa-check"></i><b>3.2.1</b> O que é Git?</a></li>
-<li class="chapter" data-level="3.2.2" data-path="03-reprodutibilidade.html"><a href="#instala%C3%A7%C3%A3o-e-configura%C3%A7%C3%A3o"><i class="fa fa-check"></i><b>3.2.2</b> Instalação e configuração</a></li>
-<li class="chapter" data-level="3.2.3" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#comandos-essenciais"><i class="fa fa-check"></i><b>3.2.3</b> Comandos essenciais</a></li>
-<li class="chapter" data-level="3.2.4" data-path="03-reprodutibilidade.html"><a href="#github-reposit%C3%B3rios-remotos"><i class="fa fa-check"></i><b>3.2.4</b> GitHub: repositórios remotos</a></li>
+<li class="chapter" data-level="3.2.1" data-path="03-reprodutibilidade.html"><a href="#o-que-%C3%A9-git-e-github"><i class="fa fa-check"></i><b>3.2.1</b> O que é Git e GitHub?</a></li>
+<li class="chapter" data-level="3.2.2" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#criando-uma-conta-no-github"><i class="fa fa-check"></i><b>3.2.2</b> Criando uma conta no GitHub</a></li>
+<li class="chapter" data-level="3.2.3" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#instalando-o-git"><i class="fa fa-check"></i><b>3.2.3</b> Instalando o Git</a></li>
+<li class="chapter" data-level="3.2.4" data-path="03-reprodutibilidade.html"><a href="#configura%C3%A7%C3%A3o-inicial-do-git"><i class="fa fa-check"></i><b>3.2.4</b> Configuração inicial do Git</a></li>
+<li class="chapter" data-level="3.2.5" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#conectando-o-rstudio-ao-github"><i class="fa fa-check"></i><b>3.2.5</b> Conectando o RStudio ao GitHub</a></li>
+<li class="chapter" data-level="3.2.6" data-path="03-reprodutibilidade.html"><a href="#criando-um-projeto-com-controle-de-vers%C3%A3o"><i class="fa fa-check"></i><b>3.2.6</b> Criando um projeto com controle de versão</a></li>
+<li class="chapter" data-level="3.2.7" data-path="03-reprodutibilidade.html"><a href="#fluxo-b%C3%A1sico-de-trabalho-com-git-no-rstudio"><i class="fa fa-check"></i><b>3.2.7</b> Fluxo básico de trabalho com Git no RStudio</a></li>
+<li class="chapter" data-level="3.2.8" data-path="03-reprodutibilidade.html"><a href="#boas-pr%C3%A1ticas-com-git"><i class="fa fa-check"></i><b>3.2.8</b> Boas práticas com Git</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#r-markdown"><i class="fa fa-check"></i><b>3.3</b> R Markdown</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#estrutura-de-um-documento-.rmd"><i class="fa fa-check"></i><b>3.3.1</b> Estrutura de um documento <code>.Rmd</code></a></li>
-<li class="chapter" data-level="3.3.2" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#texto-formatado-com-markdown"><i class="fa fa-check"></i><b>3.3.2</b> Texto formatado com Markdown</a></li>
-<li class="chapter" data-level="3.3.3" data-path="03-reprodutibilidade.html"><a href="#chunks-de-c%C3%B3digo-r"><i class="fa fa-check"></i><b>3.3.3</b> Chunks de código R</a></li>
-<li class="chapter" data-level="3.3.4" data-path="03-reprodutibilidade.html"><a href="#gerando-relat%C3%B3rios-pdf-e-html"><i class="fa fa-check"></i><b>3.3.4</b> Gerando relatórios (PDF e HTML)</a></li>
+<li class="chapter" data-level="3.3.1" data-path="03-reprodutibilidade.html"><a href="#o-que-%C3%A9-r-markdown"><i class="fa fa-check"></i><b>3.3.1</b> O que é R Markdown?</a></li>
+<li class="chapter" data-level="3.3.2" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#estrutura-de-um-documento-.rmd"><i class="fa fa-check"></i><b>3.3.2</b> Estrutura de um documento <code>.Rmd</code></a></li>
+<li class="chapter" data-level="3.3.3" data-path="03-reprodutibilidade.html"><a href="#gerando-relat%C3%B3rios"><i class="fa fa-check"></i><b>3.3.3</b> Gerando relatórios</a></li>
+<li class="chapter" data-level="3.3.4" data-path="03-reprodutibilidade.html"><a href="#f%C3%B3rmulas-matem%C3%A1ticas-com-latex"><i class="fa fa-check"></i><b>3.3.4</b> Fórmulas matemáticas com LaTeX</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#latex-o-essencial"><i class="fa fa-check"></i><b>3.4</b> LaTeX: o essencial</a>
+<li class="chapter" data-level="3.4" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#organizando-o-workflow-de-um-projeto"><i class="fa fa-check"></i><b>3.4</b> Organizando o workflow de um projeto</a>
 <ul>
-<li class="chapter" data-level="3.4.1" data-path="03-reprodutibilidade.html"><a href="#f%C3%B3rmulas-matem%C3%A1ticas"><i class="fa fa-check"></i><b>3.4.1</b> Fórmulas matemáticas</a></li>
-<li class="chapter" data-level="3.4.2" data-path="03-reprodutibilidade.html"><a href="#refer%C3%AAncias-cruzadas"><i class="fa fa-check"></i><b>3.4.2</b> Referências cruzadas</a></li>
+<li class="chapter" data-level="3.4.1" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#por-que-organizar"><i class="fa fa-check"></i><b>3.4.1</b> Por que organizar?</a></li>
+<li class="chapter" data-level="3.4.2" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#estrutura-de-pastas"><i class="fa fa-check"></i><b>3.4.2</b> Estrutura de pastas</a></li>
+<li class="chapter" data-level="3.4.3" data-path="03-reprodutibilidade.html"><a href="#pipeline-de-an%C3%A1lise"><i class="fa fa-check"></i><b>3.4.3</b> Pipeline de análise</a></li>
+<li class="chapter" data-level="3.4.4" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#replication-package"><i class="fa fa-check"></i><b>3.4.4</b> Replication package</a></li>
+<li class="chapter" data-level="3.4.5" data-path="03-reprodutibilidade.html"><a href="#escrevendo-com-rmarkdown-e-refer%C3%AAncias-bibliogr%C3%A1ficas"><i class="fa fa-check"></i><b>3.4.5</b> Escrevendo com RMarkdown e referências bibliográficas</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#organizando-um-projeto-de-pesquisa"><i class="fa fa-check"></i><b>3.5</b> Organizando um projeto de pesquisa</a></li>
-<li class="chapter" data-level="3.6" data-path="03-reprodutibilidade.html"><a href="#exerc%C3%ADcios-2"><i class="fa fa-check"></i><b>3.6</b> Exercícios</a></li>
+<li class="chapter" data-level="3.5" data-path="03-reprodutibilidade.html"><a href="#agentes-de-ia-no-fluxo-de-trabalho-acad%C3%AAmico"><i class="fa fa-check"></i><b>3.5</b> Agentes de IA no fluxo de trabalho acadêmico</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="03-reprodutibilidade.html"><a href="#o-que-s%C3%A3o-agentes-de-ia"><i class="fa fa-check"></i><b>3.5.1</b> O que são agentes de IA?</a></li>
+<li class="chapter" data-level="3.5.2" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#como-agentes-podem-ajudar-na-pesquisa"><i class="fa fa-check"></i><b>3.5.2</b> Como agentes podem ajudar na pesquisa</a></li>
+<li class="chapter" data-level="3.5.3" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#limites-e-cuidados"><i class="fa fa-check"></i><b>3.5.3</b> Limites e cuidados</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="03-reprodutibilidade.html"><a href="#exerc%C3%ADcios-2"><i class="fa fa-check"></i><b>3.6</b> Exercícios</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#git-e-github"><i class="fa fa-check"></i><b>3.6.1</b> Git e GitHub</a></li>
+<li class="chapter" data-level="3.6.2" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#r-markdown-1"><i class="fa fa-check"></i><b>3.6.2</b> R Markdown</a></li>
+<li class="chapter" data-level="3.6.3" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#workflow"><i class="fa fa-check"></i><b>3.6.3</b> Workflow</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="desenho.html"><a href="desenho.html"><i class="fa fa-check"></i><b>4</b> Desenho de Pesquisa</a>
 <ul>
@@ -626,64 +637,402 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="reprodutibilidade" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Capítulo 3</span> Reprodutibilidade: Git, R Markdown e LaTeX<a href="reprodutibilidade.html#reprodutibilidade" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">Capítulo 3</span> Reprodutibilidade: Git, R Markdown e Workflow<a href="reprodutibilidade.html#reprodutibilidade" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="objetivos-do-capítulo-1" class="section level2 unnumbered hasAnchor">
 <h2>Objetivos do capítulo<a href="#objetivos-do-cap%C3%ADtulo-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Entender por que reprodutibilidade importa na pesquisa científica</li>
 <li>Usar Git e GitHub para controle de versão</li>
 <li>Produzir relatórios reproduzíveis com R Markdown</li>
-<li>Conhecer o básico de LaTeX para fórmulas e documentos acadêmicos</li>
+<li>Organizar o workflow de um projeto de pesquisa</li>
+<li>Conhecer o uso de agentes de IA no fluxo de trabalho acadêmico</li>
 </ul>
 </div>
 <div id="por-que-reprodutibilidade" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Por que reprodutibilidade?<a href="reprodutibilidade.html#por-que-reprodutibilidade" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Em um projeto de pesquisa, a menor parte do tempo é gasta fazendo a análise dos dados propriamente dita. A maior parte é investida na preparação dos dados e na comunicação dos resultados. Como Przeworski afirmou: <em>“This is the job: you rewrite, and you rewrite, and you rewrite.”</em></p>
+<p>A reprodutibilidade é a capacidade de outra pessoa (ou você mesmo, meses depois) refazer toda a análise a partir dos dados e do código original, chegando aos mesmos resultados. Isso é fundamental por várias razões:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Credibilidade científica</strong>: resultados reproduzíveis são mais confiáveis. A crise de replicação em diversas áreas (psicologia, economia, medicina) mostrou que muitos achados publicados não se sustentam quando replicados.</p></li>
+<li><p><strong>Transparência</strong>: o leitor (e os pareceristas) podem verificar cada passo da análise. Isso reduz erros e aumenta a confiança nos resultados.</p></li>
+<li><p><strong>Eficiência pessoal</strong>: quando seu projeto está bem organizado e documentado, você consegue retomar o trabalho rapidamente, mesmo após semanas sem mexer nele.</p></li>
+<li><p><strong>Colaboração</strong>: projetos reproduzíveis facilitam o trabalho em equipe, pois qualquer coautor pode entender e executar a análise.</p></li>
+</ol>
+<p>Para garantir reprodutibilidade, três ferramentas são essenciais: <strong>Git</strong> (controle de versão), <strong>R Markdown</strong> (integração de código e texto) e um <strong>workflow organizado</strong> (estrutura de pastas e scripts). Vamos abordar cada uma.</p>
 </div>
-<div id="controle-de-versão-com-git" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Controle de versão com Git<a href="#controle-de-vers%C3%A3o-com-git" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="o-que-é-git" class="section level3 hasAnchor" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> O que é Git?<a href="#o-que-%C3%A9-git" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="controle-de-versão-com-git-e-github" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Controle de versão com Git e GitHub<a href="#controle-de-vers%C3%A3o-com-git-e-github" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="o-que-é-git-e-github" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> O que é Git e GitHub?<a href="#o-que-%C3%A9-git-e-github" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Git</strong> é um sistema de controle de versão que permite rastrear mudanças nos seus arquivos ao longo do tempo. Pense nele como um “histórico de alterações” muito poderoso para seus projetos.</p>
+<p><strong>GitHub</strong> é uma plataforma online que hospeda repositórios Git, permitindo colaboração, backup na nuvem e compartilhamento de código.</p>
+<p>Para cientistas sociais, usar Git e GitHub é importante por diversas razões:</p>
+<ul>
+<li><strong>Reprodutibilidade</strong>: qualquer pessoa pode acessar seu código e dados e reproduzir suas análises.</li>
+<li><strong>Backup</strong>: seu trabalho fica salvo na nuvem.</li>
+<li><strong>Colaboração</strong>: permite trabalhar em equipe de forma organizada.</li>
+<li><strong>Portfólio</strong>: seus projetos ficam visíveis para a comunidade acadêmica e profissional.</li>
+</ul>
 </div>
-<div id="instalação-e-configuração" class="section level3 hasAnchor" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> Instalação e configuração<a href="#instala%C3%A7%C3%A3o-e-configura%C3%A7%C3%A3o" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="criando-uma-conta-no-github" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Criando uma conta no GitHub<a href="reprodutibilidade.html#criando-uma-conta-no-github" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Acesse <a href="https://github.com" class="uri">https://github.com</a> e crie uma conta gratuita. Use seu e-mail institucional se possível, pois isso dá acesso a benefícios educacionais (GitHub Education).</p>
 </div>
-<div id="comandos-essenciais" class="section level3 hasAnchor" number="3.2.3">
-<h3><span class="header-section-number">3.2.3</span> Comandos essenciais<a href="reprodutibilidade.html#comandos-essenciais" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="instalando-o-git" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Instalando o Git<a href="reprodutibilidade.html#instalando-o-git" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Antes de conectar o RStudio ao GitHub, é preciso ter o Git instalado no computador.</p>
+<ul>
+<li><strong>Windows</strong>: Baixe em <a href="https://git-scm.com/download/win" class="uri">https://git-scm.com/download/win</a> e instale com as opções padrão.</li>
+<li><strong>Mac</strong>: Abra o Terminal e digite <code>git --version</code>. Se não estiver instalado, o sistema oferecerá a instalação automática (via Xcode Command Line Tools). Alternativamente, baixe em <a href="https://git-scm.com/download/mac" class="uri">https://git-scm.com/download/mac</a>.</li>
+<li><strong>Linux</strong>: Use o gerenciador de pacotes da sua distribuição. Por exemplo, no Ubuntu: <code>sudo apt install git</code>.</li>
+</ul>
 </div>
-<div id="github-repositórios-remotos" class="section level3 hasAnchor" number="3.2.4">
-<h3><span class="header-section-number">3.2.4</span> GitHub: repositórios remotos<a href="#github-reposit%C3%B3rios-remotos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="configuração-inicial-do-git" class="section level3 hasAnchor" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Configuração inicial do Git<a href="#configura%C3%A7%C3%A3o-inicial-do-git" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Após instalar o Git, abra o Terminal (ou o terminal do RStudio, na aba “Terminal”) e configure seu nome e e-mail:</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb62-1"><a href="reprodutibilidade.html#cb62-1" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">&quot;Seu Nome&quot;</span></span>
+<span id="cb62-2"><a href="reprodutibilidade.html#cb62-2" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">&quot;seu.email@exemplo.com&quot;</span></span></code></pre></div>
+<p>Use o mesmo e-mail que cadastrou no GitHub.</p>
+</div>
+<div id="conectando-o-rstudio-ao-github" class="section level3 hasAnchor" number="3.2.5">
+<h3><span class="header-section-number">3.2.5</span> Conectando o RStudio ao GitHub<a href="reprodutibilidade.html#conectando-o-rstudio-ao-github" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="passo-1-instalar-o-pacote-usethis" class="section level4 hasAnchor" number="3.2.5.1">
+<h4><span class="header-section-number">3.2.5.1</span> Passo 1: Instalar o pacote <code>usethis</code><a href="reprodutibilidade.html#passo-1-instalar-o-pacote-usethis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>No console do RStudio, execute:</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="reprodutibilidade.html#cb63-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;usethis&quot;</span>)</span></code></pre></div>
+</div>
+<div id="passo-2-criar-um-token-de-acesso-pessoal-pat" class="section level4 hasAnchor" number="3.2.5.2">
+<h4><span class="header-section-number">3.2.5.2</span> Passo 2: Criar um token de acesso pessoal (PAT)<a href="reprodutibilidade.html#passo-2-criar-um-token-de-acesso-pessoal-pat" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>O GitHub não aceita mais senha para autenticação via Git. É necessário criar um token de acesso pessoal. No console do RStudio, execute:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="reprodutibilidade.html#cb64-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span></code></pre></div>
+<p>Isso abrirá o navegador na página de criação de token do GitHub. Dê um nome descritivo ao token (por exemplo, “RStudio”) e clique em “Generate token”. <strong>Copie o token gerado</strong> — ele não será mostrado novamente.</p>
+</div>
+<div id="passo-3-armazenar-o-token-no-rstudio" class="section level4 hasAnchor" number="3.2.5.3">
+<h4><span class="header-section-number">3.2.5.3</span> Passo 3: Armazenar o token no RStudio<a href="reprodutibilidade.html#passo-3-armazenar-o-token-no-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>No console do RStudio, execute:</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="reprodutibilidade.html#cb65-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;gitcreds&quot;</span>)</span>
+<span id="cb65-2"><a href="reprodutibilidade.html#cb65-2" tabindex="-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span></code></pre></div>
+<p>Quando solicitado, cole o token que você copiou no passo anterior.</p>
+</div>
+<div id="passo-4-verificar-a-configuração" class="section level4 hasAnchor" number="3.2.5.4">
+<h4><span class="header-section-number">3.2.5.4</span> Passo 4: Verificar a configuração<a href="#passo-4-verificar-a-configura%C3%A7%C3%A3o" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Para confirmar que tudo está funcionando, execute:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="reprodutibilidade.html#cb66-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">git_sitrep</span>()</span></code></pre></div>
+<p>Você deve ver informações sobre seu nome, e-mail e o token de acesso configurado.</p>
+</div>
+</div>
+<div id="criando-um-projeto-com-controle-de-versão" class="section level3 hasAnchor" number="3.2.6">
+<h3><span class="header-section-number">3.2.6</span> Criando um projeto com controle de versão<a href="#criando-um-projeto-com-controle-de-vers%C3%A3o" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="opção-a-criar-um-novo-repositório-no-github-e-clonar" class="section level4 hasAnchor" number="3.2.6.1">
+<h4><span class="header-section-number">3.2.6.1</span> Opção A: Criar um novo repositório no GitHub e clonar<a href="#op%C3%A7%C3%A3o-a-criar-um-novo-reposit%C3%B3rio-no-github-e-clonar" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>No GitHub, clique em “New repository”.</li>
+<li>Dê um nome ao repositório (por exemplo, “meu-projeto-estatistica”).</li>
+<li>Marque “Add a README file”.</li>
+<li>Clique em “Create repository”.</li>
+<li>Copie a URL do repositório (botão verde “Code”).</li>
+<li>No RStudio, vá em <strong>File &gt; New Project &gt; Version Control &gt; Git</strong>.</li>
+<li>Cole a URL do repositório e escolha a pasta onde o projeto será salvo.</li>
+<li>Clique em “Create Project”.</li>
+</ol>
+</div>
+<div id="opção-b-transformar-um-projeto-existente-do-rstudio-em-repositório-git" class="section level4 hasAnchor" number="3.2.6.2">
+<h4><span class="header-section-number">3.2.6.2</span> Opção B: Transformar um projeto existente do RStudio em repositório Git<a href="#op%C3%A7%C3%A3o-b-transformar-um-projeto-existente-do-rstudio-em-reposit%C3%B3rio-git" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>No RStudio, abra o projeto existente.</li>
+<li>No console, execute:</li>
+</ol>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="reprodutibilidade.html#cb67-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git</span>()</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Confirme a criação do repositório Git. O RStudio reiniciará.</li>
+<li>Depois, para conectar ao GitHub:</li>
+</ol>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="reprodutibilidade.html#cb68-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>()</span></code></pre></div>
+<p>Isso criará automaticamente um repositório no GitHub e fará a conexão.</p>
+</div>
+</div>
+<div id="fluxo-básico-de-trabalho-com-git-no-rstudio" class="section level3 hasAnchor" number="3.2.7">
+<h3><span class="header-section-number">3.2.7</span> Fluxo básico de trabalho com Git no RStudio<a href="#fluxo-b%C3%A1sico-de-trabalho-com-git-no-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Após configurar o projeto, a aba <strong>Git</strong> aparecerá no painel superior direito do RStudio. O fluxo básico de trabalho é:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Modificar arquivos</strong>: edite seus scripts normalmente.</li>
+<li><strong>Stage (preparar)</strong>: na aba Git, marque a caixa ao lado dos arquivos que deseja salvar.</li>
+<li><strong>Commit (registrar)</strong>: clique em “Commit”, escreva uma mensagem descrevendo as alterações e clique em “Commit”.</li>
+<li><strong>Push (enviar)</strong>: clique na seta verde para cima (“Push”) para enviar as alterações para o GitHub.</li>
+<li><strong>Pull (receber)</strong>: clique na seta azul para baixo (“Pull”) para receber alterações do GitHub (útil quando trabalhando em equipe).</li>
+</ol>
+</div>
+<div id="boas-práticas-com-git" class="section level3 hasAnchor" number="3.2.8">
+<h3><span class="header-section-number">3.2.8</span> Boas práticas com Git<a href="#boas-pr%C3%A1ticas-com-git" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Faça commits frequentes com mensagens claras (por exemplo: “Adiciona análise descritiva do PIB municipal”).</li>
+<li>Sempre faça Pull antes de começar a trabalhar, para garantir que está com a versão mais recente.</li>
+<li>Não coloque dados sensíveis ou muito grandes no GitHub. Use um arquivo <code>.gitignore</code> para excluí-los.</li>
+</ul>
 </div>
 </div>
 <div id="r-markdown" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> R Markdown<a href="reprodutibilidade.html#r-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="estrutura-de-um-documento-.rmd" class="section level3 hasAnchor" number="3.3.1">
-<h3><span class="header-section-number">3.3.1</span> Estrutura de um documento <code>.Rmd</code><a href="reprodutibilidade.html#estrutura-de-um-documento-.rmd" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="o-que-é-r-markdown" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> O que é R Markdown?<a href="#o-que-%C3%A9-r-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R Markdown é um formato de documento que permite integrar código R, resultados e texto formatado em um único arquivo. Isso elimina a inconsistência entre a análise e o relatório: quando os dados mudam, basta recompilar o documento e todos os resultados são atualizados automaticamente.</p>
+<p>Um arquivo R Markdown tem extensão <code>.Rmd</code> e pode ser convertido (renderizado) em diversos formatos: HTML, PDF, Word, apresentações e até livros (como este que você está lendo, feito com <code>bookdown</code>).</p>
 </div>
-<div id="texto-formatado-com-markdown" class="section level3 hasAnchor" number="3.3.2">
-<h3><span class="header-section-number">3.3.2</span> Texto formatado com Markdown<a href="reprodutibilidade.html#texto-formatado-com-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="estrutura-de-um-documento-.rmd" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Estrutura de um documento <code>.Rmd</code><a href="reprodutibilidade.html#estrutura-de-um-documento-.rmd" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Todo arquivo <code>.Rmd</code> tem três componentes:</p>
+<p><strong>1. Cabeçalho YAML</strong> (entre <code>---</code>): define metadados como título, autor, data e formato de saída.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb69-1"><a href="reprodutibilidade.html#cb69-1" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb69-2"><a href="reprodutibilidade.html#cb69-2" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Minha Análise&quot;</span></span>
+<span id="cb69-3"><a href="reprodutibilidade.html#cb69-3" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Seu Nome&quot;</span></span>
+<span id="cb69-4"><a href="reprodutibilidade.html#cb69-4" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;2025-03-05&quot;</span></span>
+<span id="cb69-5"><a href="reprodutibilidade.html#cb69-5" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> html_document</span></span>
+<span id="cb69-6"><a href="reprodutibilidade.html#cb69-6" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<p><strong>2. Texto formatado com Markdown</strong>: o corpo do documento usa a sintaxe Markdown para formatação.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Sintaxe</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>**negrito**</code></td>
+<td><strong>negrito</strong></td>
+</tr>
+<tr class="even">
+<td><code>*itálico*</code></td>
+<td><em>itálico</em></td>
+</tr>
+<tr class="odd">
+<td><code># Título</code></td>
+<td>Título nível 1</td>
+</tr>
+<tr class="even">
+<td><code>## Subtítulo</code></td>
+<td>Título nível 2</td>
+</tr>
+<tr class="odd">
+<td><code>- item</code></td>
+<td>Lista com marcadores</td>
+</tr>
+<tr class="even">
+<td><code>1. item</code></td>
+<td>Lista numerada</td>
+</tr>
+<tr class="odd">
+<td><code>[texto](url)</code></td>
+<td>Link</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3. Chunks de código R</strong>: blocos de código que são executados quando o documento é renderizado.</p>
+<p>Um chunk é delimitado por três crases e <code>{r}</code>:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb70-1"><a href="reprodutibilidade.html#cb70-1" tabindex="-1"></a><span class="in">```{r nome-do-chunk}</span></span>
+<span id="cb70-2"><a href="reprodutibilidade.html#cb70-2" tabindex="-1"></a><span class="in"># código R aqui</span></span>
+<span id="cb70-3"><a href="reprodutibilidade.html#cb70-3" tabindex="-1"></a><span class="in">mean(c(1, 2, 3, 4, 5))</span></span>
+<span id="cb70-4"><a href="reprodutibilidade.html#cb70-4" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div id="opções-de-chunk" class="section level4 hasAnchor" number="3.3.2.1">
+<h4><span class="header-section-number">3.3.2.1</span> Opções de chunk<a href="#op%C3%A7%C3%B5es-de-chunk" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Cada chunk pode ter opções que controlam o comportamento:</p>
+<ul>
+<li><code>echo = TRUE/FALSE</code>: mostrar ou esconder o código no documento final.</li>
+<li><code>eval = TRUE/FALSE</code>: executar ou não o código.</li>
+<li><code>message = FALSE</code>: suprimir mensagens.</li>
+<li><code>warning = FALSE</code>: suprimir avisos.</li>
+<li><code>fig.width</code>, <code>fig.height</code>: dimensões de figuras.</li>
+<li><code>cache = TRUE</code>: salvar resultados em cache (útil para código demorado).</li>
+</ul>
+<p>Exemplo:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb71-1"><a href="reprodutibilidade.html#cb71-1" tabindex="-1"></a><span class="in">```{r grafico-pib, echo=FALSE, fig.width=8, fig.height=5}</span></span>
+<span id="cb71-2"><a href="reprodutibilidade.html#cb71-2" tabindex="-1"></a><span class="in">library(ggplot2)</span></span>
+<span id="cb71-3"><a href="reprodutibilidade.html#cb71-3" tabindex="-1"></a><span class="in">ggplot(data, aes(x = pib, y = idh)) + geom_point()</span></span>
+<span id="cb71-4"><a href="reprodutibilidade.html#cb71-4" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 </div>
-<div id="chunks-de-código-r" class="section level3 hasAnchor" number="3.3.3">
-<h3><span class="header-section-number">3.3.3</span> Chunks de código R<a href="#chunks-de-c%C3%B3digo-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
-<div id="gerando-relatórios-pdf-e-html" class="section level3 hasAnchor" number="3.3.4">
-<h3><span class="header-section-number">3.3.4</span> Gerando relatórios (PDF e HTML)<a href="#gerando-relat%C3%B3rios-pdf-e-html" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="gerando-relatórios" class="section level3 hasAnchor" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Gerando relatórios<a href="#gerando-relat%C3%B3rios" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para renderizar o documento, clique no botão <strong>Knit</strong> no RStudio ou execute no console:</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="reprodutibilidade.html#cb72-1" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">&quot;meu_relatorio.Rmd&quot;</span>)</span></code></pre></div>
+<p>Os formatos mais comuns de saída são:</p>
+<ul>
+<li><code>html_document</code>: página web (mais flexível, recomendado para começar).</li>
+<li><code>pdf_document</code>: PDF (requer LaTeX instalado).</li>
+<li><code>word_document</code>: arquivo Word.</li>
+</ul>
+</div>
+<div id="fórmulas-matemáticas-com-latex" class="section level3 hasAnchor" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Fórmulas matemáticas com LaTeX<a href="#f%C3%B3rmulas-matem%C3%A1ticas-com-latex" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dentro do R Markdown, é possível incluir fórmulas matemáticas usando a sintaxe LaTeX. Para fórmulas inline, use <code>$...$</code>. Para fórmulas em destaque, use <code>$$...$$</code>.</p>
+<p>Exemplos:</p>
+<ul>
+<li>Inline: <code>$\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$</code> gera <span class="math inline">\(\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i\)</span></li>
+<li>Em destaque:</li>
+</ul>
+<pre><code>$$\sigma^2 = \frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^2$$</code></pre>
+<p><span class="math display">\[\sigma^2 = \frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^2\]</span></p>
+<p>Alguns comandos LaTeX úteis:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Comando</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\frac{a}{b}</code></td>
+<td><span class="math inline">\(\frac{a}{b}\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\sqrt{x}</code></td>
+<td><span class="math inline">\(\sqrt{x}\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\sum_{i=1}^{n}</code></td>
+<td><span class="math inline">\(\sum_{i=1}^{n}\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\bar{x}</code></td>
+<td><span class="math inline">\(\bar{x}\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\hat{\beta}</code></td>
+<td><span class="math inline">\(\hat{\beta}\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\alpha, \beta, \mu, \sigma</code></td>
+<td><span class="math inline">\(\alpha, \beta, \mu, \sigma\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\leq, \geq, \neq</code></td>
+<td><span class="math inline">\(\leq, \geq, \neq\)</span></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<div id="latex-o-essencial" class="section level2 hasAnchor" number="3.4">
-<h2><span class="header-section-number">3.4</span> LaTeX: o essencial<a href="reprodutibilidade.html#latex-o-essencial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="fórmulas-matemáticas" class="section level3 hasAnchor" number="3.4.1">
-<h3><span class="header-section-number">3.4.1</span> Fórmulas matemáticas<a href="#f%C3%B3rmulas-matem%C3%A1ticas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="organizando-o-workflow-de-um-projeto" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Organizando o workflow de um projeto<a href="reprodutibilidade.html#organizando-o-workflow-de-um-projeto" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="por-que-organizar" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Por que organizar?<a href="reprodutibilidade.html#por-que-organizar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Um projeto de pesquisa envolve dados, scripts de limpeza, scripts de análise, figuras, tabelas e o texto do paper. Sem uma organização clara, é muito fácil perder o controle de qual script gerou qual resultado, ou qual versão dos dados foi usada na análise final. Um bom workflow garante que qualquer pessoa — incluindo você no futuro — consiga reproduzir toda a análise.</p>
 </div>
-<div id="referências-cruzadas" class="section level3 hasAnchor" number="3.4.2">
-<h3><span class="header-section-number">3.4.2</span> Referências cruzadas<a href="#refer%C3%AAncias-cruzadas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="estrutura-de-pastas" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Estrutura de pastas<a href="reprodutibilidade.html#estrutura-de-pastas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A convenção recomendada é separar os arquivos por função:</p>
+<pre class="text"><code>meu-projeto/
+├── raw_data/          # dados originais, NUNCA modificados
+├── transformed_data/  # dados limpos, prontos para análise
+├── scripts/           # código R (01_clean.R, 02_analysis.R etc.)
+├── outputs/           # tabelas, figuras, modelos exportados
+├── paper/             # texto em RMarkdown
+├── README.md          # instruções de reprodução
+└── .gitignore         # arquivos que o Git deve ignorar</code></pre>
+<p><strong>Regra de ouro</strong>: os dados originais na pasta <code>raw_data/</code> nunca devem ser modificados. Toda limpeza e transformação é feita por script, e os resultados vão para <code>transformed_data/</code>. Isso garante que sempre é possível refazer a limpeza do zero.</p>
+</div>
+<div id="pipeline-de-análise" class="section level3 hasAnchor" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> Pipeline de análise<a href="#pipeline-de-an%C3%A1lise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A ordem dos scripts deve refletir o fluxo lógico do projeto:</p>
+<ol style="list-style-type: decimal">
+<li><code>01_clean.R</code> — importa os dados brutos e gera os dados limpos.</li>
+<li><code>02_analysis.R</code> — roda os modelos estatísticos.</li>
+<li><code>03_figures.R</code> — gera figuras e tabelas.</li>
+<li><code>04_paper.Rmd</code> — integra resultados e texto no documento final.</li>
+</ol>
+<p>Duas abordagens para executar o pipeline:</p>
+<ul>
+<li><strong>Pipeline pragmático</strong>: rodar cada script manualmente, na ordem. Simples e funcional para projetos menores.</li>
+<li><strong>Pipeline automatizado</strong>: usar pacotes como <code>targets</code> ou ferramentas como <code>make</code> para documentar as dependências entre scripts e executar tudo automaticamente. Mais robusto para projetos grandes.</li>
+</ul>
+</div>
+<div id="replication-package" class="section level3 hasAnchor" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> Replication package<a href="reprodutibilidade.html#replication-package" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Quando seu paper estiver pronto para submissão, monte um <strong>replication package</strong> — o conjunto de materiais necessários para reproduzir toda a análise. Um bom replication package contém:</p>
+<ol style="list-style-type: decimal">
+<li><strong>README.md</strong>: título do paper, instruções de reprodução (versão do R, pacotes necessários, ordem dos scripts) e descrição das bases de dados (com links para fontes públicas quando possível).</li>
+<li><strong>Dados</strong>: os dados utilizados (ou instruções de acesso, quando não podem ser compartilhados).</li>
+<li><strong>Scripts</strong>: todos os scripts de análise.</li>
+<li><strong>Paper</strong>: o arquivo do texto (<code>.Rmd</code> + PDF).</li>
+</ol>
+<p>Uma boa prática é incluir <code>sessionInfo()</code> no final de cada script, para registrar as versões exatas de R e dos pacotes utilizados.</p>
+<p>Repositórios de dados como o <strong>Harvard Dataverse</strong> são o padrão em ciência política para depositar replication packages. Eles geram um DOI (identificador permanente) para o seu material, garantindo preservação e facilitando citação. No Brasil, existe o <strong>Scielo Data</strong> como alternativa.</p>
+</div>
+<div id="escrevendo-com-rmarkdown-e-referências-bibliográficas" class="section level3 hasAnchor" number="3.4.5">
+<h3><span class="header-section-number">3.4.5</span> Escrevendo com RMarkdown e referências bibliográficas<a href="#escrevendo-com-rmarkdown-e-refer%C3%AAncias-bibliogr%C3%A1ficas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A principal vantagem de escrever o paper em RMarkdown é que os resultados da análise estão diretamente integrados ao texto. Se você corrige um erro nos dados ou muda uma especificação do modelo, basta recompilar o documento — todas as tabelas e figuras são atualizadas automaticamente. Isso elimina o problema clássico de inconsistências entre o que está no script e o que está no paper.</p>
+<p>Para gerenciar referências bibliográficas, exporte sua biblioteca do <strong>Zotero</strong> (ou outro gerenciador) em formato <code>.bib</code> e cite no texto com <code>[@autor_ano]</code>. O R Markdown gera a bibliografia formatada automaticamente.</p>
 </div>
 </div>
-<div id="organizando-um-projeto-de-pesquisa" class="section level2 hasAnchor" number="3.5">
-<h2><span class="header-section-number">3.5</span> Organizando um projeto de pesquisa<a href="reprodutibilidade.html#organizando-um-projeto-de-pesquisa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="agentes-de-ia-no-fluxo-de-trabalho-acadêmico" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Agentes de IA no fluxo de trabalho acadêmico<a href="#agentes-de-ia-no-fluxo-de-trabalho-acad%C3%AAmico" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="o-que-são-agentes-de-ia" class="section level3 hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> O que são agentes de IA?<a href="#o-que-s%C3%A3o-agentes-de-ia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Modelos de linguagem (LLMs), como o ChatGPT e o Claude, são sistemas de inteligência artificial treinados para compreender e gerar texto. Quando esses modelos são equipados com ferramentas — como a capacidade de ler e editar arquivos, executar código, fazer buscas na web — eles se tornam <strong>agentes de IA</strong>: sistemas capazes de executar tarefas complexas de forma autônoma ou semi-autônoma.</p>
+<p>Para pesquisadores, agentes de IA são particularmente úteis porque podem auxiliar em diversas etapas do trabalho acadêmico:</p>
+<ul>
+<li><strong>Análise de dados</strong>: escrever e executar código em R ou Python, gerar tabelas e figuras.</li>
+<li><strong>Escrita e revisão</strong>: redigir seções de texto, revisar gramática, verificar consistência de argumentos.</li>
+<li><strong>Revisão de literatura</strong>: buscar e sintetizar artigos relevantes.</li>
+<li><strong>Depuração de código</strong>: identificar e corrigir erros em scripts.</li>
+</ul>
+</div>
+<div id="como-agentes-podem-ajudar-na-pesquisa" class="section level3 hasAnchor" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Como agentes podem ajudar na pesquisa<a href="reprodutibilidade.html#como-agentes-podem-ajudar-na-pesquisa" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Um exemplo concreto: ferramentas como o <strong>Claude Code</strong> funcionam como um ambiente de trabalho para pesquisa acadêmica. Nesse tipo de sistema, agentes especializados podem ser configurados para tarefas específicas:</p>
+<ul>
+<li><strong>Análise de dados em R</strong>: um agente que conhece <code>tidyverse</code>, <code>fixest</code>, <code>modelsummary</code> e pode escrever, executar e revisar scripts de análise completos.</li>
+<li><strong>Revisão de paper</strong>: um agente que simula o papel de um parecerista (<em>referee</em>), avaliando contribuição, execução e exposição de um manuscrito.</li>
+<li><strong>Compilação de documentos</strong>: um agente que renderiza R Markdown e faz o deploy do documento.</li>
+</ul>
+<p>O fluxo geral de trabalho com agentes segue um padrão:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Planejar</strong>: descrever a tarefa que se deseja realizar.</li>
+<li><strong>Delegar</strong>: o agente executa a tarefa (escreve código, edita texto, gera figuras).</li>
+<li><strong>Revisar</strong>: o pesquisador verifica os resultados e fornece feedback.</li>
+<li><strong>Iterar</strong>: o agente refina o trabalho com base no feedback.</li>
+</ol>
+</div>
+<div id="limites-e-cuidados" class="section level3 hasAnchor" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> Limites e cuidados<a href="reprodutibilidade.html#limites-e-cuidados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>É importante tratar agentes de IA como assistentes, não como substitutos do pesquisador. Alguns cuidados fundamentais:</p>
+<ul>
+<li><strong>Verificação</strong>: sempre verifique os resultados produzidos pelo agente. LLMs podem gerar código com erros sutis ou texto com afirmações incorretas (“alucinações”).</li>
+<li><strong>Compreensão</strong>: não use código que você não entende. O agente pode gerar uma análise complexa, mas você precisa saber explicar e defender cada escolha metodológica.</li>
+<li><strong>Transparência</strong>: se usar agentes de IA no seu trabalho, seja transparente sobre isso. Muitas revistas e programas de pós-graduação já possuem políticas sobre o uso de IA.</li>
+<li><strong>Reprodutibilidade</strong>: o uso de agentes não substitui a necessidade de documentar o workflow. Ao contrário, torna ainda mais importante ter scripts organizados e um replication package, pois o processo de geração do código precisa ser rastreável.</li>
+</ul>
+</div>
 </div>
 <div id="exercícios-2" class="section level2 hasAnchor" number="3.6">
 <h2><span class="header-section-number">3.6</span> Exercícios<a href="#exerc%C3%ADcios-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="git-e-github" class="section level3 hasAnchor" number="3.6.1">
+<h3><span class="header-section-number">3.6.1</span> Git e GitHub<a href="reprodutibilidade.html#git-e-github" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p><strong>(Fácil)</strong> Crie uma conta no GitHub (se ainda não tiver). Configure o Git no seu computador com seu nome e e-mail usando o terminal.</p></li>
+<li><p><strong>(Fácil)</strong> No GitHub, crie um novo repositório chamado “exercicio-stat-basica”. Clone o repositório no RStudio usando <strong>File &gt; New Project &gt; Version Control &gt; Git</strong>.</p></li>
+<li><p><strong>(Médio)</strong> No projeto clonado, crie um arquivo <code>analise.R</code> com qualquer código R simples. Faça o ciclo completo: stage, commit (com uma mensagem descritiva) e push. Verifique no GitHub se o arquivo apareceu.</p></li>
+<li><p><strong>(Médio)</strong> Modifique o arquivo <code>analise.R</code>, adicionando mais linhas de código. Faça um novo commit e push. No GitHub, explore o histórico de commits para ver as diferenças entre as versões.</p></li>
+</ol>
+</div>
+<div id="r-markdown-1" class="section level3 hasAnchor" number="3.6.2">
+<h3><span class="header-section-number">3.6.2</span> R Markdown<a href="reprodutibilidade.html#r-markdown-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol start="5" style="list-style-type: decimal">
+<li><p><strong>(Fácil)</strong> Crie um novo arquivo R Markdown no RStudio (<strong>File &gt; New File &gt; R Markdown</strong>). Escolha o formato HTML. Clique em “Knit” sem fazer alterações e observe o documento gerado.</p></li>
+<li><p><strong>(Médio)</strong> No arquivo <code>.Rmd</code> criado, adicione: (a) um parágrafo com texto em <strong>negrito</strong> e <em>itálico</em>; (b) uma lista numerada; (c) um chunk de código R que calcule a média de um vetor qualquer. Renderize o documento.</p></li>
+<li><p><strong>(Médio)</strong> Crie um documento R Markdown que importe o banco <code>dados/pib_cid.RDS</code>, apresente uma tabela com as 10 primeiras linhas (usando <code>kable()</code>) e um gráfico de sua escolha. Use a opção <code>echo = FALSE</code> nos chunks para esconder o código no documento final.</p></li>
+<li><p><strong>(Difícil)</strong> Crie um documento R Markdown com formato PDF (requer LaTeX instalado) que inclua: (a) uma fórmula da média aritmética usando LaTeX; (b) um chunk que calcule a média do PIB per capita dos municípios; (c) uma referência inline ao resultado (usando <code>`r `</code>). O documento deve mostrar a fórmula, o código e o resultado integrados.</p></li>
+</ol>
+</div>
+<div id="workflow" class="section level3 hasAnchor" number="3.6.3">
+<h3><span class="header-section-number">3.6.3</span> Workflow<a href="reprodutibilidade.html#workflow" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol start="9" style="list-style-type: decimal">
+<li><p><strong>(Médio)</strong> Crie a estrutura de pastas de um projeto de pesquisa seguindo a convenção apresentada neste capítulo (<code>raw_data/</code>, <code>transformed_data/</code>, <code>scripts/</code>, <code>outputs/</code>, <code>paper/</code>). Dentro de <code>scripts/</code>, crie dois arquivos vazios: <code>01_clean.R</code> e <code>02_analysis.R</code>. Inicialize o projeto como repositório Git e faça o primeiro commit.</p></li>
+<li><p><strong>(Difícil)</strong> Monte um mini replication package: (a) coloque um arquivo CSV na pasta <code>raw_data/</code>; (b) em <code>01_clean.R</code>, importe os dados, faça alguma transformação simples (filtro, criação de variável) e salve o resultado em <code>transformed_data/</code>; (c) em <code>02_analysis.R</code>, carregue os dados transformados e gere uma tabela ou gráfico, salvando em <code>outputs/</code>; (d) escreva um <code>README.md</code> com instruções de reprodução. Faça commit e push de tudo para o GitHub.</p></li>
+</ol>
 
+</div>
 </div>
 </div>
             </section>

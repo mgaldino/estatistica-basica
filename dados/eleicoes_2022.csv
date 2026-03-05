@@ -1,0 +1,21 @@
+"municipio","uf","candidato","partido","votos","percentual"
+"São Paulo","SP","Lula","PT",3567890,48.82
+"São Paulo","SP","Bolsonaro","PL",3234567,44.26
+"São Paulo","SP","Simone Tebet","MDB",312456,4.28
+"São Paulo","SP","Ciro Gomes","PDT",198234,2.71
+"Rio de Janeiro","RJ","Lula","PT",2345678,49.63
+"Rio de Janeiro","RJ","Bolsonaro","PL",1987654,42.06
+"Rio de Janeiro","RJ","Simone Tebet","MDB",234567,4.96
+"Rio de Janeiro","RJ","Ciro Gomes","PDT",156789,3.32
+"Salvador","BA","Lula","PT",1123456,63.97
+"Salvador","BA","Bolsonaro","PL",534210,30.42
+"Salvador","BA","Simone Tebet","MDB",98765,5.62
+"Belo Horizonte","MG","Lula","PT",876543,52.55
+"Belo Horizonte","MG","Bolsonaro","PL",678901,40.7
+"Belo Horizonte","MG","Simone Tebet","MDB",112345,6.73
+"Pau D'Arco","PA","Lula","PT",2345,55.37
+"Pau D'Arco","PA","Bolsonaro","PL",1890,44.63
+"São José dos Campos","SP","Lula","PT",198765,44.72
+"São José dos Campos","SP","Bolsonaro","PL",245678,55.28
+"Florianópolis","SC","Lula","PT",134567,42.92
+"Florianópolis","SC","Bolsonaro","PL",178901,57.08
