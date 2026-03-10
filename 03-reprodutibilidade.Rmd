@@ -338,8 +338,17 @@ rmarkdown::render("meu_relatorio.Rmd")
 Os formatos mais comuns de saída são:
 
 - `html_document`: página web (mais flexível, recomendado para começar).
-- `pdf_document`: PDF (requer LaTeX instalado).
+- `pdf_document`: PDF (requer LaTeX instalado — veja abaixo).
 - `word_document`: arquivo Word.
+
+Para gerar PDFs, é necessário ter uma distribuição LaTeX instalada. A forma mais simples é usar o pacote `tinytex`, que instala uma versão mínima do LaTeX diretamente pelo R:
+
+```r
+install.packages("tinytex")
+tinytex::install_tinytex()
+```
+
+A instalação pode levar alguns minutos. Após concluída, o botão **Knit** com saída `pdf_document` funcionará normalmente. O `tinytex` baixa automaticamente pacotes LaTeX adicionais conforme necessário, então você não precisa se preocupar em gerenciar a instalação manualmente.
 
 ### Fórmulas matemáticas com LaTeX
 
@@ -380,25 +389,30 @@ A convenção recomendada é separar os arquivos por função:
 
 ```text
 meu-projeto/
-├── raw_data/          # dados originais, NUNCA modificados
-├── transformed_data/  # dados limpos, prontos para análise
+├── data/
+│   ├── raw/            # dados originais, NUNCA modificados
+│   └── processed/      # dados limpos, prontos para análise
 ├── scripts/           # código R (01_clean.R, 02_analysis.R etc.)
 ├── outputs/           # tabelas, figuras, modelos exportados
 ├── paper/             # texto em RMarkdown
+├── references/        # artigos e textos usados como referência
+├── sandbox/           # scripts exploratórios e experimentos
 ├── README.md          # instruções de reprodução
 └── .gitignore         # arquivos que o Git deve ignorar
 ```
 
-**Regra de ouro**: os dados originais na pasta `raw_data/` nunca devem ser modificados. Toda limpeza e transformação é feita por script, e os resultados vão para `transformed_data/`. Isso garante que sempre é possível refazer a limpeza do zero.
+**Regra de ouro**: os dados originais na pasta `data/raw/` nunca devem ser modificados. Toda limpeza e transformação é feita por script, e os resultados vão para `data/processed/`. Isso garante que sempre é possível refazer a limpeza do zero.
 
 ### Pipeline de análise
 
-A ordem dos scripts deve refletir o fluxo lógico do projeto:
+Quando o projeto está maduro, a ordem dos scripts deve refletir o fluxo lógico da análise:
 
 1. `01_clean.R` — importa os dados brutos e gera os dados limpos.
 2. `02_analysis.R` — roda os modelos estatísticos.
 3. `03_figures.R` — gera figuras e tabelas.
 4. `04_paper.Rmd` — integra resultados e texto no documento final.
+
+Na prática, porém, é difícil saber de antemão como será essa estrutura. No início de um projeto, você ainda está explorando os dados e não sabe ao certo quais análises fará. Não há problema em começar com um único script. Uma estratégia útil é criar uma pasta `sandbox/` no projeto — um espaço para experimentar e explorar livremente, sem se preocupar com organização. Você pode colocar ali um script exploratório onde testa limpezas, visualizações e modelos à medida que entende os dados. Quando tiver uma visão mais clara do projeto, organiza tudo nas pastas certas, quebra o script em partes numeradas e segue a estrutura do pipeline. A pasta `sandbox/` fica como registro do processo exploratório e pode ser revisitada se uma análise futura exigir novas explorações.
 
 Duas abordagens para executar o pipeline:
 
@@ -452,6 +466,14 @@ O fluxo geral de trabalho com agentes segue um padrão:
 3. **Revisar**: o pesquisador verifica os resultados e fornece feedback.
 4. **Iterar**: o agente refina o trabalho com base no feedback.
 
+### Custos e acesso
+
+Usar agentes de IA tem um custo. Os modelos consomem **tokens** — unidades de texto processadas — tanto na entrada (o que você envia) quanto na saída (o que o modelo gera). Quanto mais longa e complexa a interação, mais tokens são consumidos e maior o custo. Em planos pagos, há limites de uso que podem ser atingidos rapidamente em sessões intensivas de análise de dados ou revisão de textos longos.
+
+Uma recomendação importante: **use sempre o modelo mais poderoso disponível**. A diferença de qualidade entre modelos menores e maiores é substancial, especialmente para tarefas que exigem raciocínio — como análise estatística, revisão de argumentos e depuração de código. Um modelo mais fraco pode parecer funcional, mas comete erros sutis com mais frequência.
+
+Para alunos da USP, o **Gemini** está disponível gratuitamente com o e-mail institucional (`@usp.br`), o que o torna o ponto de partida natural. As alternativas pagas mais comuns são o **plano Pro do Claude** (Anthropic) e o **plano Plus do ChatGPT** (OpenAI)^[Disclaimer: minha companheira é sócia de uma consultoria que tem como cliente a OpenAI. Acredito que minhas análises não foram contaminadas, mas o leitor deve saber disso ao considerar minha avaliação.]. A OpenAI tem concedido temporariamente maior liberalidade no consumo de tokens, o que pode torná-la uma alternativa atrativa no curto prazo — mas é bom ficar atento, pois essas condições podem mudar rapidamente.
+
 ### Limites e cuidados
 
 É importante tratar agentes de IA como assistentes, não como substitutos do pesquisador. Alguns cuidados fundamentais:
@@ -489,6 +511,6 @@ O fluxo geral de trabalho com agentes segue um padrão:
 
 ### Workflow
 
-9. **(Médio)** Crie a estrutura de pastas de um projeto de pesquisa seguindo a convenção apresentada neste capítulo (`raw_data/`, `transformed_data/`, `scripts/`, `outputs/`, `paper/`). Dentro de `scripts/`, crie dois arquivos vazios: `01_clean.R` e `02_analysis.R`. Inicialize o projeto como repositório Git e faça o primeiro commit.
+9. **(Médio)** Crie a estrutura de pastas de um projeto de pesquisa seguindo a convenção apresentada neste capítulo (`data/raw/`, `data/processed/`, `scripts/`, `outputs/`, `paper/`). Dentro de `scripts/`, crie dois arquivos vazios: `01_clean.R` e `02_analysis.R`. Inicialize o projeto como repositório Git e faça o primeiro commit.
 
-10. **(Difícil)** Monte um mini replication package: (a) coloque um arquivo CSV na pasta `raw_data/`; (b) em `01_clean.R`, importe os dados, faça alguma transformação simples (filtro, criação de variável) e salve o resultado em `transformed_data/`; (c) em `02_analysis.R`, carregue os dados transformados e gere uma tabela ou gráfico, salvando em `outputs/`; (d) escreva um `README.md` com instruções de reprodução. Faça commit e push de tudo para o GitHub.
+10. **(Difícil)** Monte um mini replication package: (a) coloque um arquivo CSV na pasta `data/raw/`; (b) em `01_clean.R`, importe os dados, faça alguma transformação simples (filtro, criação de variável) e salve o resultado em `data/processed/`; (c) em `02_analysis.R`, carregue os dados transformados e gere uma tabela ou gráfico, salvando em `outputs/`; (d) escreva um `README.md` com instruções de reprodução. Faça commit e push de tudo para o GitHub.

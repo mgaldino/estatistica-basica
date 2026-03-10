@@ -84,6 +84,7 @@ escrevendo-com-rmarkdown-e-referências-bibliográficas
 agentes-de-ia-no-fluxo-de-trabalho-acadêmico
 o-que-são-agentes-de-ia
 como-agentes-podem-ajudar-na-pesquisa
+custos-e-acesso
 limites-e-cuidados
 exercícios-2
 git-e-github

@@ -258,7 +258,8 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="3.5.1" data-path="03-reprodutibilidade.html"><a href="#o-que-s%C3%A3o-agentes-de-ia"><i class="fa fa-check"></i><b>3.5.1</b> O que são agentes de IA?</a></li>
 <li class="chapter" data-level="3.5.2" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#como-agentes-podem-ajudar-na-pesquisa"><i class="fa fa-check"></i><b>3.5.2</b> Como agentes podem ajudar na pesquisa</a></li>
-<li class="chapter" data-level="3.5.3" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#limites-e-cuidados"><i class="fa fa-check"></i><b>3.5.3</b> Limites e cuidados</a></li>
+<li class="chapter" data-level="3.5.3" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#custos-e-acesso"><i class="fa fa-check"></i><b>3.5.3</b> Custos e acesso</a></li>
+<li class="chapter" data-level="3.5.4" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#limites-e-cuidados"><i class="fa fa-check"></i><b>3.5.4</b> Limites e cuidados</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="03-reprodutibilidade.html"><a href="#exerc%C3%ADcios-2"><i class="fa fa-check"></i><b>3.6</b> Exercícios</a>
 <ul>
@@ -953,9 +954,13 @@ meu-projeto-revisao/          ← worktree adicional (branch revisao-r1)</code><
 <p>Os formatos mais comuns de saída são:</p>
 <ul>
 <li><code>html_document</code>: página web (mais flexível, recomendado para começar).</li>
-<li><code>pdf_document</code>: PDF (requer LaTeX instalado).</li>
+<li><code>pdf_document</code>: PDF (requer LaTeX instalado — veja abaixo).</li>
 <li><code>word_document</code>: arquivo Word.</li>
 </ul>
+<p>Para gerar PDFs, é necessário ter uma distribuição LaTeX instalada. A forma mais simples é usar o pacote <code>tinytex</code>, que instala uma versão mínima do LaTeX diretamente pelo R:</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="reprodutibilidade.html#cb77-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tinytex&quot;</span>)</span>
+<span id="cb77-2"><a href="reprodutibilidade.html#cb77-2" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div>
+<p>A instalação pode levar alguns minutos. Após concluída, o botão <strong>Knit</strong> com saída <code>pdf_document</code> funcionará normalmente. O <code>tinytex</code> baixa automaticamente pacotes LaTeX adicionais conforme necessário, então você não precisa se preocupar em gerenciar a instalação manualmente.</p>
 </div>
 <div id="fórmulas-matemáticas-com-latex" class="section level3 hasAnchor" number="3.3.4">
 <h3><span class="header-section-number">3.3.4</span> Fórmulas matemáticas com LaTeX<a href="#f%C3%B3rmulas-matem%C3%A1ticas-com-latex" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1018,24 +1023,28 @@ meu-projeto-revisao/          ← worktree adicional (branch revisao-r1)</code><
 <h3><span class="header-section-number">3.4.2</span> Estrutura de pastas<a href="reprodutibilidade.html#estrutura-de-pastas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A convenção recomendada é separar os arquivos por função:</p>
 <pre class="text"><code>meu-projeto/
-├── raw_data/          # dados originais, NUNCA modificados
-├── transformed_data/  # dados limpos, prontos para análise
+├── data/
+│   ├── raw/            # dados originais, NUNCA modificados
+│   └── processed/      # dados limpos, prontos para análise
 ├── scripts/           # código R (01_clean.R, 02_analysis.R etc.)
 ├── outputs/           # tabelas, figuras, modelos exportados
 ├── paper/             # texto em RMarkdown
+├── references/        # artigos e textos usados como referência
+├── sandbox/           # scripts exploratórios e experimentos
 ├── README.md          # instruções de reprodução
 └── .gitignore         # arquivos que o Git deve ignorar</code></pre>
-<p><strong>Regra de ouro</strong>: os dados originais na pasta <code>raw_data/</code> nunca devem ser modificados. Toda limpeza e transformação é feita por script, e os resultados vão para <code>transformed_data/</code>. Isso garante que sempre é possível refazer a limpeza do zero.</p>
+<p><strong>Regra de ouro</strong>: os dados originais na pasta <code>data/raw/</code> nunca devem ser modificados. Toda limpeza e transformação é feita por script, e os resultados vão para <code>data/processed/</code>. Isso garante que sempre é possível refazer a limpeza do zero.</p>
 </div>
 <div id="pipeline-de-análise" class="section level3 hasAnchor" number="3.4.3">
 <h3><span class="header-section-number">3.4.3</span> Pipeline de análise<a href="#pipeline-de-an%C3%A1lise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A ordem dos scripts deve refletir o fluxo lógico do projeto:</p>
+<p>Quando o projeto está maduro, a ordem dos scripts deve refletir o fluxo lógico da análise:</p>
 <ol style="list-style-type: decimal">
 <li><code>01_clean.R</code> — importa os dados brutos e gera os dados limpos.</li>
 <li><code>02_analysis.R</code> — roda os modelos estatísticos.</li>
 <li><code>03_figures.R</code> — gera figuras e tabelas.</li>
 <li><code>04_paper.Rmd</code> — integra resultados e texto no documento final.</li>
 </ol>
+<p>Na prática, porém, é difícil saber de antemão como será essa estrutura. No início de um projeto, você ainda está explorando os dados e não sabe ao certo quais análises fará. Não há problema em começar com um único script. Uma estratégia útil é criar uma pasta <code>sandbox/</code> no projeto — um espaço para experimentar e explorar livremente, sem se preocupar com organização. Você pode colocar ali um script exploratório onde testa limpezas, visualizações e modelos à medida que entende os dados. Quando tiver uma visão mais clara do projeto, organiza tudo nas pastas certas, quebra o script em partes numeradas e segue a estrutura do pipeline. A pasta <code>sandbox/</code> fica como registro do processo exploratório e pode ser revisitada se uma análise futura exigir novas explorações.</p>
 <p>Duas abordagens para executar o pipeline:</p>
 <ul>
 <li><strong>Pipeline pragmático</strong>: rodar cada script manualmente, na ordem. Simples e funcional para projetos menores.</li>
@@ -1089,8 +1098,14 @@ meu-projeto-revisao/          ← worktree adicional (branch revisao-r1)</code><
 <li><strong>Iterar</strong>: o agente refina o trabalho com base no feedback.</li>
 </ol>
 </div>
-<div id="limites-e-cuidados" class="section level3 hasAnchor" number="3.5.3">
-<h3><span class="header-section-number">3.5.3</span> Limites e cuidados<a href="reprodutibilidade.html#limites-e-cuidados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="custos-e-acesso" class="section level3 hasAnchor" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> Custos e acesso<a href="reprodutibilidade.html#custos-e-acesso" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Usar agentes de IA tem um custo. Os modelos consomem <strong>tokens</strong> — unidades de texto processadas — tanto na entrada (o que você envia) quanto na saída (o que o modelo gera). Quanto mais longa e complexa a interação, mais tokens são consumidos e maior o custo. Em planos pagos, há limites de uso que podem ser atingidos rapidamente em sessões intensivas de análise de dados ou revisão de textos longos.</p>
+<p>Uma recomendação importante: <strong>use sempre o modelo mais poderoso disponível</strong>. A diferença de qualidade entre modelos menores e maiores é substancial, especialmente para tarefas que exigem raciocínio — como análise estatística, revisão de argumentos e depuração de código. Um modelo mais fraco pode parecer funcional, mas comete erros sutis com mais frequência.</p>
+<p>Para alunos da USP, o <strong>Gemini</strong> está disponível gratuitamente com o e-mail institucional (<code>@usp.br</code>), o que o torna o ponto de partida natural. As alternativas pagas mais comuns são o <strong>plano Pro do Claude</strong> (Anthropic) e o <strong>plano Plus do ChatGPT</strong> (OpenAI)<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. A OpenAI tem concedido temporariamente maior liberalidade no consumo de tokens, o que pode torná-la uma alternativa atrativa no curto prazo — mas é bom ficar atento, pois essas condições podem mudar rapidamente.</p>
+</div>
+<div id="limites-e-cuidados" class="section level3 hasAnchor" number="3.5.4">
+<h3><span class="header-section-number">3.5.4</span> Limites e cuidados<a href="reprodutibilidade.html#limites-e-cuidados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>É importante tratar agentes de IA como assistentes, não como substitutos do pesquisador. Alguns cuidados fundamentais:</p>
 <ul>
 <li><strong>Verificação</strong>: sempre verifique os resultados produzidos pelo agente. LLMs podem gerar código com erros sutis ou texto com afirmações incorretas (“alucinações”).</li>
@@ -1125,12 +1140,18 @@ meu-projeto-revisao/          ← worktree adicional (branch revisao-r1)</code><
 <div id="workflow" class="section level3 hasAnchor" number="3.6.3">
 <h3><span class="header-section-number">3.6.3</span> Workflow<a href="reprodutibilidade.html#workflow" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol start="9" style="list-style-type: decimal">
-<li><p><strong>(Médio)</strong> Crie a estrutura de pastas de um projeto de pesquisa seguindo a convenção apresentada neste capítulo (<code>raw_data/</code>, <code>transformed_data/</code>, <code>scripts/</code>, <code>outputs/</code>, <code>paper/</code>). Dentro de <code>scripts/</code>, crie dois arquivos vazios: <code>01_clean.R</code> e <code>02_analysis.R</code>. Inicialize o projeto como repositório Git e faça o primeiro commit.</p></li>
-<li><p><strong>(Difícil)</strong> Monte um mini replication package: (a) coloque um arquivo CSV na pasta <code>raw_data/</code>; (b) em <code>01_clean.R</code>, importe os dados, faça alguma transformação simples (filtro, criação de variável) e salve o resultado em <code>transformed_data/</code>; (c) em <code>02_analysis.R</code>, carregue os dados transformados e gere uma tabela ou gráfico, salvando em <code>outputs/</code>; (d) escreva um <code>README.md</code> com instruções de reprodução. Faça commit e push de tudo para o GitHub.</p></li>
+<li><p><strong>(Médio)</strong> Crie a estrutura de pastas de um projeto de pesquisa seguindo a convenção apresentada neste capítulo (<code>data/raw/</code>, <code>data/processed/</code>, <code>scripts/</code>, <code>outputs/</code>, <code>paper/</code>). Dentro de <code>scripts/</code>, crie dois arquivos vazios: <code>01_clean.R</code> e <code>02_analysis.R</code>. Inicialize o projeto como repositório Git e faça o primeiro commit.</p></li>
+<li><p><strong>(Difícil)</strong> Monte um mini replication package: (a) coloque um arquivo CSV na pasta <code>data/raw/</code>; (b) em <code>01_clean.R</code>, importe os dados, faça alguma transformação simples (filtro, criação de variável) e salve o resultado em <code>data/processed/</code>; (c) em <code>02_analysis.R</code>, carregue os dados transformados e gere uma tabela ou gráfico, salvando em <code>outputs/</code>; (d) escreva um <code>README.md</code> com instruções de reprodução. Faça commit e push de tudo para o GitHub.</p></li>
 </ol>
 
 </div>
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Disclaimer: minha companheira é sócia de uma consultoria que tem como cliente a OpenAI. Acredito que minhas análises não foram contaminadas, mas o leitor deve saber disso ao considerar minha avaliação.<a href="reprodutibilidade.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
