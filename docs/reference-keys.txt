@@ -59,6 +59,16 @@ opção-a-criar-um-novo-repositório-no-github-e-clonar
 opção-b-transformar-um-projeto-existente-do-rstudio-em-repositório-git
 fluxo-básico-de-trabalho-com-git-no-rstudio
 boas-práticas-com-git
+branches-acabando-com-tese_final_final_v7.docx
+como-funciona
+quando-usar-branches
+comandos-básicos-de-branches
+boas-práticas-com-branches
+worktrees-trabalhando-em-várias-versões-ao-mesmo-tempo
+como-funciona-1
+quando-usar-worktrees
+comandos-básicos-de-worktrees
+worktrees-vs.-clonar-o-repositório
 r-markdown
 o-que-é-r-markdown
 estrutura-de-um-documento-.rmd

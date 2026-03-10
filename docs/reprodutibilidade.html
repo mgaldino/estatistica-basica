@@ -23,7 +23,7 @@
 <meta name="author" content="Manoel Galdino" />
 
 
-<meta name="date" content="2026-03-05" />
+<meta name="date" content="2026-03-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -236,6 +236,8 @@ div.csl-indent {
 <li class="chapter" data-level="3.2.6" data-path="03-reprodutibilidade.html"><a href="#criando-um-projeto-com-controle-de-vers%C3%A3o"><i class="fa fa-check"></i><b>3.2.6</b> Criando um projeto com controle de versão</a></li>
 <li class="chapter" data-level="3.2.7" data-path="03-reprodutibilidade.html"><a href="#fluxo-b%C3%A1sico-de-trabalho-com-git-no-rstudio"><i class="fa fa-check"></i><b>3.2.7</b> Fluxo básico de trabalho com Git no RStudio</a></li>
 <li class="chapter" data-level="3.2.8" data-path="03-reprodutibilidade.html"><a href="#boas-pr%C3%A1ticas-com-git"><i class="fa fa-check"></i><b>3.2.8</b> Boas práticas com Git</a></li>
+<li class="chapter" data-level="3.2.9" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#branches-acabando-com-tese_final_final_v7.docx"><i class="fa fa-check"></i><b>3.2.9</b> Branches: acabando com <code>tese_final_final_v7.docx</code></a></li>
+<li class="chapter" data-level="3.2.10" data-path="03-reprodutibilidade.html"><a href="#worktrees-trabalhando-em-v%C3%A1rias-vers%C3%B5es-ao-mesmo-tempo"><i class="fa fa-check"></i><b>3.2.10</b> Worktrees: trabalhando em várias versões ao mesmo tempo</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="reprodutibilidade.html"><a href="reprodutibilidade.html#r-markdown"><i class="fa fa-check"></i><b>3.3</b> R Markdown</a>
 <ul>
@@ -770,6 +772,99 @@ div.csl-indent {
 <li>Não coloque dados sensíveis ou muito grandes no GitHub. Use um arquivo <code>.gitignore</code> para excluí-los.</li>
 </ul>
 </div>
+<div id="branches-acabando-com-tese_final_final_v7.docx" class="section level3 hasAnchor" number="3.2.9">
+<h3><span class="header-section-number">3.2.9</span> Branches: acabando com <code>tese_final_final_v7.docx</code><a href="reprodutibilidade.html#branches-acabando-com-tese_final_final_v7.docx" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Todo mundo que já escreveu um trabalho acadêmico conhece o problema: o arquivo começa como <code>tese.docx</code>, vira <code>tese_v2.docx</code>, depois <code>tese_final.docx</code>, <code>tese_final_corrigida.docx</code>, <code>tese_final_final_v7_agora_vai.docx</code>. Cada versão é uma cópia do arquivo inteiro, ninguém sabe mais qual é a versão correta, e desfazer uma mudança exige comparar arquivos manualmente.</p>
+<p>O Git resolve esse problema com <strong>branches</strong> (ramificações). Uma branch é uma linha independente de desenvolvimento que permite experimentar mudanças sem afetar o trabalho principal. Em vez de criar cópias do arquivo, você cria uma branch, faz as mudanças nela e, se gostar do resultado, incorpora as alterações de volta à versão principal.</p>
+<div id="como-funciona" class="section level4 hasAnchor" number="3.2.9.1">
+<h4><span class="header-section-number">3.2.9.1</span> Como funciona?<a href="reprodutibilidade.html#como-funciona" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Quando você cria um repositório Git, ele começa com uma branch padrão chamada <code>main</code>. Essa é a “versão oficial” do projeto. A partir dela, você pode criar novas branches para trabalhar em tarefas específicas:</p>
+<pre class="text"><code>main:                 ●───●───●───●───●───●
+                           \             /
+nova-analise:               ●───●───●──●</code></pre>
+<p>No diagrama acima, a branch <code>nova-analise</code> diverge da <code>main</code>, recebe alguns commits com as mudanças, e depois é <strong>mesclada</strong> (merged) de volta à <code>main</code>. Durante todo esse processo, a <code>main</code> permanece intacta — se a nova análise não funcionar, basta deletar a branch e nada se perde.</p>
+</div>
+<div id="quando-usar-branches" class="section level4 hasAnchor" number="3.2.9.2">
+<h4><span class="header-section-number">3.2.9.2</span> Quando usar branches?<a href="reprodutibilidade.html#quando-usar-branches" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Branches são úteis sempre que você quer experimentar algo sem arriscar o que já funciona:</p>
+<ul>
+<li><strong>Testar uma especificação diferente do modelo</strong>: crie uma branch <code>modelo-alternativo</code>, rode a análise e compare com a original.</li>
+<li><strong>Incorporar comentários de um parecerista</strong>: crie uma branch <code>revisao-r1</code>, faça todas as alterações pedidas e, ao final, mescle de volta à <code>main</code>.</li>
+<li><strong>Escrever uma nova seção do paper</strong>: trabalhe em uma branch <code>secao-teoria</code> até estar satisfeito, sem interferir no texto que já está pronto.</li>
+<li><strong>Experimentar uma visualização diferente</strong>: crie uma branch <code>graficos-v2</code> para testar novas figuras.</li>
+</ul>
+</div>
+<div id="comandos-básicos-de-branches" class="section level4 hasAnchor" number="3.2.9.3">
+<h4><span class="header-section-number">3.2.9.3</span> Comandos básicos de branches<a href="#comandos-b%C3%A1sicos-de-branches" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>No terminal (ou na aba Terminal do RStudio):</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb70-1"><a href="reprodutibilidade.html#cb70-1" tabindex="-1"></a><span class="co"># Ver em qual branch você está</span></span>
+<span id="cb70-2"><a href="reprodutibilidade.html#cb70-2" tabindex="-1"></a><span class="fu">git</span> branch</span>
+<span id="cb70-3"><a href="reprodutibilidade.html#cb70-3" tabindex="-1"></a></span>
+<span id="cb70-4"><a href="reprodutibilidade.html#cb70-4" tabindex="-1"></a><span class="co"># Criar uma nova branch e mudar para ela</span></span>
+<span id="cb70-5"><a href="reprodutibilidade.html#cb70-5" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> revisao-r1</span>
+<span id="cb70-6"><a href="reprodutibilidade.html#cb70-6" tabindex="-1"></a></span>
+<span id="cb70-7"><a href="reprodutibilidade.html#cb70-7" tabindex="-1"></a><span class="co"># Mudar para outra branch existente</span></span>
+<span id="cb70-8"><a href="reprodutibilidade.html#cb70-8" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
+<span id="cb70-9"><a href="reprodutibilidade.html#cb70-9" tabindex="-1"></a></span>
+<span id="cb70-10"><a href="reprodutibilidade.html#cb70-10" tabindex="-1"></a><span class="co"># Mesclar mudanças de uma branch na branch atual</span></span>
+<span id="cb70-11"><a href="reprodutibilidade.html#cb70-11" tabindex="-1"></a><span class="co"># (estando na main, traz as mudanças de revisao-r1)</span></span>
+<span id="cb70-12"><a href="reprodutibilidade.html#cb70-12" tabindex="-1"></a><span class="fu">git</span> merge revisao-r1</span>
+<span id="cb70-13"><a href="reprodutibilidade.html#cb70-13" tabindex="-1"></a></span>
+<span id="cb70-14"><a href="reprodutibilidade.html#cb70-14" tabindex="-1"></a><span class="co"># Deletar uma branch após mesclá-la</span></span>
+<span id="cb70-15"><a href="reprodutibilidade.html#cb70-15" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> revisao-r1</span></code></pre></div>
+<p>No <strong>RStudio</strong>, você também pode gerenciar branches pela interface gráfica: na aba Git, há um menu dropdown que mostra a branch atual e permite criar ou trocar de branch.</p>
+</div>
+<div id="boas-práticas-com-branches" class="section level4 hasAnchor" number="3.2.9.4">
+<h4><span class="header-section-number">3.2.9.4</span> Boas práticas com branches<a href="#boas-pr%C3%A1ticas-com-branches" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><strong>Dê nomes descritivos</strong>: <code>revisao-r1</code>, <code>analise-robustez</code>, <code>secao-metodo</code> são melhores do que <code>teste</code> ou <code>branch2</code>.</li>
+<li><strong>Mantenha branches focadas</strong>: cada branch deve ter um propósito claro. Não misture a revisão do texto com mudanças na análise de dados.</li>
+<li><strong>Mescle frequentemente</strong>: não deixe uma branch divergir demais da <code>main</code>. Quanto mais tempo separada, mais difícil será a mesclagem.</li>
+<li><strong>Delete branches mescladas</strong>: após mesclar, delete a branch para manter o repositório organizado.</li>
+</ul>
+<p>Com branches, o fluxo de trabalho acadêmico fica assim: a <code>main</code> sempre contém a versão estável do projeto, e cada experimento ou revisão acontece em sua própria branch. Não há mais <code>tese_final_final_v7.docx</code> — há uma única versão principal com todo o histórico de mudanças preservado e rastreável.</p>
+</div>
+</div>
+<div id="worktrees-trabalhando-em-várias-versões-ao-mesmo-tempo" class="section level3 hasAnchor" number="3.2.10">
+<h3><span class="header-section-number">3.2.10</span> Worktrees: trabalhando em várias versões ao mesmo tempo<a href="#worktrees-trabalhando-em-v%C3%A1rias-vers%C3%B5es-ao-mesmo-tempo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Branches resolvem o problema de criar versões paralelas, mas têm uma limitação prática: quando você troca de branch (<code>git checkout outra-branch</code>), todos os arquivos do projeto mudam. Se você estiver no meio de uma análise na branch <code>revisao-r1</code> e precisar consultar algo na <code>main</code>, precisa salvar tudo, trocar de branch, olhar o que precisa e voltar. Isso é inconveniente e pode causar erros.</p>
+<p>O Git oferece uma solução para isso: <strong>worktrees</strong> (árvores de trabalho). Uma worktree é uma segunda cópia do repositório, em uma pasta separada, vinculada a uma branch diferente. Isso permite ter duas (ou mais) versões do projeto abertas ao mesmo tempo, cada uma em sua própria pasta.</p>
+<div id="como-funciona-1" class="section level4 hasAnchor" number="3.2.10.1">
+<h4><span class="header-section-number">3.2.10.1</span> Como funciona?<a href="reprodutibilidade.html#como-funciona-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Normalmente, um repositório Git tem apenas uma “árvore de trabalho” — a pasta onde seus arquivos estão. Com <code>git worktree</code>, você cria pastas adicionais, cada uma ligada a uma branch:</p>
+<pre class="text"><code>meu-projeto/                  ← worktree principal (branch main)
+meu-projeto-revisao/          ← worktree adicional (branch revisao-r1)</code></pre>
+<p>Ambas as pastas compartilham o mesmo histórico Git (commits, branches etc.), mas mostram versões diferentes dos arquivos. Você pode abrir cada uma em uma janela separada do RStudio e trabalhar nas duas ao mesmo tempo.</p>
+</div>
+<div id="quando-usar-worktrees" class="section level4 hasAnchor" number="3.2.10.2">
+<h4><span class="header-section-number">3.2.10.2</span> Quando usar worktrees?<a href="reprodutibilidade.html#quando-usar-worktrees" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Worktrees são especialmente úteis em três situações:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Comparar versões lado a lado</strong>: abrir a versão atual e a anterior em duas janelas do RStudio para comparar resultados, tabelas ou gráficos.</li>
+<li><strong>Atender uma demanda urgente sem perder o contexto</strong>: se você está no meio de uma revisão e o orientador pede uma mudança urgente na versão principal, pode criar uma worktree da <code>main</code>, fazer a correção e voltar ao seu trabalho sem ter perdido nada.</li>
+<li><strong>Rodar análises longas em paralelo</strong>: enquanto uma especificação do modelo roda em uma worktree, você pode continuar editando o texto em outra.</li>
+</ol>
+</div>
+<div id="comandos-básicos-de-worktrees" class="section level4 hasAnchor" number="3.2.10.3">
+<h4><span class="header-section-number">3.2.10.3</span> Comandos básicos de worktrees<a href="#comandos-b%C3%A1sicos-de-worktrees" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb72"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb72-1"><a href="reprodutibilidade.html#cb72-1" tabindex="-1"></a><span class="co"># Criar uma worktree para uma branch existente</span></span>
+<span id="cb72-2"><a href="reprodutibilidade.html#cb72-2" tabindex="-1"></a><span class="fu">git</span> worktree add ../meu-projeto-revisao revisao-r1</span>
+<span id="cb72-3"><a href="reprodutibilidade.html#cb72-3" tabindex="-1"></a></span>
+<span id="cb72-4"><a href="reprodutibilidade.html#cb72-4" tabindex="-1"></a><span class="co"># Criar uma worktree com uma nova branch</span></span>
+<span id="cb72-5"><a href="reprodutibilidade.html#cb72-5" tabindex="-1"></a><span class="fu">git</span> worktree add <span class="at">-b</span> experimento ../meu-projeto-experimento</span>
+<span id="cb72-6"><a href="reprodutibilidade.html#cb72-6" tabindex="-1"></a></span>
+<span id="cb72-7"><a href="reprodutibilidade.html#cb72-7" tabindex="-1"></a><span class="co"># Listar worktrees ativas</span></span>
+<span id="cb72-8"><a href="reprodutibilidade.html#cb72-8" tabindex="-1"></a><span class="fu">git</span> worktree list</span>
+<span id="cb72-9"><a href="reprodutibilidade.html#cb72-9" tabindex="-1"></a></span>
+<span id="cb72-10"><a href="reprodutibilidade.html#cb72-10" tabindex="-1"></a><span class="co"># Remover uma worktree (após terminar o trabalho)</span></span>
+<span id="cb72-11"><a href="reprodutibilidade.html#cb72-11" tabindex="-1"></a><span class="fu">git</span> worktree remove ../meu-projeto-revisao</span></code></pre></div>
+<p>Note que a worktree é criada <strong>fora</strong> da pasta do projeto (com <code>../</code>), para evitar confusão. Cada worktree é uma pasta normal que pode ser aberta no RStudio como um projeto separado.</p>
+</div>
+<div id="worktrees-vs.-clonar-o-repositório" class="section level4 hasAnchor" number="3.2.10.4">
+<h4><span class="header-section-number">3.2.10.4</span> Worktrees vs. clonar o repositório<a href="#worktrees-vs.-clonar-o-reposit%C3%B3rio" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Uma alternativa simples seria clonar o repositório em outra pasta. A diferença é que worktrees compartilham o histórico Git: um commit feito em qualquer worktree é imediatamente visível nas outras. Com clones separados, você precisa fazer push e pull entre eles, o que é mais trabalhoso e propenso a conflitos.</p>
+</div>
+</div>
 </div>
 <div id="r-markdown" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> R Markdown<a href="reprodutibilidade.html#r-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -782,12 +877,12 @@ div.csl-indent {
 <h3><span class="header-section-number">3.3.2</span> Estrutura de um documento <code>.Rmd</code><a href="reprodutibilidade.html#estrutura-de-um-documento-.rmd" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Todo arquivo <code>.Rmd</code> tem três componentes:</p>
 <p><strong>1. Cabeçalho YAML</strong> (entre <code>---</code>): define metadados como título, autor, data e formato de saída.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb69-1"><a href="reprodutibilidade.html#cb69-1" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb69-2"><a href="reprodutibilidade.html#cb69-2" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Minha Análise&quot;</span></span>
-<span id="cb69-3"><a href="reprodutibilidade.html#cb69-3" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Seu Nome&quot;</span></span>
-<span id="cb69-4"><a href="reprodutibilidade.html#cb69-4" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;2025-03-05&quot;</span></span>
-<span id="cb69-5"><a href="reprodutibilidade.html#cb69-5" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> html_document</span></span>
-<span id="cb69-6"><a href="reprodutibilidade.html#cb69-6" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb73-1"><a href="reprodutibilidade.html#cb73-1" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb73-2"><a href="reprodutibilidade.html#cb73-2" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Minha Análise&quot;</span></span>
+<span id="cb73-3"><a href="reprodutibilidade.html#cb73-3" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Seu Nome&quot;</span></span>
+<span id="cb73-4"><a href="reprodutibilidade.html#cb73-4" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;2025-03-05&quot;</span></span>
+<span id="cb73-5"><a href="reprodutibilidade.html#cb73-5" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> html_document</span></span>
+<span id="cb73-6"><a href="reprodutibilidade.html#cb73-6" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p><strong>2. Texto formatado com Markdown</strong>: o corpo do documento usa a sintaxe Markdown para formatação.</p>
 <table>
 <thead>
@@ -829,10 +924,10 @@ div.csl-indent {
 </table>
 <p><strong>3. Chunks de código R</strong>: blocos de código que são executados quando o documento é renderizado.</p>
 <p>Um chunk é delimitado por três crases e <code>{r}</code>:</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb70-1"><a href="reprodutibilidade.html#cb70-1" tabindex="-1"></a><span class="in">```{r nome-do-chunk}</span></span>
-<span id="cb70-2"><a href="reprodutibilidade.html#cb70-2" tabindex="-1"></a><span class="in"># código R aqui</span></span>
-<span id="cb70-3"><a href="reprodutibilidade.html#cb70-3" tabindex="-1"></a><span class="in">mean(c(1, 2, 3, 4, 5))</span></span>
-<span id="cb70-4"><a href="reprodutibilidade.html#cb70-4" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb74-1"><a href="reprodutibilidade.html#cb74-1" tabindex="-1"></a><span class="in">```{r nome-do-chunk}</span></span>
+<span id="cb74-2"><a href="reprodutibilidade.html#cb74-2" tabindex="-1"></a><span class="in"># código R aqui</span></span>
+<span id="cb74-3"><a href="reprodutibilidade.html#cb74-3" tabindex="-1"></a><span class="in">mean(c(1, 2, 3, 4, 5))</span></span>
+<span id="cb74-4"><a href="reprodutibilidade.html#cb74-4" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <div id="opções-de-chunk" class="section level4 hasAnchor" number="3.3.2.1">
 <h4><span class="header-section-number">3.3.2.1</span> Opções de chunk<a href="#op%C3%A7%C3%B5es-de-chunk" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Cada chunk pode ter opções que controlam o comportamento:</p>
@@ -845,16 +940,16 @@ div.csl-indent {
 <li><code>cache = TRUE</code>: salvar resultados em cache (útil para código demorado).</li>
 </ul>
 <p>Exemplo:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb71-1"><a href="reprodutibilidade.html#cb71-1" tabindex="-1"></a><span class="in">```{r grafico-pib, echo=FALSE, fig.width=8, fig.height=5}</span></span>
-<span id="cb71-2"><a href="reprodutibilidade.html#cb71-2" tabindex="-1"></a><span class="in">library(ggplot2)</span></span>
-<span id="cb71-3"><a href="reprodutibilidade.html#cb71-3" tabindex="-1"></a><span class="in">ggplot(data, aes(x = pib, y = idh)) + geom_point()</span></span>
-<span id="cb71-4"><a href="reprodutibilidade.html#cb71-4" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb75-1"><a href="reprodutibilidade.html#cb75-1" tabindex="-1"></a><span class="in">```{r grafico-pib, echo=FALSE, fig.width=8, fig.height=5}</span></span>
+<span id="cb75-2"><a href="reprodutibilidade.html#cb75-2" tabindex="-1"></a><span class="in">library(ggplot2)</span></span>
+<span id="cb75-3"><a href="reprodutibilidade.html#cb75-3" tabindex="-1"></a><span class="in">ggplot(data, aes(x = pib, y = idh)) + geom_point()</span></span>
+<span id="cb75-4"><a href="reprodutibilidade.html#cb75-4" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 </div>
 </div>
 <div id="gerando-relatórios" class="section level3 hasAnchor" number="3.3.3">
 <h3><span class="header-section-number">3.3.3</span> Gerando relatórios<a href="#gerando-relat%C3%B3rios" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para renderizar o documento, clique no botão <strong>Knit</strong> no RStudio ou execute no console:</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="reprodutibilidade.html#cb72-1" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">&quot;meu_relatorio.Rmd&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="reprodutibilidade.html#cb76-1" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">&quot;meu_relatorio.Rmd&quot;</span>)</span></code></pre></div>
 <p>Os formatos mais comuns de saída são:</p>
 <ul>
 <li><code>html_document</code>: página web (mais flexível, recomendado para começar).</li>
@@ -1014,6 +1109,8 @@ div.csl-indent {
 <li><p><strong>(Fácil)</strong> No GitHub, crie um novo repositório chamado “exercicio-stat-basica”. Clone o repositório no RStudio usando <strong>File &gt; New Project &gt; Version Control &gt; Git</strong>.</p></li>
 <li><p><strong>(Médio)</strong> No projeto clonado, crie um arquivo <code>analise.R</code> com qualquer código R simples. Faça o ciclo completo: stage, commit (com uma mensagem descritiva) e push. Verifique no GitHub se o arquivo apareceu.</p></li>
 <li><p><strong>(Médio)</strong> Modifique o arquivo <code>analise.R</code>, adicionando mais linhas de código. Faça um novo commit e push. No GitHub, explore o histórico de commits para ver as diferenças entre as versões.</p></li>
+<li><p><strong>(Médio)</strong> No repositório do exercício anterior, crie uma branch chamada <code>experimento</code>. Nessa branch, modifique o arquivo <code>analise.R</code> com alguma mudança (por exemplo, troque a função usada). Faça commit na branch <code>experimento</code>, volte para a <code>main</code> e verifique que o arquivo está inalterado. Depois, faça o merge da branch <code>experimento</code> na <code>main</code>.</p></li>
+<li><p><strong>(Difícil)</strong> Crie uma worktree a partir do seu repositório: <code>git worktree add ../exercicio-worktree experimento</code>. Abra a pasta criada no RStudio como um novo projeto e verifique que os arquivos correspondem à branch <code>experimento</code>. Faça uma modificação, commit, e volte ao projeto original para confirmar que o commit aparece no histórico. Depois, remova a worktree com <code>git worktree remove</code>.</p></li>
 </ol>
 </div>
 <div id="r-markdown-1" class="section level3 hasAnchor" number="3.6.2">

@@ -154,6 +154,113 @@ Após configurar o projeto, a aba **Git** aparecerá no painel superior direito 
 - Sempre faça Pull antes de começar a trabalhar, para garantir que está com a versão mais recente.
 - Não coloque dados sensíveis ou muito grandes no GitHub. Use um arquivo `.gitignore` para excluí-los.
 
+### Branches: acabando com `tese_final_final_v7.docx`
+
+Todo mundo que já escreveu um trabalho acadêmico conhece o problema: o arquivo começa como `tese.docx`, vira `tese_v2.docx`, depois `tese_final.docx`, `tese_final_corrigida.docx`, `tese_final_final_v7_agora_vai.docx`. Cada versão é uma cópia do arquivo inteiro, ninguém sabe mais qual é a versão correta, e desfazer uma mudança exige comparar arquivos manualmente.
+
+O Git resolve esse problema com **branches** (ramificações). Uma branch é uma linha independente de desenvolvimento que permite experimentar mudanças sem afetar o trabalho principal. Em vez de criar cópias do arquivo, você cria uma branch, faz as mudanças nela e, se gostar do resultado, incorpora as alterações de volta à versão principal.
+
+#### Como funciona?
+
+Quando você cria um repositório Git, ele começa com uma branch padrão chamada `main`. Essa é a "versão oficial" do projeto. A partir dela, você pode criar novas branches para trabalhar em tarefas específicas:
+
+```text
+main:                 ●───●───●───●───●───●
+                           \             /
+nova-analise:               ●───●───●──●
+```
+
+No diagrama acima, a branch `nova-analise` diverge da `main`, recebe alguns commits com as mudanças, e depois é **mesclada** (merged) de volta à `main`. Durante todo esse processo, a `main` permanece intacta — se a nova análise não funcionar, basta deletar a branch e nada se perde.
+
+#### Quando usar branches?
+
+Branches são úteis sempre que você quer experimentar algo sem arriscar o que já funciona:
+
+- **Testar uma especificação diferente do modelo**: crie uma branch `modelo-alternativo`, rode a análise e compare com a original.
+- **Incorporar comentários de um parecerista**: crie uma branch `revisao-r1`, faça todas as alterações pedidas e, ao final, mescle de volta à `main`.
+- **Escrever uma nova seção do paper**: trabalhe em uma branch `secao-teoria` até estar satisfeito, sem interferir no texto que já está pronto.
+- **Experimentar uma visualização diferente**: crie uma branch `graficos-v2` para testar novas figuras.
+
+#### Comandos básicos de branches
+
+No terminal (ou na aba Terminal do RStudio):
+
+```bash
+# Ver em qual branch você está
+git branch
+
+# Criar uma nova branch e mudar para ela
+git checkout -b revisao-r1
+
+# Mudar para outra branch existente
+git checkout main
+
+# Mesclar mudanças de uma branch na branch atual
+# (estando na main, traz as mudanças de revisao-r1)
+git merge revisao-r1
+
+# Deletar uma branch após mesclá-la
+git branch -d revisao-r1
+```
+
+No **RStudio**, você também pode gerenciar branches pela interface gráfica: na aba Git, há um menu dropdown que mostra a branch atual e permite criar ou trocar de branch.
+
+#### Boas práticas com branches
+
+- **Dê nomes descritivos**: `revisao-r1`, `analise-robustez`, `secao-metodo` são melhores do que `teste` ou `branch2`.
+- **Mantenha branches focadas**: cada branch deve ter um propósito claro. Não misture a revisão do texto com mudanças na análise de dados.
+- **Mescle frequentemente**: não deixe uma branch divergir demais da `main`. Quanto mais tempo separada, mais difícil será a mesclagem.
+- **Delete branches mescladas**: após mesclar, delete a branch para manter o repositório organizado.
+
+Com branches, o fluxo de trabalho acadêmico fica assim: a `main` sempre contém a versão estável do projeto, e cada experimento ou revisão acontece em sua própria branch. Não há mais `tese_final_final_v7.docx` — há uma única versão principal com todo o histórico de mudanças preservado e rastreável.
+
+### Worktrees: trabalhando em várias versões ao mesmo tempo
+
+Branches resolvem o problema de criar versões paralelas, mas têm uma limitação prática: quando você troca de branch (`git checkout outra-branch`), todos os arquivos do projeto mudam. Se você estiver no meio de uma análise na branch `revisao-r1` e precisar consultar algo na `main`, precisa salvar tudo, trocar de branch, olhar o que precisa e voltar. Isso é inconveniente e pode causar erros.
+
+O Git oferece uma solução para isso: **worktrees** (árvores de trabalho). Uma worktree é uma segunda cópia do repositório, em uma pasta separada, vinculada a uma branch diferente. Isso permite ter duas (ou mais) versões do projeto abertas ao mesmo tempo, cada uma em sua própria pasta.
+
+#### Como funciona?
+
+Normalmente, um repositório Git tem apenas uma "árvore de trabalho" — a pasta onde seus arquivos estão. Com `git worktree`, você cria pastas adicionais, cada uma ligada a uma branch:
+
+```text
+meu-projeto/                  ← worktree principal (branch main)
+meu-projeto-revisao/          ← worktree adicional (branch revisao-r1)
+```
+
+Ambas as pastas compartilham o mesmo histórico Git (commits, branches etc.), mas mostram versões diferentes dos arquivos. Você pode abrir cada uma em uma janela separada do RStudio e trabalhar nas duas ao mesmo tempo.
+
+#### Quando usar worktrees?
+
+Worktrees são especialmente úteis em três situações:
+
+1. **Comparar versões lado a lado**: abrir a versão atual e a anterior em duas janelas do RStudio para comparar resultados, tabelas ou gráficos.
+2. **Atender uma demanda urgente sem perder o contexto**: se você está no meio de uma revisão e o orientador pede uma mudança urgente na versão principal, pode criar uma worktree da `main`, fazer a correção e voltar ao seu trabalho sem ter perdido nada.
+3. **Rodar análises longas em paralelo**: enquanto uma especificação do modelo roda em uma worktree, você pode continuar editando o texto em outra.
+
+#### Comandos básicos de worktrees
+
+```bash
+# Criar uma worktree para uma branch existente
+git worktree add ../meu-projeto-revisao revisao-r1
+
+# Criar uma worktree com uma nova branch
+git worktree add -b experimento ../meu-projeto-experimento
+
+# Listar worktrees ativas
+git worktree list
+
+# Remover uma worktree (após terminar o trabalho)
+git worktree remove ../meu-projeto-revisao
+```
+
+Note que a worktree é criada **fora** da pasta do projeto (com `../`), para evitar confusão. Cada worktree é uma pasta normal que pode ser aberta no RStudio como um projeto separado.
+
+#### Worktrees vs. clonar o repositório
+
+Uma alternativa simples seria clonar o repositório em outra pasta. A diferença é que worktrees compartilham o histórico Git: um commit feito em qualquer worktree é imediatamente visível nas outras. Com clones separados, você precisa fazer push e pull entre eles, o que é mais trabalhoso e propenso a conflitos.
+
 ## R Markdown
 
 ### O que é R Markdown?
@@ -365,6 +472,10 @@ O fluxo geral de trabalho com agentes segue um padrão:
 3. **(Médio)** No projeto clonado, crie um arquivo `analise.R` com qualquer código R simples. Faça o ciclo completo: stage, commit (com uma mensagem descritiva) e push. Verifique no GitHub se o arquivo apareceu.
 
 4. **(Médio)** Modifique o arquivo `analise.R`, adicionando mais linhas de código. Faça um novo commit e push. No GitHub, explore o histórico de commits para ver as diferenças entre as versões.
+
+5. **(Médio)** No repositório do exercício anterior, crie uma branch chamada `experimento`. Nessa branch, modifique o arquivo `analise.R` com alguma mudança (por exemplo, troque a função usada). Faça commit na branch `experimento`, volte para a `main` e verifique que o arquivo está inalterado. Depois, faça o merge da branch `experimento` na `main`.
+
+6. **(Difícil)** Crie uma worktree a partir do seu repositório: `git worktree add ../exercicio-worktree experimento`. Abra a pasta criada no RStudio como um novo projeto e verifique que os arquivos correspondem à branch `experimento`. Faça uma modificação, commit, e volte ao projeto original para confirmar que o commit aparece no histórico. Depois, remova a worktree com `git worktree remove`.
 
 ### R Markdown
 
