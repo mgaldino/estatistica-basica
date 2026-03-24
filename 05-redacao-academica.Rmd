@@ -1,5 +1,7 @@
 # Redação Acadêmica {#redacao}
 
+A maioria dos manuscritos submetidos a journals de ciência política é rejeitada — em journals como a *APSR*, a taxa de rejeição passa de 90%. E a causa mais frequente não é falha na análise: é falha na comunicação. O editor não entendeu a contribuição, o parecerista não encontrou o argumento principal, ou a introdução não convenceu que o paper merecia ser lido até o fim. Saber analisar dados é necessário; saber comunicar o que você encontrou é o que transforma análise em publicação.
+
 ## Objetivos do capítulo {-}
 
 - Conhecer a estrutura de um artigo científico
@@ -8,19 +10,398 @@
 - Construir argumentos com evidências
 - Entender como conectar o processo de análise (centrado na nula) com a narrativa do paper (centrada na alternativa)
 
+```{r cap5-setup, include=FALSE}
+library(tidyverse)
+options(scipen = 999)
+
+# --- Dados de classificação ---
+# APSR: 20 papers classificados por LLM (Codex/gpt-5.4) a partir de PDFs
+codex <- read_csv("data/classificacao_apsr_codex.csv", show_col_types = FALSE)
+
+# Preparar APSR
+apsr <- codex |>
+  mutate(
+    journal = "APSR", origem = "Internacional", ano = 2025,
+    template_label = case_when(
+      str_detect(little_template, "1") ~ "Fato/Puzzle",
+      little_template == "2_gap_filling" ~ "Lacuna",
+      str_detect(little_template, "3") ~ "Debate",
+      TRUE ~ "Lacuna"
+    ),
+    little_template_detail = little_template
+  ) |>
+  rename(prior_update = intro_communicates_prior_update,
+         result_in_intro = intro_presents_main_result) |>
+  mutate(result_in_intro = as.logical(result_in_intro),
+         lit_review_loc = case_when(
+           lit_review_location == "integrated_intro" ~ "integrated_intro",
+           lit_review_location == "separate_section" ~ "separate_section",
+           lit_review_location == "background_section" ~ "background_section",
+           lit_review_location == "distributed" ~ "distributed",
+           TRUE ~ lit_review_location))
+
+# Outros internacionais: 11 papers classificados por subagentes Claude (PDFs)
+outros_int <- tibble::tribble(
+  ~journal, ~origem, ~ano, ~template_label, ~prior_update, ~result_in_intro, ~lit_review_loc, ~little_template_detail,
+  "AJPS", "Internacional", 2024, "Lacuna",      "clear_what_and_magnitude", TRUE,  "integrated_intro", "2_gap_filling",
+  "AJPS", "Internacional", 2024, "Lacuna",      "clear_what_only",          FALSE, "integrated_intro", "2_gap_filling",
+  "AJPS", "Internacional", 2025, "Fato/Puzzle", "clear_what_and_magnitude", TRUE,  "integrated_intro", "hybrid_1_2",
+  "AJPS", "Internacional", 2025, "Fato/Puzzle", "clear_what_and_magnitude", TRUE,  "separate_section", "1_fact_puzzle",
+  "AJPS", "Internacional", 2026, "Fato/Puzzle", "clear_what_and_magnitude", TRUE,  "integrated_intro", "1_fact_puzzle",
+  "IO",   "Internacional", 2025, "Fato/Puzzle", "clear_what_only",          TRUE,  "integrated_intro", "1_fact_puzzle",
+  "IO",   "Internacional", 2025, "Lacuna",      "clear_what_and_magnitude", TRUE,  "separate_section", "2_gap_filling",
+  "ISQ",  "Internacional", 2025, "Lacuna",      "clear_what_only",          TRUE,  "separate_section", "2_gap_filling",
+  "BJPS", "Internacional", 2025, "Lacuna",      "clear_what_and_magnitude", TRUE,  "integrated_intro", "2_gap_filling",
+  "BJPS", "Internacional", 2025, "Lacuna",      "clear_what_and_magnitude", TRUE,  "integrated_intro", "2_gap_filling",
+  "BJPS", "Internacional", 2026, "Lacuna",      "clear_what_and_magnitude", TRUE,  "separate_section", "2_gap_filling"
+)
+
+# Brasileiros: 30 papers classificados por subagentes Claude (XMLs SciELO)
+brasileiros <- read_csv("data/classificacao_br_30.csv", show_col_types = FALSE) |>
+  mutate(
+    origem = "Brasil", ano = 2025,
+    template_label = case_when(
+      str_detect(template, "1") & !str_detect(template, "2") & !str_detect(template, "3") ~ "Fato/Puzzle",
+      str_detect(template, "3") & !str_detect(template, "1") ~ "Debate",
+      template == "2_gap_filling" ~ "Lacuna",
+      str_detect(template, "1") ~ "Fato/Puzzle",
+      str_detect(template, "3") ~ "Debate",
+      TRUE ~ "Lacuna"
+    ),
+    prior_update = prior,
+    result_in_intro = result_intro,
+    lit_review_loc = lit_review,
+    little_template_detail = template
+  )
+
+# Juntar
+papers <- bind_rows(
+  apsr |> select(journal, origem, ano, template_label, prior_update, result_in_intro, lit_review_loc, little_template_detail),
+  outros_int,
+  brasileiros |> select(journal, origem, ano, template_label, prior_update, result_in_intro, lit_review_loc, little_template_detail)
+) |>
+  mutate(
+    template_label = factor(template_label, levels = c("Fato/Puzzle", "Lacuna", "Debate")),
+    origem = factor(origem, levels = c("Internacional", "Brasil")),
+    prior_label = case_when(
+      prior_update == "clear_what_and_magnitude" ~ "O que + Quanto",
+      prior_update == "clear_what_only" ~ "So o que",
+      prior_update == "vague" ~ "Vago",
+      prior_update == "absent" ~ "Ausente",
+      TRUE ~ NA_character_
+    )
+  )
+
+N_total <- nrow(papers)
+N_int <- sum(papers$origem == "Internacional")
+N_br <- sum(papers$origem == "Brasil")
+
+cores_origem <- c("Internacional" = "#2166AC", "Brasil" = "#B2182B")
+cores_template <- c("Fato/Puzzle" = "#4DAF4A", "Lacuna" = "#377EB8", "Debate" = "#FF7F00")
+
+nota_padrao <- paste0(
+  "Fonte: Levantamento proprio. N = ", N_total,
+  " papers (", N_int, " internacionais, ", N_br, " brasileiros), 2025.\n",
+  "Classificacao por LLM (APSR) e subagentes Claude (demais) a partir de PDFs/XMLs completos.")
+
+tema_cap5 <- theme_minimal(base_size = 11) +
+  theme(
+    plot.title = element_text(face = "bold", size = 12, margin = margin(b = 4)),
+    plot.subtitle = element_text(size = 9, color = "grey30", margin = margin(b = 8)),
+    plot.caption = element_text(size = 7, color = "grey50", hjust = 0,
+                                lineheight = 1.2, margin = margin(t = 8)),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank(),
+    legend.position = "top",
+    legend.title = element_blank(),
+    plot.margin = margin(8, 12, 8, 8)
+  )
+```
+
 ## Como ler um paper acadêmico
+
+Ler papers acadêmicos é uma habilidade que se aprende com prática. @keshav2007 propõe o *método de três passagens*:
+
+1. **Primeira passagem** (5-10 minutos): Ler título, abstract, introdução e conclusão. Olhar os headings das seções. Passar os olhos pelas referências. Ao final, você deve conseguir responder os "5 Cs": *Category* (que tipo de paper é?), *Context* (com quais outros papers se relaciona?), *Correctness* (as premissas parecem válidas?), *Contributions* (quais as contribuições?), *Clarity* (está bem escrito?).
+
+2. **Segunda passagem** (até 1 hora): Ler com mais atenção, ignorando detalhes técnicos como provas. Anotar pontos-chave, marcar referências relevantes. Ao final, você deve conseguir resumir o argumento principal para outra pessoa.
+
+3. **Terceira passagem** (4-5 horas): Tentar "recriar" virtualmente o paper — replicar mentalmente o que os autores fizeram. Isso revela premissas implícitas, pontos fracos, e técnicas que você pode incorporar ao seu próprio trabalho.
+
+Para a maioria dos papers que você encontra, a primeira passagem é suficiente. A segunda passagem é para papers relevantes ao seu trabalho. A terceira é para papers que você precisa entender profundamente — como o artigo que está replicando ou o paper contra o qual está argumentando.
+
+## O que faz um paper publicável
+
+Antes de discutir a estrutura de um artigo, vale perguntar: o que um editor procura ao decidir se um manuscrito merece ser enviado para pareceristas? @edmans2025 propõe que todo paper acadêmico é avaliado em três dimensões: **contribuição**, **execução** e **exposição**.
+
+A **contribuição** é o critério mais importante — e o mais difícil de corrigir depois que o projeto começou. A pergunta central é a de @king2006: *"whose mind are you going to change about what?"* ("a mente de quem você vai mudar, e sobre o quê?"). Um paper precisa atualizar as crenças do leitor informado. Se a comunidade já acredita no que você está mostrando, a contribuição é pequena — mesmo que a análise seja impecável.
+
+Isso implica que a contribuição depende do estado da literatura: um resultado que seria trivial em uma área pode ser transformador em outra. @edmans2025 lista as razões mais comuns de rejeição ligadas à contribuição: o resultado não é novel, não é importante, a hipótese é pouco clara, os achados não generalizam, ou o paper considera apenas um lado de um trade-off sem reconhecer os custos. Os próprios journals explicitam critérios semelhantes: a *APSR* busca "problem-driven scholarship that is well conceptualized, ethically designed, and well executed" (pesquisa orientada por problemas, bem conceituada, eticamente desenhada e bem executada); a *AJPS* avalia contribuição teórica, qualidade do argumento e rigor metodológico.
+
+A **execução** diz respeito à qualidade da análise: os dados são adequados, a estratégia de identificação é convincente, os resultados são robustos? Falhas de execução são mais fáceis de corrigir que falhas de contribuição — um parecerista pode sugerir testes adicionais, mas dificilmente consegue transformar uma pergunta irrelevante em uma relevante.
+
+A **exposição** é como o paper comunica seus achados. Um argumento forte pode ser rejeitado se o leitor não conseguir entendê-lo. Clareza não é um extra — é condição necessária. Como veremos nas próximas seções, a forma como você estrutura a introdução, apresenta os resultados e organiza a revisão de literatura são decisões de exposição que afetam diretamente a percepção de contribuição e execução.
 
 ## Estrutura de um artigo científico
 
-### Introdução
+### Introdução {#intro-paper}
+
+A introdução é a parte mais importante do paper. Se o referee não entender o ponto principal nas primeiras páginas, o paper será rejeitado — independente da qualidade da análise [@little2016; @king2006].
+
+@little2016 analisou as introduções de artigos publicados nos principais journals de ciência política e identificou três *templates* recorrentes. Praticamente toda introdução pode ser classificada como uma variação ou combinação destes três:
+
+- **Template 1 — Fato/Puzzle**: Abre com um fato ou padrão interessante sobre o mundo, mostra que a literatura existente não explica bem esse fato, e descreve como o paper oferece uma explicação melhor.
+- **Template 2 — Lacuna**: Declara que o tema é importante e já foi estudado, identifica algo que falta ou está errado na literatura, e descreve como o paper preenche essa lacuna.
+- **Template 3 — Debate**: Apresenta teorias ou achados empíricos que parecem contraditórios, e mostra como o paper resolve essa tensão.
+
+Muitos papers usam combinações desses templates. Por exemplo, abrir com um fato surpreendente (Template 1) e depois mostrar que a literatura não o explica (Template 2).
+
+Para verificar como esses templates aparecem na prática, classificamos `r N_total` papers publicados recentemente em journals internacionais e brasileiros de CP/RI. Antes de olhar a figura abaixo, tente adivinhar: qual template você acha mais comum em papers brasileiros? E em internacionais? A Figura \@ref(fig:cap5-fig-templates) mostra a distribuição.
+
+```{r cap5-fig-templates, echo=FALSE, warning=FALSE, message=FALSE, fig.height=3.5, fig.cap="Templates de introducao observados em papers publicados de CP/RI (2025). Papers brasileiros concentram-se em Lacuna; internacionais distribuem entre Fato/Puzzle e Lacuna, com mais Debate."}
+fig1_data <- papers |>
+  count(origem, template_label) |>
+  group_by(origem) |>
+  mutate(prop = n / sum(n),
+         pct_label = paste0(round(prop * 100), "%")) |>
+  ungroup() |>
+  group_by(origem) |>
+  arrange(origem, desc(template_label)) |>
+  mutate(cumsum = cumsum(prop), midpoint = cumsum - prop / 2) |>
+  ungroup()
+
+ggplot(fig1_data, aes(x = prop, y = fct_rev(origem), fill = template_label)) +
+  geom_col(width = 0.6, alpha = 0.9, color = "white", linewidth = 0.5) +
+  geom_text(aes(x = midpoint, label = pct_label),
+            color = "white", fontface = "bold", size = 3.5) +
+  scale_x_continuous(labels = scales::percent_format(), expand = c(0, 0)) +
+  scale_fill_manual(values = cores_template, guide = guide_legend(reverse = TRUE)) +
+  labs(title = "Como papers de CP/RI abrem suas introducoes",
+       subtitle = paste0("N = ", N_total, " papers publicados em 2025"),
+       x = NULL, y = NULL, caption = nota_padrao) +
+  tema_cap5 +
+  theme(panel.grid = element_blank(),
+        axis.text.x = element_blank(),
+        axis.text.y = element_text(size = 11, face = "bold"))
+```
+
+Observamos que papers brasileiros usam mais o template de Lacuna ("o tema é importante, mas falta estudar X"), enquanto papers internacionais usam mais frequentemente Fato/Puzzle como abertura. Vale notar que na prática muitos papers combinam elementos de mais de um template — os chamados templates híbridos. A Figura \@ref(fig:cap5-fig-detail) mostra essa decomposição.
+
+```{r cap5-fig-detail, echo=FALSE, warning=FALSE, message=FALSE, fig.height=5, fig.width=7, fig.cap="Templates detalhados. Papers internacionais usam frequentemente templates hibridos, combinando fato/puzzle com lacuna. Papers brasileiros usam mais templates puros."}
+tpl_detail <- papers |>
+  mutate(tpl_detail = case_when(
+    little_template_detail == "hybrid_1_2" ~ "Fato + Lacuna",
+    little_template_detail == "hybrid_1_3" ~ "Fato + Debate",
+    little_template_detail == "hybrid_2_3" ~ "Lacuna + Debate",
+    little_template_detail == "1_fact_puzzle" ~ "Fato/Puzzle",
+    little_template_detail == "2_gap_filling" ~ "Lacuna",
+    little_template_detail == "3_debate_resolution" ~ "Debate",
+    TRUE ~ NA_character_)) |>
+  filter(!is.na(tpl_detail))
+
+cores_tpl <- c("Fato + Lacuna" = "#2166AC", "Lacuna + Debate" = "#762A83",
+               "Fato + Debate" = "#1B7837", "Lacuna" = "#377EB8",
+               "Debate" = "#FF7F00", "Fato/Puzzle" = "#4DAF4A")
+
+tpl_data <- tpl_detail |>
+  count(origem, tpl_detail) |>
+  group_by(origem) |>
+  mutate(prop = n / sum(n), pct = paste0(n)) |>
+  ungroup()
+
+ggplot(tpl_data, aes(x = n, y = fct_reorder(tpl_detail, n), fill = tpl_detail)) +
+  geom_col(position = position_dodge(width = 0.7), width = 0.6, alpha = 0.9) +
+  geom_text(aes(label = pct), position = position_dodge(width = 0.7),
+            hjust = -0.2, size = 3) +
+  facet_wrap(~origem) +
+  scale_fill_manual(values = cores_tpl, guide = "none") +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.3))) +
+  labs(title = "Templates detalhados de introducao (Little, 2016)",
+       subtitle = paste0("N = ", N_total, " papers publicados em 2025"),
+       x = "Numero de papers", y = NULL, caption = nota_padrao) +
+  tema_cap5 + theme(panel.grid.major.x = element_line(color = "grey90"))
+```
+
+Independente do template, toda introdução precisa cumprir três funções [@little2016]:
+
+1. Apresentar o tema de forma que capture a atenção do leitor.
+2. Mostrar que o trabalho existente é incompleto ou incorreto.
+3. Descrever o que o paper faz e o que encontra.
+
+Um aspecto que distingue os papers publicados em journals internacionais é a clareza com que comunicam a contribuição já na introdução. Não basta dizer "contribuímos para a literatura de X" — é preciso dizer *o que* o leitor deveria acreditar de diferente após ler o paper, e idealmente *quanto* muda. A Figura \@ref(fig:cap5-fig-prior) mostra essa diferença.
+
+```{r cap5-fig-prior, echo=FALSE, warning=FALSE, message=FALSE, fig.height=4.5, fig.width=7, fig.cap="Clareza da comunicacao de contribuicao na introducao. A maior diferenca entre internacionais e brasileiros esta aqui: 71\\% dos internacionais comunicam o que muda e quanto, vs. 17\\% dos brasileiros."}
+prior_all <- papers |>
+  filter(!is.na(prior_label)) |>
+  count(origem, prior_label) |>
+  group_by(origem) |>
+  mutate(prop = n / sum(n), pct = paste0(round(prop * 100), "%")) |>
+  ungroup() |>
+  mutate(prior_label = factor(prior_label,
+    levels = c("O que + Quanto", "So o que", "Vago", "Ausente")))
+
+cores_prior <- c("O que + Quanto" = "#1a9850", "So o que" = "#91cf60",
+                 "Vago" = "#fee08b", "Ausente" = "#d73027")
+
+ggplot(prior_all, aes(x = prior_label, y = n, fill = prior_label)) +
+  geom_col(width = 0.6, alpha = 0.9) +
+  geom_text(aes(label = pct), vjust = -0.3, size = 3, fontface = "bold") +
+  facet_wrap(~origem) +
+  scale_fill_manual(values = cores_prior, guide = "none") +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.3))) +
+  labs(title = "A introducao comunica o que muda e quanto?",
+       subtitle = paste0("N = ", N_total, " papers publicados em 2025"),
+       x = "Clareza da contribuicao", y = "Numero de papers",
+       caption = nota_padrao) +
+  tema_cap5
+```
+
+Os números são úteis, mas como essas frases de contribuição se parecem na prática? A Tabela \@ref(tab:cap5-tab-quotes) mostra exemplos reais extraídos de papers publicados na *APSR* em 2025, classificados pelo nível de clareza.
+
+```{r cap5-tab-quotes, echo=FALSE, warning=FALSE, message=FALSE}
+quotes_sel <- codex |>
+  filter(!is.na(intro_prior_update_quote), intro_prior_update_quote != "") |>
+  mutate(
+    autor = str_remove(`_file`, "\\.pdf$") |>
+      str_remove("^2025_") |> str_remove("^2026_") |>
+      str_extract("^[A-Za-z]+") |>
+      paste0(" (2025)"),
+    prior_cat = case_when(
+      intro_communicates_prior_update == "clear_what_and_magnitude" ~ "O que + Quanto",
+      intro_communicates_prior_update == "clear_what_only" ~ "Só o que",
+      intro_communicates_prior_update == "vague" ~ "Vago",
+      TRUE ~ NA_character_
+    ),
+    frase = str_trunc(intro_prior_update_quote, 200)
+  ) |>
+  filter(!is.na(prior_cat)) |>
+  arrange(factor(prior_cat, levels = c("O que + Quanto", "Só o que", "Vago")))
+
+# Selecionar 6 exemplos representativos: 3 "O que + Quanto", 2 "Só o que", 1 "Vago"
+quotes_show <- bind_rows(
+  quotes_sel |> filter(prior_cat == "O que + Quanto") |> slice_head(n = 3),
+  quotes_sel |> filter(prior_cat == "Só o que") |> slice_head(n = 2),
+  quotes_sel |> filter(prior_cat == "Vago") |> slice_head(n = 1)
+)
+
+knitr::kable(
+  quotes_show |> select(autor, prior_cat, frase),
+  col.names = c("Paper", "Clareza", "Frase-chave da introdução"),
+  caption = "Exemplos de frases de contribuição em papers da APSR (2025), classificadas por nível de clareza.",
+  booktabs = TRUE
+) |>
+  kableExtra::kable_styling(font_size = 9, full_width = TRUE) |>
+  kableExtra::column_spec(3, width = "60%")
+```
+
+Note como os papers com "O que + Quanto" não apenas dizem *o que* encontram, mas dão ao leitor uma noção de *magnitude* — o quanto as crenças deveriam mudar. Já os papers com "Só o que" informam a direção do achado sem quantificar, e os "Vagos" ficam em generalidades como "contribuímos para a literatura de X".
+
+Outra característica observada é que a grande maioria dos papers publicados — tanto internacionais quanto brasileiros — apresenta o resultado principal já na introdução, antes de detalhar a metodologia. Isso é consistente com a estrutura de "pirâmide invertida": a informação mais importante vem primeiro.
+
+```{r cap5-fig-result, echo=FALSE, warning=FALSE, message=FALSE, fig.height=3.5, fig.width=7, fig.cap="Proporcao de papers que apresentam o resultado principal na introducao."}
+result_all <- papers |>
+  filter(!is.na(result_in_intro)) |>
+  mutate(result_label = ifelse(result_in_intro == TRUE,
+                               "Resultado na intro", "Sem resultado na intro")) |>
+  count(origem, result_label) |>
+  group_by(origem) |>
+  mutate(prop = n / sum(n), pct = paste0(n, " (", round(prop*100), "%)")) |>
+  ungroup() |>
+  mutate(cor = ifelse(result_label == "Resultado na intro", "#1a9850", "#d73027"))
+
+ggplot(result_all, aes(x = n, y = fct_reorder(result_label, n), fill = cor)) +
+  geom_col(width = 0.5, alpha = 0.85) +
+  geom_text(aes(label = pct), hjust = -0.1, size = 3, fontface = "bold") +
+  facet_wrap(~origem) +
+  scale_fill_identity() +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.35))) +
+  labs(title = "O resultado principal aparece na introducao?",
+       subtitle = paste0("N = ", N_total, " papers publicados em 2025"),
+       x = "Numero de papers", y = NULL, caption = nota_padrao) +
+  tema_cap5 + theme(panel.grid.major.x = element_line(color = "grey90"))
+```
 
 ### Revisão de literatura
 
+Onde fica a revisão de literatura? Muitos alunos aprendem que o paper deve ter uma seção separada intitulada "Revisão de Literatura". Mas na prática, a maioria dos papers publicados nos journals que analisamos não segue esse padrão.
+
+```{r cap5-fig-litreview, echo=FALSE, warning=FALSE, message=FALSE, fig.height=4.5, fig.width=7, fig.cap="Localizacao da revisao de literatura. A maioria dos papers integra a revisao na introducao ou a distribui pelo texto. Nenhum paper internacional usa secao intitulada 'Literature Review'."}
+lit_apsr <- codex |>
+  transmute(origem = "Internacional", lit_loc = case_when(
+    lit_review_location == "integrated_intro" ~ "Integrada na intro",
+    lit_review_location == "separate_section" ~ "Secao separada",
+    lit_review_location == "background_section" ~ "Secao de Background",
+    lit_review_location == "distributed" ~ "Distribuida",
+    TRUE ~ lit_review_location))
+
+lit_outros <- outros_int |>
+  transmute(origem = "Internacional", lit_loc = case_when(
+    lit_review_loc == "integrated_intro" ~ "Integrada na intro",
+    lit_review_loc == "separate_section" ~ "Secao separada",
+    lit_review_loc == "background_section" ~ "Secao de Background",
+    lit_review_loc == "distributed" ~ "Distribuida",
+    TRUE ~ lit_review_loc))
+
+lit_br <- brasileiros |>
+  transmute(origem = "Brasil", lit_loc = case_when(
+    lit_review_loc == "integrated_intro" ~ "Integrada na intro",
+    lit_review_loc == "separate_section" ~ "Secao separada",
+    lit_review_loc == "background_section" ~ "Secao de Background",
+    lit_review_loc == "distributed" ~ "Distribuida",
+    TRUE ~ lit_review_loc))
+
+lit_all <- bind_rows(lit_apsr, lit_outros, lit_br) |>
+  mutate(origem = factor(origem, levels = c("Internacional", "Brasil")))
+
+lit_data <- lit_all |>
+  count(origem, lit_loc) |>
+  group_by(origem) |>
+  mutate(prop = n / sum(n), pct = paste0(round(prop*100), "%")) |>
+  ungroup()
+
+ggplot(lit_data, aes(x = n, y = fct_reorder(lit_loc, n), fill = origem)) +
+  geom_col(position = position_dodge(width = 0.7), width = 0.6, alpha = 0.85) +
+  geom_text(aes(label = pct), position = position_dodge(width = 0.7),
+            hjust = -0.1, size = 2.8) +
+  scale_fill_manual(values = cores_origem) +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.2))) +
+  labs(title = "Onde fica a revisao de literatura?",
+       subtitle = paste0("N = ", N_total, " papers publicados em 2025"),
+       x = "Numero de papers", y = NULL, caption = nota_padrao) +
+  tema_cap5 + theme(panel.grid.major.x = element_line(color = "grey90"))
+```
+
+Observamos que a forma mais comum é integrar a revisão de literatura na própria introdução, especialmente nos journals brasileiros. Papers internacionais usam mais seções separadas, mas raramente com o título "Literature Review" — preferem títulos temáticos como "Theoretical Framework" ou nomes que refletem o conteúdo substantivo.
+
 ### Metodologia
+
+A seção de metodologia descreve os dados e a estratégia empírica de forma suficientemente detalhada para que o leitor avalie a validade dos resultados — e, idealmente, para que outro pesquisador consiga replicar a análise.
+
+Dois erros comuns. O primeiro é confundir dados com evidência. Como observa @edmans2025, dados são insumo; evidência é o que os dados dizem *à luz de uma pergunta e de uma estratégia de identificação*. Apresentar uma base de dados detalhada não substitui a necessidade de explicar *por que* aqueles dados permitem responder à pergunta. O segundo erro é omitir limitações da estratégia empírica. Todo desenho de pesquisa tem fraquezas — é melhor reconhecê-las explicitamente do que esperar que o parecerista as encontre.
+
+Na prática, a seção de metodologia deve responder: (1) quais são os dados e de onde vêm? (2) qual é a unidade de análise? (3) como as variáveis-chave são operacionalizadas? (4) qual é a estratégia de identificação — isto é, por que podemos interpretar a associação como evidência da relação proposta? (5) quais são as ameaças à validade e como o paper lida com elas?
 
 ### Resultados
 
+A seção de resultados deve focar em *quantidades de interesse* — efeitos substantivos que o leitor consiga interpretar — e não em listas de coeficientes [@king2006]. Dizer que "o coeficiente de X é 0,23, significativo a 5%" é menos informativo do que dizer "um aumento de um desvio-padrão em X está associado a um aumento de 3 pontos percentuais na probabilidade de Y, o que equivale a cerca de metade da diferença média entre homens e mulheres na amostra".
+
+Tabelas e figuras devem ser auto-contidas: o leitor deve entender o que está sendo mostrado sem precisar voltar ao texto. Isso significa incluir títulos descritivos, notas de rodapé com informações sobre a amostra e as variáveis, e indicar claramente o que cada coluna ou eixo representa.
+
+Evite apresentar dezenas de especificações sem guiar o leitor sobre quais são as principais e por quê. Um paper com 15 tabelas no apêndice mas sem uma narrativa clara sobre o resultado principal não comunica — apenas despeja dados.
+
+> **Exemplo: do coeficiente à interpretação substantiva**
+>
+> *Antes*: "O coeficiente da variável escolaridade é 0,47 (p < 0,01), o que indica uma relação estatisticamente significativa com a participação política."
+>
+> *Depois*: "Concluir o ensino superior está associado a um aumento de 12 pontos percentuais na probabilidade de participar de pelo menos uma atividade política no último ano — o equivalente à diferença observada entre as faixas de renda mais alta e mais baixa da amostra."
+>
+> A segunda versão diz a mesma coisa, mas o leitor não precisa saber o que "0,47" significa em termos práticos. A comparação com a diferença de renda dá uma âncora para avaliar a magnitude.
+
 ### Conclusão
+
+A conclusão deve ser breve. Seu papel é retomar a contribuição principal do paper — não repeti-la, mas contextualizá-la. O que o leitor deveria levar deste paper? Quais são as implicações para a literatura, para políticas públicas, ou para pesquisas futuras?
+
+Duas armadilhas a evitar. A primeira é introduzir material novo na conclusão — argumentos, evidências ou qualificações que deveriam ter aparecido antes. A segunda é o parágrafo genérico de "mais pesquisa é necessária": se a sugestão de pesquisa futura não é específica o bastante para que alguém a execute, provavelmente não vale incluí-la. Limitações devem ser apresentadas com honestidade, mas sem autodepreciação: reconheça o que o paper não faz, e explique por que as limitações não invalidam a contribuição principal.
 
 ## Descoberta versus narrativa: da hipótese nula ao paper {#descoberta-narrativa}
 
@@ -28,9 +409,11 @@ O processo de análise estatística e o processo de escrita de um paper seguem l
 
 **Na análise**, trabalhamos no framework do teste de hipóteses: formulamos uma hipótese nula (tipicamente "não há efeito"), coletamos dados e verificamos se a evidência é suficiente para rejeitá-la. O foco está na nula.
 
-**No paper**, a narrativa é construída em torno da hipótese alternativa — a teoria que o pesquisador quer defender. O artigo diz "proponho que X causa Y" e apresenta evidência a favor. Ninguém escreve um paper dizendo "não rejeitei a hipótese nula de que nada acontece".
+**No paper**, a narrativa é tipicamente construída em torno da hipótese alternativa — a teoria que o pesquisador quer defender. O artigo diz "proponho que X causa Y" e apresenta evidência a favor. É raro ver um paper cuja contribuição central seja "não rejeitei a hipótese nula", e isso cria um viés de publicação (o chamado *file drawer problem*): estudos com resultados nulos tendem a ficar na gaveta, distorcendo a literatura publicada.
 
-Como conectar essas duas lógicas? Primeiro, separar claramente o processo de *descoberta* (exploração dos dados, análise) do processo de *comunicação* (escrita do paper). Segundo, entender que não rejeitar a nula não invalida o paper — pode ser um resultado informativo se o estudo tinha poder suficiente para detectar um efeito relevante.
+No entanto, resultados nulos podem ser informativos e deveriam ser publicados. A pergunta-chave é: quanto esse resultado atualiza as crenças do leitor? Se a literatura ou o senso comum assumia que X causa Y, e um estudo bem desenhado mostra que o efeito é nulo ou muito menor do que se supunha, isso muda a prior da comunidade — e portanto contribui. Por outro lado, se ninguém esperava um efeito e você confirma que não há, a contribuição é pequena. É verdade que ausência de evidência não é o mesmo que evidência de ausência, mas um resultado nulo em um estudo com poder adequado é informativo quando desafia crenças estabelecidas.
+
+Como conectar as lógicas da análise e do paper? Primeiro, separar claramente o processo de *descoberta* (exploração dos dados, análise) do processo de *comunicação* (escrita do paper). Segundo, entender que não rejeitar a nula não invalida o paper — pode ser um resultado informativo se o estudo tinha poder suficiente para detectar um efeito relevante.
 
 ### A importância de "rule out" explicações alternativas
 
@@ -40,4 +423,28 @@ Na prática, isso significa: (1) identificar as principais explicações rivais 
 
 ## Dicas de escrita acadêmica
 
+1. **Uma ideia por parágrafo.** Se você não consegue resumir o parágrafo em uma frase, ele provavelmente está fazendo coisas demais. A primeira frase do parágrafo deve dizer do que ele trata — estrutura de pirâmide invertida.
+
+2. **Voz ativa.** "Encontramos que X causa Y" é mais direto que "Foi encontrado que Y é causado por X." Voz passiva tem seu lugar (quando o agente é irrelevante), mas o abuso de passiva é um dos problemas mais comuns em textos acadêmicos.
+
+3. **Não esconda fraquezas.** @king2006 enfatiza: pareceristas vão encontrar os problemas do seu paper de qualquer forma. É melhor reconhecê-los e explicar por que não invalidam a contribuição do que fingir que não existem. Transparência aumenta a credibilidade.
+
+4. **Título como haiku.** O título deve ser curto e informativo. @king2006 sugere pensar no título como um haiku: cada palavra deve justificar sua presença. Evite títulos que começam com "An Analysis of..." ou "A Study of..." — diga *o que* você encontrou, não *o que* você fez.
+
+5. **Evite jargão desnecessário.** Se um termo técnico pode ser substituído por uma palavra comum sem perda de precisão, substitua. Jargão é útil quando ganha precisão; é prejudicial quando serve apenas para sinalizar pertencimento a um grupo.
+
+6. **Tabelas e figuras auto-contidas.** Muitos leitores olham as figuras antes de ler o texto. Cada tabela e figura deve ter título descritivo, notas explicativas e indicação clara das variáveis. O leitor deve entender o ponto principal sem consultar o texto.
+
+7. **Corte sem piedade.** A maioria dos primeiros rascunhos tem 20-30% de texto dispensável. Releia cada frase e pergunte: "se eu tirar isso, o leitor perde algo?" Se a resposta é não, tire. Frases como "é importante notar que", "vale ressaltar que", "cabe mencionar" quase nunca são necessárias.
+
+8. **Evite linguagem dramática.** Palavras como "obviamente", "claramente", "sem dúvida" geralmente sinalizam o oposto: se fosse tão claro, não precisaria ser dito. Da mesma forma, evite superlativos sem evidência: "o mais importante", "revolucionário", "inédito".
+
 ## Exercícios
+
+1. **Classificar uma introdução.** Escolha um paper publicado em um journal de ciência política (pode ser da lista de referências deste capítulo ou um paper que você esteja lendo para outra disciplina). Leia a introdução e responda: (a) qual template de Little o paper usa — Fato/Puzzle, Lacuna, Debate, ou híbrido? (b) identifique as frases que cumprem as três funções: capturar atenção, mostrar gap, descrever contribuição. (c) a introdução apresenta o resultado principal? Se sim, copie a frase.
+
+2. **Avaliar a clareza da contribuição.** Selecione 3 papers de journals diferentes (idealmente um internacional e dois brasileiros). Para cada um, encontre a frase na introdução que melhor comunica *o que* o leitor deveria acreditar de diferente após ler o paper. Classifique cada frase como "O que + Quanto" (diz o que muda e dá magnitude), "Só o que" (diz o que muda sem quantificar), ou "Vago" (contribuição genérica). Compare os padrões entre journals.
+
+3. **Reescrever uma introdução.** Tome um paper cuja introdução você classificou como "Vaga" no exercício anterior (ou peça ao professor um exemplo). Reescreva o primeiro parágrafo usando o template de Fato/Puzzle de Little: abra com um fato concreto, mostre que a literatura existente não o explica bem, e descreva como o paper oferece uma explicação melhor. Limite-se a 150-200 palavras.
+
+4. **"Whose mind are you going to change?"** Pense no tema do seu próprio trabalho de pesquisa (ou escolha um tema que lhe interesse). Responda em no máximo três frases: (a) Qual é a crença predominante sobre o tema? (b) O que seu paper mostraria de diferente? (c) Por que isso importa — quem se beneficia de saber isso? Se você não conseguir responder essas perguntas de forma clara, o projeto provavelmente precisa ser afinado antes de começar a escrever.
