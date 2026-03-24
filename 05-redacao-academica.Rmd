@@ -1,6 +1,6 @@
 # Redação Acadêmica {#redacao}
 
-A maioria dos manuscritos submetidos a journals de ciência política é rejeitada — em journals como a *APSR*, a taxa de rejeição passa de 90%. E a causa mais frequente não é falha na análise: é falha na comunicação. O editor não entendeu a contribuição, o parecerista não encontrou o argumento principal, ou a introdução não convenceu que o paper merecia ser lido até o fim. Saber analisar dados é necessário; saber comunicar o que você encontrou é o que transforma análise em publicação.
+Os principais journals acadêmicos rejeitam mais de 90% dos manuscritos que recebem [@edmans2025]. Uma parte dessas rejeições ocorre antes mesmo de o paper chegar a um parecerista: o editor lê a introdução, não entende a contribuição, e decide que o manuscrito não merece o tempo de um parecerista. Saber analisar dados é necessário; saber comunicar o que você encontrou é o que transforma análise em publicação.
 
 ## Objetivos do capítulo {-}
 
@@ -122,7 +122,7 @@ tema_cap5 <- theme_minimal(base_size = 11) +
 
 Ler papers acadêmicos é uma habilidade que se aprende com prática. @keshav2007 propõe o *método de três passagens*:
 
-1. **Primeira passagem** (5-10 minutos): Ler título, abstract, introdução e conclusão. Olhar os headings das seções. Passar os olhos pelas referências. Ao final, você deve conseguir responder os "5 Cs": *Category* (que tipo de paper é?), *Context* (com quais outros papers se relaciona?), *Correctness* (as premissas parecem válidas?), *Contributions* (quais as contribuições?), *Clarity* (está bem escrito?).
+1. **Primeira passagem** (5-10 minutos): Ler título, abstract, introdução e conclusão. Olhar os títulos das seções. Passar os olhos pelas referências. Ao final, você deve conseguir responder os "5 Cs": *Category* (que tipo de paper é?), *Context* (com quais outros papers se relaciona?), *Correctness* (as premissas parecem válidas?), *Contributions* (quais as contribuições?), *Clarity* (está bem escrito?).
 
 2. **Segunda passagem** (até 1 hora): Ler com mais atenção, ignorando detalhes técnicos como provas. Anotar pontos-chave, marcar referências relevantes. Ao final, você deve conseguir resumir o argumento principal para outra pessoa.
 
@@ -136,7 +136,7 @@ Antes de discutir a estrutura de um artigo, vale perguntar: o que um editor proc
 
 A **contribuição** é o critério mais importante — e o mais difícil de corrigir depois que o projeto começou. A pergunta central é a de @king2006: *"whose mind are you going to change about what?"* ("a mente de quem você vai mudar, e sobre o quê?"). Um paper precisa atualizar as crenças do leitor informado. Se a comunidade já acredita no que você está mostrando, a contribuição é pequena — mesmo que a análise seja impecável.
 
-Isso implica que a contribuição depende do estado da literatura: um resultado que seria trivial em uma área pode ser transformador em outra. @edmans2025 lista as razões mais comuns de rejeição ligadas à contribuição: o resultado não é novel, não é importante, a hipótese é pouco clara, os achados não generalizam, ou o paper considera apenas um lado de um trade-off sem reconhecer os custos. Os próprios journals explicitam critérios semelhantes: a *APSR* busca "problem-driven scholarship that is well conceptualized, ethically designed, and well executed" (pesquisa orientada por problemas, bem conceituada, eticamente desenhada e bem executada); a *AJPS* avalia contribuição teórica, qualidade do argumento e rigor metodológico.
+Isso implica que a contribuição depende do estado da literatura: um resultado que seria trivial em uma área pode ser transformador em outra. @edmans2025 lista as razões mais comuns de rejeição ligadas à contribuição: o resultado não é original, não é importante, a hipótese é pouco clara, os achados não generalizam, ou o paper considera apenas um lado de um trade-off sem reconhecer os custos. Os próprios journals explicitam critérios semelhantes. De modo geral, os principais periódicos de ciência política esperam que o manuscrito faça uma contribuição teórica ou empírica clara, apresente um argumento bem construído e demonstre rigor metodológico.
 
 A **execução** diz respeito à qualidade da análise: os dados são adequados, a estratégia de identificação é convincente, os resultados são robustos? Falhas de execução são mais fáceis de corrigir que falhas de contribuição — um parecerista pode sugerir testes adicionais, mas dificilmente consegue transformar uma pergunta irrelevante em uma relevante.
 
@@ -146,7 +146,7 @@ A **exposição** é como o paper comunica seus achados. Um argumento forte pode
 
 ### Introdução {#intro-paper}
 
-A introdução é a parte mais importante do paper. Se o referee não entender o ponto principal nas primeiras páginas, o paper será rejeitado — independente da qualidade da análise [@little2016; @king2006].
+A introdução é a parte mais importante do paper. Se o parecerista não entender o ponto principal nas primeiras páginas, o paper será rejeitado — independentemente da qualidade da análise [@little2016; @king2006].
 
 @little2016 analisou as introduções de artigos publicados nos principais journals de ciência política e identificou três *templates* recorrentes. Praticamente toda introdução pode ser classificada como uma variação ou combinação destes três:
 
@@ -222,7 +222,7 @@ ggplot(tpl_data, aes(x = n, y = fct_reorder(tpl_detail, n), fill = tpl_detail)) 
   tema_cap5 + theme(panel.grid.major.x = element_line(color = "grey90"))
 ```
 
-Independente do template, toda introdução precisa cumprir três funções [@little2016]:
+Independentemente do template, toda introdução precisa cumprir três funções [@little2016]:
 
 1. Apresentar o tema de forma que capture a atenção do leitor.
 2. Mostrar que o trabalho existente é incompleto ou incorreto.
@@ -385,7 +385,7 @@ Na prática, a seção de metodologia deve responder: (1) quais são os dados e 
 
 A seção de resultados deve focar em *quantidades de interesse* — efeitos substantivos que o leitor consiga interpretar — e não em listas de coeficientes [@king2006]. Dizer que "o coeficiente de X é 0,23, significativo a 5%" é menos informativo do que dizer "um aumento de um desvio-padrão em X está associado a um aumento de 3 pontos percentuais na probabilidade de Y, o que equivale a cerca de metade da diferença média entre homens e mulheres na amostra".
 
-Tabelas e figuras devem ser auto-contidas: o leitor deve entender o que está sendo mostrado sem precisar voltar ao texto. Isso significa incluir títulos descritivos, notas de rodapé com informações sobre a amostra e as variáveis, e indicar claramente o que cada coluna ou eixo representa.
+Tabelas e figuras devem ser autocontidas: o leitor deve entender o que está sendo mostrado sem precisar voltar ao texto. Isso significa incluir títulos descritivos, notas de rodapé com informações sobre a amostra e as variáveis, e indicar claramente o que cada coluna ou eixo representa.
 
 Evite apresentar dezenas de especificações sem guiar o leitor sobre quais são as principais e por quê. Um paper com 15 tabelas no apêndice mas sem uma narrativa clara sobre o resultado principal não comunica — apenas despeja dados.
 
@@ -415,9 +415,9 @@ No entanto, resultados nulos podem ser informativos e deveriam ser publicados. A
 
 Como conectar as lógicas da análise e do paper? Primeiro, separar claramente o processo de *descoberta* (exploração dos dados, análise) do processo de *comunicação* (escrita do paper). Segundo, entender que não rejeitar a nula não invalida o paper — pode ser um resultado informativo se o estudo tinha poder suficiente para detectar um efeito relevante.
 
-### A importância de "rule out" explicações alternativas
+### A importância de descartar explicações alternativas
 
-Uma narrativa empírica sólida não se limita a mostrar evidência *a favor* da hipótese preferida. Ela precisa também mostrar que as explicações alternativas mais plausíveis *não* dão conta dos dados. Isso é o que se chama de *ruling out* alternativas.
+Uma narrativa empírica sólida não se limita a mostrar evidência *a favor* da hipótese preferida. Ela precisa também mostrar que as explicações alternativas mais plausíveis *não* dão conta dos dados. Isso é o que se chama de descarte de alternativas (*ruling out*).
 
 Na prática, isso significa: (1) identificar as principais explicações rivais para o padrão observado, (2) derivar previsões empíricas que distinguam a sua teoria das rivais, e (3) mostrar que os dados são consistentes com a sua teoria mas não com as alternativas. Esse exercício fortalece enormemente a credibilidade do argumento — e é o que separa um paper descritivo de um paper com contribuição causal ou teórica.
 
@@ -433,15 +433,15 @@ Na prática, isso significa: (1) identificar as principais explicações rivais 
 
 5. **Evite jargão desnecessário.** Se um termo técnico pode ser substituído por uma palavra comum sem perda de precisão, substitua. Jargão é útil quando ganha precisão; é prejudicial quando serve apenas para sinalizar pertencimento a um grupo.
 
-6. **Tabelas e figuras auto-contidas.** Muitos leitores olham as figuras antes de ler o texto. Cada tabela e figura deve ter título descritivo, notas explicativas e indicação clara das variáveis. O leitor deve entender o ponto principal sem consultar o texto.
+6. **Tabelas e figuras autocontidas.** Muitos leitores olham as figuras antes de ler o texto. Cada tabela e figura deve ter título descritivo, notas explicativas e indicação clara das variáveis. O leitor deve entender o ponto principal sem consultar o texto.
 
-7. **Corte sem piedade.** A maioria dos primeiros rascunhos tem 20-30% de texto dispensável. Releia cada frase e pergunte: "se eu tirar isso, o leitor perde algo?" Se a resposta é não, tire. Frases como "é importante notar que", "vale ressaltar que", "cabe mencionar" quase nunca são necessárias.
+7. **Corte sem piedade.** Primeiros rascunhos quase sempre têm texto dispensável. Releia cada frase e pergunte: "se eu tirar isso, o leitor perde algo?" Se a resposta é não, tire. Frases como "é importante notar que", "vale ressaltar que", "cabe mencionar" quase nunca são necessárias.
 
 8. **Evite linguagem dramática.** Palavras como "obviamente", "claramente", "sem dúvida" geralmente sinalizam o oposto: se fosse tão claro, não precisaria ser dito. Da mesma forma, evite superlativos sem evidência: "o mais importante", "revolucionário", "inédito".
 
 ## Exercícios
 
-1. **Classificar uma introdução.** Escolha um paper publicado em um journal de ciência política (pode ser da lista de referências deste capítulo ou um paper que você esteja lendo para outra disciplina). Leia a introdução e responda: (a) qual template de Little o paper usa — Fato/Puzzle, Lacuna, Debate, ou híbrido? (b) identifique as frases que cumprem as três funções: capturar atenção, mostrar gap, descrever contribuição. (c) a introdução apresenta o resultado principal? Se sim, copie a frase.
+1. **Classificar uma introdução.** Escolha um paper publicado em um journal de ciência política (pode ser da lista de referências deste capítulo ou um paper que você esteja lendo para outra disciplina). Leia a introdução e responda: (a) qual template de Little o paper usa — Fato/Puzzle, Lacuna, Debate, ou híbrido? (b) identifique as frases que cumprem as três funções: capturar atenção, mostrar lacuna, descrever contribuição. (c) a introdução apresenta o resultado principal? Se sim, copie a frase.
 
 2. **Avaliar a clareza da contribuição.** Selecione 3 papers de journals diferentes (idealmente um internacional e dois brasileiros). Para cada um, encontre a frase na introdução que melhor comunica *o que* o leitor deveria acreditar de diferente após ler o paper. Classifique cada frase como "O que + Quanto" (diz o que muda e dá magnitude), "Só o que" (diz o que muda sem quantificar), ou "Vago" (contribuição genérica). Compare os padrões entre journals.
 
