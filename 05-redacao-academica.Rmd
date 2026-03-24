@@ -492,7 +492,7 @@ Na prática, isso significa: (1) identificar as principais explicações rivais 
 
 3. **Não esconda fraquezas.** @king2006 enfatiza: pareceristas vão encontrar os problemas do seu paper de qualquer forma. É melhor reconhecê-los e explicar por que não invalidam a contribuição do que fingir que não existem. Transparência aumenta a credibilidade.
 
-4. **Título como haiku.** O título deve ser curto e informativo. @king2006 sugere pensar no título como um haiku: cada palavra deve justificar sua presença. Evite títulos que começam com "An Analysis of..." ou "A Study of..." — diga *o que* você encontrou, não *o que* você fez.
+4. **Título como haiku.** O título deve ser curto e informativo. @king2006 sugere pensar no título como um haiku^[Haiku é uma forma de poesia japonesa com exatamente 17 "sílabas" (5-7-5). A correspondência entre *on* (unidade rítmica japonesa) e sílaba no português não é exata, mas a ideia é a mesma: o poema inteiro cabe em uma ou duas linhas. O ponto de King é que cada palavra do título deve justificar sua presença — como num haiku, onde não há espaço para desperdício.]: cada palavra deve justificar sua presença. Evite títulos que começam com "An Analysis of..." ou "A Study of..." — diga *o que* você encontrou, não *o que* você fez.
 
 5. **Evite jargão desnecessário.** Se um termo técnico pode ser substituído por uma palavra comum sem perda de precisão, substitua. Jargão é útil quando ganha precisão; é prejudicial quando serve apenas para sinalizar pertencimento a um grupo.
 
