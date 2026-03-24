@@ -5,6 +5,12 @@ fig:polity-vdem-scatter
 fig:democracia-eua
 fig:democracia-franca
 fig:democracia-uk
+fig:cap5-fig-templates
+fig:cap5-fig-detail
+fig:cap5-fig-prior
+tab:cap5-tab-quotes
+fig:cap5-fig-result
+fig:cap5-fig-litreview
 intro
 teorias-e-hipóteses
 frame-teórico-versus-perguntas-empíricas
@@ -157,8 +163,9 @@ precisão-de-linguagem
 exercícios-3
 redacao
 como-ler-um-paper-acadêmico
+o-que-faz-um-paper-publicável
 estrutura-de-um-artigo-científico
-introdução
+intro-paper
 revisão-de-literatura
 metodologia
 resultados
