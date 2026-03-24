@@ -434,9 +434,37 @@ Evite apresentar dezenas de especificações sem guiar o leitor sobre quais são
 
 ### Conclusão
 
-A conclusão deve ser breve. Seu papel é retomar a contribuição principal do paper — não repeti-la, mas contextualizá-la. O que o leitor deveria levar deste paper? Quais são as implicações para a literatura, para políticas públicas, ou para pesquisas futuras?
+A dúvida mais comum sobre a conclusão é: como ela se diferencia da introdução, se ambas falam da contribuição do paper? A resposta está na direção do movimento. A introdução *afunila*: parte de um tema amplo, identifica uma lacuna ou puzzle, e chega à contribuição específica. A conclusão faz o caminho inverso — *abre*: parte dos achados específicos e se expande para implicações mais amplas [@nikolov2023].
 
-Duas armadilhas a evitar. A primeira é introduzir material novo na conclusão — argumentos, evidências ou qualificações que deveriam ter aparecido antes. A segunda é o parágrafo genérico de "mais pesquisa é necessária": se a sugestão de pesquisa futura não é específica o bastante para que alguém a execute, provavelmente não vale incluí-la. Limitações devem ser apresentadas com honestidade, mas sem autodepreciação: reconheça o que o paper não faz, e explique por que as limitações não invalidam a contribuição principal.
+Na prática, uma boa conclusão contém quatro elementos [@nikolov2023]:
+
+1. **Síntese dos achados principais** — não repetir a introdução, mas oferecer um resumo que incorpore o que a análise revelou. A introdução diz "vamos mostrar X"; a conclusão diz "mostramos X, e o que aprendemos com isso é Y". Compare seus resultados com a literatura existente e explique por que são relevantes.
+
+2. **Limitações e ressalvas** — todo desenho de pesquisa tem fraquezas. @king2006 enfatiza: é melhor reconhecê-las explicitamente do que esperar que o parecerista as encontre. Apresente as limitações com honestidade, mas explique por que não invalidam a contribuição principal.
+
+3. **Direções para pesquisa futura** — mas apenas se forem específicas o bastante para que alguém as execute. "Mais pesquisa é necessária" não ajuda ninguém. "Um experimento que manipule X em um contexto onde Y não se aplica testaria diretamente nosso mecanismo" é útil.
+
+4. **Implicações práticas ou de política pública** — se aplicável. @edmans2025 alerta que implicações vagas como "nossos resultados são relevantes para gestores, investidores e reguladores" não convencem. Se vai mencionar implicações, diga *quais* especificamente.
+
+A conclusão deve ser a seção mais curta do paper — tipicamente uma página para um artigo de vinte [@nikolov2023]. @little2016 observa que muitos leitores não chegam até ela, o que reforça a importância de a introdução já conter o resultado principal. A conclusão é para quem leu o paper inteiro e quer consolidar o que aprendeu.
+
+Para tornar essa distinção mais concreta, analisamos as introduções e conclusões de cinco papers publicados recentemente em journals internacionais de ciência política.^[Os papers analisados são: Bates (2025, *APSR*), Barceló (2025, *APSR*), Geys e Sørensen (2025, *BJPS*), DeLuca, Moskowitz e Schneer (2025, *AJPS*) e Mailhot e Karim (2025, *IO*).] A tabela abaixo resume o que encontramos:
+
+| Elemento | Na introdução? | Na conclusão? |
+|---|---|---|
+| Achado principal / contribuição | Sim (5/5) | Sim (5/5) — mas com framing diferente |
+| Lacuna na literatura | Sim (5/5) — como motivação | Não |
+| Comparação dos resultados com a literatura | Não | Sim (5/5) — posiciona achados contra trabalhos existentes |
+| Limitações do próprio estudo | Não (5/5) | Sim (5/5) |
+| Direções de pesquisa futura | Não (5/5) | Sim (5/5) |
+| Implicações de política pública | Não (4/5) | Sim (4/5) |
+| Literaturas novas (não citadas na intro) | Não | Sim (3/5) |
+
+Note a assimetria: a introdução *identifica* lacunas na literatura para motivar o estudo; a conclusão *compara* os resultados com a literatura para avaliar o que mudou. Por exemplo, Barceló (2025) abre a introdução citando a meta-análise otimista de Bauer et al. (2016) como lacuna a ser preenchida, e na conclusão reposiciona seus achados contra essa mesma meta-análise: "These findings introduce a note of caution to earlier optimistic interpretations." Geys e Sørensen (2025) identificam na introdução três problemas dos estudos existentes (shocks grupais, tratamentos compostos, dados de survey) e na conclusão concluem que "the much larger positive association between income and turnout observed in previous work must be predominantly attributed to deeper-rooted factors" — uma interpretação que vai além do que a introdução prometia.
+
+As limitações seguem o mesmo padrão: ausentes da introdução, presentes na conclusão. Mailhot e Karim (2025) reconhecem que "our analyses treat civilians' preferences as static. While this is useful for an initial conceptual and empirical exploration, state building is a dynamic process." Geys e Sørensen notam que "our data lack information about individuals' membership in specific households, which precluded an analysis of potential intra-household spillover effects." Em ambos os casos, a limitação é apresentada junto com uma explicação de por que não invalida a contribuição — e frequentemente acompanhada de uma sugestão de pesquisa futura que endereçaria o problema.
+
+Dois erros comuns a evitar. O primeiro é copiar a introdução com pequenas alterações — se o leitor percebe que já leu aquilo, a conclusão perdeu sua função. O segundo é introduzir argumentos ou evidências novas que deveriam ter aparecido no corpo do texto.
 
 ## Descoberta versus narrativa: da hipótese nula ao paper {#descoberta-narrativa}
 
@@ -483,3 +511,11 @@ Na prática, isso significa: (1) identificar as principais explicações rivais 
 3. **Reescrever uma introdução.** Tome um paper cuja introdução você classificou como "Vaga" no exercício anterior (ou peça ao professor um exemplo). Reescreva o primeiro parágrafo usando o template de Fato/Puzzle de Little: abra com um fato concreto, mostre que a literatura existente não o explica bem, e descreva como o paper oferece uma explicação melhor. Limite-se a 150-200 palavras.
 
 4. **"Whose mind are you going to change?"** Pense no tema do seu próprio trabalho de pesquisa (ou escolha um tema que lhe interesse). Responda em no máximo três frases: (a) Qual é a crença predominante sobre o tema? (b) O que seu paper mostraria de diferente? (c) Por que isso importa — quem se beneficia de saber isso? Se você não conseguir responder essas perguntas de forma clara, o projeto provavelmente precisa ser afinado antes de começar a escrever.
+
+5. **Afunilar e abrir.** Considere um estudo que investiga se ganhar na loteria faz as pessoas votarem mais, usando dados de registro eleitoral da Noruega. O resultado principal é que ganhos inesperados de renda têm um efeito causal pequeno sobre o comparecimento eleitoral. (a) Escreva um parágrafo de introdução que *afunile*: comece com o tema geral (renda e participação política), identifique o problema dos estudos existentes, e chegue à contribuição específica deste estudo. (b) Escreva um parágrafo de conclusão que *abra*: comece com o achado específico e se expanda para implicações mais amplas (o que isso significa para políticas de combate à desigualdade política?). Limite cada parágrafo a 100-150 palavras.
+
+6. **Afunilar e abrir (II).** Considere um estudo experimental na Libéria que investiga as preferências de civis sobre quem deve conduzir a reconstrução do Estado após a guerra civil — se a ONU, os EUA, a China, ou atores locais. O resultado principal é que civis preferem a ONU e os EUA, instituições de segurança, e envolvimento indireto (assistência técnica, não controle direto). (a) Escreva um parágrafo de introdução que afunile do tema geral (reconstrução pós-conflito) até a contribuição específica. (b) Escreva um parágrafo de conclusão que abra dos achados específicos para implicações para organizações internacionais e pesquisa futura.
+
+7. **Lacunas na introdução vs. comparação na conclusão.** Leia a introdução de um paper empírico de ciência política. Identifique: (a) qual lacuna ou limitação da literatura existente o paper usa como motivação; (b) quais trabalhos específicos são citados como insuficientes ou incompletos. Depois leia a conclusão do mesmo paper e identifique: (c) como o paper posiciona seus resultados *contra* a literatura citada na introdução — os resultados confirmam, qualificam ou contradizem o que se sabia antes? (d) há literaturas novas na conclusão que não apareceram na introdução? Compare os dois movimentos: a introdução diz "a literatura não sabe X"; a conclusão diz "agora sabemos X, e isso muda o que pensávamos sobre Y".
+
+8. **Lacunas vs. comparação (II).** Considere o seguinte cenário: um paper investiga se a violência da guerra civil aumenta o engajamento cívico. Uma meta-análise anterior (Bauer et al., 2016) concluiu que sim — a violência promove cooperação e participação. O novo estudo, com uma amostra muito maior (172 estudos), encontra que a violência aumenta certas formas de engajamento mas *não* promove confiança generalizada, e *endurece* atitudes contra grupos rivais. (a) Escreva 2-3 frases de introdução que identifiquem a lacuna: o que há de limitado no estudo anterior? (b) Escreva 2-3 frases de conclusão que comparem os novos resultados com os de Bauer et al.: onde confirmam, onde qualificam, onde contradizem?
