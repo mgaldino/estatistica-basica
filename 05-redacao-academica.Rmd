@@ -506,14 +506,14 @@ Na prática, isso significa: (1) identificar as principais explicações rivais 
 
 1. **Classificar uma introdução.** Leia a introdução de um dos papers abaixo e responda: (a) qual template de Little o paper usa — Fato/Puzzle, Lacuna, Debate, ou híbrido? (b) identifique as frases que cumprem as três funções: capturar atenção, mostrar lacuna, descrever contribuição. (c) a introdução apresenta o resultado principal? Se sim, copie a frase. Sugestões de papers (todos disponíveis no SciELO ou no site do journal):
     - Fuks e Casalecchi (2025), "When Democracy Divides the Electorate", *BPSR*.
-    - Paixão Borges (2025), "Housing, Sanitation, and Voting", *Revista de Sociologia e Política*.
-    - Armesto e Beer (2025), "Pandemic, Negative Economic Shock, and Support for Redistribution in Mexico", *Opinião Pública*.
-    - Rubbo (2025), "Anibal Quijano, Usurper of the Coloniality of Power?", *Dados*.
+    - Paixão Borges (2025), "Habitação, saneamento e voto: como bens duráveis moldam o comportamento eleitoral", *Revista de Sociologia e Política*.
+    - Armesto e Beer (2025), "Pandemia, shock económico negativo y apoyo a la redistribución en México. ¿Intereses materiales o valores?", *Opinião Pública*.
+    - Rubbo (2025), "Aníbal Quijano, Usurpador da Colonialidade do Poder? Resposta a Ramón Grosfoguel", *Dados*.
     - Bates (2025), "Threats and Commitments: International Tribunals and Domestic Trials in Peace Negotiations", *APSR*.
 
 2. **Avaliar a clareza da contribuição.** Para cada um dos papers abaixo, encontre a frase na introdução que melhor comunica *o que* o leitor deveria acreditar de diferente após ler o paper. Classifique cada frase como "O que + Quanto" (diz o que muda e dá magnitude), "Só o que" (diz o que muda sem quantificar), ou "Vago" (contribuição genérica). Compare os padrões entre journals.
     - Geys e Sørensen (2025), "The Causal Effect of Affluence on Voter Turnout", *BJPS*.
-    - Simoni Jr. e Dias (2025), "The Partisan-Electoral Dimension of the Minha Casa Minha Vida Program", *Dados*.
+    - Simoni Jr. e Dias (2025), "A Dimensão Partidária-Eleitoral do Programa Minha Casa Minha Vida", *Dados*.
     - Carvalho e Tatagiba (2025), "When Electoral Conflict Spills into the Streets", *Lua Nova*.
 
 3. **Reescrever uma introdução.** Tome um paper cuja introdução você classificou como "Vaga" no exercício anterior (ou peça ao professor um exemplo). Reescreva o primeiro parágrafo usando o template de Fato/Puzzle de Little: abra com um fato concreto, mostre que a literatura existente não o explica bem, e descreva como o paper oferece uma explicação melhor. Limite-se a 150-200 palavras.
