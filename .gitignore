@@ -51,3 +51,4 @@ rsconnect/
 # Intermediate knitr figure files (output goes to docs/)
 # Ignorar apenas na raiz, não dentro de docs/
 /stat-basica_files/
+gabarito_exercicios_cap5.md
