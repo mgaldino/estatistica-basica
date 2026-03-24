@@ -148,6 +148,19 @@ A **exposição** é como o paper comunica seus achados. Um argumento forte pode
 
 A introdução é a parte mais importante do paper. Se o parecerista não entender o ponto principal nas primeiras páginas, o paper será rejeitado — independentemente da qualidade da análise [@little2016; @king2006].
 
+A ideia de que as primeiras linhas precisam capturar o leitor não é exclusiva da academia. Alguns dos romances mais célebres da literatura abrem com frases que prendem a atenção imediatamente:
+
+> "Todas as famílias felizes se parecem entre si; as infelizes são infelizes cada uma à sua maneira."
+> — Tolstói, *Anna Kariênina* (1875; trad. João Gaspar Simões, Ed. Nova Aguilar, 2004)
+
+> "Quando certa manhã Gregor Samsa acordou de sonhos intranquilos, encontrou-se em sua cama metamorfoseado num inseto monstruoso."
+> — Kafka, *A Metamorfose* (1915; trad. Modesto Carone)
+
+> "Muitos anos depois, diante do pelotão de fuzilamento, o Coronel Aureliano Buendía havia de recordar aquela tarde remota em que seu pai o levou para conhecer o gelo."
+> — García Márquez, *Cem Anos de Solidão* (1967; trad. Eric Nepomuceno, Ed. Record, 2019)
+
+Em cada caso, a abertura estabelece uma tensão ou um fato surpreendente que faz o leitor querer continuar. Um paper acadêmico opera sob a mesma lógica: as primeiras frases precisam convencer o leitor — que neste caso é um editor ou parecerista ocupado — de que vale a pena investir tempo no resto do texto.
+
 @little2016 analisou as introduções de artigos publicados nos principais journals de ciência política e identificou três *templates* recorrentes. Praticamente toda introdução pode ser classificada como uma variação ou combinação destes três:
 
 - **Template 1 — Fato/Puzzle**: Abre com um fato ou padrão interessante sobre o mundo, mostra que a literatura existente não explica bem esse fato, e descreve como o paper oferece uma explicação melhor.
