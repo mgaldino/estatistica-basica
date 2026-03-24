@@ -416,6 +416,18 @@ Dois erros comuns. O primeiro é confundir dados com evidência. Como observa @e
 
 Na prática, a seção de metodologia deve responder: (1) quais são os dados e de onde vêm? (2) qual é a unidade de análise? (3) como as variáveis-chave são operacionalizadas? (4) qual é a estratégia de identificação — isto é, por que podemos interpretar a associação como evidência da relação proposta? (5) quais são as ameaças à validade e como o paper lida com elas?
 
+#### Como ordenar as seções empíricas
+
+Uma dúvida frequente: em que ordem apresentar estratégia empírica, dados, resultados e análises de robustez? Analisamos a estrutura de seções dos 20 papers da APSR na nossa amostra e encontramos três padrões comuns:
+
+- **Dados → Estratégia → Resultados**: o leitor primeiro entende o que está sendo medido, depois como será analisado.
+- **Estratégia → Dados → Resultados**: o leitor primeiro entende o desenho, depois avalia se os dados são adequados.
+- **"Dados e Métodos" como seção única → Resultados**: combina ambos.
+
+Nenhum desses padrões é errado. O que importa é a lógica: dados e estratégia juntos formam um bloco que deve vir *antes* dos resultados. O leitor precisa estar convencido de que o desenho é crível antes de ver os números.
+
+Quanto à **análise de robustez**, ela vem sempre *depois* dos resultados principais. A lógica é: primeiro mostre o achado, depois mostre que ele sobrevive a especificações alternativas, testes de placebo e outros desafios. Note que há uma divisão de trabalho entre a seção de estratégia e a de robustez: a seção de estratégia apresenta o *argumento* sobre por que o desenho é crível ("nosso desenho depende de tal premissa, que é plausível porque..."); a seção de robustez apresenta a *evidência empírica* de que essas premissas se sustentam.
+
 ### Resultados
 
 A seção de resultados deve focar em *quantidades de interesse* — efeitos substantivos que o leitor consiga interpretar — e não em listas de coeficientes [@king2006]. Dizer que "o coeficiente de X é 0,23, significativo a 5%" é menos informativo do que dizer "um aumento de um desvio-padrão em X está associado a um aumento de 3 pontos percentuais na probabilidade de Y, o que equivale a cerca de metade da diferença média entre homens e mulheres na amostra".
@@ -431,6 +443,29 @@ Evite apresentar dezenas de especificações sem guiar o leitor sobre quais são
 > *Depois*: "Concluir o ensino superior está associado a um aumento de 12 pontos percentuais na probabilidade de participar de pelo menos uma atividade política no último ano — o equivalente à diferença observada entre as faixas de renda mais alta e mais baixa da amostra."
 >
 > A segunda versão diz a mesma coisa, mas o leitor não precisa saber o que "0,47" significa em termos práticos. A comparação com a diferença de renda dá uma âncora para avaliar a magnitude.
+
+#### Evidências sobre mecanismos
+
+Depois de mostrar *que* um efeito existe (resultados) e que ele é robusto (robustez), uma pergunta natural é: *por que* esse efeito acontece? A seção de mecanismos tenta responder a isso, e sua presença é uma característica que distingue papers publicados em journals internacionais de ponta.
+
+Na nossa amostra de 20 papers da APSR, três têm seções explícitas dedicadas a mecanismos.^[Heddesheimer et al. (2025) têm uma seção "Mechanisms" que testa percepções de insegurança econômica e perda de status social usando dados de survey (SOEP) distintos dos dados eleitorais usados nos resultados principais. Huff (2025) tem "Considering Alternative Mechanisms" que descarta explicações rivais para a desigualdade racial usando evidência qualitativa e estatísticas descritivas. Dixit (2025) tem "How Caste-Based Social Insurance Shapes Social Integration" que usa 56 entrevistas qualitativas para traçar a cadeia causal.] Nos três casos, o padrão é o mesmo:
+
+1. A seção de mecanismos vem **depois** dos resultados principais e da robustez, **antes** da conclusão.
+2. Ela usa **evidência diferente** da seção de resultados — dados de survey distintos, entrevistas qualitativas, estatísticas descritivas — porque o objetivo é diferente: não estimar o efeito, mas iluminar *por que* ele ocorre.
+3. Ela distingue o mecanismo proposto pelo paper de **explicações alternativas**, mostrando que os dados são consistentes com o primeiro mas não com as segundas.
+
+A lógica geral de um paper empírico quantitativo pode então ser resumida assim:
+
+| Seção | Função | Pergunta que responde |
+|---|---|---|
+| Estratégia empírica | Convencer que o desenho é crível | "Por que devemos acreditar?" |
+| Dados | Descrever o que será analisado | "Com o quê?" |
+| Resultados | Apresentar o achado principal | "O que encontramos?" |
+| Robustez | Mostrar que o achado sobrevive a desafios | "E se fizermos diferente?" |
+| Mecanismos | Explorar por que o efeito existe | "Por que isso acontece?" |
+| Conclusão | Contextualizar e ampliar | "O que isso significa?" |
+
+Nem todo paper precisa de todas essas seções. Muitos combinam dados e estratégia; alguns embutem robustez no suplementar; e mecanismos são um diferencial, não uma exigência. Mas entender a função de cada bloco ajuda a organizar o texto mesmo quando a estrutura específica varia.
 
 ### Conclusão
 

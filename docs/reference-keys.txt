@@ -168,7 +168,9 @@ estrutura-de-um-artigo-científico
 intro-paper
 revisão-de-literatura
 metodologia
+como-ordenar-as-seções-empíricas
 resultados
+evidências-sobre-mecanismos
 conclusão
 descoberta-narrativa
 a-importância-de-descartar-explicações-alternativas
