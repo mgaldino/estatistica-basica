@@ -1,0 +1,234 @@
+---
+title: "Exercícios — Amostragem"
+author: "Métodos Quantitativos e Técnicas em Ciência Política I"
+date: "2026-04-08"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```
+
+# Exercícios Teóricos
+
+## Fácil
+
+**1.** Defina, com suas palavras e com um exemplo de Ciência Política para cada:
+
+a) População
+b) Amostra
+c) Parâmetro
+d) Estimativa
+e) Quadro amostral (sampling frame)
+
+**2.** Classifique cada cenário abaixo como amostragem aleatória simples, estratificada, por conglomerados, sistemática ou de conveniência:
+
+a) Um pesquisador entrevista as primeiras 50 pessoas que encontra na saída do metrô.
+b) O IBGE sorteia 500 setores censitários no Brasil e entrevista todos os domicílios dentro deles.
+c) Uma pesquisa eleitoral divide os eleitores por região (Norte, Nordeste, etc.) e sorteia proporcionalmente dentro de cada região.
+d) Um cientista político seleciona cada 20º processo judicial em uma lista ordenada por data.
+e) Todos os nomes dos 513 deputados são colocados em uma urna e 50 são sorteados.
+
+**3.** Verdadeiro ou falso? Justifique as falsas.
+
+a) Uma amostra de conveniência com 1 milhão de observações é mais confiável do que uma amostra aleatória com 2.000 observações.
+b) O erro-padrão mede a variabilidade entre as estimativas de diferentes amostras.
+c) O Teorema Central do Limite afirma que os dados na população seguem uma distribuição normal.
+d) O tamanho da amostra necessário para uma pesquisa eleitoral depende mais da precisão desejada do que do tamanho da população.
+
+## Médio
+
+**4.** Uma pesquisa de opinião entrevista 1.500 pessoas por telefone fixo sobre a aprovação do governo. O resultado indica 62% de aprovação. Identifique:
+
+a) Qual é a população-alvo?
+b) Qual é o quadro amostral implícito?
+c) Que grupo da população fica sistematicamente excluído?
+d) Em que direção esse viés provavelmente afeta a estimativa? Justifique.
+
+**5.** Explique a diferença entre a Lei dos Grandes Números (LGN) e o Teorema Central do Limite (TCL). O que cada um garante? Por que ambos são necessários para a inferência estatística?
+
+**6.** Uma pesquisa quer estimar a proporção de brasileiros favoráveis a uma reforma tributária com margem de erro de 3 pontos percentuais e 95% de confiança. Uma pesquisa piloto indicou $p \approx 0{,}6$.
+
+a) Calcule o tamanho da amostra necessário usando a fórmula $n = \frac{1{,}96^2 \times p(1-p)}{e^2}$.
+b) Recalcule usando $p = 0{,}5$. Por que o resultado é maior?
+c) Se quiséssemos margem de erro de 1 ponto percentual, qual seria o novo $n$? O que isso implica sobre o custo de pesquisas mais precisas?
+
+## Difícil
+
+**7.** O General Heleno criticou uma pesquisa XP/Ipespe que entrevistou 1.000 pessoas em um país com 149 milhões de eleitores, sugerindo que a amostra era pequena demais. Usando os conceitos de distribuição amostral, erro-padrão e TCL, construa um argumento explicando por que a crítica dele está equivocada. Inclua uma estimativa da margem de erro dessa pesquisa.
+
+**8.** Um pesquisador quer estudar a participação política de jovens entre 18 e 24 anos no Brasil. Ele tem acesso ao cadastro eleitoral do TSE e considera duas estratégias:
+
+- **Estratégia A:** Amostra aleatória simples de 2.000 eleitores de todo o cadastro.
+- **Estratégia B:** Amostra estratificada por faixa etária, com sobre-amostragem de jovens (800 jovens + 1.200 dos demais estratos).
+
+a) Na estratégia A, qual a probabilidade aproximada de que a amostra contenha pelo menos 200 jovens? (Jovens são ~15% do eleitorado.)
+b) Qual estratégia é mais adequada para o objetivo do pesquisador? Justifique.
+c) Na estratégia B, como o pesquisador deve proceder se quiser, além de analisar os jovens, estimar a opinião da população geral?
+
+**9.** Um colega argumenta: "Se eu coletar dados de *todos* os usuários do Twitter que postaram sobre as eleições, não preciso me preocupar com inferência estatística, porque tenho a população inteira." Critique esse argumento.
+
+\newpage
+
+# Exercícios em R
+
+## Fácil
+
+**10.** Execute o código abaixo e responda às perguntas.
+
+```{r}
+set.seed(123)
+
+# População: notas de 10.000 alunos (média 6, desvio-padrão 2)
+populacao <- rnorm(10000, mean = 6, sd = 2)
+
+# a) Calcule a média e o desvio-padrão da população
+mean(populacao)
+sd(populacao)
+
+# b) Sorteie uma amostra aleatória de 50 alunos e calcule a média
+amostra <- sample(populacao, size = 50)
+mean(amostra)
+
+# c) Repita o sorteio 3 vezes. Você obtém a mesma média?
+mean(sample(populacao, 50))
+mean(sample(populacao, 50))
+mean(sample(populacao, 50))
+```
+
+d) Por que as médias são diferentes a cada sorteio? Qual conceito da aula explica isso?
+
+**11.** Complete o código abaixo para sortear uma amostra **estratificada** da população.
+
+```{r}
+set.seed(42)
+
+# População com duas regiões
+dados <- data.frame(
+  id = 1:10000,
+  regiao = sample(c("Norte", "Sul"), 10000, replace = TRUE, prob = c(0.3, 0.7)),
+  renda = c(rgamma(3000, 2, 1) * 1000, rgamma(7000, 3, 1) * 1500)
+)
+
+# Amostra estratificada: 50 do Norte e 50 do Sul
+amostra_norte <- dados[dados$regiao == "______", ]  # COMPLETE
+amostra_norte <- amostra_norte[sample(nrow(amostra_norte), ___), ]  # COMPLETE
+
+amostra_sul <- dados[dados$regiao == "______", ]  # COMPLETE
+amostra_sul <- amostra_sul[sample(nrow(amostra_sul), ___), ]  # COMPLETE
+
+amostra_estratificada <- rbind(amostra_norte, amostra_sul)
+
+# Calcule a média de renda na amostra
+mean(amostra_estratificada$renda)
+```
+
+## Médio
+
+**12.** O código abaixo simula a Lei dos Grandes Números. Execute e responda.
+
+```{r}
+set.seed(7)
+
+populacao <- rgamma(100000, shape = 2, rate = 1) * 1500
+parametro <- mean(populacao)
+
+# Média acumulada conforme n cresce
+tamanhos <- seq(10, 5000, by = 10)
+amostra_grande <- sample(populacao, max(tamanhos))
+medias_acumuladas <- sapply(tamanhos, function(n) mean(amostra_grande[1:n]))
+
+plot(tamanhos, medias_acumuladas, type = "l", col = "steelblue", lwd = 2,
+     xlab = "Tamanho da amostra (n)", ylab = "Média amostral",
+     main = "Lei dos Grandes Números em ação")
+abline(h = parametro, col = "red", lwd = 2, lty = 2)
+legend("topright", legend = c("Média amostral", "Parâmetro verdadeiro"),
+       col = c("steelblue", "red"), lwd = 2, lty = c(1, 2))
+```
+
+a) Descreva o que acontece com a linha azul conforme $n$ aumenta.
+b) A partir de qual $n$ (aproximadamente) a média amostral se estabiliza perto do parâmetro?
+c) Rode o código novamente **sem** `set.seed(7)`. O gráfico ficou idêntico? O padrão geral mudou? Explique.
+
+**13.** Modifique o código da atividade de aula (TCL) para usar uma população com distribuição **uniforme** em vez de gamma.
+
+```{r}
+set.seed(42)
+
+# MODIFIQUE: crie uma população com distribuição uniforme entre 0 e 10
+populacao <- _____(100000, min = 0, max = 10)
+
+# Verifique que a distribuição não é normal
+hist(populacao, breaks = 50, main = "Distribuição da População (Uniforme)",
+     col = "lightblue")
+
+# Simule a distribuição amostral para n = 5, 30 e 100
+for (n in c(5, 30, 100)) {
+  medias <- replicate(1000, mean(sample(populacao, size = n)))
+  hist(medias, breaks = 40, freq = FALSE,
+       main = paste("Distribuição Amostral (n =", n, ")"),
+       xlab = "Média amostral", col = "salmon")
+  curve(dnorm(x, mean = mean(medias), sd = sd(medias)),
+        add = TRUE, col = "darkred", lwd = 2)
+}
+```
+
+a) A distribuição amostral se torna normal mesmo partindo de uma uniforme?
+b) Para qual valor de $n$ a aproximação normal já parece boa?
+
+## Difícil
+
+**14.** O código abaixo calcula a **cobertura real** do intervalo de confiança de 95%: em quantas das 1.000 simulações o intervalo de fato contém o parâmetro verdadeiro?
+
+```{r}
+set.seed(99)
+
+populacao <- rgamma(100000, shape = 2, rate = 1) * 1500
+parametro <- mean(populacao)
+
+n <- 50  # <-- MUDE: tente 15, 50 e 200
+n_sim <- 1000
+
+contem_parametro <- replicate(n_sim, {
+  amostra <- sample(populacao, n)
+  media <- mean(amostra)
+  ep <- sd(amostra) / sqrt(n)
+  li <- media - 1.96 * ep
+  ls <- media + 1.96 * ep
+  parametro >= li & parametro <= ls
+})
+
+cat("Cobertura real:", mean(contem_parametro) * 100, "%\n")
+```
+
+a) Rode com $n = 15$, $n = 50$ e $n = 200$. A cobertura se aproxima de 95% em todos os casos?
+b) Se a cobertura com $n = 15$ ficar abaixo de 95%, explique por quê. (Dica: o que o TCL exige sobre o tamanho da amostra?)
+c) Modifique o código para calcular intervalos de 99% de confiança (troque 1,96 por qual valor?). A cobertura aumenta?
+
+**15.** Neste exercício, você vai comparar o erro-padrão **teórico** com o erro-padrão **simulado**.
+
+```{r}
+set.seed(42)
+
+populacao <- rnorm(100000, mean = 50, sd = 10)
+sigma <- sd(populacao)
+
+tamanhos <- c(25, 100, 400, 1600)
+
+for (n in tamanhos) {
+  # Erro-padrão teórico
+  ep_teorico <- sigma / sqrt(n)
+
+  # Erro-padrão simulado (desvio-padrão de 1.000 médias amostrais)
+  medias <- replicate(1000, mean(sample(populacao, n)))
+  ep_simulado <- sd(medias)
+
+  cat("n =", n,
+      "| EP teórico =", round(ep_teorico, 3),
+      "| EP simulado =", round(ep_simulado, 3), "\n")
+}
+```
+
+a) Os valores teórico e simulado são próximos?
+b) Quando o tamanho da amostra quadruplica (de 25 para 100, de 100 para 400), o que acontece com o erro-padrão? Derive essa relação a partir da fórmula $\sigma_{\bar{X}} = \sigma / \sqrt{n}$.
+c) Um pesquisador tem orçamento para entrevistar 400 pessoas. Se ele conseguisse mais verba para entrevistar 1.600, por quanto a margem de erro cairia? Vale o investimento?
