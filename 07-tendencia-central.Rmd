@@ -7,34 +7,340 @@
 - Construir e interpretar visualizações (histogramas, boxplots)
 - Aplicar essas medidas a dados reais em R
 
-## Medidas de tendência central
+```{r setup-descritiva, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center"
+)
+library(tidyverse)
+```
 
-### Média
+## Por que resumir dados?
 
-### Mediana
+O Brasil tem mais de 5.500 municípios. Suponha que você queira descrever o nível de desenvolvimento humano do país. Listar o IDH de cada município não ajuda: ninguém vai ler uma tabela com 5.500 linhas. O que precisamos são resumos: números que capturem as características essenciais da distribuição. Duas perguntas organizam esse resumo: (1) qual é o valor *típico*? e (2) quão *espalhados* estão os valores ao redor desse típico?
+
+A primeira pergunta é respondida por medidas de **tendência central** (média, mediana, moda). A segunda, por medidas de **variabilidade** (variância, desvio-padrão, amplitude interquartílica). @kellstedt2015 chamam essa etapa de "getting to know your data".
+
+Vamos carregar os dados de IDH dos municípios brasileiros que usaremos ao longo do capítulo:
+
+```{r carrega-idh}
+idh <- read_delim("dados/idh_municipios.csv",
+                  delim = ";",
+                  locale = locale(decimal_mark = ","))
+
+glimpse(idh)
+```
+
+## Descrevendo variáveis categóricas
+
+Variáveis categóricas (cujos valores representam categorias, sem ordem numérica) também precisam ser descritas. As ferramentas são diferentes: em vez de média e desvio-padrão, usamos tabelas de frequência e gráficos de barras.
+
+### Tabelas de frequência
+
+Uma tabela de frequência mostra quantas vezes cada categoria aparece nos dados. Considere os dados das eleições presidenciais de 2022 no Brasil:
+
+```{r freq-partidos}
+eleicoes <- read_csv("dados/eleicoes_2022.csv")
+
+# Total de votos por candidato (agregando municípios)
+votos_candidato <- eleicoes |>
+  group_by(candidato, partido) |>
+  summarise(total_votos = sum(votos), .groups = "drop") |>
+  arrange(desc(total_votos))
+
+votos_candidato
+```
+
+A **frequência absoluta** é a contagem bruta. A **frequência relativa** é a proporção do total:
+
+```{r freq-relativa}
+votos_candidato <- votos_candidato |>
+  mutate(freq_relativa = total_votos / sum(total_votos))
+
+votos_candidato |>
+  select(candidato, partido, total_votos, freq_relativa) |>
+  mutate(freq_relativa = round(freq_relativa * 100, 1))
+```
+
+### Gráficos de barras
+
+A forma mais adequada de visualizar uma variável categórica é o gráfico de barras. Gráficos de pizza são uma alternativa pior: o olho humano compara comprimentos (barras) com mais precisão do que ângulos (fatias).
+
+```{r barras-candidatos, fig.cap="Total de votos por candidato nas eleições presidenciais de 2022 (1o turno). Dados agregados por município."}
+ggplot(votos_candidato, aes(x = reorder(candidato, total_votos), y = total_votos)) +
+  geom_col(fill = "steelblue", alpha = 0.8) +
+  coord_flip() +
+  scale_y_continuous(labels = scales::number_format(scale = 1e-6, suffix = " mi")) +
+  labs(x = NULL, y = "Total de votos") +
+  theme_minimal()
+```
 
 ### Moda
 
+A **moda** é a categoria (ou valor) mais frequente. Para variáveis categóricas, é a única medida de tendência central que faz sentido. No exemplo acima, a moda dos votos é o candidato Lula. Para variáveis contínuas, a moda é pouco usada; média e mediana são mais informativas.
+
+## Descrevendo variáveis contínuas: tendência central
+
+### Média
+
+A média aritmética é a medida de tendência central mais conhecida. Para uma variável $Y$ com $n$ observações, a média é:
+
+$$\bar{Y} = \frac{\sum_{i=1}^{n} Y_i}{n}$$
+
+Em palavras: some todos os valores e divida pelo número de observações.
+
+```{r media-idh}
+mean(idh$idh_2010)
+```
+
+A média tem duas propriedades importantes. A primeira é a **propriedade da soma zero**: a soma dos desvios em relação à média é sempre zero.
+
+$$\sum_{i=1}^{n}(Y_i - \bar{Y}) = 0$$
+
+Isso significa que os valores acima da média "compensam" exatamente os valores abaixo. A segunda é a **propriedade de mínimos quadrados**: a média é o valor $c$ que minimiza a soma dos quadrados dos desvios $\sum(Y_i - c)^2$. Se alguém te pedisse para adivinhar o valor de uma observação sem nenhuma informação adicional, a média seria o melhor palpite no sentido de minimizar o erro quadrático.
+
+A média é sensível a valores extremos. Considere cinco municípios com IDH de 0,50, 0,55, 0,60, 0,62 e 0,95. A média é `r round(mean(c(0.50, 0.55, 0.60, 0.62, 0.95)), 3)`. O valor 0,95 puxa a média para cima, e nenhum dos cinco municípios tem IDH próximo da média. Neste caso, a média é um resumo enganoso.
+
+### Mediana
+
+A **mediana** é o valor que divide a distribuição ao meio: metade das observações está acima e metade está abaixo. Para calcular a mediana: ordene os valores do menor ao maior. Se $n$ é ímpar, a mediana é o valor central. Se $n$ é par, é a média dos dois valores centrais.
+
+```{r mediana-idh}
+median(idh$idh_2010)
+```
+
+No exemplo anterior dos cinco municípios (0,50, 0,55, 0,60, 0,62, 0,95), a mediana é 0,60, um resumo mais fiel do que a média de `r round(mean(c(0.50, 0.55, 0.60, 0.62, 0.95)), 3)`.
+
+A mediana é robusta a outliers: valores extremos não a afetam (ou afetam pouco). Se trocarmos o 0,95 por 0,99, a mediana continua sendo 0,60, mas a média muda.
+
 ### Quando usar cada medida?
+
+```{r media-vs-mediana-idh}
+idh |>
+  summarise(
+    media_idh = mean(idh_2010),
+    mediana_idh = median(idh_2010),
+    diferenca = media_idh - mediana_idh
+  )
+```
+
+Para o IDH, média e mediana são próximas, o que sugere uma distribuição razoavelmente simétrica. Mas considere a distribuição da população dos municípios:
+
+```{r media-vs-mediana-pop}
+idh |>
+  summarise(
+    media_pop = mean(populacao_2010),
+    mediana_pop = median(populacao_2010),
+    razao = media_pop / mediana_pop
+  )
+```
+
+A média da população é várias vezes maior que a mediana. Isso acontece porque a distribuição de tamanho de municípios é fortemente assimétrica à direita: a maioria dos municípios é pequena, mas alguns poucos (São Paulo, Rio de Janeiro, Brasília) são enormes e puxam a média para cima. Neste caso, a mediana é mais representativa do município "típico".
+
+A regra geral é:
+
+- Se a distribuição é **simétrica**, média e mediana coincidem — use qualquer uma.
+- Se a distribuição é **assimétrica**, a mediana é mais representativa do caso típico.
+- A **média** é mais útil quando queremos agregar (a média da renda de um grupo vezes o número de pessoas dá a renda total), e é a base de grande parte da inferência estatística que veremos nos próximos capítulos.
 
 ## Medidas de variabilidade
 
+O valor típico não basta para descrever uma distribuição. Dois conjuntos de dados podem ter a mesma média e distribuições completamente diferentes. Considere dois grupos de municípios, A e B, ambos com IDH médio de 0,65. Em A, todos os municípios têm IDH entre 0,60 e 0,70. Em B, os municípios variam de 0,40 a 0,90. A média sozinha não distingue esses cenários.
+
 ### Amplitude
+
+A medida mais simples de variabilidade é a **amplitude**: a diferença entre o maior e o menor valor.
+
+```{r amplitude-idh}
+idh |>
+  summarise(
+    minimo = min(idh_2010),
+    maximo = max(idh_2010),
+    amplitude = maximo - minimo
+  )
+```
+
+A amplitude é fácil de calcular, mas depende de apenas dois valores (o mínimo e o máximo) e é sensível a outliers. Um único município com valor atípico muda a amplitude inteira.
 
 ### Variância
 
+A **variância** mede o quão distantes, em média, os valores estão da média. Para cada observação, calcule o desvio em relação à média $(Y_i - \bar{Y})$. Se simplesmente somarmos esses desvios, o resultado é zero (propriedade da soma zero). Para evitar isso, elevamos os desvios ao quadrado antes de somar:
+
+$$s^2 = \frac{\sum_{i=1}^{n}(Y_i - \bar{Y})^2}{n-1}$$
+
+Por que dividimos por $n - 1$ e não por $n$? A resposta completa envolve o conceito de **graus de liberdade**, que discutiremos em detalhe no Capítulo \@ref(inferencia). A intuição é: quando usamos a média amostral $\bar{Y}$ (que foi estimada dos próprios dados) em vez da média populacional (que não conhecemos), perdemos um "grau de liberdade". Dividir por $n-1$ corrige esse viés e produz uma estimativa mais precisa da variância da população.
+
+```{r variancia-idh}
+var(idh$idh_2010)
+```
+
+A variância tem uma desvantagem prática: sua unidade é o quadrado da unidade original. Se o IDH é medido em uma escala de 0 a 1, a variância está em "IDH ao quadrado", o que não é intuitivo.
+
 ### Desvio-padrão
+
+O **desvio-padrão** é a raiz quadrada da variância:
+
+$$s = \sqrt{s^2} = \sqrt{\frac{\sum_{i=1}^{n}(Y_i - \bar{Y})^2}{n-1}}$$
+
+O desvio-padrão tem a mesma unidade da variável original. Podemos interpretá-lo como "em média, os valores se afastam $s$ unidades da média".
+
+```{r dp-idh}
+sd(idh$idh_2010)
+```
+
+Para o IDH dos municípios brasileiros, o desvio-padrão é cerca de `r round(sd(idh$idh_2010), 3)`. Isso nos diz que o município típico está a aproximadamente `r round(sd(idh$idh_2010), 3)` pontos de IDH da média.
+
+Comparar desvios-padrão entre grupos pode ser informativo:
+
+```{r dp-por-regiao}
+idh |>
+  group_by(regiao) |>
+  summarise(
+    n = n(),
+    media = round(mean(idh_2010), 3),
+    dp = round(sd(idh_2010), 3)
+  ) |>
+  arrange(desc(media))
+```
 
 ### Amplitude interquartílica (IQR)
 
+Assim como a mediana é uma alternativa robusta à média, a **amplitude interquartílica** (IQR, de *interquartile range*) é uma alternativa robusta à variância.
+
+Os **quartis** dividem a distribuição em quatro partes iguais:
+
+- $Q_1$ (1o quartil, percentil 25): 25% dos valores estão abaixo
+- $Q_2$ (2o quartil, percentil 50): é a mediana
+- $Q_3$ (3o quartil, percentil 75): 75% dos valores estão abaixo
+
+A amplitude interquartílica é:
+
+$$\text{IQR} = Q_3 - Q_1$$
+
+O IQR mede a dispersão dos 50% centrais dos dados, ignorando os 25% mais baixos e os 25% mais altos. Por isso, não é afetado por outliers.
+
+```{r iqr-idh}
+idh |>
+  summarise(
+    Q1 = quantile(idh_2010, 0.25),
+    mediana = quantile(idh_2010, 0.50),
+    Q3 = quantile(idh_2010, 0.75),
+    IQR = IQR(idh_2010)
+  )
+```
+
+O IQR também é usado para definir outliers. A regra convencional é: qualquer valor abaixo de $Q_1 - 1{,}5 \times \text{IQR}$ ou acima de $Q_3 + 1{,}5 \times \text{IQR}$ é considerado um outlier. Esta é a regra usada nos boxplots que veremos a seguir.
+
+De onde vem o fator 1,5? Ele é derivado da **distribuição normal**. Em uma distribuição normal, $Q_1$ e $Q_3$ estão a aproximadamente $\pm 0{,}675$ desvios-padrão da média, de modo que $\text{IQR} \approx 1{,}35\sigma$. Multiplicando por 1,5, os limites ("cercas") ficam a cerca de $\pm 2{,}7\sigma$ da média — o que captura aproximadamente 99,3% dos dados. Ou seja, em dados normais, menos de 1% das observações seriam classificadas como outliers. Esse ponto é importante: a regra de 1,5 × IQR pressupõe que a distribuição é aproximadamente normal. Em distribuições muito assimétricas (como a de tamanho de municípios), a regra pode classificar como "outliers" observações que são simplesmente parte da cauda longa da distribuição.
+
 ## Visualização de distribuições
+
+Gráficos revelam padrões que as estatísticas numéricas não capturam. Três visualizações são usadas com frequência: histogramas, boxplots e gráficos de densidade.
 
 ### Histogramas
 
+O **histograma** divide o intervalo de valores da variável em faixas (bins) e conta quantas observações caem em cada faixa. O eixo horizontal mostra os valores da variável; o eixo vertical, a frequência (ou a densidade).
+
+```{r histograma-idh, fig.cap="Histograma do IDH (2010) dos municípios brasileiros."}
+ggplot(idh, aes(x = idh_2010)) +
+  geom_histogram(bins = 30, fill = "steelblue", color = "white", alpha = 0.8) +
+  labs(x = "IDH (2010)", y = "Número de municípios") +
+  theme_minimal()
+```
+
+Um cuidado importante: a escolha do número de bins muda a aparência do histograma. Compare:
+
+```{r histograma-bins, fig.cap="O mesmo IDH com 10 bins (esquerda) e 50 bins (direita). A escolha de bins afeta a impressão visual.", fig.width=8, fig.height=3.5}
+library(patchwork)
+
+p1 <- ggplot(idh, aes(x = idh_2010)) +
+  geom_histogram(bins = 10, fill = "steelblue", color = "white", alpha = 0.8) +
+  labs(x = "IDH (2010)", y = "Frequência", title = "10 bins") +
+  theme_minimal()
+
+p2 <- ggplot(idh, aes(x = idh_2010)) +
+  geom_histogram(bins = 50, fill = "steelblue", color = "white", alpha = 0.8) +
+  labs(x = "IDH (2010)", y = "Frequência", title = "50 bins") +
+  theme_minimal()
+
+p1 + p2
+```
+
+Não existe número "correto" de bins. O padrão do `ggplot2` (30) costuma funcionar bem, mas sempre vale experimentar. O histograma de 10 bins suaviza demais e esconde a bimodalidade; o de 50 bins pode criar ruído.
+
 ### Boxplots
+
+O **boxplot** (diagrama de caixa) resume a distribuição mostrando cinco estatísticas: mediana, primeiro quartil, terceiro quartil, e os limites inferior e superior (whiskers). Pontos além dos whiskers são marcados como outliers.
+
+```{r boxplot-idh-regiao, fig.cap="IDH (2010) por região. O boxplot mostra a mediana (linha central), os quartis (limites da caixa), os whiskers (valores não-outliers) e os outliers (pontos)."}
+ggplot(idh, aes(x = reorder(regiao, idh_2010, FUN = median), y = idh_2010)) +
+  geom_boxplot(fill = "steelblue", alpha = 0.5, outlier.alpha = 0.3) +
+  labs(x = NULL, y = "IDH (2010)") +
+  theme_minimal()
+```
+
+O boxplot é útil para comparar distribuições entre grupos. No gráfico acima, a região Sul tem IDH mais alto e menos disperso, enquanto o Nordeste tem IDH mais baixo e maior dispersão. Essas diferenças não aparecem nas médias.
 
 ### Gráficos de densidade
 
+O **gráfico de densidade** é uma versão suavizada do histograma. Em vez de barras discretas, usa uma curva contínua para representar a distribuição.
+
+```{r densidade-idh-regiao, fig.cap="Distribuição de densidade do IDH (2010) por região do Brasil."}
+ggplot(idh, aes(x = idh_2010, fill = regiao)) +
+  geom_density(alpha = 0.4) +
+  labs(x = "IDH (2010)", y = "Densidade", fill = "Região") +
+  theme_minimal() +
+  theme(legend.position = "top")
+```
+
 ## Dados assimétricos e outliers
 
+Uma distribuição é **simétrica** quando os valores se distribuem igualmente ao redor da média (como a distribuição normal). Quando isso não acontece, dizemos que a distribuição é **assimétrica** (ou tem *skewness*):
+
+- **Assimetria positiva** (ou à direita): a cauda direita é mais longa. A média é maior que a mediana. Exemplo: distribuição de renda, tamanho de municípios.
+- **Assimetria negativa** (ou à esquerda): a cauda esquerda é mais longa. A média é menor que a mediana.
+
+```{r assimetria-populacao, fig.cap="Distribuição do tamanho dos municípios brasileiros (população em 2010). A distribuição é fortemente assimétrica à direita: a maioria dos municípios é pequena, mas poucos municípios muito grandes puxam a cauda."}
+ggplot(idh, aes(x = populacao_2010)) +
+  geom_histogram(bins = 50, fill = "steelblue", color = "white", alpha = 0.8) +
+  scale_x_continuous(labels = scales::number_format(scale = 1e-3, suffix = " mil")) +
+  labs(x = "População (2010)", y = "Número de municípios") +
+  theme_minimal()
+```
+
+Neste caso, a mediana (`r format(median(idh$populacao_2010), big.mark = ".")` habitantes) é muito mais representativa do município típico do que a média (`r format(round(mean(idh$populacao_2010)), big.mark = ".")` habitantes). Uma transformação logarítmica pode ajudar a visualizar distribuições muito assimétricas:
+
+```{r assimetria-log, fig.cap="Distribuição do log da população dos municípios. A escala logarítmica revela a forma da distribuição que o histograma original escondia."}
+ggplot(idh, aes(x = log10(populacao_2010))) +
+  geom_histogram(bins = 30, fill = "steelblue", color = "white", alpha = 0.8) +
+  labs(x = "log10(População)", y = "Número de municípios") +
+  theme_minimal()
+```
+
+### Outliers
+
+Um **outlier** é uma observação cujo valor é muito diferente das demais. Outliers podem ser erros de medição (e devem ser corrigidos) ou valores genuínos que refletem a realidade (e devem ser mantidos). Investigue antes de excluir. Um IDH de 0,99 pode ser um erro de digitação ou um município genuinamente rico. Excluir outliers sem investigação pode enviesar os resultados.
+
+A função `summary()` em R oferece um resumo rápido com as principais estatísticas descritivas:
+
+```{r summary-idh}
+summary(idh$idh_2010)
+```
+
 ## Exercícios
+
+1. Usando os dados de IDH dos municípios (`idh_municipios.csv`), calcule a média, mediana, variância, desvio-padrão e IQR do IDH de educação (`idh_educacao`). Compare os resultados com os do IDH geral. Qual dimensão do IDH tem maior dispersão?
+
+2. A tabela abaixo mostra os votos (em milhares) de cinco candidatos fictícios: 120, 85, 200, 90, 95. Calcule à mão a média e a mediana. Se o candidato com 200 mil votos tivesse recebido 500 mil, como cada medida mudaria?
+
+3. Construa um boxplot do IDH de renda (`idh_renda`) por região. Quais regiões têm outliers? Investigue: quais municípios são esses outliers?
+
+4. Faça um histograma da população dos municípios de São Paulo (filtre `uf == "SP"`). A distribuição é simétrica ou assimétrica? Calcule média e mediana para confirmar.
+
+5. Considere o conceito de "tolerância política" discutido em @kellstedt2015. Esse conceito é tipicamente medido por variáveis ordinais (escalas de 1 a 5 ou 1 a 7). Quais medidas de tendência central e variabilidade seriam apropriadas para descrevê-lo? Justifique.
+
+6. Um pesquisador calcula que a média de aprovação do presidente em uma amostra de 1.000 eleitores é 45%, com desvio-padrão de 3%. Outro pesquisador, com outra amostra de 1.000 eleitores, encontra média de 44% e desvio-padrão de 15%. Os dois resultados são compatíveis? O que o desvio-padrão muito maior do segundo pesquisador pode indicar sobre os dados?
+
+7. Usando o pacote `vdemdata`, filtre os dados para o ano de 2020 e construa um histograma do índice de poliarquia (`v2x_polyarchy`) para todos os países. Calcule média, mediana e desvio-padrão. A distribuição é simétrica?
