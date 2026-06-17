@@ -1,0 +1,409 @@
+---
+title: "Probabilidade mínima para inferência"
+subtitle: "Métodos Quantitativos e Técnicas em Ciência Política I / Métodos III"
+author: "Manoel Galdino"
+date: "Retomada do curso — 2026"
+output:
+  beamer_presentation:
+    theme: Madrid
+    colortheme: default
+    fonttheme: professionalfonts
+    latex_engine: xelatex
+    slide_level: 2
+    keep_tex: false
+header-includes:
+  - \usepackage{booktabs}
+  - \usepackage{array}
+  - \setbeamertemplate{navigation symbols}{}
+  - \AtBeginDocument{\renewcommand{\figurename}{Figura}}
+  - \AtBeginDocument{\renewcommand{\tablename}{Tabela}}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  fig.width = 6.4,
+  fig.height = 3.2,
+  out.width = "0.78\\linewidth",
+  dpi = 300
+)
+
+try(Sys.setlocale("LC_CTYPE", "pt_BR.UTF-8"), silent = TRUE)
+source("scripts/aula_06_probabilidade_minima_slides.R", encoding = "UTF-8")
+```
+
+```{r captions, include=FALSE}
+caption_frequencia <- "Frequência acumulada."
+caption_amostras <- "Estimativas em amostras simuladas."
+caption_condicional <- "Aprovação por escolaridade."
+caption_bernoulli <- "Bernoulli com p = 0,55."
+caption_binomial <- "Binomial com 10 sorteios e p = 0,55."
+caption_uniforme <- "Uniforme entre 0 e 1."
+caption_normal <- "Normal padrão."
+script_github_url <- paste0(
+  "https://raw.githubusercontent.com/mgaldino/estatistica-basica/",
+  "main/scripts/aula_06_probabilidade_minima_alunos.R"
+)
+```
+
+## Retomada do curso
+
+O plano original não cabe mais no calendário.
+
+Vamos manter o necessário para chegar à inferência:
+
+- amostragem;
+- probabilidade como linguagem da incerteza;
+- distribuição amostral e erro-padrão;
+- intervalo de confiança;
+- teste de hipótese;
+- interpretação substantiva.
+
+## As quatro aulas restantes
+
+```{r tabela-plano}
+plano_retomada <- tibble::tibble(
+  Aula = c("1", "2", "3", "4"),
+  Tema = c(
+    "Probabilidade mínima para inferência",
+    "Distribuições, distribuição amostral e erro-padrão",
+    "Inferência e intervalos de confiança",
+    "Teste de hipótese, IC e p-valor"
+  ),
+  Pergunta = c(
+    "Como formalizar a incerteza?",
+    "Por que estimativas variam de amostra para amostra?",
+    "Como quantificar a incerteza da estimativa?",
+    "Como ler evidência estatística?"
+  )
+)
+
+knitr::kable(
+  plano_retomada,
+  booktabs = TRUE,
+  caption = "Plano comprimido de retomada do curso."
+)
+```
+
+## O que sai e o que fica
+
+\begin{columns}
+\begin{column}{0.47\textwidth}
+\textbf{Sai do centro}
+
+\begin{itemize}
+\item Relatórios reprodutíveis como aula própria
+\item Análise de texto
+\item Funções e repetições
+\item Revisão final no formato original
+\item Prova final no formato original
+\end{itemize}
+\end{column}
+
+\begin{column}{0.47\textwidth}
+\textbf{Fica no centro}
+
+\begin{itemize}
+\item Incerteza amostral
+\item Distribuição amostral
+\item Erro-padrão
+\item Intervalo de confiança
+\item p-valor
+\item Interpretação substantiva
+\end{itemize}
+\end{column}
+\end{columns}
+
+## Aula de hoje
+
+Probabilidade mínima para inferência:
+
+1. aleatoriedade;
+2. experimento aleatório;
+3. resultado e evento;
+4. probabilidade;
+5. quatro distribuições de probabilidade;
+6. probabilidade condicional, só intuitivamente;
+7. simulações em R.
+
+## Pergunta-guia
+
+Como tirar conclusões gerais a partir de dados parciais?
+
+\vspace{0.4cm}
+
+Em pesquisa empírica, quase nunca observamos tudo.
+
+Observamos uma amostra, uma eleição, uma pesquisa, um survey, um conjunto de discursos.
+
+A estatística entra quando queremos dizer algo sobre o processo que gerou esses dados.
+
+## Por que probabilidade?
+
+Probabilidade entra porque a pesquisa empírica tem incerteza:
+
+- não observamos todas as causas relevantes;
+- indivíduos parecidos ainda podem agir de modos diferentes;
+- amostras diferentes produzem estimativas diferentes;
+- precisamos medir quanta incerteza existe na nossa conclusão.
+
+## Aleatoriedade tem padrão
+
+Um processo aleatório pode ter padrão.
+
+Exemplo: se 55\% dos eleitores aprovam o governo, um sorteio ao acaso de um eleitor tem incerteza.
+
+Com muitos sorteios, o padrão aparece.
+
+```{r grafico-frequencia, fig.cap=caption_frequencia}
+grafico_frequencia
+```
+
+## Experimento aleatório
+
+Um experimento aleatório é uma situação em que:
+
+- conhecemos o procedimento;
+- sabemos quais resultados podem ocorrer;
+- mas não sabemos qual resultado ocorrerá em uma realização específica.
+
+\vspace{0.3cm}
+
+Exemplo em Ciência Política:
+
+> Sortear um eleitor brasileiro ao acaso e observar se ele aprova o governo.
+
+## Resultado e evento
+
+No sorteio de um eleitor, há dois resultados possíveis para aprovação do governo:
+
+- aprova;
+- não aprova.
+
+O espaço amostral é:
+
+\[
+\Omega = \{\text{aprova}, \text{não aprova}\}
+\]
+
+A realização é o resultado observado em um sorteio específico.
+
+Eventos de interesse incluem \(A = \{\text{aprova}\}\) e \(A^c = \{\text{não aprova}\}\).
+
+## Notação mínima
+
+Vamos chamar um evento de \(A\).
+
+\[
+P(A)
+\]
+
+significa: probabilidade de \(A\) acontecer.
+
+\vspace{0.3cm}
+
+Se \(A\) é "aprova o governo", então \(P(A)\) é a proporção esperada de aprovação quando sorteamos eleitores ao acaso.
+
+## Distribuições de probabilidade
+
+Uma distribuição de probabilidade é uma formulação matemática do padrão esperado.
+
+Aleatório não significa sem lógica. Significa que os resultados podem mudar de amostra para amostra, seguindo probabilidades específicas.
+
+- Bernoulli: um evento binário;
+- Binomial: número de sucessos em vários sorteios;
+- Uniforme: valores igualmente prováveis;
+- Normal: curva usada para aproximar muitas distribuições amostrais.
+
+## Bernoulli
+
+Bernoulli descreve um resultado binário.
+
+Exemplo:
+
+- \(1\): eleitor aprova o governo;
+- \(0\): eleitor não aprova.
+
+```{r grafico-bernoulli, fig.cap=caption_bernoulli, fig.height=2.8, out.width="0.62\\linewidth"}
+grafico_bernoulli
+```
+
+## Binomial
+
+Binomial descreve uma contagem de sucessos em \(n\) tentativas iguais.
+
+Exemplo: sortear 10 eleitores e contar quantos aprovam o governo.
+
+```{r grafico-binomial, fig.cap=caption_binomial, fig.height=2.8, out.width="0.68\\linewidth"}
+grafico_binomial
+```
+
+## Uniforme
+
+Na distribuição uniforme, todos os valores em um intervalo têm a mesma densidade.
+
+Ela é útil para representar sorteios equiprováveis e para simulações.
+
+```{r grafico-uniforme, fig.cap=caption_uniforme, fig.height=2.8, out.width="0.62\\linewidth"}
+grafico_uniforme
+```
+
+## Normal
+
+A Normal é a curva em sino.
+
+A próxima aula usa essa curva para estudar estatísticas amostrais.
+
+```{r grafico-normal, fig.cap=caption_normal, fig.height=2.8, out.width="0.62\\linewidth"}
+grafico_normal
+```
+
+## Uma população simulada
+
+Para enxergar o problema, vamos criar uma população fictícia de eleitores.
+
+Ela não descreve uma pesquisa real.
+
+Serve apenas para mostrar a lógica:
+
+- cada eleitor tem uma escolaridade;
+- cada eleitor aprova ou não aprova o governo;
+- nós só observamos amostras dessa população.
+
+## Uma amostra possível
+
+```{r tabela-amostra}
+knitr::kable(
+  amostra_exemplo,
+  booktabs = TRUE,
+  caption = "Doze eleitores sorteados de uma população simulada."
+)
+```
+
+## Amostra e população
+
+Se sorteamos 100 eleitores, obtemos uma proporção de aprovação.
+
+Se sorteamos outros 100, obtemos outra.
+
+A população é a mesma.
+
+O que muda é a realização do sorteio.
+
+```{r grafico-amostras, fig.cap=caption_amostras, fig.height=2.8, out.width="0.70\\linewidth"}
+grafico_amostras
+```
+
+## Variação amostral
+
+Mesmo com sorteio correto, duas amostras do mesmo tamanho não produzem sempre a mesma estimativa.
+
+A pergunta estatística:
+
+> quanto uma estimativa pode variar só por causa do sorteio da amostra?
+
+## Probabilidade condicional
+
+Probabilidade condicional é probabilidade depois de restringir o grupo observado.
+
+\[
+P(A \mid B)
+\]
+
+Lê-se: probabilidade de \(A\), dado \(B\).
+
+\vspace{0.3cm}
+
+O denominador muda.
+
+## Exemplo: mudando o denominador
+
+Se \(A\) é "aprova o governo" e \(B\) é "tem ensino superior":
+
+\[
+P(A) = \frac{\text{eleitores que aprovam}}{\text{todos os eleitores}}
+\]
+
+\[
+P(A \mid B) =
+\frac{\text{eleitores com ensino superior que aprovam}}
+{\text{eleitores com ensino superior}}
+\]
+
+## Probabilidades condicionais na simulação
+
+```{r grafico-condicional, fig.cap=caption_condicional}
+grafico_condicional
+```
+
+## Condicional não é causalidade
+
+Se \(P(A \mid B)\) é diferente de \(P(A)\), sabemos que os grupos diferem.
+
+Isso não prova que \(B\) causou \(A\).
+
+\vspace{0.3cm}
+
+Exemplo:
+
+- eleitores com e sem ensino superior podem diferir em renda;
+- podem diferir em idade;
+- podem diferir em região;
+- podem diferir em informação política.
+
+## O que aprendemos até aqui
+
+Probabilidade nos dá três ideias que serão usadas nas próximas aulas:
+
+1. dados observados são realizações de um processo;
+2. eventos podem ser tratados como quantidades esperadas em repetições;
+3. amostras diferentes geram estimativas diferentes.
+
+## Atividade em R
+
+Baixem e abram o script no RStudio:
+
+```{r codigo-script-alunos, echo=TRUE, eval=FALSE}
+script_url <- paste0(
+  "https://raw.githubusercontent.com/",
+  "mgaldino/estatistica-basica/main/",
+  "scripts/aula_06_probabilidade_minima_alunos.R"
+)
+
+destino <- "aula_06_probabilidade_minima_alunos.R"
+
+download.file(script_url, destino, mode = "wb")
+file.edit(destino)
+```
+
+## Perguntas para responder no R
+
+1. Com 30 repetições, a frequência acumulada fica perto da probabilidade verdadeira?
+2. Com 2.000 repetições, o padrão fica mais claro?
+3. \(P(\text{aprova})\) e \(P(\text{aprova} \mid \text{grupo})\) são iguais?
+4. Quando aumentamos o tamanho da amostra, as estimativas ficam mais espalhadas ou mais concentradas?
+
+## Fechamento
+
+Probabilidade é a linguagem que usamos para falar de incerteza.
+
+Hoje vimos a intuição.
+
+Na próxima aula, vamos transformar essa intuição em inferência:
+
+- distribuição amostral;
+- Teorema Central do Limite;
+- erro-padrão.
+
+## Resumo
+
+Uma amostra é uma realização possível de um sorteio.
+
+Outra amostra, sorteada da mesma população, pode produzir outra estimativa.
+
+\vspace{0.4cm}
+
+Inferência estatística começa quando medimos essa variação.
