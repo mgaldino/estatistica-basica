@@ -227,7 +227,11 @@ Exemplo:
 - \(1\): eleitor aprova o governo;
 - \(0\): eleitor não aprova.
 
-```{r grafico-bernoulli, fig.cap=caption_bernoulli, fig.height=2.8, out.width="0.62\\linewidth"}
+\[
+P(X=x)=p^x(1-p)^{1-x}, \quad x \in \{0,1\}
+\]
+
+```{r grafico-bernoulli, fig.cap=caption_bernoulli, fig.height=2.35, out.width="0.58\\linewidth"}
 grafico_bernoulli
 ```
 
@@ -237,7 +241,11 @@ Binomial descreve uma contagem de sucessos em \(n\) tentativas iguais.
 
 Exemplo: sortear 10 eleitores e contar quantos aprovam o governo.
 
-```{r grafico-binomial, fig.cap=caption_binomial, fig.height=2.8, out.width="0.68\\linewidth"}
+\[
+P(X=k)=\binom{n}{k}p^k(1-p)^{n-k}, \quad k=0,\ldots,n
+\]
+
+```{r grafico-binomial, fig.cap=caption_binomial, fig.height=2.35, out.width="0.62\\linewidth"}
 grafico_binomial
 ```
 
@@ -247,7 +255,11 @@ Na distribuição uniforme, todos os valores em um intervalo têm a mesma densid
 
 Ela é útil para representar sorteios equiprováveis e para simulações.
 
-```{r grafico-uniforme, fig.cap=caption_uniforme, fig.height=2.8, out.width="0.62\\linewidth"}
+\[
+f(x)=\frac{1}{b-a}, \quad a \leq x \leq b
+\]
+
+```{r grafico-uniforme, fig.cap=caption_uniforme, fig.height=2.35, out.width="0.58\\linewidth"}
 grafico_uniforme
 ```
 
@@ -257,7 +269,12 @@ A Normal é a curva em sino.
 
 A próxima aula usa essa curva para estudar estatísticas amostrais.
 
-```{r grafico-normal, fig.cap=caption_normal, fig.height=2.8, out.width="0.62\\linewidth"}
+\[
+f(x)=\frac{1}{\sigma\sqrt{2\pi}}
+\exp\left[-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right]
+\]
+
+```{r grafico-normal, fig.cap=caption_normal, fig.height=2.35, out.width="0.58\\linewidth"}
 grafico_normal
 ```
 
