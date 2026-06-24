@@ -65,12 +65,50 @@ Atividade de laboratório:
 - O script dos alunos reproduz o básico da aula em R.
 - O handout tem tarefas para sala sobre medidas descritivas, variação amostral, LGN, TCL, erro-padrão e amostra enviesada.
 
+## Aula 08 — Inferência e Intervalos de Confiança
+
+Status: concluída e validada em 2026-06-24.
+
+Arquivos principais:
+
+- `aula_08_inferencia_intervalos_confianca.Rmd`
+- `aula_08_inferencia_intervalos_confianca.pdf`
+- `scripts/aula_08_inferencia_intervalos_confianca_slides.R`
+- `scripts/aula_08_inferencia_intervalos_confianca_alunos.R`
+
+Conteúdo dos slides:
+
+- estimativa pontual e incerteza amostral;
+- erro-padrão, valor crítico e margem de erro;
+- intervalo de confiança para proporções;
+- interpretação correta de 95% de confiança;
+- cobertura de intervalos em simulação;
+- relação entre tamanho da amostra e precisão;
+- trade-off entre nível de confiança e largura do intervalo;
+- intervalo de confiança para médias com distribuição t;
+- distinção entre precisão e validade: IC não corrige viés de seleção.
+
+Leitura indicada:
+
+- Kellstedt e Whitten, *Fundamentos da Pesquisa em Ciência Política*, Capítulo 6, "Probabilidade e inferência estatística", com foco em distribuição amostral, erro-padrão, lógica da inferência e intervalos de confiança.
+- Para a ponte com a próxima aula: Capítulo 7, especialmente a discussão inicial sobre testes de hipótese bivariados.
+
+Atividade de laboratório:
+
+- O script dos alunos calcula intervalos para proporções e médias, simula cobertura, compara níveis de confiança e mostra por que uma amostra enviesada pode produzir um intervalo estreito em torno do valor errado.
+
 ## Reprodução Dos Materiais
 
 Para renderizar os slides da aula 07:
 
 ```bash
 env -u LC_ALL LC_CTYPE=pt_BR.UTF-8 Rscript -e "rmarkdown::render('aula_07_distribuicao_amostral_tcl_lgn.Rmd', output_format = 'beamer_presentation')"
+```
+
+Para renderizar os slides da aula 08:
+
+```bash
+env -u LC_ALL LC_CTYPE=pt_BR.UTF-8 Rscript -e "rmarkdown::render('aula_08_inferencia_intervalos_confianca.Rmd', output_format = 'beamer_presentation')"
 ```
 
 Para renderizar a atividade de laboratório:
@@ -85,6 +123,12 @@ Para testar o script dos alunos:
 env -u LC_ALL LC_CTYPE=pt_BR.UTF-8 Rscript -e "source('scripts/aula_07_distribuicao_amostral_tcl_lgn_alunos.R', encoding = 'UTF-8')"
 ```
 
+Para testar o script dos alunos da aula 08:
+
+```bash
+env -u LC_ALL LC_CTYPE=pt_BR.UTF-8 Rscript -e "source('scripts/aula_08_inferencia_intervalos_confianca_alunos.R', encoding = 'UTF-8')"
+```
+
 ## Validação Realizada
 
 Na aula 07, foram realizados os seguintes checks:
@@ -95,6 +139,15 @@ Na aula 07, foram realizados os seguintes checks:
 - renderização do PDF da atividade de laboratório;
 - extração de texto dos PDFs para conferir tópicos e leitura indicada;
 - inspeção visual de páginas críticas dos PDFs renderizadas como PNG.
+
+Na aula 08, foram realizados os seguintes checks:
+
+- execução do script dos slides;
+- execução do script dos alunos;
+- renderização do PDF dos slides com `xelatex`;
+- extração de texto do PDF para conferir tópicos e leitura indicada;
+- inspeção visual de páginas críticas do PDF renderizadas como PNG;
+- `git diff --check` nos arquivos novos e no README.
 
 ## Notas De Estilo
 

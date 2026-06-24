@@ -1,0 +1,516 @@
+---
+title: "Inferência e intervalos de confiança"
+subtitle: "Métodos Quantitativos e Técnicas em Ciência Política I / Métodos III"
+author: "Manoel Galdino"
+date: "Retomada do curso — 2026"
+output:
+  beamer_presentation:
+    theme: Madrid
+    colortheme: default
+    fonttheme: professionalfonts
+    latex_engine: xelatex
+    slide_level: 2
+    keep_tex: false
+header-includes:
+  - \usepackage{booktabs}
+  - \usepackage{array}
+  - \setbeamertemplate{navigation symbols}{}
+  - \AtBeginDocument{\renewcommand{\figurename}{Figura}}
+  - \AtBeginDocument{\renewcommand{\tablename}{Tabela}}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  fig.width = 6.4,
+  fig.height = 3.2,
+  out.width = "0.78\\linewidth",
+  dpi = 300
+)
+
+try(Sys.setlocale("LC_CTYPE", "pt_BR.UTF-8"), silent = TRUE)
+source("scripts/aula_08_inferencia_intervalos_confianca_slides.R", encoding = "UTF-8")
+```
+
+```{r captions, include=FALSE}
+caption_pesquisa <- "Estimativa pontual, erro-padrão e intervalo de confiança em uma pesquisa simulada."
+caption_normal_95 <- "Área central de 95% em uma distribuição Normal padrão."
+caption_cobertura <- "Intervalos de confiança de 95% em 120 pesquisas simuladas."
+caption_tabela_cobertura <- "Cobertura observada em 1.500 intervalos de confiança simulados."
+caption_margem <- "Relação entre tamanho da amostra e margem de erro."
+caption_tamanho <- "Tamanho de amostra aproximado para diferentes margens de erro."
+caption_niveis <- "Nível de confiança e largura do intervalo."
+caption_media <- "Intervalo de confiança para a média de um índice simulado."
+script_github_url <- paste0(
+  "https://raw.githubusercontent.com/mgaldino/estatistica-basica/",
+  "main/scripts/aula_08_inferencia_intervalos_confianca_alunos.R"
+)
+```
+
+## Aula de hoje
+
+Uma pesquisa eleitoral costuma reportar algo como 49,9% de aprovação.
+
+Esse decimal não significa que conhecemos a população com essa precisão.
+
+Ele veio de uma amostra.
+
+A aula de hoje calcula a incerteza criada por esse sorteio.
+
+Roteiro:
+
+1. estimativa pontual e incerteza;
+2. erro-padrão e margem de erro;
+3. intervalo de confiança para proporções;
+4. interpretação correta de 95% de confiança;
+5. cobertura em simulação;
+6. tamanho da amostra e precisão;
+7. intervalo de confiança para médias;
+8. limites: IC não corrige viés.
+
+## Leitura
+
+Leitura principal para esta aula:
+
+> Kellstedt e Whitten, *Fundamentos da Pesquisa em Ciência Política*, Capítulo 6, "Probabilidade e inferência estatística".
+
+Foco no capítulo:
+
+- distribuição amostral;
+- erro-padrão;
+- lógica da inferência;
+- intervalos de confiança.
+
+Para a ponte com a próxima aula:
+
+> Capítulo 7, especialmente a discussão inicial sobre testes de hipótese bivariados.
+
+## Da aula passada para hoje
+
+Na aula passada, ficaram três peças:
+
+- amostras aleatórias produzem estimativas diferentes;
+- o erro-padrão mede a dispersão dessas estimativas;
+- pelo TCL, a média ou proporção amostral pode ter distribuição aproximadamente Normal.
+
+Hoje essas peças viram uma faixa de valores plausíveis.
+
+## A pergunta da inferência
+
+Queremos saber uma quantidade na população.
+
+\[
+\theta
+\]
+
+Esse é o parâmetro.
+
+Na prática, observamos uma quantidade calculada na amostra.
+
+\[
+\hat{\theta}
+\]
+
+Essa é a estimativa.
+
+Inferência começa quando perguntamos:
+
+> quanta incerteza existe em torno dessa estimativa?
+
+## Estimativa pontual não basta
+
+Imagine uma pesquisa com 1.000 entrevistados.
+
+A variável é binária:
+
+- 1: aprova o governo;
+- 0: não aprova.
+
+A média da variável é a proporção de aprovação.
+
+Mas a proporção observada em uma amostra é apenas uma estimativa.
+
+Outra amostra poderia produzir outro valor.
+
+## Uma pesquisa simulada
+
+```{r tabela-pesquisa, results='asis'}
+knitr::kable(
+  tabela_pesquisa,
+  booktabs = TRUE,
+  caption = caption_pesquisa
+)
+```
+
+## De onde vem o intervalo
+
+Se a distribuição amostral é aproximadamente Normal:
+
+\[
+\frac{\hat{\theta}-\theta}{EP(\hat{\theta})} \approx N(0,1)
+\]
+
+Então uma estimativa tende a ficar perto do parâmetro.
+
+Para 95% de confiança, usamos aproximadamente:
+
+\[
+1{,}96
+\]
+
+porque 95% de uma Normal padrão fica entre \(-1{,}96\) e \(+1{,}96\).
+
+## O 1,96 em uma figura
+
+```{r grafico-normal-95, fig.cap=caption_normal_95, fig.height=2.7, out.width="0.68\\linewidth"}
+grafico_normal_95
+```
+
+## Fórmula geral
+
+Um intervalo de confiança tem a forma:
+
+\[
+\text{estimativa} \pm \text{valor crítico} \times \text{erro-padrão}
+\]
+
+Ou:
+
+\[
+\hat{\theta} \pm z_{\alpha/2} \times EP(\hat{\theta})
+\]
+
+Para 95%:
+
+\[
+\hat{\theta} \pm 1{,}96 \times EP(\hat{\theta})
+\]
+
+## Aplicando à pesquisa simulada
+
+Na pesquisa simulada:
+
+- estimativa: `r percent(ic_aprovacao$estimativa, accuracy = 0.1, decimal.mark = ",")`;
+- erro-padrão: `r percent(ic_aprovacao$erro_padrao, accuracy = 0.1, decimal.mark = ",")`;
+- margem: \(1{,}96 \times\) `r percent(ic_aprovacao$erro_padrao, accuracy = 0.1, decimal.mark = ",")` = `r percent(ic_aprovacao$margem, accuracy = 0.1, decimal.mark = ",")`;
+- intervalo: `r percent(ic_aprovacao$inferior, accuracy = 0.1, decimal.mark = ",")` a `r percent(ic_aprovacao$superior, accuracy = 0.1, decimal.mark = ",")`.
+
+## IC para proporções
+
+Para uma proporção:
+
+\[
+\hat{p} = \frac{\text{sucessos}}{n}
+\]
+
+O erro-padrão aproximado é:
+
+\[
+EP(\hat{p}) =
+\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+\]
+
+Então:
+
+\[
+IC_{95\%} =
+\hat{p} \pm 1{,}96
+\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+\]
+
+## O que significa 95%?
+
+A interpretação correta é sobre o procedimento:
+
+> se repetíssemos a pesquisa muitas vezes, cerca de 95% dos intervalos construídos desse modo conteriam o parâmetro verdadeiro.
+
+Não significa:
+
+> há 95% de probabilidade de o parâmetro estar dentro deste intervalo específico.
+
+Na interpretação frequentista, depois que o intervalo foi calculado, ele contém ou não contém o parâmetro.
+
+## Por que alguns intervalos falham?
+
+Mesmo com amostragem correta, há variação amostral.
+
+Algumas amostras saem mais longe do parâmetro.
+
+Quando isso acontece, o intervalo construído em torno da estimativa também pode ficar longe.
+
+Em um procedimento de 95% de confiança, esperamos que cerca de 5% dos intervalos não cubram o parâmetro.
+
+## Cobertura em simulação
+
+```{r grafico-cobertura, fig.cap=caption_cobertura, fig.height=3.4, out.width="0.86\\linewidth"}
+grafico_cobertura
+```
+
+## Cobertura observada
+
+```{r tabela-cobertura, results='asis'}
+knitr::kable(
+  tabela_cobertura,
+  booktabs = TRUE,
+  caption = caption_tabela_cobertura
+)
+```
+
+O número não precisa ser exatamente 95%.
+
+Aqui há variação de simulação.
+
+Com mais repetições, a cobertura observada tende a ficar perto da cobertura nominal.
+
+## Margem de erro
+
+A margem de erro diz quanto afastamos a estimativa para cada lado.
+
+\[
+\text{margem de erro} =
+\text{valor crítico} \times \text{erro-padrão}
+\]
+
+Para proporções, a incerteza é maior quando \(p\) está perto de 0,5.
+
+Por isso, quando não sabemos \(p\), usamos o caso mais conservador:
+
+\[
+\text{margem} \approx 1{,}96 \sqrt{\frac{0{,}25}{n}}
+\]
+
+O termo \(0{,}25\) aparece porque \(p(1-p)\) é máximo quando \(p = 0{,}5\).
+
+## Tamanho da amostra e margem
+
+```{r grafico-margem, fig.cap=caption_margem, fig.height=3.1, out.width="0.78\\linewidth"}
+grafico_margem_n
+```
+
+## Quanto n precisa?
+
+Reorganizando a fórmula da margem:
+
+\[
+n =
+\frac{z^2 p(1-p)}{e^2}
+\]
+
+Em que:
+
+- \(z\) é o valor crítico;
+- \(p\) é a proporção esperada;
+- \(e\) é a margem desejada, por exemplo \(0{,}03\) para 3 pontos percentuais;
+- se não sabemos \(p\), usamos \(p = 0{,}5\).
+
+## Tamanho de amostra aproximado
+
+```{r tabela-tamanho, results='asis'}
+knitr::kable(
+  tabela_tamanho_amostra,
+  booktabs = TRUE,
+  caption = caption_tamanho
+)
+```
+
+Passar de 2 pontos para 1 ponto de margem não exige o dobro da amostra.
+
+Exige aproximadamente quatro vezes mais observações.
+
+## Confiança versus precisão
+
+Aumentar o nível de confiança aumenta a chance de cobertura.
+
+Mas o intervalo fica mais largo.
+
+```{r tabela-niveis, results='asis'}
+knitr::kable(
+  tabela_niveis_confianca,
+  booktabs = TRUE,
+  caption = caption_niveis
+)
+```
+
+Mais confiança custa precisão.
+
+## Mesma receita, nova variável
+
+Até aqui, a variável era binária.
+
+Estimamos uma proporção:
+
+\[
+\hat{p} \pm z \times EP(\hat{p})
+\]
+
+Com uma variável contínua, estimamos uma média:
+
+\[
+\bar{Y} \pm \text{valor crítico} \times EP(\bar{Y})
+\]
+
+O formato é o mesmo.
+
+O cálculo do erro-padrão muda.
+
+## Exemplo: índice de satisfação
+
+Imagine um índice de satisfação com a democracia, de 0 a 10.
+
+Queremos estimar a média populacional a partir de uma amostra de 120 pessoas.
+
+## Por que aparece \(s\) e \(t\)?
+
+Para médias, a incerteza depende da dispersão dos valores individuais.
+
+O desvio-padrão populacional, \(\sigma\), quase nunca é conhecido.
+
+Usamos o desvio-padrão da amostra, \(s\), no lugar dele.
+
+Essa substituição troca o valor crítico Normal por um valor crítico \(t\).
+
+## Estimativa e incerteza
+
+```{r tabela-media, results='asis'}
+knitr::kable(
+  tabela_media,
+  booktabs = TRUE,
+  caption = caption_media
+)
+```
+
+## IC para médias
+
+Para uma média amostral:
+
+\[
+EP(\bar{Y}) = \frac{s}{\sqrt{n}}
+\]
+
+Então:
+
+\[
+IC_{95\%} =
+\bar{Y} \pm t_{0{,}975,\, n-1}\frac{s}{\sqrt{n}}
+\]
+
+O termo \(t_{0{,}975,\, n-1}\) é o corte de 97,5% da distribuição \(t\), com \(n-1\) graus de liberdade.
+
+## Símbolos na fórmula
+
+- \(\bar{Y}\): média da amostra;
+- \(s\): desvio-padrão da amostra;
+- \(n\): tamanho da amostra;
+- \(t\): valor crítico usado quando \(\sigma\) populacional é desconhecido.
+
+Com amostras grandes, \(t\) fica muito parecida com a Normal.
+
+## Interpretação do intervalo
+
+Neste exemplo, o intervalo vai de `r number(media_satisfacao - margem_satisfacao, accuracy = 0.01, decimal.mark = ",")` a `r number(media_satisfacao + margem_satisfacao, accuracy = 0.01, decimal.mark = ",")`.
+
+Leitura substantiva:
+
+> com esse procedimento, a média populacional de satisfação estaria estimada em torno de `r number(media_satisfacao, accuracy = 0.01, decimal.mark = ",")`, com incerteza de cerca de `r number(margem_satisfacao, accuracy = 0.01, decimal.mark = ",")` ponto para cada lado.
+
+## Intervalo para uma média
+
+```{r grafico-media, fig.cap=caption_media, fig.height=2.8, out.width="0.84\\linewidth"}
+grafico_ic_media
+```
+
+## Pressupostos mínimos
+
+Intervalos de confiança dependem de condições que vêm antes da fórmula:
+
+- amostra desenhada para representar a população;
+- observações aproximadamente independentes;
+- erro-padrão calculado para o desenho amostral usado;
+- aproximação Normal ou \(t\) razoável para a estatística.
+
+Quando essas condições falham, o intervalo ganha aparência técnica sem sustentar uma inferência confiável.
+
+## O que o IC não resolve
+
+Intervalo de confiança mede incerteza amostral.
+
+Ele não resolve:
+
+- viés de seleção;
+- não resposta sistemática;
+- erro de mensuração;
+- pergunta mal formulada;
+- amostra de conveniência.
+
+Uma amostra enviesada pode produzir um intervalo estreito em torno do valor errado.
+
+## Amostra grande não salva viés
+
+Se a amostra não representa a população, aumentar \(n\) reduz o erro-padrão em torno de uma estimativa enviesada.
+
+O intervalo fica mais estreito.
+
+Mas fica estreito no lugar errado.
+
+Essa é a diferença entre:
+
+- precisão: pouca variação amostral;
+- validade: estimar o parâmetro certo.
+
+## Interpretação em pesquisas eleitorais
+
+Quando uma pesquisa diz:
+
+> candidato A tem 47%, margem de erro de 3 pontos, 95% de confiança.
+
+A leitura correta é:
+
+- a estimativa pontual é 47%;
+- o intervalo aproximado vai de 44% a 50%;
+- a incerteza se refere ao procedimento de amostragem;
+- "empate técnico" é uma regra de comunicação, não uma prova de empate real.
+
+Tecnicamente, a pergunta correta é sobre a incerteza da diferença entre os candidatos.
+
+## Atividade em R
+
+Abram o script da aula no RStudio:
+
+```{r codigo-script-alunos, echo=TRUE, eval=FALSE}
+script_url <- paste0(
+  "https://raw.githubusercontent.com/mgaldino/",
+  "estatistica-basica/main/scripts/",
+  "aula_08_inferencia_intervalos_confianca_alunos.R"
+)
+
+destino <- "aula_08_alunos.R"
+
+download.file(script_url, destino, mode = "wb")
+file.edit(destino)
+```
+
+## Perguntas para responder no R
+
+1. O que acontece com a margem de erro quando \(n\) aumenta?
+2. Em 1.000 simulações, a cobertura fica exatamente em 95%?
+3. Por que o intervalo de 99% é mais largo que o de 95%?
+4. Qual tamanho de amostra é necessário para margem de 2 pontos?
+5. Um IC estreito garante que a amostra não tem viés?
+
+## Fechamento
+
+Um intervalo de confiança combina:
+
+- uma estimativa;
+- um erro-padrão;
+- um valor crítico;
+- uma regra de interpretação.
+
+Ele mede a incerteza criada pelo sorteio da amostra.
+
+Ele não transforma uma amostra ruim em uma amostra boa.
+
+Na próxima aula, vamos usar a mesma lógica para testes de hipótese, p-valores e leitura de evidência estatística.
