@@ -1,0 +1,97 @@
+---
+title: "Atividade de Laboratório — Distribuição amostral, LGN e TCL"
+author: "Métodos Quantitativos e Técnicas em Ciência Política I / Métodos III"
+date: "Retomada do curso — 2026"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    keep_tex: false
+geometry: margin=2.4cm
+fontsize: 11pt
+header-includes:
+  - \usepackage{booktabs}
+  - \setlength{\parskip}{0.45em}
+  - \setlength{\parindent}{0em}
+  - \renewcommand{\labelitemi}{--}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+# Objetivo
+
+Nesta atividade, vocês vão reproduzir no R a lógica da aula sobre distribuição amostral, Lei dos Grandes Números (LGN), Teorema Central do Limite (TCL) e erro-padrão.
+
+Ao final, o grupo deve entregar uma resposta curta para cada tarefa. Não é necessário entregar um relatório formal: basta responder com clareza, usando os resultados do script.
+
+# Script
+
+Baixe e abra o script no RStudio:
+
+```{r codigo-script, echo=TRUE, eval=FALSE}
+script_url <- paste0(
+  "https://raw.githubusercontent.com/",
+  "mgaldino/estatistica-basica/main/",
+  "scripts/aula_07_distribuicao_amostral_tcl_lgn_alunos.R"
+)
+
+destino <- "aula_07_distribuicao_amostral_tcl_lgn_alunos.R"
+
+download.file(script_url, destino, mode = "wb")
+file.edit(destino)
+```
+
+# Parte 1: Medidas descritivas
+
+Rode as seções 1 e 2 do script.
+
+**Tarefa 1.** A média, a mediana e a moda aproximada ficaram no mesmo lugar? Qual delas ficou mais alta? Explique o que isso revela sobre a assimetria da distribuição de renda simulada.
+
+**Tarefa 2.** Compare variância e desvio-padrão. Por que o desvio-padrão é mais fácil de interpretar substantivamente?
+
+# Parte 2: Variação amostral
+
+Rode a seção 3 do script.
+
+**Tarefa 3.** As três médias amostrais são iguais entre si? Alguma delas é exatamente igual à média da população? Explique, em uma frase, o que é variação amostral.
+
+# Parte 3: Lei dos Grandes Números
+
+Rode a seção 4 do script.
+
+**Tarefa 4.** Mude o tamanho de `amostra_lgn` para 100, 1.000 e 10.000. Em qual caso a média acumulada fica mais estável? A linha azul fica exatamente sobre a linha vermelha?
+
+# Parte 4: Teorema Central do Limite
+
+Rode a seção 5 do script.
+
+**Tarefa 5.** Compare os painéis com `n = 5`, `n = 30`, `n = 100` e `n = 500`. O que acontece com a forma da distribuição amostral da média? O que acontece com a dispersão?
+
+**Tarefa 6.** A distribuição original dos dados individuais precisa ser Normal para que a distribuição amostral da média fique aproximadamente Normal? Justifique usando o gráfico.
+
+# Parte 5: Erro-padrão
+
+Rode a seção 6 do script.
+
+**Tarefa 7.** Compare `erro_padrao_simulado` e `erro_padrao_formula`. Eles são exatamente iguais? São próximos? O que acontece com o erro-padrão quando `n` aumenta?
+
+**Tarefa 8.** Explique a diferença entre desvio-padrão e erro-padrão. Use a distinção entre dispersão dos indivíduos e dispersão das estimativas.
+
+# Parte 6: Amostra enviesada
+
+Rode a seção 7 do script.
+
+**Tarefa 9.** A amostra online tem `n = 5000`. Mesmo assim, ela se aproxima da média verdadeira da população? Por quê?
+
+**Tarefa 10.** Em uma frase, explique por que uma enquete online com muitas respostas pode ser pior do que uma amostra aleatória menor.
+
+# Desafio
+
+Se sobrar tempo, faça a seção 8 do script.
+
+**Tarefa 11.** Troque a população assimétrica por uma população Normal e rode novamente as seções 2 a 6. O TCL fica mais fácil de enxergar quando a população original já é Normal? Por quê?

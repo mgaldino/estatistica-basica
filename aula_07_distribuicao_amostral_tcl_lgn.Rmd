@@ -1,0 +1,465 @@
+---
+title: "Distribuição amostral, LGN e TCL"
+subtitle: "Métodos Quantitativos e Técnicas em Ciência Política I / Métodos III"
+author: "Manoel Galdino"
+date: "Retomada do curso — 2026"
+output:
+  beamer_presentation:
+    theme: Madrid
+    colortheme: default
+    fonttheme: professionalfonts
+    latex_engine: xelatex
+    slide_level: 2
+    keep_tex: false
+header-includes:
+  - \usepackage{booktabs}
+  - \usepackage{array}
+  - \setbeamertemplate{navigation symbols}{}
+  - \AtBeginDocument{\renewcommand{\figurename}{Figura}}
+  - \AtBeginDocument{\renewcommand{\tablename}{Tabela}}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  fig.width = 6.4,
+  fig.height = 3.2,
+  out.width = "0.78\\linewidth",
+  dpi = 300
+)
+
+try(Sys.setlocale("LC_CTYPE", "pt_BR.UTF-8"), silent = TRUE)
+source("scripts/aula_07_distribuicao_amostral_tcl_lgn_slides.R", encoding = "UTF-8")
+```
+
+```{r captions, include=FALSE}
+caption_tendencia <- "Média, mediana e moda em uma população simulada."
+caption_variabilidade <- "Duas distribuições com médias parecidas e dispersões diferentes."
+caption_lgn <- "Convergência da média acumulada para a média populacional."
+caption_tcl <- "Distribuições amostrais da média para diferentes tamanhos de amostra."
+caption_ep <- "Erro-padrão simulado e aproximação por s dividido pela raiz de n."
+caption_pibpc <- "Distribuição do PIB per capita municipal no Brasil, 2013."
+caption_log_pibpc <- "Log do PIB per capita municipal e curva Normal ajustada."
+script_github_url <- paste0(
+  "https://raw.githubusercontent.com/mgaldino/estatistica-basica/",
+  "main/scripts/aula_07_distribuicao_amostral_tcl_lgn_alunos.R"
+)
+```
+
+## Aula de hoje
+
+Objetivo: ligar estatística descritiva à inferência.
+
+Roteiro:
+
+1. revisão rápida: média, moda e mediana;
+2. revisão rápida: variância e desvio-padrão;
+3. população, amostra, parâmetro e estatística;
+4. Lei dos Grandes Números;
+5. distribuição amostral;
+6. Teorema Central do Limite;
+7. de onde vem o erro-padrão;
+8. renda real e aproximação log-normal.
+
+## Leitura
+
+Leitura principal para esta aula:
+
+> Kellstedt e Whitten, *Fundamentos da Pesquisa em Ciência Política*, Capítulo 6, "Probabilidade e inferência estatística".
+
+Para revisar a primeira parte da aula:
+
+> Capítulo 5, especialmente a seção sobre como conhecer os dados estatisticamente e descrever variáveis contínuas.
+
+## Da aula passada para hoje
+
+Na aula passada, probabilidade apareceu como linguagem da incerteza.
+
+Hoje a pergunta muda:
+
+> se uma amostra é aleatória, o que podemos dizer sobre a estimativa que ela produz?
+
+Para responder, precisamos relembrar como descrevemos uma distribuição.
+
+## O que é uma distribuição?
+
+Uma distribuição mostra como os valores de uma variável se espalham.
+
+Em termos simples:
+
+- quais valores aparecem com frequência;
+- qual é o valor típico;
+- quão longe os casos ficam desse valor típico;
+- se há assimetria ou valores extremos.
+
+## Média, mediana e moda
+
+A média resume o centro pelo equilíbrio aritmético:
+
+\[
+\bar{Y} = \frac{\sum_{i=1}^{n}Y_i}{n}
+\]
+
+A mediana é o valor que divide a distribuição ao meio.
+
+A moda é o valor mais frequente. Em variáveis contínuas, normalmente é aproximada pelo pico da densidade.
+
+## Três centros, uma distribuição
+
+```{r grafico-tendencia, fig.cap=caption_tendencia}
+grafico_tendencia_central
+```
+
+## Resumo numérico
+
+```{r tabela-resumo-renda}
+knitr::kable(
+  resumo_renda_tabela,
+  booktabs = TRUE,
+  caption = "Medidas descritivas da renda mensal simulada."
+)
+```
+
+## Como interpretar
+
+Quando a média é maior que a mediana, há indício de assimetria à direita.
+
+Isso costuma acontecer com renda:
+
+- muitos casos ficam em valores baixos ou intermediários;
+- poucos casos muito altos puxam a média para cima;
+- a mediana pode descrever melhor o caso típico;
+- a média continua sendo central para a inferência que veremos hoje.
+
+## Variância e desvio-padrão
+
+A variância resume a distância quadrática média em relação à média:
+
+\[
+s^2 = \frac{\sum_{i=1}^{n}(Y_i - \bar{Y})^2}{n - 1}
+\]
+
+O desvio-padrão é a raiz da variância:
+
+\[
+s = \sqrt{s^2}
+\]
+
+Ele volta para a unidade original da variável.
+
+## Mesma média, dispersão diferente
+
+```{r grafico-variabilidade, fig.cap=caption_variabilidade, fig.height=2.8}
+grafico_variabilidade
+```
+
+## Resumo da dispersão
+
+```{r tabela-variabilidade}
+knitr::kable(
+  resumo_variabilidade,
+  booktabs = TRUE,
+  caption = "Média, variância e desvio-padrão em duas distribuições simuladas."
+)
+```
+
+## Por que isso importa para inferência?
+
+Inferência estatística começa com uma distinção:
+
+```{r tabela-amostras-exemplo}
+knitr::kable(
+  amostras_exemplo,
+  booktabs = TRUE,
+  caption = "Médias de renda em seis amostras aleatórias de tamanho 100."
+)
+```
+
+A população é a mesma.
+
+O sorteio muda.
+
+## Vocabulário mínimo
+
+\[
+\text{população} \rightarrow \text{amostra} \rightarrow \text{estimativa}
+\]
+
+- Parâmetro: quantidade verdadeira na população. Geralmente não observamos.
+- Estatística: quantidade calculada na amostra.
+- Estimador: regra usada para calcular a estatística.
+- Estimativa: valor observado em uma amostra específica.
+
+## Lei dos Grandes Números
+
+A Lei dos Grandes Números diz que, sob amostragem aleatória, a média amostral se aproxima da média populacional quando \(n\) cresce.
+
+\[
+\bar{Y}_n \xrightarrow{P} \mu
+\]
+
+Intuição: erros para cima e para baixo vão se compensando quando a amostra cresce.
+
+## LGN em uma simulação
+
+```{r grafico-lgn, fig.cap=caption_lgn}
+grafico_lgn
+```
+
+## O que a LGN diz e não diz
+
+A LGN diz:
+
+- com amostras aleatórias grandes, a média amostral tende ao parâmetro;
+- aumentar \(n\) reduz a chance de uma estimativa muito distante.
+
+A LGN não diz:
+
+- que uma amostra de conveniência melhora só por ser grande;
+- qual é a forma da distribuição amostral;
+- como calcular probabilidades em torno da estimativa.
+
+## Distribuição amostral
+
+Imagine repetir a pesquisa muitas vezes:
+
+1. sorteamos uma amostra;
+2. calculamos a média;
+3. guardamos a média;
+4. repetimos o processo.
+
+A distribuição dessas médias é a distribuição amostral.
+
+## Distribuições amostrais da média
+
+```{r grafico-tcl, fig.cap=caption_tcl, fig.height=3.9, out.width="0.86\\linewidth"}
+grafico_tcl
+```
+
+## TCL: enunciado mínimo
+
+Se \(Y_1, Y_2, \ldots, Y_n\) são variáveis aleatórias independentes e identicamente distribuídas, com média \(\mu\) e variância finita \(\sigma^2\), então a soma padronizada se aproxima de uma Normal:
+
+\[
+\frac{\sum_{i=1}^{n}Y_i - n\mu}{\sigma\sqrt{n}}
+\xrightarrow{d} N(0,1)
+\]
+
+Independentes: o valor de uma observação não determina o valor da outra.
+
+Identicamente distribuídas: todas vêm da mesma população.
+
+## AAS e variáveis IID
+
+Em uma amostra aleatória simples, cada unidade sorteada pode ser pensada como uma variável aleatória.
+
+\[
+Y_1, Y_2, \ldots, Y_n
+\]
+
+Se sorteamos com reposição, essas variáveis são IID exatamente.
+
+Se sorteamos sem reposição de uma população grande, elas são aproximadamente IID.
+
+Essa é a conexão entre amostragem e o TCL.
+
+## Soma versus média
+
+O TCL fala primeiro da soma:
+
+\[
+S_n = \sum_{i=1}^{n}Y_i
+\]
+
+Mas a média é apenas a soma dividida por \(n\):
+
+\[
+\bar{Y} = \frac{S_n}{n}
+\]
+
+Por isso o mesmo resultado vale para a média padronizada:
+
+\[
+\frac{\bar{Y}-\mu}{\sigma/\sqrt{n}} \xrightarrow{d} N(0,1)
+\]
+
+## O que fica Normal?
+
+A variável original não precisa ser Normal.
+
+O que fica aproximadamente Normal é:
+
+- a soma padronizada;
+- ou a média padronizada;
+- quando \(n\) cresce;
+- sob independência, mesma distribuição e variância finita.
+
+Isso é o que torna a média amostral previsível.
+
+## Por que o TCL importa?
+
+O TCL permite transformar incerteza amostral em probabilidade.
+
+Se sabemos que a distribuição amostral da média é aproximadamente Normal, podemos dizer quão provável é observar uma estimativa muito longe do parâmetro.
+
+Essa é a ponte para:
+
+- margem de erro;
+- intervalo de confiança;
+- teste de hipótese;
+- p-valor.
+
+## De onde vem o erro-padrão
+
+Se as observações são IID:
+
+\[
+Var(Y_i)=\sigma^2
+\]
+
+Para a soma:
+
+\[
+Var\left(\sum_{i=1}^{n}Y_i\right)=n\sigma^2
+\]
+
+Para a média:
+
+\[
+Var(\bar{Y}) =
+Var\left(\frac{1}{n}\sum_{i=1}^{n}Y_i\right)
+= \frac{\sigma^2}{n}
+\]
+
+## A fórmula
+
+O erro-padrão é o desvio-padrão da distribuição amostral de uma estatística.
+
+Para a média:
+
+\[
+SD(\bar{Y}) = \sqrt{\frac{\sigma^2}{n}} =
+\frac{\sigma}{\sqrt{n}}
+\]
+
+Como quase nunca conhecemos \(\sigma\), usamos o desvio-padrão da amostra:
+
+\[
+EP(\bar{Y}) \approx \frac{s}{\sqrt{n}}
+\]
+
+O desvio-padrão descreve a dispersão dos indivíduos.
+
+O erro-padrão descreve a dispersão das estimativas.
+
+## Erro-padrão e tamanho da amostra
+
+```{r grafico-erro-padrao, fig.cap=caption_ep}
+grafico_erro_padrao
+```
+
+## Renda real: distribuição assimétrica
+
+Como exemplo real, vamos usar PIB per capita municipal como proxy de renda municipal.
+
+Não é renda individual.
+
+Mas serve para ver um padrão comum em variáveis econômicas: forte assimetria à direita.
+
+Arquivo local: `dados/pib_cid.RDS`, PIB dos Municípios/IBGE, 2013.
+
+## PIB per capita municipal
+
+```{r grafico-pibpc-original, fig.cap=caption_pibpc, fig.height=2.7, out.width="0.74\\linewidth"}
+grafico_pibpc_original
+```
+
+## Log-normal: a intuição correta
+
+Muitas variáveis econômicas são aproximadas por uma log-normal.
+
+Isso não quer dizer que a renda seja uma soma simples de choques.
+
+Quer dizer algo mais preciso:
+
+\[
+\log(Y) \approx X_1 + X_2 + \cdots + X_k
+\]
+
+Então \(Y\) resulta de muitos fatores multiplicativos.
+
+## PIB per capita em escala log
+
+```{r grafico-pibpc-log-normal, fig.cap=caption_log_pibpc, fig.height=2.7, out.width="0.74\\linewidth"}
+grafico_pibpc_log_normal
+```
+
+## O que esse exemplo mostra
+
+No nível original, o PIB per capita municipal é muito assimétrico.
+
+Na escala log, a distribuição fica bem mais próxima de uma Normal.
+
+Esse é um primo conceitual do TCL:
+
+- somas de muitos componentes tendem à Normal;
+- produtos de muitos fatores viram somas depois do log;
+- por isso variáveis positivas e muito assimétricas frequentemente parecem log-normais.
+
+## LGN e TCL lado a lado
+
+\begin{table}
+\centering
+\caption{Diferença entre LGN e TCL.}
+\small
+\begin{tabular}{p{0.12\textwidth}p{0.42\textwidth}p{0.34\textwidth}}
+\toprule
+Resultado & Pergunta & Resposta \\
+\midrule
+LGN & Para onde a média amostral vai quando \(n\) cresce? &
+Vai se aproximando da média populacional. \\
+TCL & Que forma tem a distribuição amostral quando \(n\) cresce? &
+Aproxima-se de uma distribuição Normal. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+## Atividade em R
+
+Baixem e abram o script no RStudio:
+
+```{r codigo-script-alunos, echo=TRUE, eval=FALSE}
+script_url <- paste0(
+  "https://raw.githubusercontent.com/",
+  "mgaldino/estatistica-basica/main/",
+  "scripts/aula_07_distribuicao_amostral_tcl_lgn_alunos.R"
+)
+
+destino <- "aula_07_distribuicao_amostral_tcl_lgn_alunos.R"
+
+download.file(script_url, destino, mode = "wb")
+file.edit(destino)
+```
+
+## Perguntas para responder no R
+
+1. Em uma distribuição assimétrica, média, mediana e moda ficam no mesmo lugar?
+2. O que acontece com a média acumulada quando o tamanho da amostra cresce?
+3. A distribuição dos dados individuais precisa ser Normal para o TCL funcionar?
+4. O que acontece com a distribuição amostral quando \(n\) aumenta?
+5. Qual é a diferença entre desvio-padrão e erro-padrão?
+
+## Fechamento
+
+A estatística descritiva resume a distribuição observada.
+
+A inferência pergunta como a estimativa se comportaria em outras amostras possíveis.
+
+LGN: a estimativa converge.
+
+TCL: a distribuição amostral se torna previsível.
+
+Erro-padrão: medimos a incerteza da estimativa.
